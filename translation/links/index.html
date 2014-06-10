@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+	<title>index</title>
+	<style>
+		html {
+			height:100%;
+		}
+		body {
+			background-color: #FFFFFF;
+			margin:0;
+			height:100%;
+		}
+	</style>
+
+	<!-- copy these lines to your document head: -->
+
+	<meta name="viewport" content="user-scalable=yes, width=1024" />
+
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+	<script>
+	linkSelected = false;
+	function hey(that){
+	
+		//Clear selected item:
+		$("#translation iframe").contents().find('.link').removeClass('active');
+		HYPE.documents['index'].goToTimeInTimelineNamed(0, 'word-highlight-toggle');
+		
+		//Auto-completion
+		var suggest = $("#translation iframe").contents().find("#suggest");
+		var t = $("#translation iframe").contents().find("#translationText");
+		if(t.text().endsWith("Liv")){		
+		suggest.html("&nbsp;");
+		$("#autocomplete").css("left",suggest.offset().left + $("#translation iframe").offset().left -200);
+		$("#autocomplete").css("top",suggest.offset().top + $("#translation iframe").offset().top + 20);
+		$("#autocomplete").css("opacity",1);
+		}
+		console.debug($("#translation iframe").offset());
+	}
+	
+	String.prototype.endsWith = function(suffix) {
+    return this.indexOf(suffix, this.length - suffix.length) !== -1;
+};
+
+
+$(function(){
+	
+	
+	$("#translation iframe").click(function(){
+		//$("#translation iframe").contents().find(".link").removeClass("active");
+	});
+}
+);
+	</script>
+	<style type="text/css" id="mystyle">
+	.link {color: #3366bb;}
+	.link.active{ background: #bdd8ee;}
+	</style>
+	<!-- end copy -->
+
+  </head>
+  <body>
+	<div style ="margin:auto;width:1024px;height:768px">
+
+
+	
+	<!-- copy these lines to your document: -->
+
+	<div id="index_hype_container" style="position:relative;overflow:hidden;width:1024px;height:768px;">
+		<script type="text/javascript" charset="utf-8" src="index.hyperesources/index_hype_generated_script.js?36932"></script>
+	</div>
+
+	<!-- end copy -->
+
+
+	</div>
+	
+
+
+	<!-- text content for search engines: -->
+
+	<div style="display:none">
+
+		<div> 
+</div>
+		<div>Italiano</div>
+
+	</div>
+
+	<!-- end text content: -->
+
+  </body>
+</html>
