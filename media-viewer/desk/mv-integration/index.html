@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+	<title>index</title>
+	<style>
+		html {
+			height:100%;
+		}
+		body {
+			background-color: #FFFFFF;
+			margin:0;
+			height:100%;
+		}
+	</style>
+
+	<!-- copy these lines to your document head: -->
+
+	<meta name="viewport" content="user-scalable=yes, width=1027" />
+
+	
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script>
+	var hash = window.location.hash;
+		if(hash.length != 0){
+			window.location.hash="";
+		}	
+		
+		jQuery(document).ready(function($) {
+			if (window.history && window.history.pushState) {
+				$(window).on('popstate', function() {
+					var hash = window.location.hash;
+					var sceneName=hash.replace('#','');
+  					var hypeDocument = HYPE.documents['index']
+  					if(hash.length == 0){sceneName = hypeDocument.sceneNames()[0]; }
+  					hypeDocument.showSceneNamed(sceneName, hypeDocument.kSceneTransitionInstant);
+  					
+    			});
+    		}
+		});
+
+	function updateState(){ //Should be called AFTER jumping to the scene.
+		var hypeDocument = HYPE.documents['index']
+		var sceneName = hypeDocument.currentSceneName();
+		window.history.pushState('forward', null, '#'+sceneName);
+		
+	}
+	
+	</script>
+	
+	
+	<!-- end copy -->
+
+  </head>
+  <body>
+	<div style ="margin:auto;width:1027px;height:871px">
+
+
+	
+	<!-- copy these lines to your document: -->
+
+	<div id="index_hype_container" style="position:relative;overflow:hidden;width:1027px;height:871px;">
+		<script type="text/javascript" charset="utf-8" src="index.hyperesources/index_hype_generated_script.js?81501"></script>
+	</div>
+
+	<!-- end copy -->
+
+
+	</div>
+	
+
+
+	<!-- text content for search engines: -->
+
+	<div style="display:none">
+
+		<div></div>
+
+	</div>
+
+	<!-- end text content: -->
+
+  </body>
+</html>
