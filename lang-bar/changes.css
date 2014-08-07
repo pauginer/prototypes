@@ -1,0 +1,63 @@
+.container {
+	border: 1px solid #bbb;
+	border-bottom-width: 2px;
+
+}
+
+.lang{
+	color: #555;
+	border-right-color: #ddd;
+}
+
+.lang.selected, .lang.selected:hover {
+	color: #222;
+	background-color: #eee;
+}
+
+.lang:hover {
+	background-color: #f8f8f8;
+}
+
+.lang.translate {
+	color: #2962cb;
+}
+
+.lang.perc {
+	color: #aaa;
+}
+
+.lang.source {
+	position: relative;
+	border-right: 1px solid #ddd;
+}
+
+.lang.source:after{
+  display:inline-block;
+  border: 5px solid transparent;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 5px solid white;
+
+  content:"";
+  position: absolute;
+	right:-9px;
+	vertical-align: middle;
+	top: 5px;
+}
+
+.lang.source.selected:after{
+	border-left-color: #eee;
+}
+
+
+  .lang.source:before{
+  display:inline-block;
+  border: 5px solid transparent;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 5px solid #ddd;
+  content:"";
+  position: absolute; 
+  right: -10px;
+	  top: 5px;
+}
