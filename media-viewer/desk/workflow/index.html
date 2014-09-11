@@ -61,6 +61,15 @@ $(window).bind( 'hashchange', function(e) {
   			
 });
  
+ $(window).scroll(function(){
+ 	var hypeDocument = HYPE.documents['index'];
+ 	if(window.scrollY <= 0){
+		hypeDocument.goToTimeInTimelineNamed(0, 'panel-expand');
+	} else {
+	console.debug("!!!");
+		hypeDocument.goToTimeInTimelineNamed(100, 'panel-expand')
+	}
+ });
  
 //Updates the scene based on the initial value of the hash (hack to make sure HYPE variable is available).
 $(window).load(function (){
@@ -102,7 +111,7 @@ function updateState(){ //Should be called AFTER jumping to the scene.
 	<!-- copy these lines to your document: -->
 
 	<div id="index_hype_container" style="position:relative;overflow:hidden;width:1024px;height:1100px;">
-		<script type="text/javascript" charset="utf-8" src="index.hyperesources/index_hype_generated_script.js?30824"></script>
+		<script type="text/javascript" charset="utf-8" src="index.hyperesources/index_hype_generated_script.js?6465"></script>
 	</div>
 
 	<!-- end copy -->
