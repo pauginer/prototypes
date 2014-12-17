@@ -27,13 +27,13 @@
 	<key>guidesAreVisible</key>
 	<true/>
 	<key>lastCheckDate</key>
-	<date>2014-11-19T19:02:52Z</date>
+	<date>2014-11-19T21:13:55Z</date>
 	<key>layout</key>
 	<dict>
 		<key>keyframeTimelineHeight</key>
 		<real>50</real>
 		<key>mainWindowFrame</key>
-		<string>223 174 725 697 0 0 1440 877 </string>
+		<string>223 106 830 765 0 0 1440 877 </string>
 		<key>openTabs</key>
 		<array/>
 		<key>selectedTabIndex</key>
@@ -41,7 +41,7 @@
 		<key>showSceneTabView</key>
 		<false/>
 		<key>splitHeight</key>
-		<real>425</real>
+		<real>493</real>
 		<key>splitViewIsVertical</key>
 		<false/>
 		<key>splitWidth</key>
@@ -95,7 +95,7 @@
 					<key>11</key>
 					<real>0.0</real>
 					<key>12</key>
-					<real>2</real>
+					<real>0.0</real>
 					<key>13</key>
 					<real>0.0</real>
 					<key>kTimelineDefaultIdentifier</key>
@@ -105,7 +105,7 @@
 				<integer>60</integer>
 			</dict>
 			<key>canvasSize</key>
-			<string>{725, 898}</string>
+			<string>{830, 898}</string>
 			<key>context</key>
 			<dict>
 				<key>currentTimelineIdentifier</key>
@@ -1232,6 +1232,12 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
+							<string>InnerHTML</string>
+							<key>objectValue</key>
+							<string></string>
+						</dict>
+						<dict>
+							<key>identifier</key>
 							<string>BorderStyleTop</string>
 							<key>objectValue</key>
 							<string>None</string>
@@ -1404,6 +1410,12 @@
 							<string>BorderColorRight</string>
 							<key>objectValue</key>
 							<string>#A0A0A0</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>InnerHTML</string>
+							<key>objectValue</key>
+							<string></string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -1873,7 +1885,7 @@
 				<string>9</string>
 			</array>
 			<key>splitHeight</key>
-			<real>425</real>
+			<real>493</real>
 		</dict>
 	</array>
 	<key>scripts</key>
