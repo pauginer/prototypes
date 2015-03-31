@@ -1,0 +1,1707 @@
+.flow-component .flow-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.flow-component * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.flow-newtopic-form,
+.flow-topics-bar {
+  padding-top: 1.5em;
+}
+.flow-board-header,
+.flow-board-navigation,
+.flow-board-header-menu,
+.flow-board {
+  font-size: .875em;
+  width: 100%;
+  ///max-width: 850px;
+}
+.flow-topic {
+  padding: 1.6em 0 1.4em;
+}
+.flow-revision-content {
+  background: none repeat scroll 0 0 #EDEDED;
+  color: #777777;
+  margin-top: 20px;
+  padding: 10px;
+}
+.flow-no-more,
+.flow-undo {
+  font-size: .875em;
+  color: #777777;
+}
+.flow-topic-meta {
+  font-size: .875em;
+}
+.flow-pipelist span ~ span:before {
+  content: ' | ';
+}
+.flow-ui-clear {
+  clear: both;
+  line-height: 0;
+}
+@media all and (min-width: 768px) {
+  .flow-topic-meta {
+    font-size: 1em;
+  }
+  .flow-board-header,
+  .flow-board-header-menu,
+  .flow-board-navigation,
+  .flow-board {
+    font-size: 1em;
+    line-height: 1.4;
+  }
+}
+.flow-history-moderation-menu {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.flow-history-moderation-menu li {
+  display: inline;
+}
+.flow-history-moderation-menu > section {
+  display: inline;
+}
+.flow-history-moderation-menu > section:not(:first-of-type) > li:first-of-type {
+  border-top: 0px;
+}
+.flow-history-moderation-menu > section:not(:first-of-type) > li:first-of-type:before {
+  content: '(';
+}
+.flow-history-moderation-menu > section:not(:first-of-type) > li + li:before {
+  content: ' | ';
+}
+.flow-history-moderation-menu > section:not(:first-of-type) > li:last-of-type:after {
+  content: ')';
+}
+
+.flow-errors.errorbox {
+  display: block;
+  margin: 1em 0 0;
+}
+.flow-errors.errorbox .mw-warning-with-logexcerpt {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.flow-history-moderation-action {
+  text-transform: lowercase;
+}
+
+/*
+Tooltips
+
+<h3>Guidelines</h3>
+
+Requires the following markup at minimum: <span class="mw-ui-tooltip">CONTENT<span class="mw-ui-tooltip-triangle"></span></span>
+An additional class should be added relating the triangle to the direction of the content: mw-ui-tooltip-DIRECTION, where direction is one of up, down, left, or right.
+Adding to this could be an extra class: mw-ui-tooltip-inverted, which moves the tooltip and triangle to the opposing side. This used when the tooltip would go off the right of the viewport, and instead aligns to the right of the viewport.
+Finally, a context class can be given to assign it a color (eg. mw-ui-progressive).
+
+This is intended to be used with JavaScript, but does not have to be. With JS, you can directly bind the element to given X-Y coords for an element.
+
+Styleguide 4.0.
+ */
+.flow-ui-tooltip {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  padding: .5em;
+  background: #fff;
+  *background: #fafafa;
+  color: #222;
+  word-wrap: break-word;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 2px 0 0 #cccccc, 0 0 1px 0 #cccccc;
+  box-shadow: 0 2px 0 0 #cccccc, 0 0 1px 0 #cccccc;
+  opacity: .9;
+  font-size: .875em;
+}
+.flow-ui-tooltip a {
+  color: #fff !important;
+  font-weight: bold;
+}
+#bodyContent .flow-ui-tooltip {
+  font-size: 1em;
+}
+.flow-ui-tooltip .flow-ui-tooltip-triangle {
+  position: absolute;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.flow-ui-tooltip .flow-ui-tooltip-triangle:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  width: 1em;
+  height: 1em;
+  background: #fff;
+  *background: #fafafa;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+.flow-ui-tooltip.flow-ui-tooltip-up {
+  margin-top: .75em;
+}
+.flow-ui-tooltip.flow-ui-tooltip-up .flow-ui-tooltip-triangle {
+  width: 2em;
+  height: 1em;
+  left: 50%;
+  top: -1em;
+  margin-left: -1em;
+}
+.flow-ui-tooltip.flow-ui-tooltip-up .flow-ui-tooltip-triangle:after {
+  top: .5em;
+  left: .5em;
+  -webkit-box-shadow: 0 0 1px 0 #cccccc;
+  box-shadow: 0 0 1px 0 #cccccc;
+}
+.flow-ui-tooltip.flow-ui-tooltip-down {
+  margin-bottom: .75em;
+}
+.flow-ui-tooltip.flow-ui-tooltip-down .flow-ui-tooltip-triangle {
+  width: 2em;
+  height: 1em;
+  left: 50%;
+  bottom: -1em;
+  margin-left: -1em;
+}
+.flow-ui-tooltip.flow-ui-tooltip-down .flow-ui-tooltip-triangle:after {
+  top: -0.5em;
+  left: .5em;
+  -webkit-box-shadow: 0 -1.5px 0 1.5px #cccccc, 0 0 1px 0 #cccccc;
+  box-shadow: 0 -1.5px 0 1.5px #cccccc, 0 0 1px 0 #cccccc;
+}
+.flow-ui-tooltip.flow-ui-tooltip-left {
+  margin-left: .75em;
+}
+.flow-ui-tooltip.flow-ui-tooltip-left .flow-ui-tooltip-triangle {
+  width: 1em;
+  height: 2em;
+  left: -1em;
+  top: 50%;
+  margin-top: -1em;
+}
+.flow-ui-tooltip.flow-ui-tooltip-left .flow-ui-tooltip-triangle:after {
+  margin-top: -1px;
+  top: .5em;
+  right: -0.5em;
+  -webkit-box-shadow: 1.5px 0 0 1.5px #cccccc, 0 0 1px 0 #cccccc;
+  box-shadow: 1.5px 0 0 1.5px #cccccc, 0 0 1px 0 #cccccc;
+}
+.flow-ui-tooltip.flow-ui-tooltip-right {
+  margin-left: -0.75em;
+}
+.flow-ui-tooltip.flow-ui-tooltip-right .flow-ui-tooltip-triangle {
+  width: 1em;
+  height: 2em;
+  right: -1em;
+  top: 50%;
+  margin-top: -1em;
+}
+.flow-ui-tooltip.flow-ui-tooltip-right .flow-ui-tooltip-triangle:after {
+  margin-top: -1px;
+  top: .5em;
+  left: -0.5em;
+  -webkit-box-shadow: 0 1.5px 0 1.5px #cccccc, 0 0 1px 0 #cccccc;
+  box-shadow: 0 1.5px 0 1.5px #cccccc, 0 0 1px 0 #cccccc;
+}
+.flow-ui-tooltip .flow-ui-tooltip-content {
+  display: block;
+  max-width: 360px;
+}
+.flow-ui-tooltip[class].mw-ui-progressive {
+  background: #347bff;
+  -webkit-box-shadow: 0 2px 0 0 #0053ee;
+  box-shadow: 0 2px 0 0 #0053ee;
+  color: #fff;
+}
+.flow-ui-tooltip[class].mw-ui-progressive .flow-ui-tooltip-triangle:after {
+  background: #347bff;
+}
+.flow-ui-tooltip[class].mw-ui-progressive.flow-ui-tooltip-down .flow-ui-tooltip-triangle:after {
+  -webkit-box-shadow: 0 -2px 0 2px #0053ee;
+  box-shadow: 0 -2px 0 2px #0053ee;
+}
+.flow-ui-tooltip[class].mw-ui-progressive.flow-ui-tooltip-left .flow-ui-tooltip-triangle:after {
+  -webkit-box-shadow: 2px 0 0 2px #0053ee;
+  box-shadow: 2px 0 0 2px #0053ee;
+}
+.flow-ui-tooltip[class].mw-ui-progressive.flow-ui-tooltip-right .flow-ui-tooltip-triangle:after {
+  -webkit-box-shadow: 0 2px 0 2px #0053ee;
+  box-shadow: 0 2px 0 2px #0053ee;
+}
+.flow-ui-tooltip[class].mw-ui-constructive {
+  background: #00af89;
+  -webkit-box-shadow: 0 2px 0 0 #006a53;
+  box-shadow: 0 2px 0 0 #006a53;
+  color: #fff;
+}
+.flow-ui-tooltip[class].mw-ui-constructive .flow-ui-tooltip-triangle:after {
+  background: #00af89;
+}
+.flow-ui-tooltip[class].mw-ui-constructive.flow-ui-tooltip-down .flow-ui-tooltip-triangle:after {
+  -webkit-box-shadow: 0 -2px 0 2px #006a53;
+  box-shadow: 0 -2px 0 2px #006a53;
+}
+.flow-ui-tooltip[class].mw-ui-constructive.flow-ui-tooltip-left .flow-ui-tooltip-triangle:after {
+  -webkit-box-shadow: 2px 0 0 2px #006a53;
+  box-shadow: 2px 0 0 2px #006a53;
+}
+.flow-ui-tooltip[class].mw-ui-constructive.flow-ui-tooltip-right .flow-ui-tooltip-triangle:after {
+  -webkit-box-shadow: 0 2px 0 2px #006a53;
+  box-shadow: 0 2px 0 2px #006a53;
+}
+.flow-ui-tooltip[class].mw-ui-destructive {
+  background: #d11d13;
+  -webkit-box-shadow: 0 2px 0 0 #92140d;
+  box-shadow: 0 2px 0 0 #92140d;
+  color: #fff;
+}
+.flow-ui-tooltip[class].mw-ui-destructive .flow-ui-tooltip-triangle:after {
+  background: #d11d13;
+}
+.flow-ui-tooltip[class].mw-ui-destructive.flow-ui-tooltip-down .flow-ui-tooltip-triangle:after {
+  -webkit-box-shadow: 0 -2px 0 2px #92140d;
+  box-shadow: 0 -2px 0 2px #92140d;
+}
+.flow-ui-tooltip[class].mw-ui-destructive.flow-ui-tooltip-left .flow-ui-tooltip-triangle:after {
+  -webkit-box-shadow: 2px 0 0 2px #92140d;
+  box-shadow: 2px 0 0 2px #92140d;
+}
+.flow-ui-tooltip[class].mw-ui-destructive.flow-ui-tooltip-right .flow-ui-tooltip-triangle:after {
+  -webkit-box-shadow: 0 2px 0 2px #92140d;
+  box-shadow: 0 2px 0 2px #92140d;
+}
+.flow-ui-tooltip[class].flow-ui-tooltip-small {
+  font-size: .75em;
+}
+.flow-ui-tooltip[class].flow-ui-tooltip-small .flow-ui-tooltip-content {
+  max-width: 240px;
+}
+.flow-ui-tooltip[class].flow-ui-tooltip-large {
+  max-width: 100%;
+}
+.flow-ui-tooltip[class].flow-ui-tooltip-large .flow-ui-tooltip-content {
+  max-width: 100%;
+}
+.flow-ui-tooltip-block {
+  width: 100%;
+}
+
+
+.flow-ui-text-truncated {
+  white-space: nowrap;
+  overflow: hidden;
+  -webkit-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+
+
+.flow-ui-modal {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.75);
+}
+.flow-ui-modal:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+.flow-ui-modal-layout {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  vertical-align: middle;
+  display: inline-block;
+  min-width: 320px;
+  overflow: auto;
+  max-width: 97%;
+  max-height: 97%;
+  position: relative;
+  background: #fff;
+  box-shadow: 0 4px 0 0 #ddd, 0 0 0 1px #ddd;
+  border-radius: 3px;
+  color: #222;
+  text-align: left;
+}
+.flow-ui-modal-heading {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: .3em .3em 0;
+  padding: 0 .3em;
+  font-weight: bold;
+  color: #222;
+  line-height: 2.2;
+  border-bottom: 1px solid #ccc;
+}
+.flow-ui-modal-heading-prev {
+  float: left;
+  display: inline-block;
+  padding: 0 .3em;
+  margin: 0 .6em 0 -0.3em;
+  height: 100%;
+  border-right: 1px solid #ccc;
+  color: #666;
+}
+.flow-ui-modal-heading-next {
+  float: right;
+  display: inline-block;
+  padding: 0 .3em;
+  margin: 0 -0.3em 0 .6em;
+  height: 100%;
+  border-left: 1px solid #ccc;
+  color: #666;
+}
+.flow-ui-modal-content {
+  overflow: hidden;
+  margin: 1.3em;
+}
+
+/*
+== MediaWiki UI Text Field Validation ==
+
+=== Guidelines ===
+
+
+=== Notes ===
+Does not support IE7 nor IE8.
+ */
+/*.flow-ui-validated */
+/*
+== MediaWiki UI Radio and Checkbox ==
+
+=== Guidelines ===
+
+
+=== Notes ===
+Does not support IE7 nor IE8.
+ */
+.flow-ui-input-replacement-anchor {
+  display: block;
+  margin: 1em 0 0 .9em;
+}
+.flow-ui-input-replacement-anchor.mw-ui-input-large {
+  margin: 0;
+  font-size: 1.75em;
+  font-style: italic;
+  line-height: 1.25;
+  color: #666;
+}
+.client-nojs .flow-ui-form .flow-ui-destructive {
+  display: none;
+}
+.mw-ui-fieldtype-text,
+.mw-ui-fieldtag-textarea {
+  width: 100%;
+}
+.mw-ui-field {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  min-height: 0;
+}
+.mw-ui-field .mw-ui-input {
+  margin: 0;
+}
+.mw-ui-field-icon {
+  display: none;
+}
+.mw-ui-uls-icon:before {
+  content: "\e135";
+  opacity: 0.66;
+}
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-field-icon {
+  white-space: nowrap;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2em;
+  height: 100%;
+  text-align: center;
+  pointer-events: none;
+}
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-field-icon:before {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -0.6em;
+  width: 2em;
+  color: #ccc;
+  font-size: 1em;
+  line-height: 1;
+  text-align: center;
+  pointer-events: none;
+  font-family: 'Glyphicons Halflings';
+  -webkit-font-smoothing: antialiased;
+}
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-validation-icon {
+  border-radius: 0 2px 2px 0;
+  border: 1px solid #898989;
+  border-width: 1px 1px 1px 0;
+}
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-validation-icon:before {
+  color: #fff;
+}
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input[type='date'] ~ .mw-ui-uls-icon,
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input[type='number'] ~ .mw-ui-uls-icon,
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input[type='search'] ~ .mw-ui-uls-icon,
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input[type='time'] ~ .mw-ui-uls-icon {
+  visibility: hidden;
+}
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:valid[required],
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:valid[min],
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:valid[max],
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:valid[pattern],
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:valid[type='color'],
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:valid[type='date'],
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:valid[type='email'],
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:valid[type='number'],
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:valid[type='url'],
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:valid[type='range'],
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:valid[type='time'] {
+  border-right-width: 2em;
+}
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:valid[required] ~ .mw-ui-validation-icon,
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:valid[min] ~ .mw-ui-validation-icon,
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:valid[max] ~ .mw-ui-validation-icon,
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:valid[pattern] ~ .mw-ui-validation-icon,
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:valid[type='color'] ~ .mw-ui-validation-icon,
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:valid[type='date'] ~ .mw-ui-validation-icon,
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:valid[type='email'] ~ .mw-ui-validation-icon,
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:valid[type='number'] ~ .mw-ui-validation-icon,
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:valid[type='url'] ~ .mw-ui-validation-icon,
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:valid[type='range'] ~ .mw-ui-validation-icon,
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:valid[type='time'] ~ .mw-ui-validation-icon {
+  display: block;
+}
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:valid ~ .mw-ui-validation-icon {
+  background: #00B08A;
+  background: rgba(0,176,138,0.85);
+}
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:valid ~ .mw-ui-validation-icon:before {
+  content: "\e013";
+}
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:valid + .mw-ui-validation-icon + .mw-ui-uls-icon {
+  right: 2em;
+}
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:valid[type='date'] + .mw-ui-validation-icon + .mw-ui-uls-icon {
+  right: 4em;
+}
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:valid[type='number'] + .mw-ui-validation-icon + .mw-ui-uls-icon,
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:valid[type='time'] + .mw-ui-validation-icon + .mw-ui-uls-icon {
+  right: 3em;
+}
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:invalid[required],
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:invalid[min],
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:invalid[max],
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:invalid[pattern],
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:invalid[type='color'],
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:invalid[type='date'],
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:invalid[type='email'],
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:invalid[type='number'],
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:invalid[type='url'],
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:invalid[type='range'],
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:invalid[type='time'] {
+  border-right-width: 2em;
+}
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:invalid[required] ~ .mw-ui-validation-icon,
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:invalid[min] ~ .mw-ui-validation-icon,
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:invalid[max] ~ .mw-ui-validation-icon,
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:invalid[pattern] ~ .mw-ui-validation-icon,
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:invalid[type='color'] ~ .mw-ui-validation-icon,
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:invalid[type='date'] ~ .mw-ui-validation-icon,
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:invalid[type='email'] ~ .mw-ui-validation-icon,
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:invalid[type='number'] ~ .mw-ui-validation-icon,
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:invalid[type='url'] ~ .mw-ui-validation-icon,
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:invalid[type='range'] ~ .mw-ui-validation-icon,
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:invalid[type='time'] ~ .mw-ui-validation-icon {
+  display: block;
+}
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:invalid ~ .mw-ui-validation-icon {
+  background: #D31300;
+  background: rgba(211,19,0,0.85);
+}
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:invalid ~ .mw-ui-validation-icon:before {
+  content: "\e014";
+}
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:invalid + .mw-ui-validation-icon + .mw-ui-uls-icon {
+  right: 2em;
+}
+.mw-ui-field:not(.ie8WillIgnoreThis) .mw-ui-input:focus ~ .mw-ui-uls-icon {
+  display: block;
+}
+.mw-ui-fieldtag-input:not(.ie8WillIgnoreThis) {
+  cursor: pointer;
+}
+.mw-ui-fieldtag-input:not(.ie8WillIgnoreThis) .mw-ui-radio:before,
+.mw-ui-fieldtag-input:not(.ie8WillIgnoreThis) .mw-ui-checkbox:before {
+  display: inline-block;
+  vertical-align: text-bottom;
+  font-family: 'Glyphicons Halflings';
+  -webkit-font-smoothing: antialiased;
+  color: #666;
+  font-size: inherit;
+  line-height: inherit;
+}
+.mw-ui-fieldtag-input:not(.ie8WillIgnoreThis) input[type='radio'],
+.mw-ui-fieldtag-input:not(.ie8WillIgnoreThis) input[type='checkbox'] {
+  display: none;
+}
+.mw-ui-fieldtag-input:not(.ie8WillIgnoreThis) input[type='radio'] + .mw-ui-radio:before {
+  content: "\e141";
+}
+.mw-ui-fieldtag-input:not(.ie8WillIgnoreThis) input[type='radio']:checked + .mw-ui-radio:before {
+  text-shadow: none;
+  content: "\e165";
+}
+.mw-ui-fieldtag-input:not(.ie8WillIgnoreThis) input[type='checkbox'] + .mw-ui-checkbox:before {
+  content: "\e157";
+}
+.mw-ui-fieldtag-input:not(.ie8WillIgnoreThis) input[type='checkbox']:checked + .mw-ui-checkbox:before {
+  content: "\e067";
+}
+input.mw-ui-input-large {
+  padding-left: .75em;
+}
+textarea.mw-ui-input-large {
+  padding-left: 1.5em;
+}
+
+@font-face {
+    font-family: 'WikiFont-Glyphs';
+    src: url(WikiFont-Glyphs.eot); /* IE9 Compat Modes */
+    src: url(WikiFont-Glyphs.eot) format('embedded-opentype'), /* IE6-IE8 */
+         url(WikiFont-Glyphs.woff) format('woff'), /* Modern Browsers */
+         url(WikiFont-Glyphs.ttf)  format('truetype') /* Safari, Android, iOS */
+}
+
+
+.wikiglyph {
+    display: inline-block;
+    height: 1.10em;
+    font-family: 'WikiFont-Glyphs';
+    -webkit-font-smoothing: antialiased;
+    font-size: inherit;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1em;
+    overflow: visible;
+    vertical-align: text-bottom;
+}
+
+.wikiglyph[dir='rtl'] {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1);
+  -webkit-transform: scale(-1, 1);
+  -moz-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  -o-transform: scale(-1, 1);
+  transform: scale(-1, 1);
+}
+/* UI ELEMENTS e000-023
+*/
+
+.wikiglyph-magnifying-glass:before {
+  content: "\e000";
+}
+.wikiglyph-arrow-left:before {
+  content: "\e001";
+}
+.wikiglyph-tick:before {
+  content: "\e002";
+}
+.wikiglyph-x:before {
+  content: "\e003";
+}
+.wikiglyph-x-circle:before {
+  content: "\e004";
+}
+.wikiglyph-unstar:before {
+  content: "\e005";
+}
+.wikiglyph-star:before {
+  content: "\e006";
+}
+.wikiglyph-star-list:before {
+  content: "\e007";
+}
+.wikiglyph-sun:before {
+  content: "\e008";
+}
+.wikiglyph-funnel:before {
+  content: "\e009";
+}
+.wikiglyph-eye:before {
+  content: "\e010";
+}
+.wikiglyph-eye-lid:before {
+  content: "\e011";
+}
+.wikiglyph-bookmark:before {
+  content: "\e012";
+}
+.wikiglyph-printer:before {
+  content: "\e013";
+}
+.wikiglyph-puzzle:before {
+  content: "\e014";
+}
+.wikiglyph-clock:before {
+  content: "\e015";
+}
+.wikiglyph-dice:before {
+  content: "\e016";
+}
+.wikiglyph-move:before {
+  content: "\e017";
+}
+.wikiglyph-gear:before {
+  content: "\e018";
+}
+.wikiglyph-ellipsis:before {
+  content: "\e019";
+}
+.wikiglyph-envelope:before {
+  content: "\e020";
+}
+.wikiglyph-pin:before {
+  content: "\e021";
+}
+.wikiglyph-share:before {
+  content: "\e022";
+}
+.wikiglyph-download:before {
+  content: "\e023";
+}
+.wikiglyph-bell:before {
+  content: "\e025";
+}
+.wikiglyph-bell-ring:before {
+  content: "\e026";
+}
+.wikiglyph-caret-left:before {
+  content: "\e027";
+}
+.wikiglyph-caret-down:before {
+  content: "\e028";
+}
+.wikiglyph-ribbon:before {
+  content: "\e029";
+}
+.wikiglyph-key:before {
+  content: "\e030";
+}
+.wikiglyph-gallery:before {
+  content: "\e031";
+}
+.wikiglyph-map:before {
+  content: "\e032";
+}
+.wikiglyph-heart:before {
+  content: "\e033";
+}
+
+
+/* EXPERIMENTS e300-301
+*/
+.wikiglyph-star-circle:before {
+  content: "\e300";
+}
+.wikiglyph-rocket:before {
+  content: "\e301";
+}
+
+
+/* STRIPES e040-043
+*/
+.wikiglyph-stripe-compact:before {
+  content: "\e040";
+}
+.wikiglyph-stripe-toc:before {
+  content: "\e041";
+}
+.wikiglyph-stripe-expanded:before {
+  content: "\e042";
+}
+
+
+/* UI MODERATION ELEMENTS e500-508
+*/
+
+.wikiglyph-article:before {
+  content: "\e100";
+}
+.wikiglyph-article-check:before {
+  content: "\e101";
+}
+.wikiglyph-article-search:before {
+  content: "\e102";
+}
+.wikiglyph-trash:before {
+  content: "\e500";
+}
+.wikiglyph-trash-slash:before {
+  content: "\e501";
+}
+.wikiglyph-block:before {
+  content: "\e502";
+}
+.wikiglyph-block-slash:before {
+  content: "\e503";
+}
+.wikiglyph-flag:before {
+  content: "\e504";
+}
+.wikiglyph-flag-slash:before {
+  content: "\e505";
+}
+.wikiglyph-play:before {
+  content: "\e506";
+}
+.wikiglyph-stop:before {
+  content: "\e507";
+}
+.wikiglyph-lock:before {
+  content: "\e508";
+}
+.wikiglyph-unlock:before {
+  content: "\e509";
+}
+
+/* USER e600-602
+*/
+.wikiglyph-user-bust:before {
+  content: "\e600";
+}
+.wikiglyph-user-smile:before {
+  content: "\e601";
+}
+.wikiglyph-user-sleep:before {
+  content: "\e602";
+}
+
+
+/* TRANSLATION e700
+*/
+.wikiglyph-translate:before {
+  content: "\e700";
+}
+.wikiglyph-keyboard:before {
+  content: "\e701";
+}
+
+
+/* CONTRIBUTION e800-845
+*/
+.wikiglyph-pencil:before {
+  content: "\e800";
+}
+.wikiglyph-pencil-revert-full:before {
+  content: "\e801";
+}
+.wikiglyph-pencil-revert-pt1:before {
+  content: "\e802";
+}
+.wikiglyph-pencil-revert-pt2:before {
+  content: "\e803";
+}
+.wikiglyph-pencil-lock-full:before {
+  content: "\e804";
+}
+.wikiglyph-pencil-lock-pt1:before {
+  content: "\e805";
+}
+.wikiglyph-pencil-lock-pt2:before {
+  content: "\e806";
+}
+.wikiglyph-speech-bubble:before {
+  content: "\e810";
+}
+.wikiglyph-speech-bubbles:before {
+  content: "\e811";
+}
+.wikiglyph-speech-bubble-add:before {
+  content: "\e812";
+}
+.wikiglyph-speech-bubble-smile:before {
+  content: "\e813";
+}
+.wikiglyph-link:before {
+  content: "\e820";
+}
+.wikiglyph-quotes:before {
+  content: "\e830";
+}
+.wikiglyph-quotes-add:before {
+  content: "\e831";
+}
+.wikiglyph-image:before {
+  content: "\e840";
+}
+.wikiglyph-image-lock-full:before {
+  content: "\e841";
+}
+.wikiglyph-image-lock-pt1:before {
+  content: "\e842";
+}
+.wikiglyph-image-lock-pt2:before {
+  content: "\e843";
+}
+.wikiglyph-image-add-full:before {
+  content: "\e844";
+}
+.wikiglyph-image-add-pt1:before {
+  content: "\e845";
+}
+.wikiglyph-image-add-pt2:before {
+  content: "\e846";
+}
+.wikiglyph-image-main-placeholder:before {
+  content: "\e847";
+}
+.wikiglyph-folder:before {
+  content: "\e848";
+}
+.wikiglyph-folder-main-placeholder:before {
+  content: "\e849";
+}
+.wikiglyph-template-add:before {
+  content: "\e850";
+}
+.wikiglyph-pin:before {
+  content: "\e851";
+}
+.wikiglyph-pin-add:before {
+  content: "\e852";
+}
+.wikiglyph-pin-add-pt1:before {
+  content: "\e853";
+}
+.wikiglyph-pin-add-pt2:before {
+  content: "\e854";
+}
+.wikiglyph-cite:before {
+  content: "\e870";
+}
+.wikiglyph-book:before {
+  content: "\e871";
+}
+.wikiglyph-journal:before {
+  content: "\e872";
+}
+.wikiglyph-web:before {
+  content: "\e873";
+}
+.wikiglyph-news:before {
+  content: "\e874";
+}
+.wikiglyph-signature:before {
+  content: "\e875";
+}
+.wikiglyph-list-sorted:before {
+  content: "\e876";
+}
+.wikiglyph-list-unsorted:before {
+  content: "\e877";
+}
+.wikiglyph-indent-left:before {
+  content: "\e878";
+}
+.wikiglyph-indent-right:before {
+  content: "\e879";
+}
+
+/* WIKI-X e900+
+*/
+.wikiglyph-wikitrail:before {
+  content: "\e900";
+}
+.wikiglyph-ccmark:before {
+  content: "\e903";
+}
+.wikiglyph-cmark:before {
+  content: "\e901";
+}
+.wikiglyph-wmark:before {
+  content: "\e902";
+}
+
+
+.mediawiki .wikiglyph {
+  height: .7em;
+  font-size: 1.6em;
+  line-height: .7em;
+}
+
+.flow-topic-titlebar {
+  position: relative;
+  padding: .5em .75em;
+  background: #eee;
+  border-radius: 3px;
+  outline: none;
+}
+.flow-topic-titlebar .flow-menu {
+  top: 1.5em;
+}
+div#content .flow-topic-title {
+  padding: 0;
+  border-bottom: none;
+  margin: 0 2.5em .15em 0;
+  font-family: sans-serif;
+  font-weight: bold;
+  word-break: break-word;
+  word-wrap: break-word;
+  overflow: visible;
+}
+.flow-moderated-topic-title {
+  margin-bottom: .33em;
+  color: #666;
+  font-weight: bold;
+}
+div#content h2.flow-topic-title {
+  font-size: 1.75em;
+}
+.flow-notification-tooltip-topicsub {
+  width: 15em;
+}
+.flow-notification-tooltip-icon {
+  font-size: 2.5em;
+  text-align: center;
+}
+.flow-notification-tooltip-title {
+  font-size: 1em;
+  font-weight: bold;
+}
+.flow-undo {
+  float: right;
+}
+.flow-topic-title-activate-edit .flow-topic-title {
+  display: none;
+}
+@media all and (min-width: 768px) {
+  .flow-topic-titlebar {
+    padding: 1em 2.5em 1em 1.5em;
+  }
+}
+
+.flow-topic-meta {
+  color: #666;
+}
+
+form.flow-post {
+  margin-left: 0.9em;
+}
+.flow-post {
+  position: relative;
+  margin: .5em 0 0 .75em;
+  padding: 0 .5em 0 0;
+  color: #222;
+  word-wrap: break-word;
+}
+.flow-post .flow-replies {
+  margin-left: 1.5em;
+  padding-left: 0.5em;
+  border-left: 1px dotted #ddd;
+}
+.flow-post .flow-replies.flow-preview {
+  margin-left: 0;
+  padding-left: 0;
+  border-left-width: 0;
+}
+.flow-post .flow-replies.flow-preview .flow-post-main {
+  padding-left: 0;
+  border-left-width: 0;
+}
+.flow-post.flow-post-max-depth .flow-replies {
+  margin-left: 0;
+  padding-left: 0;
+  border-left-width: 0;
+}
+.flow-post.flow-post-max-depth .flow-replies .flow-post-max-depth {
+  margin-left: 0;
+}
+.flow-post .flow-post-main {
+  margin-left: 0.1em;
+}
+.flow-post.flow-post-highlighted > .flow-post-main {
+  padding-left: 0.75em;
+  border-left: solid 0.75em #00AF89;
+}
+.flow-post.flow-post-highlight-newer .flow-post-content {
+  border-left: solid 0.2em #0645AD;
+}
+.flow-post.flow-post-highlight-newer .flow-post-content {
+  margin-left: -2.2em;
+  padding-left: 2em;
+}
+.flow-post .flow-post.flow-post-highlight-newer > .flow-post-main .flow-post-content {
+  margin-left: -1.4em;
+  padding-left: 1.2em;
+}
+.flow-post .flow-post .flow-post.flow-post-highlight-newer > .flow-post-main .flow-post-content {
+  margin-left: -1.4em;
+  padding-left: 1.2em;
+}
+.flow-post .flow-post-content {
+  word-break: break-word;
+  overflow: auto;
+  max-height: 2000px;
+}
+.flow-post .flow-author {
+  font-size: .875em;
+  line-height: 1.2;
+  display: inline-block;
+  color: #222;
+  word-wrap: break-word;
+}
+.flow-post .flow-author .mw-userlink {
+  font-weight: bold;
+}
+.flow-post .flow-author .mw-usertoollinks {
+  opacity: 0;
+  -webkit-transition: opacity .25s linear;
+  -moz-transition: opacity .25s linear;
+  -o-transition: opacity .25s linear;
+  transition: opacity .25s linear;
+  -webkit-backface-visibility: hidden;
+  -ms-transition: opacity .25s linear;
+}
+.flow-post .flow-author:hover .mw-usertoollinks {
+  opacity: 1;
+}
+.flow-post-meta {
+  color: #898989;
+  font-size: .875em;
+  text-align: right;
+}
+.flow-post-meta-actions {
+  float: left;
+}
+.flow-post-meta-actions a::after {
+  content: "\2022";
+  padding: 0 8px;
+  text-decoration: none;
+  display: inline-block;
+  color: #898989;
+}
+.flow-post-meta-actions a:last-child::after {
+  content: "";
+}
+@media all and (min-width: 768px) {
+  .flow-post {
+    /* left margin provided by highlighting zone */
+    margin: 1em 0 0 1.5em;
+    padding: 0;
+  }
+  .flow-post .flow-author {
+    line-height: inherit;
+    font-size: inherit;
+  }
+  .flow-post.flow-post-highlight-newer > .flow-post-main .flow-post-content {
+    margin-left: -2.8em;
+    padding-left: 2.6em;
+  }
+  .flow-post .flow-post.flow-post-highlight-newer > .flow-post-main .flow-post-content {
+    margin-left: -2.2em;
+    padding-left: 2em;
+  }
+  .flow-post .flow-post .flow-post.flow-post-highlight-newer > .flow-post-main .flow-post-content {
+    margin-left: -2.2em;
+    padding-left: 2em;
+  }
+}
+@media all and (min-width: 982px) {
+  .flow-post.flow-post-highlight-newer > .flow-post-main .flow-post-content {
+    margin-left: -3.3em;
+    padding-left: 3.1em;
+  }
+}
+
+.flow-topic-summary {
+  border-top: 1px dotted #ccc;
+  margin-top: .33em;
+}
+div#content .flow-topic-summary > p {
+  font-style: italic;
+}
+div#content .flow-topic-summary > p:last-of-type {
+  margin-bottom: 0;
+}
+
+.flow-watch-link {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.flow-watch-link.flow-board-watch-link {
+  font-size: 1.5em;
+  top: -1.75em;
+  right: auto;
+}
+.flow-watch-link.flow-board-watch-link a {
+  float: right;
+}
+.flow-watch-link a {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  padding: .25em .5em;
+}
+.flow-watch-link a.mw-ui-quiet .wikiglyph-star {
+  display: none;
+}
+.flow-watch-link a.mw-ui-quiet .wikiglyph-unstar {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+}
+.flow-watch-link a .wikiglyph-unstar {
+  display: none;
+}
+.flow-topic-watchlist a {
+  font-size: 1.8em;
+}
+@media all and (min-width: 768px) {
+  .flow-topic-watchlist a {
+    font-size: inherit;
+  }
+}
+.content {
+  position: relative;
+}
+
+.flow-board-header {
+  word-break: break-word;
+}
+.flow-board-header-nav {
+  position: relative;
+  text-align: right;
+}
+.flow-board-header-icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  opacity: .33;
+}
+.flow-board-header-icon:hover,
+.flow-board-header-icon:focus {
+  opacity: 1;
+}
+
+.flow-menu {
+  top: 0;
+  clear: both;
+  position: static;
+  right: 0;
+  bottom: 0;
+}
+.flow-menu ul {
+  font-size: 0.75em;
+}
+.flow-menu li {
+  display: inline;
+  text-align: left;
+}
+.flow-menu li a {
+  font-weight: inherit;
+}
+.flow-menu a:focus {
+  outline: none;
+}
+.flow-menu .flow-menu-js-drop {
+  display: none;
+}
+div.flow-menu-inverted {
+  right: auto;
+  left: 0;
+}
+div > .flow-menu {
+  bottom: auto;
+  display: block;
+  border: none;
+}
+div > .flow-menu.flow-menu-inverted {
+  right: auto;
+  left: 0;
+}
+div > .flow-menu.flow-menu-inverted .flow-menu-js-drop {
+  text-align: left;
+}
+div > .flow-menu.flow-menu-scrollable {
+  visibility: hidden;
+}
+div > .flow-menu.flow-menu-scrollable ul {
+  display: block;
+}
+div > .flow-menu.flow-menu-hoverable:hover,
+div > .flow-menu.focus {
+  z-index: 2;
+}
+div > .flow-menu.flow-menu-hoverable:hover ul,
+div > .flow-menu.focus ul {
+  display: block;
+}
+div > .flow-menu.flow-menu-hoverable:hover.flow-menu-scrollable,
+div > .flow-menu.focus.flow-menu-scrollable {
+  visibility: visible;
+}
+div > .flow-menu.flow-menu-hoverable:hover .flow-menu-js-drop a,
+div > .flow-menu.focus .flow-menu-js-drop a {
+  outline: none;
+  border-color: transparent;
+  background: transparent;
+  background: rgba(0,0,0,0.05);
+}
+div > .flow-menu.flow-menu-hoverable:hover .flow-menu-js-drop a .caret,
+div > .flow-menu.focus .flow-menu-js-drop a .caret {
+  border-top-color: #000;
+}
+div > .flow-menu ul {
+  display: none;
+  font-size: 1em;
+  box-shadow: 0 1px 2px #ccc;
+  background: #fff;
+  border-radius: 2px;
+}
+div > .flow-menu ul > section:not(:first-of-type) > li:first-of-type,
+div > .flow-menu ul li.flow-menu-section:not(:first-of-type) {
+  border-top: 1px solid #ddd;
+}
+div > .flow-menu ul li {
+  display: block;
+  cursor: default;
+}
+div > .flow-menu .flow-menu-js-drop {
+  display: block;
+  text-align: right;
+  text-indent: 0;
+  cursor: pointer;
+}
+div > .flow-menu .flow-menu-js-drop a {
+  display: inline-block;
+  padding: 0 .5em;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  border-width: 0;
+  color: #666;
+}
+div > .flow-menu .flow-menu-js-drop-hidden {
+  position: absolute;
+  left: -999em;
+  height: 0;
+}
+div.flow-post > .flow-menu .flow-menu-js-drop a {
+  border-color: #eee;
+  border-width: 0;
+}
+@media all and (min-width: 768px) {
+  .flow-menu {
+    position: absolute;
+  }
+}
+
+.flow-board-navigation {
+  left: 0;
+  position: static;
+  padding: 0;
+  white-space: nowrap;
+  min-width: 14em;
+  clear: both;
+}
+.flow-board-navigation a:link,
+.flow-board-navigation a:visited {
+  padding: 0.2em 0.3em;
+}
+.flow-board-navigation a.flow-board-navigator-last {
+  float: right;
+  position: static;
+}
+.flow-board-navigation .flow-board-navigation-inner {
+  overflow: hidden;
+  border-bottom: 1px solid #ccc;
+  white-space: nowrap;
+}
+.flow-board-navigation .flow-board-navigator-filter {
+  display: inline-block;
+  position: relative;
+}
+.flow-board-navigation a {
+  display: inline-block;
+}
+.flow-board-navigation a:link,
+.flow-board-navigation a:visited {
+  padding: 0.25em .75em;
+  color: #666;
+}
+.flow-board-navigation a:hover,
+.flow-board-navigation a:focus,
+.flow-board-navigation a.flow-board-navigator-link-highlight {
+  color: #000;
+  text-decoration: none;
+}
+.flow-board-navigation a.flow-board-navigator-right {
+  float: right;
+}
+.flow-board-navigation a.flow-board-navigator-active {
+  font-weight: bold;
+}
+.flow-board-navigation a.flow-board-navigator-first {
+  padding-left: 0;
+}
+.flow-board-navigation.flow-board-navigation-affixed {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  width: 100%;
+  background: #fff;
+}
+.flow-board-navigation.flow-board-navigation-affixed .flow-board-toc-menu .flow-list {
+  max-height: 30.6em;
+  max-height: 85vh;
+}
+.flow-board-navigation.flow-board-navigation-affixed .flow-board-navigation-inner > a {
+  display: none;
+}
+.flow-board-navigation.flow-board-navigation-affixed .flow-board-navigation-inner > a.flow-board-navigator-active {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.flow-board-header-menu {
+  position: relative;
+  float: right;
+}
+.flow-board-header-menu .flow-board-toc-menu {
+  width: 100%;
+  position: absolute;
+}
+.flow-board-header-menu .flow-board-toc-menu .flow-list {
+  overflow-y: auto;
+  max-height: 18em;
+  max-height: 50vh;
+}
+.flow-board-header-menu .flow-board-toc-menu a {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: left;
+  text-overflow: ellipsis;
+  padding-left: 0;
+  padding-right: 0;
+}
+.flow-board-header-menu .flow-board-toc-menu a.active {
+  font-weight: bold;
+}
+.flow-board-header-menu .flow-board-toc-menu .wikiglyph {
+  visibility: hidden;
+  font-weight: bold;
+}
+@media all and (min-width: 768px) {
+  html .flow-board-navigation {
+    left: 0;
+    font-size: 1.15em;
+    position: relative;
+    padding-top: .5em;
+  }
+}
+
+.flow-topic-moderatestate-lock,
+.flow-topic-moderatestate-delete {
+  color: #666;
+}
+.flow-topic-moderatestate-lock .flow-topic-titlebar,
+.flow-topic-moderatestate-delete .flow-topic-titlebar {
+  background-color: #fff;
+  border: solid 1px #ccc;
+}
+.flow-post-moderated .flow-author a,
+.flow-moderated-post-content {
+  color: #666;
+}
+.flow-post .flow-element-expanded .flow-moderated-post-content {
+  display: none;
+}
+.flow-post .flow-element-collapsed .flow-post-content,
+.flow-post .flow-element-collapsed .flow-post-meta {
+  display: none;
+}
+
+.flow-timestamp {
+  text-align: left;
+}
+.flow-timestamp .flow-timestamp-user-formatted {
+  display: none;
+}
+.flow-timestamp .flow-timestamp-ago {
+  display: inline;
+}
+.flow-timestamp:hover .flow-timestamp-user-formatted {
+  display: inline;
+}
+.flow-timestamp:hover .flow-timestamp-ago {
+  display: none;
+}
+.flow-timestamp-ago,
+.flow-timestamp-user-formatted {
+  display: block;
+  position: relative;
+}
+.flow-timestamp-ago {
+  margin-top: -1em;
+}
+a.flow-timestamp-anchor,
+a.flow-timestamp-anchor:visited {
+  color: inherit;
+}
+a.flow-timestamp-anchor:hover {
+  color: #0645ad;
+}
+a.flow-timestamp-anchor:hover:visited {
+  color: #0b0080;
+}
+a.flow-timestamp-anchor:hover:active {
+  color: #faa700;
+}
+
+.flow-reply-count {
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: 1.5em;
+  margin-top: -0.55em;
+  color: #ddd;
+  font-size: 2em;
+  opacity: .5;
+}
+.flow-reply-count .flow-reply-count-number {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-left: .25em;
+  width: 100%;
+  color: #666;
+  font-size: .5em;
+  line-height: 2.25;
+  font-weight: bold;
+  text-align: center;
+}
+
+.client-js {
+  /*
+	Fallback elements
+
+	Fallback elements are invisible when JavaScript is enabled. They only exist when JavaScript does not run.
+
+	Markup:
+	<div class="flow-ui-fallback-element"></div>
+
+	Styleguide X.
+	*/
+}
+.client-js .flow-ui-fallback-element {
+  visibility: hidden;
+  height: 0;
+}
+.client-js .flow-preview {
+  cursor: help;
+  margin-top: .5em;
+  color: #FF5D00;
+}
+.client-js div#content div#bodyContent .flow-preview-target-hidden {
+  display: none;
+}
+.client-js .flow-nojs {
+  display: none;
+}
+.client-js .flow-js {
+  display: block;
+}
+.client-nojs .flow-nojs {
+  display: block;
+}
+.client-nojs .flow-js {
+  display: none;
+}
+.flow-topics > .flow-load-more.flow-api-inprogress,
+.flow-board-header-menu .flow-list .flow-load-more.flow-api-inprogress {
+  overflow: visible;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+.flow-topics > .flow-load-more.flow-api-inprogress:before,
+.flow-board-header-menu .flow-list .flow-load-more.flow-api-inprogress:before {
+  display: inline-block;
+  content: "\e018";
+  font-family: 'WikiFont-Glyphs';
+  font-size: 3em;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -webkit-animation: spin infinite 2s linear;
+  -moz-animation: spin infinite 2s linear;
+  -ms-animation: spin infinite 2s linear;
+  -o-animation: spin infinite 2s linear;
+  animation: spin infinite 2s linear;
+}
+div#content div#bodyContent .flow-api-inprogress {
+  opacity: 0.5;
+  cursor: wait;
+}
+.flow-loading {
+  overflow: visible;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+.flow-loading:before {
+  display: inline-block;
+  content: "\e018";
+  font-family: 'WikiFont-Glyphs';
+  font-size: 3em;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -webkit-animation: spin infinite 2s linear;
+  -moz-animation: spin infinite 2s linear;
+  -ms-animation: spin infinite 2s linear;
+  -o-animation: spin infinite 2s linear;
+  animation: spin infinite 2s linear;
+}
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    opacity: .5;
+  }
+  50% {
+    opacity: .75;
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    opacity: .5;
+  }
+}
+@-moz-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    opacity: .5;
+  }
+  50% {
+    opacity: .75;
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+    opacity: .5;
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+    opacity: .5;
+  }
+  50% {
+    opacity: .75;
+  }
+  100% {
+    transform: rotate(360deg);
+    opacity: .5;
+  }
+}
+
+.flow-content-preview {
+  word-wrap: break-word;
+  word-break: break-word;
+  background-color: #FDFFE7;
+  border: 1px solid #FCEB92;
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  white-space: normal;
+  overflow: auto;
+  display: none;
+}
+.flow-content-preview .flow-preview-sub-container {
+  margin-top: 5px;
+}
+
+.flow-form-actions {
+  position: relative;
+  margin-top: .25em;
+}
+.flow-form-actions button.mw-ui-button,
+.flow-form-actions a.mw-ui-button {
+  float: right;
+  margin-left: .25em;
+}
+textarea.mw-ui-input.flow-input-compressed {
+  height: 2.25em;
+  min-height: 2.25em;
+  resize: none;
+}
+.flow-anon-warning {
+  position: relative;
+}
+.flow-anon-warning-desktop {
+  display: none;
+  position: absolute;
+  right: -15em;
+  width: 15em;
+}
+.client-js .flow-js.flow-form-action-preview {
+  display: none;
+}
+.client-js .flow-editor-supports-preview .flow-js.flow-form-action-preview {
+  display: block;
+}
+@media all and (min-width: 768px) {
+  .flow-anon-warning-mobile {
+    display: none;
+  }
+  .flow-anon-warning-desktop {
+    display: block;
+  }
+}
+
+.flow-terms-of-use {
+  display: block;
+  clear: both;
+  height: 3.6em;
+  vertical-align: middle;
+  color: #666;
+  font-size: .75em;
+  line-height: 1.4;
+}
+@media all and (min-width: 768px) {
+  .flow-terms-of-use {
+    clear: none;
+  }
+}
+
