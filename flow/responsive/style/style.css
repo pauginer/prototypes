@@ -196,3 +196,21 @@ body {
 .tmbox .tmbox {
   margin: 8px 6px !important;
 }
+.sticky {
+  position: fixed !important;
+  top: 0;
+  z-index: 1000;
+  margin-top: 0;
+  cursor: pointer;
+}
+.sticky.flow-board-navigation {
+  left: 173px;
+  background: white;
+}
+.sticky.rail-header {
+  background: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+}
+.flow-board.expanded .sticky.rail-header {
+  border-bottom: none;
+}
