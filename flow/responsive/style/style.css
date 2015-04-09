@@ -99,12 +99,12 @@ body {
     max-width: 700px;
   }
 }
-@media only screen and (min-width: 1251px) and (max-width: 2000px) {
+@media only screen and (min-width: 1250px) and (max-width: 2000px) {
   .flow-board .posts {
     flex: 2;
   }
 }
-@media only screen and (min-width: 2001px) {
+@media only screen and (min-width: 2000px) {
   .flow-board .posts {
     max-width: 1200px;
     margin: auto;
@@ -138,12 +138,12 @@ body {
     flex: 1;
   }
 }
-@media only screen and (min-width: 1251px) and (max-width: 2000px) {
+@media only screen and (min-width: 1250px) and (max-width: 2000px) {
   .flow-board .rail {
     flex: 1;
   }
 }
-@media only screen and (min-width: 2001px) {
+@media only screen and (min-width: 2000px) {
   .flow-board .rail {
     width: 440px;
   }
@@ -181,7 +181,7 @@ body {
 .rail .rail-content .tmbox {
   font-size: 0.8em;
   box-shadow: 0 2px 0 0 #CCC;
-  margin: 15px 5%;
+  margin: 15px 5px;
   padding: 15px;
   border-collapse: separate;
 }
@@ -191,7 +191,9 @@ body {
 .flow-board-header-detail-view {
   font-size: 0.9em;
   color: #333;
-  padding-top: 10px;
+  padding-top: 5px;
+  padding-left: 7px;
+  padding-right: 7px;
 }
 .tmbox .tmbox {
   margin: 8px 6px !important;
@@ -213,4 +215,69 @@ body {
 }
 .flow-board.expanded .sticky.rail-header {
   border-bottom: none;
+}
+.flow-board-header-nav {
+  text-align: left;
+  padding: 0 4px;
+}
+.flow-board-header-nav .flow-board-header-icon {
+  position: initial;
+  padding-left: 0;
+}
+.flow-board-header-nav .flow-board-header-icon .wikiglyph-pencil {
+  vertical-align: bottom;
+}
+.categories {
+  background: white;
+  border: 1px solid #DDD;
+  box-shadow: 0 2px 0 0 #CCC;
+  margin: 15px 5px;
+  padding: 15px;
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+.categories-title {
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 5px;
+  display: flex;
+  flex-direction: row;
+}
+.categories-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-bottom: 15px;
+}
+.categories-list .category {
+  padding: 5px;
+  font-size: 14px;
+  color: #0645ad;
+  cursor: pointer;
+}
+.categories-actions {
+  display: flex;
+  flex-direction: row;
+  margin: 0 -15px;
+  border-top: 1px solid #eee;
+  padding: 15px;
+}
+.categories .categories-add {
+  padding: 0 25px;
+  background: url(../media/plus.svg) left top no-repeat;
+  background-size: 20px;
+  cursor: pointer;
+  color: #777;
+}
+.categories .categories-add:hover {
+  color: #333333;
+}
+.categories .categories-edit {
+  width: 25px;
+  height: 25px;
+  background: url(../media/edit.svg) left top no-repeat;
+  background-size: 25px;
+  cursor: pointer;
+  margin-left: auto;
 }

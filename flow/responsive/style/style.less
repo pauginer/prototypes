@@ -1,7 +1,10 @@
 @import "grid";
 
 @small: 1051px;
+@medium: 1250px;
+@large: 2000px;
 
+@zoomed: 1500px;
 
 body {
 	padding: 0;
@@ -31,7 +34,7 @@ body {
 		border-bottom: 1px solid #999;
 		font-size: 32px;
 		font-family: Georgia, serif;
-		@media only screen and (min-width: 1500px) { 
+		@media only screen and (min-width: @zoomed) { 
 			margin-left: 30px;
 		}
 	}
@@ -70,7 +73,7 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 	font-size: 0.95em;
-	@media only screen and (min-width: 1500px) { 
+	@media only screen and (min-width: @zoomed) { 
 		font-size: 1em;
 		.posts {
 			padding: 0 35px 0 30px !important;
@@ -105,15 +108,15 @@ body {
 			max-width:700px;
 		}
 
-		@media only screen and (min-width: @small) and (max-width: 1250px) {
+		@media only screen and (min-width: @small) and (max-width: @medium) {
 			max-width:700px;
 		}
 		
-		@media only screen and (min-width: 1251px) and (max-width: 2000px) {
+		@media only screen and (min-width: @medium) and (max-width: @large) {
 			flex: 2;
 		}
 		
-		@media only screen and (min-width: 2001px) {
+		@media only screen and (min-width: @large) {
 			max-width: 1200px;
 			margin:auto;
 		}
@@ -139,18 +142,18 @@ body {
 		@media only screen and (max-width: @small) {
 			display: none;
 		}
-		@media only screen and (min-width: @small) and (max-width: 1250px) {
+		@media only screen and (min-width: @small) and (max-width: @medium) {
 			max-width:700px;			
 			flex: 1;
 
 		}
 		
-		@media only screen and (min-width: 1251px) and (max-width: 2000px) {
+		@media only screen and (min-width: @medium) and (max-width: @large) {
 			flex: 1;
 			//min-height: 100vh;
 		}
 		
-		@media only screen and (min-width: 2001px) {
+		@media only screen and (min-width: @large) {
 			width:440px;
 			//min-height: 100vh;
 			
@@ -199,7 +202,7 @@ body {
 .rail .rail-content .tmbox {
 	font-size: 0.8em;
 	box-shadow: 0 2px 0 0 #CCC;
-	margin: 15px 5%;
+	margin: 15px 5px;
 	padding: 15px;
 	border-collapse: separate;
 	
@@ -210,7 +213,9 @@ body {
 .flow-board-header-detail-view{
 	font-size: 0.9em;
 	color: #333;
-	padding-top: 10px;
+	padding-top: 5px;
+	padding-left: 7px;
+	padding-right: 7px;
 }
 
 .tmbox .tmbox {
@@ -237,3 +242,82 @@ body {
 		}
 	}
 }
+
+.flow-board-header-nav {
+	text-align: left;
+	padding: 0 4px;
+	.flow-board-header-icon {
+		position: initial;
+		padding-left:0;
+		.wikiglyph-pencil{
+			vertical-align:bottom;
+		}
+	}
+}
+
+
+.categories {
+	background: white;
+	border: 1px solid #DDD;
+	box-shadow: 0 2px 0 0 #CCC;
+	margin: 15px 5px;
+	padding: 15px;
+	padding-bottom: 0;
+	display:flex;
+	flex-direction: column;
+	
+	&-title {
+		font-size: 20px;
+		font-weight: bold;
+		//border-bottom: 1px solid #DDD;
+		padding-bottom: 5px;
+		display:flex;
+		flex-direction: row;
+	}
+	&-list {
+		display:flex;
+		flex-direction:row;
+		flex-wrap: wrap;
+		padding-bottom: 15px;
+		.category {
+			padding: 5px;
+			font-size: 14px;
+			color: #0645ad;
+			cursor: pointer;
+			&:hover{
+				//background:#EEE;
+			}
+		}
+	
+	}
+	&-actions {
+		display:flex;
+		flex-direction:row;
+		margin: 0 -15px;
+		border-top: 1px solid #eee;
+		padding: 15px;
+		
+		
+	}
+	
+	.categories-add {
+			padding: 0 25px;
+			background: url(../media/plus.svg) left top no-repeat;
+			background-size: 20px;
+			cursor: pointer;
+		color: #777;
+		&:hover {color: #333}
+		}
+		.categories-edit {
+			//padding: 0 25px;
+			width:25px; height: 25px;
+			background: url(../media/edit.svg) left top no-repeat;
+			background-size: 25px;
+			cursor: pointer;
+			margin-left:auto;
+			
+		}
+	
+	
+}
+

@@ -12,6 +12,13 @@ function fillHeaders(){
 	$(".header, .rail-content").append(html);
 }
 
+function addCategories(){
+	var source   = $("#categories-template").html();
+ 	var template = Handlebars.compile(source);
+	var html = template({});
+	$(".rail-content").append(html);
+
+}
 
 function stickyOn(){
 	$(".flow-board-navigation, .rail-header").addClass("sticky");
@@ -40,6 +47,7 @@ function stickyIfNeeded() {
 $(function() {
 	fillPosts();
 	fillHeaders();
+	addCategories();
 	
 	$(".rail-close").click(function(e){
 		$(".flow-board").toggleClass("expanded");
