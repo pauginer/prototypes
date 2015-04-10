@@ -58,11 +58,11 @@ body {
 .flow-board {
   display: flex;
   flex-wrap: wrap;
-  font-size: 0.95em;
+  font-size: 14px;
 }
 @media only screen and (min-width: 1500px) {
   .flow-board {
-    font-size: 1em;
+    font-size: 16px;
   }
   .flow-board .posts {
     padding: 0 35px 0 30px !important;
@@ -89,17 +89,17 @@ body {
 .flow-board .posts {
   padding: 0 25px 0 20px;
 }
-@media only screen and (max-width: 1051px) {
+@media only screen and (max-width: 1165px) {
   .flow-board .posts {
     max-width: 700px;
   }
 }
-@media only screen and (min-width: 1051px) and (max-width: 1250px) {
+@media only screen and (min-width: 1165px) and (max-width: 1300px) {
   .flow-board .posts {
     max-width: 700px;
   }
 }
-@media only screen and (min-width: 1250px) and (max-width: 2000px) {
+@media only screen and (min-width: 1300px) and (max-width: 2000px) {
   .flow-board .posts {
     flex: 2;
   }
@@ -114,7 +114,7 @@ body {
   display: none;
   padding: 0 30px 20px 20px;
 }
-@media only screen and (max-width: 1051px) {
+@media only screen and (max-width: 1165px) {
   .flow-board .header {
     display: block;
     width: 100%;
@@ -127,18 +127,21 @@ body {
   padding: 10px 15px;
   box-shadow: -2px 0 0 rgba(0, 0, 0, 0.08);
 }
-@media only screen and (max-width: 1051px) {
+@media only screen and (max-width: 1165px) {
   .flow-board .rail {
     display: none;
   }
 }
-@media only screen and (min-width: 1051px) and (max-width: 1250px) {
+@media only screen and (min-width: 1165px) and (max-width: 1300px) {
   .flow-board .rail {
     max-width: 700px;
     flex: 1;
   }
+  .flow-board .rail-header .rail-title {
+    font-size: 20px;
+  }
 }
-@media only screen and (min-width: 1250px) and (max-width: 2000px) {
+@media only screen and (min-width: 1300px) and (max-width: 2000px) {
   .flow-board .rail {
     flex: 1;
   }
@@ -179,7 +182,8 @@ body {
   margin: auto;
 }
 .rail .rail-content .tmbox {
-  font-size: 0.8em;
+  font-size: 14px;
+  line-height: 1.4em;
   box-shadow: 0 2px 0 0 #CCC;
   margin: 15px 5px;
   padding: 15px;
@@ -189,7 +193,7 @@ body {
   font-size: 1.5em;
 }
 .flow-board-header-detail-view {
-  font-size: 0.9em;
+  font-size: 14px;
   color: #333;
   padding-top: 5px;
   padding-left: 7px;
@@ -223,6 +227,10 @@ body {
 .flow-board-header-nav .flow-board-header-icon {
   position: initial;
   padding-left: 0;
+  opacity: 0.6;
+}
+.flow-board-header-nav .flow-board-header-icon:hover {
+  opacity: 1;
 }
 .flow-board-header-nav .flow-board-header-icon .wikiglyph-pencil {
   vertical-align: bottom;
@@ -280,4 +288,14 @@ body {
   background-size: 25px;
   cursor: pointer;
   margin-left: auto;
+}
+.footer-info {
+  color: #555;
+  font-size: 11.2px;
+  padding: 15px 10px;
+  border-top: 1px solid #ddd;
+  margin-top: 40px;
+}
+.footer-info-lastmod {
+  padding-bottom: 10px;
 }

@@ -1,7 +1,7 @@
 @import "grid";
 
-@small: 1051px;
-@medium: 1250px;
+@small: 1165px;
+@medium: 1300px;
 @large: 2000px;
 
 @zoomed: 1500px;
@@ -72,9 +72,10 @@ body {
 .flow-board{
 	display: flex;
 	flex-wrap: wrap;
-	font-size: 0.95em;
+	//font-size: 0.95em;
+	font-size: 14px;
 	@media only screen and (min-width: @zoomed) { 
-		font-size: 1em;
+		font-size: 16px;
 		.posts {
 			padding: 0 35px 0 30px !important;
 		}
@@ -145,7 +146,9 @@ body {
 		@media only screen and (min-width: @small) and (max-width: @medium) {
 			max-width:700px;			
 			flex: 1;
-
+			&-header .rail-title {
+				font-size: 20px;
+			}
 		}
 		
 		@media only screen and (min-width: @medium) and (max-width: @large) {
@@ -200,7 +203,9 @@ body {
 }
 
 .rail .rail-content .tmbox {
-	font-size: 0.8em;
+	//font-size: 0.8em;
+	font-size: 14px;
+	line-height: 1.4em;
 	box-shadow: 0 2px 0 0 #CCC;
 	margin: 15px 5px;
 	padding: 15px;
@@ -211,7 +216,8 @@ body {
 .wikiglyph-pencil { font-size: 1.5em;}
 
 .flow-board-header-detail-view{
-	font-size: 0.9em;
+	//font-size: 0.9em;
+	font-size: 14px;
 	color: #333;
 	padding-top: 5px;
 	padding-left: 7px;
@@ -249,6 +255,9 @@ body {
 	.flow-board-header-icon {
 		position: initial;
 		padding-left:0;
+		//color: #333 !important;
+		opacity: 0.6;
+		&:hover {opacity: 1;}
 		.wikiglyph-pencil{
 			vertical-align:bottom;
 		}
@@ -314,10 +323,22 @@ body {
 			background: url(../media/edit.svg) left top no-repeat;
 			background-size: 25px;
 			cursor: pointer;
-			margin-left:auto;
-			
+			margin-left:auto;			
 		}
-	
 	
 }
 
+
+.footer-info {
+	color: #555;
+	font-size: 11.2px;	
+	padding: 15px 10px;
+	border-top: 1px solid #ddd;
+	margin-top: 40px;
+	&-lastmod {
+		padding-bottom: 10px;
+	}
+	&-copyright {
+	
+	}
+}

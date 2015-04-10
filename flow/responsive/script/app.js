@@ -17,7 +17,13 @@ function addCategories(){
  	var template = Handlebars.compile(source);
 	var html = template({});
 	$(".rail-content").append(html);
+}
 
+function addCopyright() {
+	var source   = $("#copyright-template").html();
+ 	var template = Handlebars.compile(source);
+	var html = template({});
+	$(".rail-content").append(html);
 }
 
 function stickyOn(){
@@ -48,6 +54,7 @@ $(function() {
 	fillPosts();
 	fillHeaders();
 	addCategories();
+	addCopyright();
 	
 	$(".rail-close").click(function(e){
 		$(".flow-board").toggleClass("expanded");
