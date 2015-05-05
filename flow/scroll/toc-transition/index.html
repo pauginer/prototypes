@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+	<title>index</title>
+	<style>
+		html {
+			height:100%;
+		}
+		body {
+			background-color: #FFFFFF;
+			margin:0;
+			height:100%;
+		}
+	</style>
+
+	<!-- copy these lines to your document head: -->
+
+	<meta name="viewport" content="user-scalable=yes, width=1192" />
+
+	
+	<style>
+		#header{
+			position: fixed !important;
+		}
+	</style>
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script>
+	var prev = 0;
+	var pos = 0;
+	var lastLaunch = 0;
+	$(function(){
+		$(window).scroll(function(){
+			var hypeDocument = getHypeDocument();
+			prev = pos;
+			pos = $(this).scrollTop();
+			var down = pos - prev > 0;
+			
+			//Header:
+			$("#header").css("top",pos);
+			if(pos> 318) {
+				$("#header").css("visibility","visible");
+			} else {
+				$("#header").css("visibility","hidden");
+			}
+			
+			//Animations
+			if(pos <455){
+				if(lastLaunch > 455){
+					console.debug("A -> 0");
+					hypeDocument.continueTimelineNamed('zero-to-a', hypeDocument.kDirectionReverse);
+					lastLaunch = pos;
+				}
+			}
+			
+			if(pos >455 && pos < 718){
+				if(lastLaunch < 455){
+					console.debug("0 -> A");
+					hypeDocument.continueTimelineNamed('zero-to-a', hypeDocument.kDirectionForward);
+					lastLaunch = pos;
+				}else if(lastLaunch >718){
+					console.debug("B -> A");
+					hypeDocument.continueTimelineNamed('zero-to-a', hypeDocument.kDirectionReverse);
+					lastLaunch = pos;
+				}
+			} else if (pos > 718 && pos < 1131){
+				if(lastLaunch < 718){
+					console.debug("0 -> A");
+					hypeDocument.continueTimelineNamed('zero-to-a', hypeDocument.kDirectionForward);
+					lastLaunch = pos;
+				}else if(lastLaunch >1131){
+					console.debug("B -> A");
+					hypeDocument.continueTimelineNamed('zero-to-a', hypeDocument.kDirectionReverse);
+					lastLaunch = pos;
+				}
+			
+			}
+			//console.debug($(this).scrollTop());		
+		});
+	
+	});
+	
+	
+	 
+function getHypeDocument(){
+	var name = "index";
+	for(var key in HYPE.documents){
+		name = key;
+      	}
+      	return HYPE.documents[name];
+}
+	</script>
+	<!-- end copy -->
+
+  </head>
+  <body>
+	
+	<!-- copy these lines to your document: -->
+
+	<div id="index_hype_container" style="margin:auto;position:relative;width:1192px;height:3116px;overflow:hidden;" aria-live="polite">
+		<script type="text/javascript" charset="utf-8" src="index.hyperesources/index_hype_generated_script.js?54636"></script>
+	</div>
+
+	<!-- end copy -->
+
+
+	
+
+
+	<!-- text content for search engines: -->
+
+	<div style="display:none">
+
+		<div>Where to edit system information for this site?</div>
+		<div>Browse topics</div>
+		<div>Hovermenu on "contributions"</div>
+
+	</div>
+
+	<!-- end text content: -->
+
+  </body>
+</html>
