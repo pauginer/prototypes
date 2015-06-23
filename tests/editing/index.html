@@ -1,0 +1,34 @@
+<html>
+<head>
+<style>
+	body{
+		display:flex;
+		flex-direction: column;
+		margin:0;
+	}
+	.toolbar{
+		height: 50px;
+		border-bottom: 1px solid #EEE;
+	}
+	.content{
+		flex: auto;
+		outline: none;
+		background: #fbfbfb;
+	}
+	.tools {
+		position: fixed;
+		display:flex;
+		bottom:0;
+	}
+</style>
+</head>
+<body>
+<section class="toolbar">
+Toolbar
+</section>
+<section contenteditable="true" class="content">
+	Article
+</section>
+<section class="tools"> Tools </section>
+</body>
+</html>
