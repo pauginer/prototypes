@@ -10,13 +10,21 @@
 	}
 	.toolbar{
 		display: flex;
-		position: fixed;
 		height: 42px;
 		border-bottom: 1px solid #EEE;
-		position: sticky;
 		width: 100%;
 		background: white;
+		top:0;
 	}
+	.toolbar.sticky{
+	position: fixed;
+	transition: top 0.25s;
+	
+	}
+	.toolbar.hidden, .toolbar.sticky.hidden{
+	top: -42px;
+	}
+	
 	
 	.save {
 		margin-left: auto;
@@ -37,8 +45,12 @@
 		background: #fbfbfb;
 		padding: 10px;
 		margin-bottom: 55px;
-		padding-top: 55px;
 	}
+	
+	.content.sticky{
+	padding-top:53px;
+	}
+	
 	.link.active{
 		background-color: #eee;
 	}
@@ -143,7 +155,7 @@
 		vertical-align: middle;
 	}
 	.plus .label{
-	padding-bottom:6px;
+	padding-bottom:4px;
 	}
 </style>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -213,6 +225,23 @@ $(function() {
 	$('.content').on('selectstart',checkLinks);
 
 	$(".link-card").click(makeLink);
+	var lastPos = 0;
+	$( window ).scroll(function() {
+		var pos = window.pageYOffset;
+		
+		if(pos>42){
+			if (pos > lastPos){
+				$(".toolbar").addClass("hidden");
+			}else{
+				$(".toolbar").removeClass("hidden");
+			}
+			if(pos>50) $(".toolbar,.content").addClass("sticky");
+		}else if (pos == 0){
+			$(".toolbar, .content").removeClass("sticky");
+			$(".toolbar").removeClass("hidden");
+		}
+		lastPos = pos;
+	});
 });
 </script>
 </head>
