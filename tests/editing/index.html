@@ -16,14 +16,47 @@
 		outline: none;
 		background: #fbfbfb;
 	}
+	.link.active{
+		background-color: #eee;
+	}
+	
+	.link.linked {
+		color: blue;
+		text-decoration: underline;
+	}
+	
+	.link.linked.active {
+		background: none;
+	}
+	
+
 	.tools {
 		position: fixed;
 		display:flex;
+		flex-direction: row;
 		bottom:0;
+		width:100%;
+	}
+	.tool {
+		background: white;
+		border: 1px solid #eee;
+		box-shadow: 0 3px 0 #eee;
+		padding: 5px 10px;
+		margin-right: 10px;
+		cursor:pointer;
+	}
+
+	.link-card, .cite {
+		display: none;
+	}
+	.link-card.active, .cite.active {
+		display:flex;
 	}
 	
-	.link.active{
-		background-color: #eee;
+	.plus{
+		display:flex;
+		margin-left: auto;
+		margin-right:10px;
 	}
 </style>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -62,21 +95,38 @@ function caretIn(element){
 
 function checkLinks(){
 	$(".link").each(function(i,e){
-		if(caretIn(this)){
+		if(caretIn(this) && !$(this).hasClass("active")){
 			$(this).addClass("active");
-			//console.debug(this);
-		}else{
+			$(".link-card."+$(this).attr('id')).addClass("active");
+			$(".cite").removeClass("active");
+		}else if( !caretIn(this) && $(this).hasClass("active")){
 			$(this).removeClass("active");
+			$(".link-card").removeClass("active");
+			$(".cite").addClass("active");
 		}
 	});
 }
 	
+function makeLink(e){
+	var classes = $(this).attr("class").split(" ");
+	$.each(classes,function(i,el){
+		if(el!="link-card" && el!="tool"){
+			$(".link#"+el).addClass("linked");
+		}
+	});
 	
-$(document).keyup(checkLinks);
-$(document).click(checkLinks);
-$(document).on('mouseup', checkLinks);
-$(document).on('selectstart',checkLinks);
+	e.stopPropagation();
+}
 
+$(function() {
+	$(document).keyup(checkLinks);
+	$(document).click(checkLinks);
+	$(document).keydown(checkLinks);
+	$(document).on('mouseup', checkLinks);
+	$('.content').on('selectstart',checkLinks);
+
+	$(".link-card").click(makeLink);
+});
 </script>
 </head>
 <body>
@@ -84,8 +134,8 @@ $(document).on('selectstart',checkLinks);
 Toolbar
 </section>
 <section contenteditable="true" class="content">
-	Article <span class="link">content</span> you can edit
+	The terms big cat and great cat, while not a biological classification, are used informally to distinguish the larger felid species from smaller ones. A narrower definition of includes five members of the genus Panthera: the <span id="tiger" class="link">tiger</span>, <span id="lion" class="link">lion</span>, <span id="jaguar" class="link">jaguar</span>, <span id="leopard" class="link">leopard</span>, and <span id="snow" class="link">snow</span> <span id="snow-leopard" class="link">leopard</span>. Only members of this genus are able to roar. A more expansive definition additionally includes the cougar and cheetah. Another cat, the clouded leopard is considered an evolutionary link between big and small cats.
 </section>
-<section class="tools"> Tools </section>
+<section class="tools"> <span class="format tool">F</span> <span class="cite active tool">Cite</span> <span class="tool link-card tiger">tiger</span><span class="tool link-card lion">lion</span><span class="tool link-card jaguar">jaguar</span> <span class="tool link-card leopard">leopard</span><span class="tool link-card snow">snow</span><span class="tool link-card snow-leopard">leopard</span><span class="plus">+</span></section>
 </body>
 </html>
