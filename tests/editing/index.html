@@ -9,16 +9,35 @@
 		font-family: sans-serif;
 	}
 	.toolbar{
-		height: 50px;
+		display: flex;
+		position: fixed;
+		height: 42px;
 		border-bottom: 1px solid #EEE;
 		position: sticky;
+		width: 100%;
+		background: white;
+	}
+	
+	.save {
+		margin-left: auto;
+		background: #00AF89;
+		color: white;
+		min-height: 32px;
+		min-width: 32px;
+		padding: 5px 10px;
+		/*border-radius: 2px;*/
+		background: #00af89;
+		border: 1px solid #00af89;
+		text-shadow: 0 1px rgba(0,0,0,0.1);
+		font-size: 16px;
 	}
 	.content{
 		flex: auto;
 		outline: none;
 		background: #fbfbfb;
 		padding: 10px;
-		padding-bottom: 50px;
+		margin-bottom: 55px;
+		padding-top: 55px;
 	}
 	.link.active{
 		background-color: #eee;
@@ -52,6 +71,7 @@
 		min-width: 32px;
 		min-height: 32px;
 		color: #222;
+		font-size: 18px;
 	}
 	
 	.format {
@@ -66,10 +86,44 @@
 		vertical-align: middle;*/
 	}
 	
+	.cite {
+		padding-left: 5px;
+		padding-right: 10px;
+	}
+	.cite-icon {
+		background: url(cite.png);
+		width:32px;
+		height:32px;
+	}
+	
 	.label {
 	 margin: auto;
 	}
-
+	
+	
+	.link-icon {
+		background: url(link.png);
+		width:32px;
+		height:32px;
+	}
+	
+	.link-card.lion {
+		padding-left:0;
+		padding-bottom: 0;
+		padding-top: 0;
+	}
+	.lion-icon {
+		background: url(lion-link.png);
+		width:42px;
+		height:42px;
+		margin-right:10px;
+	}
+	
+	.link-card {
+		padding-left: 5px;
+		padding-right: 10px;
+	}
+	
 	.link-card, .cite {
 		display: none;
 	}
@@ -81,6 +135,15 @@
 		display:flex;
 		margin-left: auto;
 		margin-right: 10px;
+		border-radius: 50%;
+		width:42px;
+		height:42px;
+		font-size: 32px;
+		padding: 0;
+		vertical-align: middle;
+	}
+	.plus .label{
+	padding-bottom:6px;
 	}
 </style>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -155,11 +218,11 @@ $(function() {
 </head>
 <body>
 <section class="toolbar">
-Toolbar
+<button class="save">Save</button>
 </section>
 <section contenteditable="true" class="content">
 	The terms <b>big cat</b> and <b>great cat</b>, while not a biological classification, are used informally to distinguish the larger felid species from smaller ones. A narrower definition of includes five members of the genus Panthera: the <span id="tiger" class="link">tiger</span>, <span id="lion" class="link">lion</span>, <span id="jaguar" class="link">jaguar</span>, <span id="leopard" class="link">leopard</span>, and <span id="snow" class="link">snow</span> <span id="snow-leopard" class="link">leopard</span>. Only members of this genus are able to roar. A more expansive definition additionally includes the cougar and cheetah. Another cat, the clouded leopard is considered an evolutionary link between big and small cats.
 </section>
-	<section class="tools"> <div class="format tool"><span class="label">A</span></div> <div class="cite active tool"><span class="label">Cite</span></div> <div class="tool link-card tiger"><span class="label">tiger</span></div><span class="tool link-card lion">lion</span><span class="tool link-card jaguar">jaguar</span> <span class="tool link-card leopard">leopard</span><span class="tool link-card snow">snow</span><span class="tool link-card snow-leopard">leopard</span><span class="plus">+</span></section>
+	<section class="tools"> <div class="format tool"><span class="label">A</span></div> <div class="cite active tool"><span class="cite-icon"></span><span class="label">Cite</span></div> <div class="tool link-card tiger"><span class="link-icon"></span><span class="label">tiger</span></div><div class="tool link-card lion"><span class="lion-icon"></span><span class="label">lion</span></div><div class="tool link-card jaguar"><span class="link-icon"></span><span class="label">jaguar</span></div> <div class="tool link-card leopard"><span class="link-icon"></span><span class="label">leopard</span></div><div class="tool link-card snow"><span class="link-icon"></span><span class="label">snow</span></div><div class="tool link-card snow-leopard"><span class="link-icon"></span><span class="label">leopard</span></div><div class="tool plus"><span class="label">+</span></div></section>
 </body>
 </html>
