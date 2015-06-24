@@ -26,7 +26,21 @@
 	top: -42px;
 	}
 	
+	.title {
+		margin-top: auto;
+		margin-bottom: auto;
+		color: #555;
+		font-size: 16px;
+	}
 	
+	.back-icon{
+		background:url(back.png);
+		margin-top: auto;
+		margin-bottom: auto;
+		margin-left: 5px;
+		width:24px;
+		height:24px;
+	}
 	.save {
 		margin-left: auto;
 		background: #00AF89;
@@ -45,7 +59,7 @@
 		outline: none;
 		background: #fbfbfb;
 		padding: 10px;
-		margin-bottom: 65px;
+		padding-bottom: 65px;
 	}
 	
 	.content.sticky{
@@ -58,7 +72,7 @@
 	
 	.link.linked {
 		color: blue;
-		text-decoration: underline;
+		/*text-decoration: underline;*/
 	}
 	
 	.link.linked.active {
@@ -154,6 +168,7 @@
 		font-size: 32px;
 		padding: 0;
 		vertical-align: middle;
+		background: white;
 	}
 	.plus .label{
 	padding-bottom:2px;
@@ -247,7 +262,7 @@ $(function() {
 </script>
 </head>
 <body>
-<section class="toolbar">
+	<section class="toolbar"> <span class="back-icon"></span><span class="title">Editing <b>Big cat</b></span>
 <button class="save">Save</button>
 </section>
 <section contenteditable="true" class="content">
