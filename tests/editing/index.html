@@ -6,15 +6,19 @@
 		display:flex;
 		flex-direction: column;
 		margin:0;
+		font-family: sans-serif;
 	}
 	.toolbar{
 		height: 50px;
 		border-bottom: 1px solid #EEE;
+		position: sticky;
 	}
 	.content{
 		flex: auto;
 		outline: none;
 		background: #fbfbfb;
+		padding: 10px;
+		padding-bottom: 50px;
 	}
 	.link.active{
 		background-color: #eee;
@@ -38,12 +42,32 @@
 		width:100%;
 	}
 	.tool {
+		display: flex;
 		background: white;
-		border: 1px solid #eee;
-		box-shadow: 0 3px 0 #eee;
+		border: 1px solid #bbb;
+		box-shadow: 0 2px 0 #ddd;
 		padding: 5px 10px;
-		margin-right: 10px;
+		margin: 0 5px 10px 5px;
 		cursor:pointer;
+		min-width: 32px;
+		min-height: 32px;
+		color: #222;
+	}
+	
+	.format {
+		margin-left: 10px;
+		font-weight: bold;
+		text-decoration: underline;
+		font-style: italic;
+		font-family: sans-serif;
+		font-size: 25px;
+	
+		/*text-align: center;
+		vertical-align: middle;*/
+	}
+	
+	.label {
+	 margin: auto;
 	}
 
 	.link-card, .cite {
@@ -56,7 +80,7 @@
 	.plus{
 		display:flex;
 		margin-left: auto;
-		margin-right:10px;
+		margin-right: 10px;
 	}
 </style>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -134,8 +158,8 @@ $(function() {
 Toolbar
 </section>
 <section contenteditable="true" class="content">
-	The terms big cat and great cat, while not a biological classification, are used informally to distinguish the larger felid species from smaller ones. A narrower definition of includes five members of the genus Panthera: the <span id="tiger" class="link">tiger</span>, <span id="lion" class="link">lion</span>, <span id="jaguar" class="link">jaguar</span>, <span id="leopard" class="link">leopard</span>, and <span id="snow" class="link">snow</span> <span id="snow-leopard" class="link">leopard</span>. Only members of this genus are able to roar. A more expansive definition additionally includes the cougar and cheetah. Another cat, the clouded leopard is considered an evolutionary link between big and small cats.
+	The terms <b>big cat</b> and <b>great cat</b>, while not a biological classification, are used informally to distinguish the larger felid species from smaller ones. A narrower definition of includes five members of the genus Panthera: the <span id="tiger" class="link">tiger</span>, <span id="lion" class="link">lion</span>, <span id="jaguar" class="link">jaguar</span>, <span id="leopard" class="link">leopard</span>, and <span id="snow" class="link">snow</span> <span id="snow-leopard" class="link">leopard</span>. Only members of this genus are able to roar. A more expansive definition additionally includes the cougar and cheetah. Another cat, the clouded leopard is considered an evolutionary link between big and small cats.
 </section>
-<section class="tools"> <span class="format tool">F</span> <span class="cite active tool">Cite</span> <span class="tool link-card tiger">tiger</span><span class="tool link-card lion">lion</span><span class="tool link-card jaguar">jaguar</span> <span class="tool link-card leopard">leopard</span><span class="tool link-card snow">snow</span><span class="tool link-card snow-leopard">leopard</span><span class="plus">+</span></section>
+	<section class="tools"> <div class="format tool"><span class="label">A</span></div> <div class="cite active tool"><span class="label">Cite</span></div> <div class="tool link-card tiger"><span class="label">tiger</span></div><span class="tool link-card lion">lion</span><span class="tool link-card jaguar">jaguar</span> <span class="tool link-card leopard">leopard</span><span class="tool link-card snow">snow</span><span class="tool link-card snow-leopard">leopard</span><span class="plus">+</span></section>
 </body>
 </html>
