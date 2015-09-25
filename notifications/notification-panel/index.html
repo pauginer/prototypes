@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Notification prototype</title>
+	<meta name="description" content="Prototype">
+	<meta name="author" content="Pau Giner">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="style/style.css">
+	<script src="lib/jquery.js"></script>
+	<script src="lib/handlebars.js"></script>
+	<script id="notification-template" type="text/x-handlebars-template">
+		<div class="notification" data-notification="{{id}}">
+			<div class="icon {{icon}}"></div>
+			<div class="content">
+				<div class="description">
+					<div class="message">{{{message}}}</div>
+					<div class="close"></div>
+				</div>
+				<div class="actions">
+					<div class="action-list">
+					 {{#each actions}}
+						<div class="action"><div class="action-icon {{icon}}"></div><div class="action-name">{{name}}</div></div>
+					{{/each}}
+					{{#if more}}
+						<div class="more">
+							<div class="more-icon"></div>
+							<div class="more-panel hidden">
+							{{#each more}}
+								<div class="more-option">
+									<div class="more-option-icon"></div>
+									<div class="more-option-action">
+										<div class="more-option-name">{{name}}</div>
+										<div class="more-option-description">{{description}}</div>
+									</div>
+								</div>
+							{{/each}}
+							</div>
+						</div>
+						
+					{{/if}}
+					</div>
+					<div class="timestamp">{{timestamp}}</div>
+				</div>
+			</div>
+			
+		</div>
+</script>
+<script id="external-template" type="text/x-handlebars-template">
+<div class="external bundle">
+	<div class="notification summary">
+		<div class="icon"></div>
+		<div class="content">
+				<div class="description">
+					<div class="message"><b>{{count}} more messages</b> from other wikis</div>
+					<div class="close"></div>
+				</div>
+				<div class="actions">
+					<div class="action-list">
+						<div class="action expand"><div class="action-icon"></div><div class="action-name">Expand</div></div>
+						<div class="action collapse"><div class="action-icon"></div><div class="action-name">Collapse</div></div>
+					</div>
+					<div class="timestamp">1 min.</div>
+				</div>
+			</div>
+	</div>
+	<div class="bundle-groups">
+		{{#each projects}}
+		<div class="bundle-group">
+			<div class="bundle-group-title">{{project}} {{#if language}} - {{language}}{{/if}}</div>
+			<div class="bundle-group-notifications">
+			{{#each notifications}}
+				<div class="micro-notification">
+					<div class="icon {{icon}}"></div>
+					<div class="message">{{{message}}}</div>
+					<div class="micro-actions">
+						<div class="timestamp">{{timestamp}}</div>
+						<div class="more"></div>
+						<div class="close"></div>
+					</div>
+					
+				</div>
+			{{/each}}
+			</div>
+		</div>
+		{{/each}}
+	</div>
+</div>
+</script>
+<script>
+var notificationTemplate = Handlebars.compile($("#notification-template").html());
+var externalTemplate = Handlebars.compile($("#external-template").html());
+
+//Params
+var project = "Wikipedia";
+var language = "English";
+
+//Notification data:
+var notifications = [
+	{id: "1",
+	 project: "Wikipedia",
+	 language: "English",
+	 icon: "thanks",
+	 message: "<b>Ludmilla</b> thanked you for your comment in <i>“Who was the inventor?”</i> on <b>talk:Telephone</b>",
+	 timestamp: "1 min.",
+	 read: false,
+	 actions: [{icon: "user", name: "Ludmilla"}],
+	 more: [{icon: "user", name: "Peter", description:"View article"}]
+	},
+	{id: "2",
+	 project: "Wikipedia",
+	 language: "English",
+	 icon: "thanks",
+	 message: "<b>Fama</b> thanked you for your comment in <i>“Best inventions?”</i> on <b>talk:Telephone</b>",
+	 timestamp: "1 min.",
+	 read: false,
+	 actions: [{icon: "user", name: "Fama"}],
+	 more: [{icon: "user", name: "Peter", description:"View article"}]
+	},
+	{id: "3",
+	 project: "Wikipedia",
+	 language: "English",
+	 icon: "thanks",
+	 message: "<b>Mycroft</b> thanked you for your comment in <i>“Who was the inventor?”</i> on <b>talk:Telephone</b>",
+	 timestamp: "1 min.",
+	 read: true,
+	 actions: [{icon: "user", name: "Mycroft"}],
+	 more: [{icon: "user", name: "Peter", description:"View article"}]},{id: "4",
+	 project: "Commons",
+	 language: "",
+	 icon: "thanks",
+	 message: "Your picture 'Apollo and the buffalo buffalo buffalo' has been marked for deletion",
+	 timestamp: "1 min.",
+	 read: false,
+	 actions: [{icon: "user", name: "Mycroft"}],
+	 more: [{icon: "user", name: "Peter", description:"View article"}]},
+{id: "5",
+	 project: "Commons",
+	 language: "",
+	 icon: "thanks",
+	 message: "Your picture Soyuz has been marked for deletion",
+	 timestamp: "1 min.",
+	 read: false,
+	 actions: [{icon: "user", name: "Mycroft"}],
+	 more: [{icon: "user", name: "Peter", description:"View article"}]},
+{id: "6",
+	 project: "Wikipedia",
+	 language: "Spanish",
+	 icon: "thanks",
+	 message: "Bienvenido!",
+	 timestamp: "1 min.",
+	 read: false,
+	 actions: [{icon: "user", name: "Mycroft"}],
+	 more: [{icon: "user", name: "Peter", description:"View article"}]},
+{id: "7",
+	 project: "Wikipedia",
+	 language: "Spanish",
+	 icon: "thanks",
+	 message: "Bienvenido de nuevo!",
+	 timestamp: "1 min.",
+	 read: true,
+	 actions: [{icon: "user", name: "Mycroft"}],
+	 more: [{icon: "user", name: "Peter", description:"View article"}]}
+	]
+
+	
+function findNotification(id){
+	result = null;
+	$.each(notifications, function(i,v){
+		if(id == v["id"]){
+			result = v;
+		}
+	});
+	return result;
+}
+
+function notificationsByWiki(pro, lang){
+	var result = [];
+	$.each(notifications, function(i,v){
+		if(v["project"] == pro && v["language"] == lang){
+			result.push(v);
+		}
+	});
+	return result;
+}
+
+function isFromCurrentWiki(notif){
+	return (notif["project"]==project && notif["language"]==language);
+}
+	
+function isUnread(notif){
+	return !notif["read"];
+}
+
+function addNotification(data){
+	var n = notificationTemplate(data);
+	var list = $(".notification-list.new");
+	if (!!data["read"]){
+		list = $(".notification-list.read");
+	}
+	var elt = $(n).appendTo(list);
+	
+	//HANDLERS:
+	elt.click(function(e){
+		//$(this).addClass("hidden");		
+		var id = $(this).data("notification");
+		var notif=findNotification(id);
+		notif["read"] = true;
+		updatePanel();
+		//TODO: Main action
+	});
+	
+	elt.find(".close").click(function(e){
+		var notif=findNotification(elt.data("notification"));
+		notif["read"] = true;
+		updatePanel();
+	});
+	
+	elt.find(".more-icon").click(function(e){
+		elt.find(".more-panel").toggleClass("hidden");
+		elt.find(".more-icon").toggleClass("highlight");
+		//e.stopPropagation();
+		return false;
+		
+	});
+	
+	return elt;
+}
+
+function createExternalBundle(data){
+	
+	/*var data = {
+		count: 15,
+		projects: [
+			{project: "Wikipedia", 
+			 language: "Spanish",
+			 notifications: notificationsByWiki("Wikipedia", "Spanish"),
+			},
+			{project: "Commons", 
+			 language: "",
+			 notifications: notificationsByWiki("Commons", ""),
+			}
+
+		]
+	};*/
+	
+	var n = externalTemplate(data);	
+	var list = $(".notification-list.new");
+	var elt = $(n).appendTo(list);
+	
+	//HANDLERS:
+	elt.find(".notification.summary").click(function(){
+		elt.toggleClass("expanded");
+	});
+	
+	return elt;
+}
+
+function updatePanel(){
+	$(".notification-list").empty();
+	//Local notifications:
+	$.each(notifications, function(i,v){
+		if(!!isFromCurrentWiki(v)){
+			addNotification(v);
+		}
+	});
+	
+	
+	var externalNotifications = [];
+	var ex={};
+	var count =0;
+	//External notifications:
+	$.each(notifications, function(i,v){
+		if(!isFromCurrentWiki(v) && isUnread(v)){
+			count = count + 1;
+			
+			var key = v["project"] + v["language"];
+			if(ex.hasOwnProperty(key)){
+				ex[key]["notifications"].push(v);
+			} else {
+				ex[key] = {project:v["project"], language:v["language"], notifications:[v] };
+			}
+			//addNotification(v);
+		}
+	});
+	
+	console.debug(ex);
+	var external = createExternalBundle({count:count,projects:ex});
+	
+}
+
+$(function(){
+	updatePanel();
+	
+});
+</script>
+  <link rel="icon" type="image/png" href="media/favicon.png">
+
+</head>
+<body>
+<section class="article">
+	<div class="badge">
+	</div>
+	<div class="panel">
+		<div class="header"></div>
+		<div class="notification-list new">
+		</div>
+		<div class="notification-list read">
+			<div class="notification">Read notification</div>
+		</div>
+		<div class="footer">
+		</div>
+	</div>
+</section>
+
+</body>
+	
