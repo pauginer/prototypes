@@ -47,7 +47,7 @@
 		</div>
 </script>
 <script id="external-template" type="text/x-handlebars-template">
-<div class="external bundle">
+<div class="external bundle {{#if expanded}}expanded{{/if}}">
 	<div class="notification summary">
 		<div class="icon"></div>
 		<div class="content">
@@ -70,7 +70,7 @@
 			<div class="bundle-group-title">{{project}} {{#if language}} - {{language}}{{/if}}</div>
 			<div class="bundle-group-notifications">
 			{{#each notifications}}
-				<div class="micro-notification">
+				<div class="micro-notification" data-notification="{{id}}">
 					<div class="icon {{icon}}"></div>
 					<div class="message">{{{message}}}</div>
 					<div class="micro-actions">
@@ -94,15 +94,16 @@ var externalTemplate = Handlebars.compile($("#external-template").html());
 //Params
 var project = "Wikipedia";
 var language = "English";
+var expanded = false;
 
 //Notification data:
 var notifications = [
 	{id: "1",
 	 project: "Wikipedia",
 	 language: "English",
-	 icon: "thanks",
-	 message: "<b>Ludmilla</b> thanked you for your comment in <i>“Who was the inventor?”</i> on <b>talk:Telephone</b>",
-	 timestamp: "1 min.",
+	 icon: "talk",
+	 message: "<b>Ludmilla</b> left a message <b>in your talk page</b>",
+	 timestamp: "1 day.",
 	 read: false,
 	 actions: [{icon: "user", name: "Ludmilla"}],
 	 more: [{icon: "user", name: "Peter", description:"View article"}]
@@ -120,12 +121,22 @@ var notifications = [
 	{id: "3",
 	 project: "Wikipedia",
 	 language: "English",
-	 icon: "thanks",
-	 message: "<b>Mycroft</b> thanked you for your comment in <i>“Who was the inventor?”</i> on <b>talk:Telephone</b>",
+	 icon: "mention",
+	 message: "<b>Mycroft</b> mentioned you in <i>“Who was the inventor?”</i> on <b>talk:Telephone</b>",
 	 timestamp: "1 min.",
 	 read: true,
 	 actions: [{icon: "user", name: "Mycroft"}],
-	 more: [{icon: "user", name: "Peter", description:"View article"}]},{id: "4",
+	 more: [{icon: "user", name: "Peter", description:"View article"}]},
+{id: "4",
+	 project: "Wikipedia",
+	 language: "English",
+	 icon: "mention",
+	 message: "<b>Mycroft</b> mentioned you in <i>“Who was the inventor?”</i> on <b>talk:Telephone</b>",
+	 timestamp: "1 min.",
+	 read: true,
+	 actions: [{icon: "user", name: "Mycroft"}],
+	 more: [{icon: "user", name: "Peter", description:"View article"}]},
+{id: "5",
 	 project: "Commons",
 	 language: "",
 	 icon: "thanks",
@@ -134,7 +145,7 @@ var notifications = [
 	 read: false,
 	 actions: [{icon: "user", name: "Mycroft"}],
 	 more: [{icon: "user", name: "Peter", description:"View article"}]},
-{id: "5",
+{id: "6",
 	 project: "Commons",
 	 language: "",
 	 icon: "thanks",
@@ -143,7 +154,7 @@ var notifications = [
 	 read: false,
 	 actions: [{icon: "user", name: "Mycroft"}],
 	 more: [{icon: "user", name: "Peter", description:"View article"}]},
-{id: "6",
+{id: "7",
 	 project: "Wikipedia",
 	 language: "Spanish",
 	 icon: "thanks",
@@ -152,7 +163,7 @@ var notifications = [
 	 read: false,
 	 actions: [{icon: "user", name: "Mycroft"}],
 	 more: [{icon: "user", name: "Peter", description:"View article"}]},
-{id: "7",
+{id: "8",
 	 project: "Wikipedia",
 	 language: "Spanish",
 	 icon: "thanks",
@@ -250,8 +261,18 @@ function createExternalBundle(data){
 	
 	//HANDLERS:
 	elt.find(".notification.summary").click(function(){
-		elt.toggleClass("expanded");
+		//elt.toggleClass("expanded");
+		expanded = !expanded;
+		updatePanel();
 	});
+	
+	elt.find(".close").click(function(e){
+		var notifElt= $(e.target).parents(".micro-notification");
+		var notif=findNotification(notifElt.data("notification"));
+		notif["read"] = true;
+		updatePanel();
+	});
+	
 	
 	return elt;
 }
@@ -284,8 +305,9 @@ function updatePanel(){
 		}
 	});
 	
-	console.debug(ex);
-	var external = createExternalBundle({count:count,projects:ex});
+	if(count>0){
+	var external = createExternalBundle({count:count,projects:ex, expanded: expanded});
+	}
 	
 }
 

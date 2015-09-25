@@ -20,7 +20,7 @@ color: #333;
 	display: flex;
 	flex-direction: column;
 	width: 500px;
-	max-height: 400px;
+	max-height: 500px;
 	overflow-y: auto;
 	.panel-style;
 		
@@ -66,6 +66,12 @@ color: #333;
 		min-width: 32px;
 		&.thanks{
 			.vector-image("../media/thanks.svg", "../media/thanks.png");
+		}
+		&.talk{
+			.vector-image("../media/talk.svg", "../media/talk.png");
+		}
+		&.mention{
+			.vector-image("../media/mention.svg", "../media/mention.png");
 		}
 	}
 	.content{
@@ -238,6 +244,12 @@ color: #333;
 		min-width: 24px;
 		&.thanks{
 			.vector-image("../media/thanks.svg", "../media/thanks.png", center center, 24px 24px);
+		}
+		&.talk{
+			.vector-image("../media/talk.svg", "../media/talk.png", center center, 24px 24px);
+		}
+		&.mention{
+			.vector-image("../media/mention.svg", "../media/mention.png", center center, 24px 24px);
 		}
 	}
 	.message {

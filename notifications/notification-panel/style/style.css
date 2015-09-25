@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   width: 500px;
-  max-height: 400px;
+  max-height: 500px;
   overflow-y: auto;
   border: 1px solid #AAA;
   border-bottom-width: 3px;
@@ -44,6 +44,18 @@
   background: transparent url("../media/thanks.png") center center no-repeat;
   background-image: -webkit-linear-gradient(transparent, transparent), url("../media/thanks.svg");
   background-image: linear-gradient(transparent, transparent), url("../media/thanks.svg");
+  background-size: auto;
+}
+.notification .icon.talk {
+  background: transparent url("../media/talk.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/talk.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/talk.svg");
+  background-size: auto;
+}
+.notification .icon.mention {
+  background: transparent url("../media/mention.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/mention.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/mention.svg");
   background-size: auto;
 }
 .notification .content {
@@ -207,6 +219,18 @@
   background: transparent url("../media/thanks.png") center center no-repeat;
   background-image: -webkit-linear-gradient(transparent, transparent), url("../media/thanks.svg");
   background-image: linear-gradient(transparent, transparent), url("../media/thanks.svg");
+  background-size: 24px 24px;
+}
+.micro-notification .icon.talk {
+  background: transparent url("../media/talk.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/talk.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/talk.svg");
+  background-size: 24px 24px;
+}
+.micro-notification .icon.mention {
+  background: transparent url("../media/mention.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/mention.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/mention.svg");
   background-size: 24px 24px;
 }
 .micro-notification .message {
