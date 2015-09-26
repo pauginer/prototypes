@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.3 (12072) - http://www.bohemiancoding.com/sketch -->
+    <title>volume</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="volume" sketch:type="MSArtboardGroup">
+            <g id="horn-+-Path-26-+-Path-26-Copy" sketch:type="MSLayerGroup" transform="translate(0.000000, 3.000000)">
+                <path d="M1.55099517,10.4189684 L4.06257347,10.4208366 L4.50556183,12.1191041 C4.66066054,12.7365295 5.33165132,13.1054238 5.90885264,12.9404525 L5.87476132,12.9501962 C6.45196264,12.7852249 6.7843067,12.1470859 6.62920798,11.5296605 L6.33201779,10.4218257 L13.2531888,10.4275845 L11.0882763,1.67395859 L0.907680754,7.84799604 C0.575844493,8.46307778 0.977736068,10.0679653 1.55099517,10.4189684 L1.55099517,10.4189684 L1.55099517,10.4189684 Z" id="horn" fill="#777777" sketch:type="MSShapeGroup"></path>
+                <path d="M15.5937887,0.57782366 C15.5937887,0.57782366 18.2931796,1.5780237 18.9771852,4.17961003 C19.6611908,6.78119636 18.1105144,9.1842315 18.1105144,9.1842315" id="Path-26" stroke="#777777" stroke-linecap="round" sketch:type="MSShapeGroup"></path>
+                <path d="M14.0837384,3.25293958 C14.0837384,3.25293958 15.5114598,3.6099759 15.8942156,5.05506673 C16.2769715,6.50015756 15.3421013,7.55614351 15.3421013,7.55614351" id="Path-26-Copy" stroke="#777777" stroke-linecap="round" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>

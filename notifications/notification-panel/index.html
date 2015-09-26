@@ -28,7 +28,7 @@
 							<div class="more-panel hidden">
 							{{#each more}}
 								<div class="more-option">
-									<div class="more-option-icon"></div>
+									<div class="more-option-icon {{icon}}"></div>
 									<div class="more-option-action">
 										<div class="more-option-name">{{name}}</div>
 										<div class="more-option-description">{{description}}</div>
@@ -96,6 +96,16 @@ var project = "Wikipedia";
 var language = "English";
 var expanded = false;
 
+var hash = window.location.hash;
+var wiki=hash.replace('#','');
+if(wiki == "commons"){
+	project = "Commons";
+	language = "";
+} else if(wiki == "eswiki"){
+	project = "Wikipedia";
+	language = "Spanish";
+}
+
 //Notification data:
 var notifications = [
 	{id: "1",
@@ -106,7 +116,7 @@ var notifications = [
 	 timestamp: "1 day.",
 	 read: false,
 	 actions: [{icon: "user", name: "Ludmilla"}],
-	 more: [{icon: "user", name: "Peter", description:"View article"}]
+	 more: [{icon: "volume", name: "Adjust notification volume", description:"Talk page"}]
 	},
 	{id: "2",
 	 project: "Wikipedia",
@@ -116,7 +126,7 @@ var notifications = [
 	 timestamp: "1 min.",
 	 read: false,
 	 actions: [{icon: "user", name: "Fama"}],
-	 more: [{icon: "user", name: "Peter", description:"View article"}]
+	 more: [{icon: "volume", name: "Adjust notification volume", description:"Thanks notifications"}]
 	},
 	{id: "3",
 	 project: "Wikipedia",
@@ -124,9 +134,9 @@ var notifications = [
 	 icon: "mention",
 	 message: "<b>Mycroft</b> mentioned you in <i>“Who was the inventor?”</i> on <b>talk:Telephone</b>",
 	 timestamp: "1 min.",
-	 read: true,
+	 read: false,
 	 actions: [{icon: "user", name: "Mycroft"}],
-	 more: [{icon: "user", name: "Peter", description:"View article"}]},
+	 more: [{icon: "volume", name: "Adjust notification volume", description:"Talk topic"}]},
 {id: "4",
 	 project: "Wikipedia",
 	 language: "English",
@@ -135,7 +145,7 @@ var notifications = [
 	 timestamp: "1 min.",
 	 read: true,
 	 actions: [{icon: "user", name: "Mycroft"}],
-	 more: [{icon: "user", name: "Peter", description:"View article"}]},
+	 more: [{icon: "volume", name: "Adjust notification volume", description:"Talk topic"}]},
 {id: "5",
 	 project: "Commons",
 	 language: "",
@@ -144,7 +154,7 @@ var notifications = [
 	 timestamp: "1 min.",
 	 read: false,
 	 actions: [{icon: "user", name: "Mycroft"}],
-	 more: [{icon: "user", name: "Peter", description:"View article"}]},
+	 more: [{icon: "volume", name: "Adjust notification volume", description:"File page"}]},
 {id: "6",
 	 project: "Commons",
 	 language: "",
@@ -153,7 +163,7 @@ var notifications = [
 	 timestamp: "1 min.",
 	 read: false,
 	 actions: [{icon: "user", name: "Mycroft"}],
-	 more: [{icon: "user", name: "Peter", description:"View article"}]},
+	 more: [{icon: "volume", name: "Adjust notification volume", description:"File page"}]},
 {id: "7",
 	 project: "Wikipedia",
 	 language: "Spanish",
@@ -162,7 +172,7 @@ var notifications = [
 	 timestamp: "1 min.",
 	 read: false,
 	 actions: [{icon: "user", name: "Mycroft"}],
-	 more: [{icon: "user", name: "Peter", description:"View article"}]},
+	 more: [{icon: "volume", name: "Adjust notification volume", description:"Welcome notifications"}]},
 {id: "8",
 	 project: "Wikipedia",
 	 language: "Spanish",
@@ -171,7 +181,7 @@ var notifications = [
 	 timestamp: "1 min.",
 	 read: true,
 	 actions: [{icon: "user", name: "Mycroft"}],
-	 more: [{icon: "user", name: "Peter", description:"View article"}]}
+	 more: [{icon: "volume", name: "Adjust notification volume", description:"Welcome notifications"}]}
 	]
 
 	

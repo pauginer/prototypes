@@ -139,11 +139,24 @@
   border-radius: 2px;
   background: white;
   padding: 10px;
-  min-width: 100px;
+  min-width: 200px;
 }
 .more-panel .more-option {
   display: flex;
   flex-direction: row;
+}
+.more-panel .more-option .more-option-icon {
+  width: 20px;
+  height: 20px;
+}
+.more-panel .more-option .more-option-icon.volume {
+  background: transparent url("../media/volume.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/volume.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/volume.svg");
+  background-size: auto;
+}
+.more-panel .more-option .more-option-action {
+  margin: 0 5px;
 }
 .more-panel .more-option .more-option-action .more-option-name {
   font-weight: bold;
@@ -181,6 +194,15 @@
   background: #f8f8f8;
   border-bottom: 1px solid #DDD;
 }
+.external.bundle .summary {
+  box-shadow: inset 0px -2px 0px 0px #fbfbfb, inset 0px -3px 0px 0px #f0f0f0;
+}
+.external.bundle .summary:hover {
+  box-shadow: inset 0px -2px 0px 0px #f5f5f5, inset 0px -3px 0px 0px #f0f0f0;
+}
+.external.bundle.expanded .summary {
+  box-shadow: none;
+}
 .external.bundle .summary .icon {
   height: 32px;
   min-width: 32px;
@@ -210,6 +232,10 @@
 }
 .micro-notification:not(:first-child) {
   border-top: none;
+}
+.micro-notification:hover {
+  color: #111;
+  background: #fbfbfb;
 }
 .micro-notification .icon {
   height: 24px;
