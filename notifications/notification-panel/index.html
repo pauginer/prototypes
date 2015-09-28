@@ -149,7 +149,7 @@ var notifications = [
 {id: "5",
 	 project: "Commons",
 	 language: "",
-	 icon: "thanks",
+	 icon: "picture",
 	 message: "Your picture 'Apollo and the buffalo buffalo buffalo' has been marked for deletion",
 	 timestamp: "1 min.",
 	 read: false,
@@ -158,7 +158,7 @@ var notifications = [
 {id: "6",
 	 project: "Commons",
 	 language: "",
-	 icon: "thanks",
+	 icon: "picture",
 	 message: "Your picture Soyuz has been marked for deletion",
 	 timestamp: "1 min.",
 	 read: false,
@@ -334,13 +334,20 @@ $(function(){
 	<div class="badge">
 	</div>
 	<div class="panel">
-		<div class="header"></div>
+		<div class="header"><div class="header-icon"></div><div class="header-title">Messages</div><div class="header-clear">Mark all as read</div></div>
 		<div class="notification-list new">
 		</div>
 		<div class="notification-list read">
-			<div class="notification">Read notification</div>
 		</div>
 		<div class="footer">
+			<div class="footer-all">
+				<div class="footer-all-icon"></div>
+				<div class="footer-all-label">All notifications</div>
+			</div>
+			<div class="footer-settings">
+				<div class="footer-settings-icon"></div>
+				<div class="footer-settings-label">Preferences</div>
+			</div>
 		</div>
 	</div>
 </section>
