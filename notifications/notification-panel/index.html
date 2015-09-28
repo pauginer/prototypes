@@ -70,7 +70,7 @@
 			<div class="bundle-group-title">{{project}} {{#if language}} - {{language}}{{/if}}</div>
 			<div class="bundle-group-notifications">
 			{{#each notifications}}
-				<a class="micro-notification" data-notification="{{id}}" href="#{{language}}{{project}}" target="_blank">
+				<a class="micro-notification" data-notification="{{id}}" href="#{{project}}/{{language}}/{{page}}" target="_blank">
 					<div class="icon {{icon}}"></div>
 					<div class="message">{{{message}}}</div>
 					<div class="micro-actions">
@@ -94,21 +94,37 @@ var externalTemplate = Handlebars.compile($("#external-template").html());
 //Params
 var project = "Wikipedia";
 var language = "English";
+var page = null;
 var expanded = false;
 
 var hash = window.location.hash;
-var wiki=hash.replace('#','').toLowerCase();
-var storedNotifs = null;
+var wiki=hash.replace('#','').split("/");
+
+if(wiki.length>=2){
+	project = wiki[0];
+	language = wiki[1];
+	if(wiki.length>=3){
+		page = wiki[2];
+	}
+	if(!page){
+	page = project.toLowerCase();
+	}
 	
+	console.debug(page);
+}
+
+
+
+/*
 if(wiki == "commons"){
 	project = "Commons";
 	language = "";
-	storedNotifs =  JSON.parse(localStorage.getItem("notifications"));
+	//storedNotifs =  JSON.parse(localStorage.getItem("notifications"));
 } else if(wiki == "eswiki"){
 	project = "Wikipedia";
 	language = "Spanish";
-	storedNotifs =  JSON.parse(localStorage.getItem("notifications"));
-}
+	//storedNotifs =  JSON.parse(localStorage.getItem("notifications"));
+}*/
 
 //Notification data:
 var notifications = [
@@ -127,10 +143,10 @@ var notifications = [
 	 project: "Wikipedia",
 	 language: "English",
 	 icon: "thanks",
-	 message: "<b>Fama</b> thanked you for your comment in <i>“Best inventions?”</i> on <b>talk:Telephone</b>",
+	 message: "<b>Fama</b> thanked you for your edit on <b>talk:Plants in space</b>.",
 	 timestamp: "20 min.",
 	 read: false,
-	 page: "usertalk",
+	 page: "pagetalk",
 	 actions: [{icon: "user", name: "Fama"}],
 	 more: [{icon: "volume", name: "Adjust notification volume", description:"Thanks notifications"}]
 	},
@@ -138,18 +154,18 @@ var notifications = [
 	 project: "Wikipedia",
 	 language: "English",
 	 icon: "mention",
-	 message: "<b>Mycroft</b> mentioned you in <i>“Who was the inventor?”</i> on <b>talk:Telephone</b>",
-	 timestamp: "1 min.",
+	 message: "<b>Hal9k</b> mentioned you in <i>“Nate Silver's best burrito project”</i> on <b>talk:Burrito</b>",
+	 timestamp: "36 min.",
 	 read: false,
-	 page: "usertalk",
-	 actions: [{icon: "user", name: "Mycroft"}],
+	 page: "pagemention",
+	 actions: [{icon: "user", name: "StanleyK"}],
 	 more: [{icon: "volume", name: "Adjust notification volume", description:"Talk topic"}]},
 {id: "4",
 	 project: "Wikipedia",
 	 language: "English",
 	 icon: "mention",
 	 message: "<b>Mycroft</b> mentioned you in <i>“Who was the inventor?”</i> on <b>talk:Telephone</b>",
-	 timestamp: "1 min.",
+	 timestamp: "1 hour",
 	 read: true,
  	 page: "usertalk",
 	 actions: [{icon: "user", name: "Mycroft"}],
@@ -158,20 +174,20 @@ var notifications = [
 	 project: "Commons",
 	 language: "",
 	 icon: "picture",
-	 message: "Your picture 'Apollo and the buffalo buffalo buffalo' has been marked for deletion",
+	 message: "<b>StanleyK</b> created a new topic on <b>talk:Exploding light bulb</b>",
 	 timestamp: "1 min.",
 	 read: false,
- 	 page: "usertalk",
+ 	 page: "commons-talk",
 	 actions: [{icon: "user", name: "Mycroft"}],
 	 more: [{icon: "volume", name: "Adjust notification volume", description:"File page"}]},
 {id: "6",
 	 project: "Commons",
 	 language: "",
 	 icon: "picture",
-	 message: "Your picture Soyuz has been marked for deletion",
-	 timestamp: "1 min.",
+	 message: "Your picture <b>Pillars of Creation</b> has been nominated for <b>Picture fo the month</b>",
+	 timestamp: "40 min.",
 	 read: false,
- 	 page: "usertalk",
+ 	 page: "commons",
 	 actions: [{icon: "user", name: "Mycroft"}],
 	 more: [{icon: "volume", name: "Adjust notification volume", description:"File page"}]},
 {id: "7",
@@ -179,7 +195,7 @@ var notifications = [
 	 language: "Spanish",
 	 icon: "thanks",
 	 message: "Bienvenido!",
-	 timestamp: "1 min.",
+	 timestamp: "1 day.",
 	 read: false,
  	 page: "usertalk",
 	 actions: [{icon: "user", name: "Mycroft"}],
@@ -196,9 +212,10 @@ var notifications = [
 	 more: [{icon: "volume", name: "Adjust notification volume", description:"Welcome notifications"}]}
 	]
 
-if(!!storedNotifs){
-notifications = storedNotifs;
+if(!hash){
+saveNotifications();
 }
+
 	
 function getAllNotifications(){
 	var result = notifications;
@@ -207,6 +224,10 @@ function getAllNotifications(){
 		result = stored;
 	}
 	return result;
+}
+	
+function saveNotifications(){
+localStorage.setItem("notifications", JSON.stringify(notifications));
 }
 	
 function findNotification(id){
@@ -236,6 +257,13 @@ function isFromCurrentWiki(notif){
 function isUnread(notif){
 	return !notif["read"];
 }
+	
+function moveToPage(page){
+	var art = $(".article");
+	art.removeClass();
+	art.addClass("article");
+	art.addClass(page);
+}
 
 function addNotification(data){
 	var n = notificationTemplate(data);
@@ -246,23 +274,21 @@ function addNotification(data){
 	var elt = $(n).appendTo(list);
 	
 	//HANDLERS:
-	elt.click(function(e){
-		//$(this).addClass("hidden");		
+	elt.click(function(e){ //Click on a notification
 		var id = $(this).data("notification");
 		var notif=findNotification(id);
 		notif["read"] = true;
+		saveNotifications();
 		updatePanel();
 		$(".panel").addClass("hidden");
-		var art = $(".article");
-		art.removeClass();
-		art.addClass("article");
-		art.addClass(notif.page);
+		moveToPage(notif.page);
 		
 	});
 	
 	elt.find(".close").click(function(e){
 		var notif=findNotification(elt.data("notification"));
 		notif["read"] = true;
+		saveNotifications();
 		updatePanel();
 	});
 	
@@ -277,21 +303,6 @@ function addNotification(data){
 
 function createExternalBundle(data){
 	
-	/*var data = {
-		count: 15,
-		projects: [
-			{project: "Wikipedia", 
-			 language: "Spanish",
-			 notifications: notificationsByWiki("Wikipedia", "Spanish"),
-			},
-			{project: "Commons", 
-			 language: "",
-			 notifications: notificationsByWiki("Commons", ""),
-			}
-
-		]
-	};*/
-	
 	var n = externalTemplate(data);	
 	var list = $(".notification-list.new");
 	var elt = $(n).appendTo(list);
@@ -300,6 +311,7 @@ function createExternalBundle(data){
 	elt.find(".notification.summary").click(function(){
 		//elt.toggleClass("expanded");
 		expanded = !expanded;
+		saveNotifications();
 		updatePanel();
 	});
 	
@@ -307,6 +319,7 @@ function createExternalBundle(data){
 		var notifElt= $(e.target).parents(".micro-notification");
 		var notif=findNotification(notifElt.data("notification"));
 		notif["read"] = true;
+		saveNotifications();
 		updatePanel();
 	});
 	
@@ -314,6 +327,7 @@ function createExternalBundle(data){
 		var notifElt= $(this);
 		var notif=findNotification(notifElt.data("notification"));
 		notif["read"] = true;
+		saveNotifications();
 		updatePanel();
 	});
 	
@@ -321,7 +335,7 @@ function createExternalBundle(data){
 }
 
 function updatePanel(){
-	localStorage.setItem("notifications", JSON.stringify(notifications));
+	notifications = getAllNotifications();
 	$(".notification-list").empty();
 	var totalUnread=0;
 	//Local notifications:
@@ -362,12 +376,19 @@ function updatePanel(){
 }
 
 $(function(){
+	
+	if(!!page){
+		moveToPage(page);
+	}
+	
 	updatePanel();
 	$(".badge").click(function(){
 		$(".panel").toggleClass("hidden");
 		$(".badge-counter").removeClass("active");
 		updatePanel();
 	});
+	
+	$(window).on('focus', function() {updatePanel();});
 	
 });
 </script>

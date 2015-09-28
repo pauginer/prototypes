@@ -40,6 +40,22 @@ color: #333;
 		background-image: url("../media/usertalk.png");
 	
 	}
+	
+	&.pagetalk {
+		background-image: url("../media/pagetalk.png");
+	}
+	
+	&.pagemention {
+		background-image: url("../media/pagemention.png");
+		min-height: 2000px;
+	}
+	
+	&.commons {
+		background-image: url("../media/commons.png");
+	}
+	&.commons-talk {
+		background-image: url("../media/commons-talk.png");
+	}
 }
 
 .badge {
@@ -356,6 +372,9 @@ color: #333;
 	&.expanded .notification.summary {
 		.action.collapse {display:flex;}
 		.action.expand {display:none;}
+		border-bottom: 1px solid #EEE;
+		//background: #f8f8f8;
+		//border-bottom: none;
 	}
 	
 	.bundle-groups {

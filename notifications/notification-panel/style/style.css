@@ -21,6 +21,19 @@ body {
 .article.usertalk {
   background-image: url("../media/usertalk.png");
 }
+.article.pagetalk {
+  background-image: url("../media/pagetalk.png");
+}
+.article.pagemention {
+  background-image: url("../media/pagemention.png");
+  min-height: 2000px;
+}
+.article.commons {
+  background-image: url("../media/commons.png");
+}
+.article.commons-talk {
+  background-image: url("../media/commons-talk.png");
+}
 .badge {
   display: flex;
   position: absolute;
@@ -338,6 +351,9 @@ body {
   background-image: -webkit-linear-gradient(transparent, transparent), url("../media/expand.svg");
   background-image: linear-gradient(transparent, transparent), url("../media/expand.svg");
   background-size: auto;
+}
+.bundle.expanded .notification.summary {
+  border-bottom: 1px solid #EEE;
 }
 .bundle.expanded .notification.summary .action.collapse {
   display: flex;
