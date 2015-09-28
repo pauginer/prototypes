@@ -34,6 +34,9 @@ body {
 .article.commons-talk {
   background-image: url("../media/commons-talk.png");
 }
+.article.eswiki {
+  background-image: url("../media/eswiki.png");
+}
 .badge {
   display: flex;
   position: absolute;
@@ -372,10 +375,10 @@ body {
   border-bottom: 1px solid #DDD;
 }
 .external.bundle .summary {
-  box-shadow: inset 0px -2px 0px 0px #fbfbfb, inset 0px -3px 0px 0px #f0f0f0;
+  box-shadow: inset 0px -2px 0px 0px #fbfbfb, inset 0px -4px 0px 0px #f0f0f0;
 }
 .external.bundle .summary:hover {
-  box-shadow: inset 0px -2px 0px 0px #f5f5f5, inset 0px -3px 0px 0px #f0f0f0;
+  box-shadow: inset 0px -2px 0px 0px #f5f5f5, inset 0px -4px 0px 0px #f0f0f0;
 }
 .external.bundle.expanded .summary {
   box-shadow: none;
@@ -389,10 +392,11 @@ body {
   background-size: auto;
 }
 .bundle-group {
-  padding-bottom: 10px;
+  padding-bottom: 15px;
+  padding-top: 5px;
 }
 .bundle-group .bundle-group-title {
-  color: #777;
+  color: #555;
   font-weight: bolder;
   padding-bottom: 10px;
 }

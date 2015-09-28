@@ -194,20 +194,20 @@ var notifications = [
 	 project: "Wikipedia",
 	 language: "Spanish",
 	 icon: "thanks",
-	 message: "Bienvenido!",
-	 timestamp: "1 day.",
+	 message: "<b>Julio</b> thanked you for your edit on <b>Quesadilla mexicana</b>.",
+	 timestamp: "1 day",
 	 read: false,
- 	 page: "usertalk",
+ 	 page: "eswiki",
 	 actions: [{icon: "user", name: "Mycroft"}],
 	 more: [{icon: "volume", name: "Adjust notification volume", description:"Welcome notifications"}]},
 {id: "8",
 	 project: "Wikipedia",
 	 language: "Spanish",
 	 icon: "thanks",
-	 message: "Bienvenido de nuevo!",
-	 timestamp: "1 min.",
+	 message: "<b>Fama</b> thanked you for your edit on <b>Quesadilla mexicana</b>.",
+	 timestamp: "30 days",
 	 read: true,
- 	 page: "usertalk",
+ 	 page: "eswiki",
 	 actions: [{icon: "user", name: "Mycroft"}],
 	 more: [{icon: "volume", name: "Adjust notification volume", description:"Welcome notifications"}]}
 	]
@@ -321,6 +321,7 @@ function createExternalBundle(data){
 		notif["read"] = true;
 		saveNotifications();
 		updatePanel();
+		return false;
 	});
 	
 	elt.find(".micro-notification").click(function(e){
@@ -348,6 +349,7 @@ function updatePanel(){
 		}
 	});
 	$(".badge-counter").text(totalUnread);
+	if(totalUnread<=0){$(".badge-counter").removeClass("active");}
 	
 	var externalNotifications = [];
 	var ex={};
@@ -366,6 +368,8 @@ function updatePanel(){
 			//addNotification(v);
 		}
 	});
+	
+	if((totalUnread - count) == 1){expanded = true;}
 	
 	if(count>0){
 	var external = createExternalBundle({count:count,projects:ex, expanded: expanded});
