@@ -18,6 +18,9 @@ body {
   background: url("../media/enwiki.png") no-repeat;
   background-size: 1024px 2788px;
 }
+.article.usertalk {
+  background-image: url("../media/usertalk.png");
+}
 .badge {
   display: flex;
   position: absolute;
@@ -387,6 +390,7 @@ body {
   cursor: pointer;
   align-items: center;
   min-height: 2em;
+  text-decoration: none;
 }
 .micro-notification:not(:first-child) {
   border-top: none;

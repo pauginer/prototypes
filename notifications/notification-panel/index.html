@@ -70,7 +70,7 @@
 			<div class="bundle-group-title">{{project}} {{#if language}} - {{language}}{{/if}}</div>
 			<div class="bundle-group-notifications">
 			{{#each notifications}}
-				<div class="micro-notification" data-notification="{{id}}">
+				<a class="micro-notification" data-notification="{{id}}" href="#{{language}}{{project}}" target="_blank">
 					<div class="icon {{icon}}"></div>
 					<div class="message">{{{message}}}</div>
 					<div class="micro-actions">
@@ -79,7 +79,7 @@
 						<div class="close"></div>
 					</div>
 					
-				</div>
+				</a>
 			{{/each}}
 			</div>
 		</div>
@@ -97,13 +97,17 @@ var language = "English";
 var expanded = false;
 
 var hash = window.location.hash;
-var wiki=hash.replace('#','');
+var wiki=hash.replace('#','').toLowerCase();
+var storedNotifs = null;
+	
 if(wiki == "commons"){
 	project = "Commons";
 	language = "";
+	storedNotifs =  JSON.parse(localStorage.getItem("notifications"));
 } else if(wiki == "eswiki"){
 	project = "Wikipedia";
 	language = "Spanish";
+	storedNotifs =  JSON.parse(localStorage.getItem("notifications"));
 }
 
 //Notification data:
@@ -192,6 +196,18 @@ var notifications = [
 	 more: [{icon: "volume", name: "Adjust notification volume", description:"Welcome notifications"}]}
 	]
 
+if(!!storedNotifs){
+notifications = storedNotifs;
+}
+	
+function getAllNotifications(){
+	var result = notifications;
+	var stored =  JSON.parse(localStorage.getItem("notifications"));
+	if(!!stored){
+		result = stored;
+	}
+	return result;
+}
 	
 function findNotification(id){
 	result = null;
@@ -236,7 +252,7 @@ function addNotification(data){
 		var notif=findNotification(id);
 		notif["read"] = true;
 		updatePanel();
-		//TODO: Main action
+		$(".panel").addClass("hidden");
 		var art = $(".article");
 		art.removeClass();
 		art.addClass("article");
@@ -254,7 +270,6 @@ function addNotification(data){
 		elt.find(".more-panel").toggleClass("hidden");
 		elt.find(".more-icon").toggleClass("highlight");
 		return false;
-		
 	});
 	
 	return elt;
@@ -295,11 +310,18 @@ function createExternalBundle(data){
 		updatePanel();
 	});
 	
+	elt.find(".micro-notification").click(function(e){
+		var notifElt= $(this);
+		var notif=findNotification(notifElt.data("notification"));
+		notif["read"] = true;
+		updatePanel();
+	});
 	
 	return elt;
 }
 
 function updatePanel(){
+	localStorage.setItem("notifications", JSON.stringify(notifications));
 	$(".notification-list").empty();
 	var totalUnread=0;
 	//Local notifications:
@@ -344,6 +366,7 @@ $(function(){
 	$(".badge").click(function(){
 		$(".panel").toggleClass("hidden");
 		$(".badge-counter").removeClass("active");
+		updatePanel();
 	});
 	
 });
