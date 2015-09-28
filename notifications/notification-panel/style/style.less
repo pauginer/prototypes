@@ -1,7 +1,7 @@
 @import "vector-image";
 
 .small-font{
-	font-size: smaller;
+	//font-size: smaller;
 	font-size: 13px;
 }
 
@@ -27,22 +27,90 @@ body{
 }
 
 .article {
+display: flex;
+flex-direction: column;
+position: relative;
 font-family: sans-serif;
+min-height: 1024px;
 color: #333;
+	background: url("../media/enwiki.png") no-repeat;
+	background-size: 1024px 2788px;
 }
 
 .badge {
+	display:flex;
+	position: absolute;
+	left: 600px;
+	top: 5px;
+	cursor: pointer;
+	.badge-icon {
+		.vector-image("../media/message.svg", "../media/message.png");
+		width: 20px;
+		height: 20px;
+	}
+	.badge-counter {
+		align-self: flex-end;
+		position: relative;
+		left: -10px;
+		bottom: -4px;
+		.small-font;
+		font-weight: bold;
+		background: #777;
+		color: white;
+		padding: 0 3px;
+		border-radius: 2px;
+		border:1px solid white;
+		&.active {
+			background: #347BFF;
+			color: white;
+		}
+	}
 
 }
 
 .panel {
+	position: absolute;
+	left: 360px;
+	top: 30px;
 	display: flex;
 	flex-direction: column;
 	width: 500px;
-	max-height: 500px;
+	margin-top: 10px;
+	//max-height: 500px;
 	border-radius: 2px;
-	overflow-y: auto;
+	//overflow-y: auto;
 	.panel-style;
+	
+	&:before {
+		@size: 10px;
+		//display: inline-block;
+		display:flex;
+		position:absolute;
+		width: 0; 
+		height: 0; 
+		border-left: @size solid transparent;
+		border-right: @size solid transparent;
+		content: "";
+		border-bottom: @size solid #AAA;
+		top: -@size;
+		left: 50%;
+		margin-left: -@size/2
+	}
+	
+	&:after {
+		@size: 10px;
+		display:flex;
+		position:absolute;
+		width: 0; 
+		height: 0; 
+		border-left: @size solid transparent;
+		border-right: @size solid transparent;
+		content: "";
+		border-bottom: @size solid white;
+		top: -@size + 1;
+		left: 50%;
+		margin-left: -@size/2
+	}
 		
 	.header {
 		display: flex;
@@ -64,6 +132,7 @@ color: #333;
 			//font-size: larger;
 		}
 		.header-clear {
+			cursor: pointer;
 			.small-font;
 			font-weight: bolder;
 			margin-left: auto;
@@ -74,6 +143,7 @@ color: #333;
 		&.read{
 			border: 1px solid #EEE;
 			background: #f3f3f3;
+			background: #f1f1f1;
 		}
 	}
 
@@ -82,6 +152,7 @@ color: #333;
 		flex-direction: row;
 		
 		.footer-all {
+			cursor: pointer;
 			display: flex;
 			flex-direction: row;
 			flex:1;
@@ -101,6 +172,7 @@ color: #333;
 		}
 		
 		.footer-settings{
+			cursor: pointer;
 			display: flex;
 			flex-direction: row;
 			align-items: center;
@@ -143,6 +215,7 @@ color: #333;
 	}
 	
 	.icon{
+		margin-left: 5px;
 		height: 32px;
 		min-width: 32px;
 		&.thanks{
@@ -162,7 +235,7 @@ color: #333;
 		display: flex;
 		flex-direction: column;
 		flex-grow: 1;
-		margin-left:10px;
+		margin-left:15px;
 		
 		.description {
 			display: flex;

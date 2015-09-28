@@ -113,8 +113,9 @@ var notifications = [
 	 language: "English",
 	 icon: "talk",
 	 message: "<b>Ludmilla</b> left a message <b>in your talk page</b>",
-	 timestamp: "1 day.",
+	 timestamp: "1 min.",
 	 read: false,
+	 page: "usertalk",
 	 actions: [{icon: "user", name: "Ludmilla"}],
 	 more: [{icon: "volume", name: "Adjust notification volume", description:"Talk page"}]
 	},
@@ -123,8 +124,9 @@ var notifications = [
 	 language: "English",
 	 icon: "thanks",
 	 message: "<b>Fama</b> thanked you for your comment in <i>“Best inventions?”</i> on <b>talk:Telephone</b>",
-	 timestamp: "1 min.",
+	 timestamp: "20 min.",
 	 read: false,
+	 page: "usertalk",
 	 actions: [{icon: "user", name: "Fama"}],
 	 more: [{icon: "volume", name: "Adjust notification volume", description:"Thanks notifications"}]
 	},
@@ -135,6 +137,7 @@ var notifications = [
 	 message: "<b>Mycroft</b> mentioned you in <i>“Who was the inventor?”</i> on <b>talk:Telephone</b>",
 	 timestamp: "1 min.",
 	 read: false,
+	 page: "usertalk",
 	 actions: [{icon: "user", name: "Mycroft"}],
 	 more: [{icon: "volume", name: "Adjust notification volume", description:"Talk topic"}]},
 {id: "4",
@@ -144,6 +147,7 @@ var notifications = [
 	 message: "<b>Mycroft</b> mentioned you in <i>“Who was the inventor?”</i> on <b>talk:Telephone</b>",
 	 timestamp: "1 min.",
 	 read: true,
+ 	 page: "usertalk",
 	 actions: [{icon: "user", name: "Mycroft"}],
 	 more: [{icon: "volume", name: "Adjust notification volume", description:"Talk topic"}]},
 {id: "5",
@@ -153,6 +157,7 @@ var notifications = [
 	 message: "Your picture 'Apollo and the buffalo buffalo buffalo' has been marked for deletion",
 	 timestamp: "1 min.",
 	 read: false,
+ 	 page: "usertalk",
 	 actions: [{icon: "user", name: "Mycroft"}],
 	 more: [{icon: "volume", name: "Adjust notification volume", description:"File page"}]},
 {id: "6",
@@ -162,6 +167,7 @@ var notifications = [
 	 message: "Your picture Soyuz has been marked for deletion",
 	 timestamp: "1 min.",
 	 read: false,
+ 	 page: "usertalk",
 	 actions: [{icon: "user", name: "Mycroft"}],
 	 more: [{icon: "volume", name: "Adjust notification volume", description:"File page"}]},
 {id: "7",
@@ -171,6 +177,7 @@ var notifications = [
 	 message: "Bienvenido!",
 	 timestamp: "1 min.",
 	 read: false,
+ 	 page: "usertalk",
 	 actions: [{icon: "user", name: "Mycroft"}],
 	 more: [{icon: "volume", name: "Adjust notification volume", description:"Welcome notifications"}]},
 {id: "8",
@@ -180,6 +187,7 @@ var notifications = [
 	 message: "Bienvenido de nuevo!",
 	 timestamp: "1 min.",
 	 read: true,
+ 	 page: "usertalk",
 	 actions: [{icon: "user", name: "Mycroft"}],
 	 more: [{icon: "volume", name: "Adjust notification volume", description:"Welcome notifications"}]}
 	]
@@ -229,6 +237,11 @@ function addNotification(data){
 		notif["read"] = true;
 		updatePanel();
 		//TODO: Main action
+		var art = $(".article");
+		art.removeClass();
+		art.addClass("article");
+		art.addClass(notif.page);
+		
 	});
 	
 	elt.find(".close").click(function(e){
@@ -240,7 +253,6 @@ function addNotification(data){
 	elt.find(".more-icon").click(function(e){
 		elt.find(".more-panel").toggleClass("hidden");
 		elt.find(".more-icon").toggleClass("highlight");
-		//e.stopPropagation();
 		return false;
 		
 	});
@@ -289,13 +301,17 @@ function createExternalBundle(data){
 
 function updatePanel(){
 	$(".notification-list").empty();
+	var totalUnread=0;
 	//Local notifications:
 	$.each(notifications, function(i,v){
 		if(!!isFromCurrentWiki(v)){
 			addNotification(v);
 		}
+		if(!!isUnread(v)){
+			totalUnread++;
+		}
 	});
-	
+	$(".badge-counter").text(totalUnread);
 	
 	var externalNotifications = [];
 	var ex={};
@@ -319,10 +335,16 @@ function updatePanel(){
 	var external = createExternalBundle({count:count,projects:ex, expanded: expanded});
 	}
 	
+	
+	
 }
 
 $(function(){
 	updatePanel();
+	$(".badge").click(function(){
+		$(".panel").toggleClass("hidden");
+		$(".badge-counter").removeClass("active");
+	});
 	
 });
 </script>
@@ -332,8 +354,10 @@ $(function(){
 <body>
 <section class="article">
 	<div class="badge">
+		<div class="badge-icon"></div>
+		<div class="badge-counter active">6</div>
 	</div>
-	<div class="panel">
+	<div class="panel hidden">
 		<div class="header"><div class="header-icon"></div><div class="header-title">Messages</div><div class="header-clear">Mark all as read</div></div>
 		<div class="notification-list new">
 		</div>
