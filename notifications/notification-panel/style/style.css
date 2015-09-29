@@ -201,7 +201,7 @@ body {
   color: #111;
   background: #fbfbfb;
 }
-.notification:last-child {
+.notification-list.read .notification:last-child {
   border-bottom: none;
 }
 .notification-list.read .notification {
