@@ -100,9 +100,10 @@ color: #333;
 	flex-direction: column;
 	width: 500px;
 	margin-top: 10px;
-	//max-height: 500px;
+	
 	border-radius: 2px;
 	//overflow-y: auto;
+	//max-height: 500px;
 	.panel-style;
 	
 	&:before {
@@ -141,7 +142,8 @@ color: #333;
 		flex-direction: row;
 		align-items: baseline;
 		border-bottom: 1px solid #DDD;
-		padding: 10px 10px;
+		padding: 15px 10px 15px 15px;
+		//padding: 15px 10px;
 		color: #333;
 		.header-icon {
 			align-self: center;
@@ -162,6 +164,10 @@ color: #333;
 			margin-left: auto;
 		}
 	}
+	.notification-lists{
+		//max-height: 500px;
+		//overflow-y: auto;	
+	}
 	
 	.notification-list {
 		&.read{
@@ -174,6 +180,7 @@ color: #333;
 	.footer {
 		display: flex;
 		flex-direction: row;
+		border-top: 1px solid #ccc;
 		
 		.footer-all {
 			cursor: pointer;
@@ -229,6 +236,10 @@ color: #333;
 	&:hover{
 		color: #111;
 		background: #fbfbfb;
+	}
+	
+	&:last-child{
+		border-bottom: none;
 	}
 	
 	.notification-list.read & {

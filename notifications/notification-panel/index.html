@@ -60,7 +60,7 @@
 						<div class="action expand"><div class="action-icon"></div><div class="action-name">Expand</div></div>
 						<div class="action collapse"><div class="action-icon"></div><div class="action-name">Collapse</div></div>
 					</div>
-					<div class="timestamp">1 min.</div>
+					<div class="timestamp">7 min.</div>
 				</div>
 			</div>
 	</div>
@@ -96,6 +96,7 @@ var project = "Wikipedia";
 var language = "English";
 var page = null;
 var expanded = false;
+var autoExpand = true;
 
 var hash = window.location.hash;
 var wiki=hash.replace('#','').split("/");
@@ -133,7 +134,7 @@ var notifications = [
 	 language: "English",
 	 icon: "talk",
 	 message: "<b>Ludmilla</b> left a message <b>in your talk page</b>",
-	 timestamp: "1 min.",
+	 timestamp: "5 min.",
 	 read: false,
 	 page: "usertalk",
 	 actions: [{icon: "user", name: "Ludmilla"}],
@@ -144,7 +145,7 @@ var notifications = [
 	 language: "English",
 	 icon: "thanks",
 	 message: "<b>Fama</b> thanked you for your edit on <b>talk:Plants in space</b>.",
-	 timestamp: "20 min.",
+	 timestamp: "23 min.",
 	 read: false,
 	 page: "pagetalk",
 	 actions: [{icon: "user", name: "Fama"}],
@@ -154,28 +155,28 @@ var notifications = [
 	 project: "Wikipedia",
 	 language: "English",
 	 icon: "mention",
-	 message: "<b>Hal9k</b> mentioned you in <i>“Nate Silver's best burrito project”</i> on <b>talk:Burrito</b>",
-	 timestamp: "36 min.",
+	 message: "<b>Hal9k</b> mentioned you in “Nate Silver's best burrito project” on <b>talk:Burrito</b>",
+	 timestamp: "1 hour",
 	 read: false,
 	 page: "pagemention",
-	 actions: [{icon: "user", name: "StanleyK"}],
+	 actions: [{icon: "user", name: "Hal9k"}],
 	 more: [{icon: "volume", name: "Adjust notification volume", description:"Talk topic"}]},
 {id: "4",
 	 project: "Wikipedia",
 	 language: "English",
-	 icon: "mention",
-	 message: "<b>Mycroft</b> mentioned you in <i>“Who was the inventor?”</i> on <b>talk:Telephone</b>",
-	 timestamp: "1 hour",
+	 icon: "talk",
+	 message: "<b>Hal9k</b> left you a message <b>in your talk page</b>.",
+	 timestamp: "3 hours",
 	 read: true,
  	 page: "usertalk",
-	 actions: [{icon: "user", name: "Mycroft"}],
-	 more: [{icon: "volume", name: "Adjust notification volume", description:"Talk topic"}]},
+	 actions: [{icon: "user", name: "Hak9k"}],
+	 more: [{icon: "volume", name: "Adjust notification volume", description:"Talk page"}]},
 {id: "5",
 	 project: "Commons",
 	 language: "",
 	 icon: "picture",
 	 message: "<b>StanleyK</b> created a new topic on <b>talk:Exploding light bulb</b>",
-	 timestamp: "1 min.",
+	 timestamp: "7 min.",
 	 read: false,
  	 page: "commons-talk",
 	 actions: [{icon: "user", name: "Mycroft"}],
@@ -198,8 +199,8 @@ var notifications = [
 	 timestamp: "1 day",
 	 read: false,
  	 page: "eswiki",
-	 actions: [{icon: "user", name: "Mycroft"}],
-	 more: [{icon: "volume", name: "Adjust notification volume", description:"Welcome notifications"}]},
+	 actions: [{icon: "user", name: "Julio"}],
+	 more: [{icon: "volume", name: "Adjust notification volume", description:"Thanks notifications"}]},
 {id: "8",
 	 project: "Wikipedia",
 	 language: "Spanish",
@@ -208,8 +209,8 @@ var notifications = [
 	 timestamp: "30 days",
 	 read: true,
  	 page: "eswiki",
-	 actions: [{icon: "user", name: "Mycroft"}],
-	 more: [{icon: "volume", name: "Adjust notification volume", description:"Welcome notifications"}]}
+	 actions: [{icon: "user", name: "Fama"}],
+	 more: [{icon: "volume", name: "Adjust notification volume", description:"Thanks notifications"}]}
 	]
 
 if(!hash){
@@ -311,6 +312,7 @@ function createExternalBundle(data){
 	elt.find(".notification.summary").click(function(){
 		//elt.toggleClass("expanded");
 		expanded = !expanded;
+		autoExpand = expanded;
 		saveNotifications();
 		updatePanel();
 	});
@@ -318,9 +320,22 @@ function createExternalBundle(data){
 	elt.find(".close").click(function(e){
 		var notifElt= $(e.target).parents(".micro-notification");
 		var notif=findNotification(notifElt.data("notification"));
+		if(!!notif){
 		notif["read"] = true;
+		}else{
+			var sumElt = $(e.target).parents("notification.summary");
+			if(sumElt){
+				$.each(notifications, function(i,v){
+					if(!isFromCurrentWiki(v)){
+						v["read"] = true;
+					}
+				});	
+			}	
+		}
+		
 		saveNotifications();
 		updatePanel();
+
 		return false;
 	});
 	
@@ -368,8 +383,8 @@ function updatePanel(){
 			//addNotification(v);
 		}
 	});
-	
-	if((totalUnread - count) == 1){expanded = true;}
+	localCount = totalUnread - count;
+	if(localCount == 0 || count == 1){expanded = autoExpand;}
 	
 	if(count>0){
 	var external = createExternalBundle({count:count,projects:ex, expanded: expanded});
@@ -392,7 +407,16 @@ $(function(){
 		updatePanel();
 	});
 	
+	$(".header-clear").click(function(){
+		$.each(notifications, function(i,v){
+			v["read"] = true;
+		});
+		saveNotifications();
+		updatePanel();
+	});
+	
 	$(window).on('focus', function() {updatePanel();});
+	
 	
 });
 </script>
@@ -407,11 +431,13 @@ $(function(){
 	</div>
 	<div class="panel hidden">
 		<div class="header"><div class="header-icon"></div><div class="header-title">Messages</div><div class="header-clear">Mark all as read</div></div>
-		<div class="notification-list new">
+		<div class="notification-lists">
+			<div class="notification-list new">
+			</div>
+			<div class="notification-list read">
+			</div>
 		</div>
-		<div class="notification-list read">
-		</div>
-		<div class="footer">
+				<div class="footer">
 			<div class="footer-all">
 				<div class="footer-all-icon"></div>
 				<div class="footer-all-label">All notifications</div>

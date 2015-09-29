@@ -113,7 +113,7 @@ body {
   flex-direction: row;
   align-items: baseline;
   border-bottom: 1px solid #DDD;
-  padding: 10px 10px;
+  padding: 15px 10px 15px 15px;
   color: #333;
 }
 .panel .header .header-icon {
@@ -144,6 +144,7 @@ body {
 .panel .footer {
   display: flex;
   flex-direction: row;
+  border-top: 1px solid #ccc;
 }
 .panel .footer .footer-all {
   cursor: pointer;
@@ -199,6 +200,9 @@ body {
 .notification:hover {
   color: #111;
   background: #fbfbfb;
+}
+.notification:last-child {
+  border-bottom: none;
 }
 .notification-list.read .notification {
   background: none;
