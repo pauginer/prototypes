@@ -293,12 +293,13 @@ function addNotification(data){
 		updatePanel();
 	});
 	
-	elt.find(".more-icon").click(function(e){
+	elt.find(".more-icon, .more-panel").click(function(e){
 		elt.find(".more-panel").toggleClass("hidden");
 		elt.find(".more-icon").toggleClass("highlight");
 		return false;
 	});
 	
+
 	return elt;
 }
 
