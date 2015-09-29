@@ -71,11 +71,11 @@ body {
 }
 .panel {
   position: absolute;
-  left: 360px;
+  left: 355px;
   top: 30px;
   display: flex;
   flex-direction: column;
-  width: 500px;
+  width: 510px;
   margin-top: 10px;
   border: 1px solid #AAA;
   border-bottom-width: 3px;
@@ -360,7 +360,7 @@ body {
   background-size: auto;
 }
 .bundle.expanded .notification.summary {
-  border-bottom: 1px solid #EEE;
+  border-bottom: 1px solid #DDD;
 }
 .bundle.expanded .notification.summary .action.collapse {
   display: flex;
@@ -370,13 +370,14 @@ body {
 }
 .bundle .bundle-groups {
   display: none;
-  padding: 10px;
+  padding: 15px;
+  box-shadow: 0 3px 0 0 rgba(0, 0, 0, 0.03) inset, 0 -9px 0 0 white inset, 0 -10px 0 0 #dddddd inset, 0 -13px 0 0 rgba(0, 0, 0, 0.03) inset;
+  background: #f8f8f8;
+  border-bottom: 1px solid #DDD;
 }
 .bundle.expanded .bundle-groups {
   display: flex;
   flex-direction: column;
-  background: #f8f8f8;
-  border-bottom: 1px solid #DDD;
 }
 .external.bundle .summary {
   box-shadow: inset 0px -2px 0px 0px #fbfbfb, inset 0px -4px 0px 0px #f0f0f0;
@@ -396,8 +397,7 @@ body {
   background-size: auto;
 }
 .bundle-group {
-  padding-bottom: 15px;
-  padding-top: 5px;
+  padding-bottom: 20px;
 }
 .bundle-group .bundle-group-title {
   color: #555;
