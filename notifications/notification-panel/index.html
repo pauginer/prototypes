@@ -52,12 +52,12 @@
 		<div class="icon"></div>
 		<div class="content">
 				<div class="description">
-					<div class="message"><b>{{count}} more messages</b> from other wikis</div>
+					<div class="message">More messages from <b>{{summary}}</b></div>
 					<div class="close"></div>
 				</div>
 				<div class="actions">
 					<div class="action-list">
-						<div class="action expand"><div class="action-icon"></div><div class="action-name">Expand</div></div>
+						<div class="action expand"><div class="action-icon"></div><div class="action-name">View {{count}} messages</div></div>
 						<div class="action collapse"><div class="action-icon"></div><div class="action-name">Collapse</div></div>
 					</div>
 					<div class="timestamp">7 min.</div>
@@ -375,7 +375,8 @@ function updatePanel(){
 		if(!isFromCurrentWiki(v) && isUnread(v)){
 			count = count + 1;
 			
-			var key = v["project"] + v["language"];
+			var key = v["project"];
+			if(!!v["language"]){ key = v["language"] + " " + key;} //prepend language if relevant
 			if(ex.hasOwnProperty(key)){
 				ex[key]["notifications"].push(v);
 			} else {
@@ -387,8 +388,17 @@ function updatePanel(){
 	localCount = totalUnread - count;
 	if(localCount == 0 || count == 1){expanded = autoExpand;}
 	
+	var projectCount = Object.getOwnPropertyNames(ex).length;
+	var summary ="";
+	if(projectCount >= 1){
+		summary = Object.getOwnPropertyNames(ex)[0];
+	}
+	if (projectCount > 1){
+		summary = summary + " and other wikis";
+	}
+		
 	if(count>0){
-	var external = createExternalBundle({count:count,projects:ex, expanded: expanded});
+	var external = createExternalBundle({count:count,projects:ex, expanded: expanded, summary: summary});
 	}
 	
 	
