@@ -291,6 +291,7 @@ body {
 }
 .notification .content .actions .action-list .action .action-name {
   padding-left: 5px;
+  font-weight: bold;
 }
 .notification .content .actions .action-list .more {
   display: flex;
@@ -310,6 +311,9 @@ body {
 .notification .content .actions .action-list .more .more-icon.highlight,
 .notification .content .actions .action-list .more .more-icon:hover {
   background-color: #eee;
+}
+.notification:hover .action-name {
+  color: #555;
 }
 .more-panel {
   position: absolute;
