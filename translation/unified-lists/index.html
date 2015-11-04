@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Translations</title>
+<meta name="description" content="Prototype">
+<meta name="author" content="Pau Giner">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style/style.css">
+<script src="lib/jquery.js"></script>
+<script src="lib/handlebars.js"></script>
+<link rel="stylesheet" href="lib/fixedsticky.css">
+<script src="lib/fixedsticky.js"></script>
+<link rel="icon" type="image/png" href="media/favicon.png">
+<script id="collection-template" type="text/x-handlebars-template">
+<div class="collection collapsed" data-collection="{{name}}">
+	<div class="separator"></div>
+	<div class="header fixedsticky">
+		<div class="header-icon"></div>
+		<div class="name">{{name}}</div>
+		<div class="actions"></div>
+			<div class="close-collection"></div>
+	</div>
+	<div class="content">
+		{{{content}}}
+	</div>
+	<div class="footer"><span class="expand-action">View all</span><span class="collapse-action">Collapse</span></div>
+	<div class="separator"></div>
+</div>
+</script>
+<script id="suggestion-template" type="text/x-handlebars-template">
+<div class="suggestion {{id}}">
+	<div class="image"></div>
+	<div class="info">
+		<div class="title">{{title}}</div>
+		<div class="desc">{{desc}}</div>	
+	</div>
+	<div class="actions">
+		<div class="star"></div>
+		<div class="close"></div>
+	</div>
+</div>
+</script>
+<script>
+var collectionTemplate = Handlebars.compile($("#collection-template").html());
+var suggestionTemplate = Handlebars.compile($("#suggestion-template").html());
+var suggestionsData = [
+	{id: "lion", title: "Lion", desc: "species of big cat", collection: ""},
+	{id: "vangogh", title: "Vincent van Gogh", desc: "Dutch painter", collection: ""},
+	{id: "einstein", title: "Albert Einstein", desc: "German-American physicist", collection: "Famous Scientists"},
+	{id: "tesla", title: "Nikola Tesla", desc: "Inventor and futurist", collection: "Famous Scientists"},
+	{id: "heisenberg", title: "Werner Heisenberg", desc: " German theoretical physicist", collection: "Famous Scientists"},
+	{id: "curie", title: "Marie Curie", desc: "French-Polish physicist and chemist", collection: "Famous Scientists"},
+	{id: "plank", title: "Max Planck", desc: "German physicist", collection: "Famous Scientists"},
+	{id: "edison", title: "Thomas Edison", desc: "American inventor and businessman", collection: "Famous Scientists"},
+		{id: "badminton", title: "Badminton", desc: "Racket sport", collection: ""},
+		{id: "countries", title: "List of imaginary countries", desc: "Countries from literature and cinema", collection: ""},
+		{id: "padthai", title: "Pad Thai", desc: "Thai noodle dish", collection: ""},
+	{id: "curiosity", title: "Curiosity (Rover)", desc: "Vehicle on Mars", collection: "Wiki Loves Science"},
+		{id: "pillars", title: "Pillars of Creation", desc: "Astrophotography", collection: "Wiki Loves Science"},
+		{id: "gravity", title: "Gravity", desc: "Force of phisics", collection: "Wiki Loves Science"},
+		{id: "lightning", title: "Lightning", desc: "Electrical phenomenon", collection: "Wiki Loves Science"},
+		{id: "plants", title: "Plants in Space", desc: "Vegetable growth in zero gravity", collection: "Wiki Loves Science"},
+	{id: "trex", title: "Tyrannosaurus", desc: "Dinosaur species", collection: ""},
+	{id: "pyramid", title: "Pyramid of the Moon", desc: "Ancient pyramid in Mexico", collection: ""},
+	{id: "tajmahal", title: "Taj Mahal", desc: "Building in India", collection: ""},
+	
+
+];
+
+function loadSuggestions(){
+	var cols = [];
+	$.each(suggestionsData, function(i,s){
+		var elt = suggestionTemplate(s);
+		var col = s.collection;
+		var dest = $(".suggestions");
+		if(col == ""){ //individual suggestions
+			$(elt).appendTo(dest)
+		}else if (cols.indexOf(col) >= 0) { //existing collection
+			dest = $(".collection[data-collection='" + col + "'] .content");
+			$(elt).appendTo(dest);
+		} else { //new collection
+			cols.push(col);
+			var colElt = collectionTemplate({name: col, content: elt})
+			var c = $(colElt).appendTo(dest);
+			c.find(".header, .footer").click(function(){
+				c.toggleClass("collapsed");	
+				if(c.hasClass("collapsed")){
+					c.find(".header").fixedsticky( 'destroy' );
+				}else {
+					c.find(".header").fixedsticky();
+				}
+				return false;
+			});
+		}
+	});
+}
+	
+function refreshSuggestions(){
+var pageLength = 5;
+var total = $(".suggestions > *").length;
+var pages = Math.ceil(total/pageLength);
+var currentPage = parseInt($(".suggestions").attr("data-page"));
+var page = (currentPage + 1) % pages;
+$(".suggestions").attr("data-page", page);
+	var suggestionsTop = $(".suggestions").offset().top;
+	if(window.scrollY > suggestionsTop){
+		$('html, body').animate({ scrollTop: suggestionsTop - 10 }, 100);
+	}
+   	
+}
+
+$(function(){
+	loadSuggestions();
+	$(".refresh").click(refreshSuggestions);
+	
+	$(".suggestion .close").click(function(e){
+		var elt = $(this).parents(".suggestion");
+		//TODO: If collection is empty. Delete collection
+		//TODO: if page becomes empty, refresh
+		elt.remove();
+	});
+	
+	$(".collection .header .close-collection").click(function(e){
+		var elt = $(this).parents(".collection");
+		elt.remove();
+	});
+});
+
+</script>
+</head>
+<body>
+<section class="main-header">W</section>
+
+<h1>Suggestions</h1>
+<section class="suggestions" data-page="0"></section>
+<section class="refresh">Refresh suggestions</section>
+</body>
