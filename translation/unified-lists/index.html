@@ -13,17 +13,16 @@
 <script src="lib/fixedsticky.js"></script>
 <link rel="icon" type="image/png" href="media/favicon.png">
 <script id="collection-template" type="text/x-handlebars-template">
-<div class="collection collapsed" data-collection="{{name}}">
+<div class="collection small collapsed" data-collection="{{name}}">
 	<div class="separator"></div>
 	<div class="header fixedsticky">
 		<div class="header-icon"></div>
 		<div class="name">{{name}}</div>
 		<div class="actions"></div>
+			<div class="add-collection"></div>
 			<div class="close-collection"></div>
 	</div>
-	<div class="content">
-		{{{content}}}
-	</div>
+	<div class="content">{{{content}}}</div>
 	<div class="footer"><span class="expand-action">View all</span><span class="collapse-action">Collapse</span></div>
 	<div class="separator"></div>
 </div>
@@ -79,12 +78,17 @@ function loadSuggestions(){
 		}else if (cols.indexOf(col) >= 0) { //existing collection
 			dest = $(".collection[data-collection='" + col + "'] .content");
 			$(elt).appendTo(dest);
+			if(dest.find(".suggestion").length >2){	
+				dest.parents(".collection").removeClass("small");
+			}
 		} else { //new collection
 			cols.push(col);
 			var colElt = collectionTemplate({name: col, content: elt})
 			var c = $(colElt).appendTo(dest);
 			c.find(".header, .footer").click(function(){
-				c.toggleClass("collapsed");	
+				if(!c.hasClass("small")){
+					c.toggleClass("collapsed");	
+				}
 				if(c.hasClass("collapsed")){
 					c.find(".header").fixedsticky( 'destroy' );
 				}else {
@@ -109,30 +113,115 @@ $(".suggestions").attr("data-page", page);
 	}
    	
 }
+	
+function personalNext(){
+	var currentPage = parseInt($(".personal").attr("data-page"));
+	if(currentPage == 0) {
+		$(".personal").attr("data-page","1");
+	}
+	
+	return false;
+}
+	
+	
+function personalPrev(){
+	var currentPage = parseInt($(".personal").attr("data-page"));
+	if(currentPage == 1) {
+		$(".personal").attr("data-page","0");
+	}
+	
+	return false;
+}
+	
+function favSuggestion(){
+	var s= $(this).parents(".suggestion");
+	var favs = $(".personal .favs");
+	if(!favs.length){
+		var colElt = collectionTemplate({name: "For later", content: ""});
+		var c = $(colElt).prependTo($(".personal"));
+		c.addClass("favs");
+		c.find(".header, .footer").click(function(){
+			if(!c.hasClass("small")){
+				c.toggleClass("collapsed");	
+			}
+			if(c.hasClass("collapsed")){
+				c.find(".header").fixedsticky( 'destroy' );
+			}else {
+				c.find(".header").fixedsticky();
+			}			
+				return false;
+			});
+	} else if (favs.find(".suggestion").length >=2){
+		favs.removeClass("small");
+	}
+	s.prependTo($(".favs .content"));
+	return false;
+}
 
+function joinCampaign(){
+	var col = $(this).parents(".collection");
+	$(".personal").prepend(col);
+	$(".personal").prepend($(".favs"));
+	return false;
+}
+
+function removeCollection(){
+	var col = $(this).parents(".collection");
+	if(!!col.parents(".personal").length){
+		$(".suggestions").prepend(col);
+	}else{
+		col.remove();
+	}
+	return false;
+}
+	
 $(function(){
 	loadSuggestions();
 	$(".refresh").click(refreshSuggestions);
 	
 	$(".suggestion .close").click(function(e){
 		var elt = $(this).parents(".suggestion");
+		var c = elt.parents(".collection");
+		if(!!c){
+			var numSuggestions = c.find(".suggestion").length -1;
+			if (numSuggestions ==0){
+				c.remove();
+			} else if (numSuggestions <= 2){
+				c.addClass("small collapsed");
+			}
+		}
 		//TODO: If collection is empty. Delete collection
 		//TODO: if page becomes empty, refresh
 		elt.remove();
 	});
 	
-	$(".collection .header .close-collection").click(function(e){
-		var elt = $(this).parents(".collection");
-		elt.remove();
-	});
+	$(".collection .header .close-collection").click(removeCollection);
+	
+	$(".suggestion .star").click(favSuggestion);
+	$(".collection .add-collection").click(joinCampaign);
+	$(".personal .pagination .next").click(personalNext);
+	$(".personal .pagination .prev").click(personalPrev);
+	
+	
 });
+
 
 </script>
 </head>
 <body>
 <section class="main-header">W</section>
 
-<h1>Suggestions</h1>
+<h1>Collections</h1>
+<section class="personal" data-page="0">
+<div class="pagination">
+	<div class="page-label">3 collections</div>
+	<div class="actions">
+		<div class="prev"></div>
+		<div class="next"></div>
+	</div>
+</div>
+</section>
+<h1>More suggestions</h1>
 <section class="suggestions" data-page="0"></section>
 <section class="refresh">Refresh suggestions</section>
 </body>

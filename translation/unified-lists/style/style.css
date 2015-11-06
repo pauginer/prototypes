@@ -8,6 +8,12 @@ body {
   line-height: 1.5em;
   padding-bottom: 50px;
 }
+.pop-on-hover {
+  opacity: 0.8;
+}
+.pop-on-hover:hover {
+  opacity: 1;
+}
 h1 {
   margin: 25px;
   font-size: 25px;
@@ -15,7 +21,8 @@ h1 {
 .main-header {
   background: white;
 }
-.suggestions {
+.suggestions,
+.personal {
   display: flex;
   flex-direction: column;
   background: white;
@@ -44,13 +51,32 @@ h1 {
   align-items: center;
 }
 .suggestion .actions .close {
+  opacity: 0.8;
   background: transparent url("../media/x.png") center center no-repeat;
   background-image: -webkit-linear-gradient(transparent, transparent), url("../media/x.svg");
   background-image: linear-gradient(transparent, transparent), url("../media/x.svg");
   background-size: auto;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
+  margin: 5px;
   cursor: pointer;
+}
+.suggestion .actions .close:hover {
+  opacity: 1;
+}
+.suggestion .actions .star {
+  opacity: 0.8;
+  background: transparent url("../media/star.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/star.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/star.svg");
+  background-size: auto;
+  width: 25px;
+  height: 25px;
+  margin: 5px;
+  cursor: pointer;
+}
+.suggestion .actions .star:hover {
+  opacity: 1;
 }
 .suggestion:hover {
   background: #eff3fb;
@@ -76,6 +102,7 @@ h1 {
   top: 0;
   left: 26px;
   right: 26px;
+  z-index: 100;
 }
 .collection .header .header-icon {
   background: transparent url("../media/folder-up.png") center center no-repeat;
@@ -91,13 +118,31 @@ h1 {
   margin-left: auto;
 }
 .collection .header .close-collection {
+  opacity: 0.8;
   background: transparent url("../media/x.png") center center no-repeat;
   background-image: -webkit-linear-gradient(transparent, transparent), url("../media/x.svg");
   background-image: linear-gradient(transparent, transparent), url("../media/x.svg");
   background-size: auto;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   cursor: pointer;
+}
+.collection .header .close-collection:hover {
+  opacity: 1;
+}
+.collection .header .add-collection {
+  opacity: 0.8;
+  background: transparent url("../media/folder-add.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/folder-add.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/folder-add.svg");
+  background-size: auto;
+  width: 22px;
+  height: 22px;
+  margin: 0 20px;
+  cursor: pointer;
+}
+.collection .header .add-collection:hover {
+  opacity: 1;
 }
 .collection .separator {
   border-top: 1px solid #DDD;
@@ -116,6 +161,12 @@ h1 {
   display: flex;
 }
 .collection .footer .expand-action {
+  display: none;
+}
+.personal .collection .separator:first-of-type,
+.personal .collection:last-of-type .separator:last-of-type,
+.suggestions .collection:first-child .separator:first-of-type,
+.suggestions .collection + .collection .separator:first-of-type {
   display: none;
 }
 .collection.collapsed .header {
@@ -149,6 +200,93 @@ h1 {
   norder-top: none;
   padding: 10px;
   cursor: pointer;
+}
+.personal .collection .add-collection,
+.personal .favs .close-collection {
+  display: none;
+}
+.collection.favs .header-icon {
+  background: transparent url("../media/star.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/star.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/star.svg");
+  background-size: auto;
+}
+.collection.favs .suggestion .star {
+  display: none;
+}
+.collection.collapsed.favs .header-icon {
+  background: transparent url("../media/star.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/star.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/star.svg");
+  background-size: auto;
+}
+.collection.small .footer {
+  display: none;
+}
+.collection.small .header {
+  cursor: default;
+}
+.personal .pagination {
+  justify-content: center;
+}
+.personal .pagination .page-label {
+  display: flex;
+  padding: 10px;
+}
+.personal .pagination .actions {
+  display: flex;
+  margin-left: auto;
+  padding: 5px;
+  align-items: center;
+}
+.personal .pagination {
+  display: none;
+}
+.personal .collection:nth-of-type(n+3) + .pagination {
+  display: flex;
+}
+.personal .pagination .prev {
+  opacity: 0.8;
+  background: transparent url("../media/prev.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/prev.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/prev.svg");
+  background-size: auto;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+.personal .pagination .prev:hover {
+  opacity: 1;
+}
+.personal .pagination .next {
+  opacity: 0.8;
+  background: transparent url("../media/next.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/next.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/next.svg");
+  background-size: auto;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+.personal .pagination .next:hover {
+  opacity: 1;
+}
+.personal[data-page="0"] .pagination .prev {
+  opacity: 0.3;
+  cursor: default;
+}
+.personal[data-page="1"] .pagination .next {
+  opacity: 0.3;
+}
+.personal[data-page="0"] > .collection:nth-of-type(n+3) {
+  display: none;
+}
+.personal[data-page="1"] > .collection,
+.personal[data-page="1"] > .collection:nth-of-type(n+5) {
+  display: none;
+}
+.personal[data-page="1"] > .collection:nth-of-type(n+3) {
+  display: flex;
 }
 .suggestions[data-page="0"] > *:nth-child(1n+6) {
   display: none;
