@@ -21,13 +21,74 @@ h1 {
 .main-header {
   background: white;
 }
+.start-translation {
+  display: flex;
+  flex-direction: row;
+  background: white;
+  border: 1px solid #DDD;
+  margin: 0 25px;
+  border-bottom: none;
+}
+.start-translation .start-placeholder {
+  display: flex;
+  color: #777;
+  cursor: pointer;
+  padding: 10px;
+  flex: 1;
+}
+.start-translation .start-placeholder .start-translation-icon {
+  display: flex;
+  background: transparent url("../media/plus.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/plus.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/plus.svg");
+  background-size: auto;
+  opacity: 0.7;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+.start-translation .start-placeholder .start-translation-label {
+  display: flex;
+  flex: 1;
+}
+.start-translation .start-placeholder:hover {
+  color: #555;
+}
+.start-translation .start-placeholder:hover .start-translation-icon {
+  opacity: 0.8;
+}
+.start-translation .start-by-search {
+  display: none;
+  flex: 1;
+}
+.start-translation .start-by-search .searchbox {
+  background: transparent url("../media/search.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/search.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/search.svg");
+  background-size: auto;
+  background-position: left;
+  background-position: 5px center;
+  background-size: 28px;
+  display: flex;
+  padding: 11px;
+  padding-left: 35px;
+  flex: 1;
+  margin: 0;
+  font-size: 16px;
+}
+.start-translation.searching .start-placeholder {
+  display: none;
+}
+.start-translation.searching .start-by-search {
+  display: flex;
+}
 .suggestions,
 .personal {
   display: flex;
   flex-direction: column;
   background: white;
   border: 1px solid #DDD;
-  margin: 25px;
+  margin: 0 25px;
   margin-bottom: 0;
 }
 .suggestion {
@@ -91,17 +152,16 @@ h1 {
 }
 .collection .header {
   display: flex;
+  align-items: center;
   background: white;
   position: sticky;
-  padding: 5px 10px;
   border-bottom: 1px solid #DDD;
   cursor: pointer;
   font-weight: bold;
   font-size: 18px;
   color: #555;
   top: 0;
-  left: 26px;
-  right: 26px;
+  width: 100%;
   z-index: 100;
 }
 .collection .header .header-icon {
@@ -111,7 +171,7 @@ h1 {
   background-size: auto;
   width: 20px;
   height: 20px;
-  margin-right: 5px;
+  margin: 5px 10px;
 }
 .collection .header .actions {
   display: flex;
@@ -126,6 +186,7 @@ h1 {
   width: 22px;
   height: 22px;
   cursor: pointer;
+  margin-right: 10px;
 }
 .collection .header .close-collection:hover {
   opacity: 1;

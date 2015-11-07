@@ -28,12 +28,81 @@ font-size: 25px;
 	
 }
 
+
+.start-translation {
+	display: flex;
+	flex-direction: row;
+	background: white;
+	border: 1px solid #DDD;
+	margin: 0 25px;
+	border-bottom:none;
+	
+	.start-placeholder{
+		display: flex;
+		color:#777;
+		cursor: pointer;
+		padding:10px;
+		flex:1;
+		.start-translation-icon{
+			display: flex;
+			.vector-image("../media/plus.svg", "../media/plus.png");
+			opacity: 0.7;
+			width:20px;
+			height: 20px;
+			margin-right: 5px;
+			
+		}
+		
+		.start-translation-label{
+			display: flex;
+			flex:1;
+		}
+		
+		&:hover{
+			color: #555;
+			.start-translation-icon{
+				opacity:0.8;
+			}
+		}
+		
+	}
+	
+	.start-by-search{
+		display: none;
+		
+		flex:1;
+		.searchbox {
+			.vector-image("../media/search.svg", "../media/search.png");
+			background-position: left;
+			background-position: 5px center;
+			background-size: 28px;
+			display: flex;
+			padding: 11px;
+			padding-left: 35px;
+			flex:1;
+			margin: 0;
+			font-size: 16px;
+			
+		}
+	}
+	
+}
+
+.start-translation.searching {
+	.start-placeholder {
+		display: none;
+	}
+	.start-by-search{
+		display: flex;
+	}
+}
+
 .suggestions, .personal {
 	display: flex;
 	flex-direction: column;
 	background: white;
 	border: 1px solid #DDD;
-	margin: 25px;
+	margin: 0 25px;
 	margin-bottom:0;
 }
 
@@ -90,24 +159,24 @@ border-top: 1px solid #DDD;
 	
 	.header{
 		display: flex;
+		align-items: center;
 		background: white;
 		position: sticky;
-		padding: 5px 10px;
+		//padding: 5px 10px;
 		border-bottom: 1px solid #DDD;
 		cursor: pointer;
 		font-weight: bold;
 		font-size: 18px;
 		color: #555;
 		top: 0;
-		left: 25+1px;
-		right: 25+1px;
+		width: 100%;
 		z-index: 100;
 		
 		.header-icon {
 			.vector-image("../media/folder-up.svg", "../media/folder-up.png");
 			width: 20px;
 			height: 20px;
-			margin-right: 5px;
+			margin: 5px 10px;
 			
 		}
 		
@@ -121,6 +190,7 @@ border-top: 1px solid #DDD;
 			width: 22px;
 			height: 22px;
 			cursor: pointer;
+			margin-right: 10px;
 			
 		}
 		.add-collection {
@@ -224,6 +294,7 @@ display: none;
 .collection.small .header {
 	cursor: default;
 }
+
 
 .personal .pagination {
 	justify-content: center;

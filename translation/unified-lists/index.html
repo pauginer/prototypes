@@ -202,6 +202,13 @@ $(function(){
 	$(".personal .pagination .next").click(personalNext);
 	$(".personal .pagination .prev").click(personalPrev);
 	
+	//Search
+	$(".start-placeholder").click(function(){
+		$(".start-translation").addClass("searching");
+		$(".start-by-search .searchbox").focus();
+		return false;
+	});
+	$("body").click(function(){ $(".start-translation").removeClass("searching"); });
 	
 });
 
@@ -222,6 +229,17 @@ $(function(){
 </div>
 </section>
 <h1>More suggestions</h1>
+<section class="start-translation">
+	<div class="start-placeholder">
+		<div class="start-translation-icon"></div>
+		<div class="start-translation-label">Start a new translation or join a campaign</div>
+	</div>
+	<div class="start-by-search">
+		<input class="searchbox" placeholder="Start a new translation or join a campaign"></input>
+	</div>
+	
+</section>
+<section class="categories"></section>
 <section class="suggestions" data-page="0"></section>
 <section class="refresh">Refresh suggestions</section>
 </body>
