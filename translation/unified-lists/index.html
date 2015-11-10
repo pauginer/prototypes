@@ -195,6 +195,11 @@ function updateHeaders(){
 	}
 	
 }
+
+function adjustHeaderWidth(){
+	var w = $(".suggestions").innerWidth();
+	$(".collection .header").width(w);
+}
 	
 $(function(){
 	loadSuggestions();
@@ -214,6 +219,7 @@ $(function(){
 		//TODO: If collection is empty. Delete collection
 		//TODO: if page becomes empty, refresh
 		elt.remove();
+		updateHeaders();
 	});
 	
 	$(".collection .header .close-collection").click(removeCollection);
@@ -232,6 +238,9 @@ $(function(){
 		return false;
 	});
 	$("body").click(function(){ $(".start-translation").removeClass("searching"); });
+	$(window).scroll(adjustHeaderWidth);
+	$(window).resize(adjustHeaderWidth);
+	
 	updateHeaders();
 });
 
@@ -239,49 +248,61 @@ $(function(){
 </script>
 </head>
 <body>
-<section class="main-header">W</section>
-
-<h1 class="personal-header">Collections</h1>
-<div class="personal-search">Filter collections</div>
-<section class="personal" data-page="0">
-
-<div class="pagination">
-	<div class="page-label">3 collections</div>
-	<div class="actions">
-		<div class="prev"></div>
-		<div class="next"></div>
-	</div>
-</div>
+<section class="main-header">
+<div class="logo"></div><div class="title">Translations</div>	
 </section>
-<h1 class="suggestions-header">More suggestions</h1>
-<section class="start-translation">
-	<div class="start-placeholder">
-		<div class="start-translation-icon"></div>
-		<div class="start-translation-label">Start a new translation or join a campaign</div>
-	</div>
-	<div class="start-by-search">
-		<input class="searchbox" placeholder="Search an article or existing campaigns"></input>
-	<div class="search-results">
-		<div class="search-recent-label">Recently edited</div>
-		<div class="search-recent">
-			<div class="recent suit">Space suit</div>
-			<div class="recent dali">Salvador Dalí</div>
+
+<section class="page">
+<section class="main-content">
+	<section class="nav-bar">
+		<div class="view-selector"></div>
+		<div class="lang-selector"></div>
+	</section>
+	
+	<h1 class="personal-header">Collections</h1>
+	<div class="personal-search">Filter collections</div>
+	<section class="personal" data-page="0">
+
+	<div class="pagination">
+		<div class="page-label">3 collections</div>
+		<div class="actions">
+			<div class="prev"></div>
+			<div class="next"></div>
 		</div>
-		<div class="search-campaigns-label">Active campaigns</div>
-		<div class="search-campaigns"></div>
 	</div>
-	</div>
-	<div class="new-campaign"></div>
+	</section>
+	<h1 class="suggestions-header">More suggestions</h1>
+	<section class="start-translation">
+		<div class="start-placeholder">
+			<div class="start-translation-icon"></div>
+			<div class="start-translation-label">Start a new translation or join a campaign</div>
+		</div>
+		<div class="start-by-search">
+			<input class="searchbox" placeholder="Search an article or existing campaigns"></input>
+		<div class="search-results">
+			<div class="search-recent-label">Recently edited</div>
+			<div class="search-recent">
+				<div class="recent suit">Space suit</div>
+				<div class="recent dali">Salvador Dalí</div>
+			</div>
+			<div class="search-campaigns-label">Active campaigns</div>
+			<div class="search-campaigns"></div>
+		</div>
+		</div>
+		<div class="new-campaign"></div>
+	</section>
+	<section class="categories">
+		<div class="category active">Automatic</div>
+		<div class="category">People</div>
+		<div class="category">History</div>
+		<div class="category">Geography</div>
+		<div class="category">Science</div>
+		<div class="category">Arts</div>
+		<div class="category">&hellip;</div>
+	</section>
+	<section class="suggestions" data-page="0"></section>
+	<section class="refresh">Refresh suggestions</section>
 </section>
-<section class="categories">
-	<div class="category active">Automatic</div>
-	<div class="category">People</div>
-	<div class="category">History</div>
-	<div class="category">Geography</div>
-	<div class="category">Science</div>
-	<div class="category">Arts</div>
-	<div class="category">&hellip;</div>
+<section class="sidebar"></section>
 </section>
-<section class="suggestions" data-page="0"></section>
-<section class="refresh">Refresh suggestions</section>
 </body>
