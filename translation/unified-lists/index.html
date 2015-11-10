@@ -53,18 +53,24 @@ var suggestionsData = [
 	{id: "curie", title: "Marie Curie", desc: "French-Polish physicist and chemist", collection: "Famous Scientists"},
 	{id: "plank", title: "Max Planck", desc: "German physicist", collection: "Famous Scientists"},
 	{id: "edison", title: "Thomas Edison", desc: "American inventor and businessman", collection: "Famous Scientists"},
-		{id: "badminton", title: "Badminton", desc: "Racket sport", collection: ""},
-		{id: "countries", title: "List of imaginary countries", desc: "Countries from literature and cinema", collection: ""},
-		{id: "padthai", title: "Pad Thai", desc: "Thai noodle dish", collection: ""},
-	{id: "curiosity", title: "Curiosity (Rover)", desc: "Vehicle on Mars", collection: "Wiki Loves Space"},
-		{id: "pillars", title: "Pillars of Creation", desc: "Astrophotography", collection: "Wiki Loves Space"},
-		{id: "gravity", title: "Gravity", desc: "Force of phisics", collection: "Wiki Loves Space"},
-		{id: "lightning", title: "Lightning", desc: "Electrical phenomenon", collection: "Wiki Loves Space"},
-		{id: "plants", title: "Plants in Space", desc: "Vegetable growth in zero gravity", collection: "Wiki Loves Space"},
+	{id: "badminton", title: "Badminton", desc: "Racket sport", collection: ""},
+	{id: "countries", title: "List of imaginary countries", desc: "Countries from literature and cinema", collection: ""},
+	{id: "padthai", title: "Pad Thai", desc: "Thai noodle dish", collection: ""},
+	{id: "monkey", title: "Monkey", desc: "animal of the \"higher primates\"", collection: "Wiki Loves Nature"},
+	{id: "plivitce", title: "Plivitce lakes", desc: "Natural park in Croatia", collection: "Wiki Loves Nature"},
+	{id: "jaguar", title: "Jaguar", desc: "Dangerous cat", collection: "Wiki Loves Nature"},
+	{id: "moai", title: "Easter Island", desc: "Island in the Pacific", collection: "Wiki Loves Nature"},
+	{id: "falls", title: "Hopetoun falls", desc: "Big falls in Australia", collection: "Wiki Loves Nature"},
+	{id: "jelly", title: "Jellyfish", desc: "Free-swimming marine animals", collection: "Wiki Loves Nature"},
 	{id: "trex", title: "Tyrannosaurus", desc: "Dinosaur species", collection: ""},
 	{id: "pyramid", title: "Pyramid of the Moon", desc: "Ancient pyramid in Mexico", collection: ""},
 	{id: "tajmahal", title: "Taj Mahal", desc: "Building in India", collection: ""},
 	{id: "heli", title: "Helicopter prison escapes", desc: "List article", collection: ""},
+	{id: "curiosity", title: "Curiosity (Rover)", desc: "Vehicle on Mars", collection: "Wiki Loves Space"},
+	{id: "pillars", title: "Pillars of Creation", desc: "Astrophotography", collection: "Wiki Loves Space"},
+	{id: "gravity", title: "Gravity", desc: "Force of phisics", collection: "Wiki Loves Space"},
+	{id: "lightning", title: "Lightning", desc: "Electrical phenomenon", collection: "Wiki Loves Space"},
+	{id: "plants", title: "Plants in Space", desc: "Vegetable growth in zero gravity", collection: "Wiki Loves Space"},
 	{id: "hali", title: "Halifax Central Library", desc: "Public library in Halifax, Nova Scotia", collection: ""},
 	{id: "holi", title: "Holi", desc: "A spring festival, also known as the festival of colors", collection: ""}
 ];
@@ -241,6 +247,17 @@ $(function(){
 	$(window).scroll(adjustHeaderWidth);
 	$(window).resize(adjustHeaderWidth);
 	
+	$(".collection[data-collection='Wiki Loves Nature'] .stats").click(function(){
+		$(".main.page").removeClass("active");
+		$(".campaign-details.page").addClass("active");
+		return false;
+	});
+	$(".campaign-back").click(function(){
+		$(".main.page").addClass("active");
+		$(".campaign-details.page").removeClass("active");
+		return false;
+	});
+
 	updateHeaders();
 });
 
@@ -252,7 +269,7 @@ $(function(){
 <div class="logo"></div><div class="title">Translations</div>	
 </section>
 
-<section class="page">
+<section class="page main active">
 <section class="main-content">
 	<section class="nav-bar">
 		<div class="view-selector"></div>
@@ -260,7 +277,7 @@ $(function(){
 	</section>
 	
 	<h1 class="personal-header">Collections</h1>
-	<div class="personal-search">Filter collections</div>
+	<div class="personal-search">Filter your collections</div>
 	<section class="personal" data-page="0">
 
 	<div class="pagination">
@@ -304,5 +321,12 @@ $(function(){
 	<section class="refresh">Refresh suggestions</section>
 </section>
 <section class="sidebar"></section>
+</section>
+<section class="page campaign-details">
+	<section class="campaign-back"></section>
+	<section class="campaign-description"></section>
+	<section class="campaign-quick-info"></section>
+	<section class="campaign-filters"></section>
+	<section class="campaign-stats"></section>
 </section>
 </body>

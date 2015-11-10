@@ -40,10 +40,12 @@ h1.empty {
   padding: 2px 0;
   padding-left: 35px;
 }
+.main.page {
+  margin-top: 25px;
+}
 .main-header {
   display: flex;
   background: white;
-  margin-bottom: 25px;
   border-bottom: 1px solid #DDD;
   align-items: center;
 }
@@ -65,8 +67,59 @@ h1.empty {
   font-size: 18px;
 }
 .page {
-  display: flex;
+  display: none;
   flex-direction: row;
+}
+.page.active {
+  display: flex;
+}
+.page.campaign-details {
+  flex-direction: column;
+  align-items: center;
+  min-width: 1024px;
+}
+.page.campaign-details .campaign-back {
+  display: flex;
+  flex: 1;
+  background: white url(../media/campaign-tracking-back.png) center center no-repeat;
+  min-width: 1024px;
+  width: 100%;
+  height: 47px;
+  cursor: pointer;
+}
+.page.campaign-details .campaign-description {
+  display: flex;
+  flex: 1;
+  background: white url(../media/campaign-tracking-details.png) center center no-repeat;
+  min-width: 1024px;
+  width: 100%;
+  height: 105px;
+}
+.page.campaign-details .campaign-quick-info {
+  display: flex;
+  flex: 1;
+  background: white url(../media/campaign-tracking-quick-info.png) center center no-repeat;
+  min-width: 1024px;
+  width: 100%;
+  height: 60px;
+  border-top: 1px solid #DDD;
+}
+.page.campaign-details .campaign-filters {
+  display: flex;
+  flex: 1;
+  background: #eeeeee url(../media/campaign-tracking-filters.png) center center no-repeat;
+  min-width: 1024px;
+  width: 100%;
+  height: 69px;
+  border-bottom: 3px solid #DDD;
+}
+.page.campaign-details .campaign-stats {
+  display: flex;
+  flex: 1;
+  background: url(../media/campaign-tracking-stats.png) center center no-repeat;
+  min-width: 940px;
+  height: 1717px;
+  margin-top: 25px;
 }
 .main-content {
   display: flex;
@@ -242,6 +295,9 @@ h1.empty {
 .search-campaigns .name[title="Famous Scientists"] {
   background-image: url(../media/science-collection.png);
 }
+.search-campaigns .name[title="Wiki Loves Nature"] {
+  background-image: url(../media/nature-collection.png);
+}
 .search-campaigns .name[title="Wiki Loves Space"] {
   background-image: url(../media/space-collection.png);
 }
@@ -377,7 +433,7 @@ h1.empty {
   background-size: auto;
   width: 22px;
   height: 22px;
-  margin: 0 20px;
+  margin: 0 20px 0 5px;
   cursor: pointer;
 }
 .collection .header .add-collection:hover {
@@ -402,7 +458,6 @@ h1.empty {
 .collection .footer .expand-action {
   display: none;
 }
-.suggestions .stats,
 .favs .stats {
   display: none;
 }
@@ -630,7 +685,7 @@ h1.empty {
   background-image: url(../media/everest.jpg);
 }
 .suggestion.jaguar .image {
-  background-image: url(../media/everest.jpg);
+  background-image: url(../media/jaguar.jpg);
 }
 .suggestion.jelly .image {
   background-image: url(../media/jelly.jpg);
