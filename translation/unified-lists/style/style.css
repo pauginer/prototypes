@@ -15,11 +15,56 @@ body {
   opacity: 1;
 }
 h1 {
-  margin: 25px;
-  font-size: 25px;
+  margin: 50px 25px 20px 25px;
+  font-size: 21px;
+  color: #444;
+}
+h1.empty {
+  display: none;
+}
+.personal-header {
+  background: transparent url("../media/folder.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/folder.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/folder.svg");
+  background-size: auto;
+  background-position: left center;
+  padding-left: 35px;
+}
+.suggestions-header {
+  background: transparent url("../media/lightbulb-grey.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/lightbulb-grey.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/lightbulb-grey.svg");
+  background-size: auto;
+  background-position: left center;
+  padding: 2px 0;
+  padding-left: 35px;
 }
 .main-header {
   background: white;
+}
+.personal-search {
+  background: transparent url("../media/search.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/search.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/search.svg");
+  background-size: auto;
+  background-position: left;
+  background-position: 5px center;
+  background-color: white;
+  background-size: 28px;
+  display: flex;
+  padding: 11px;
+  padding-left: 35px;
+  flex: 1;
+  margin: 0;
+  font-size: 16px;
+  border: 1px solid #DDD;
+  border-bottom: none;
+  margin: 0 25px;
+  color: #777;
+}
+.personal-header.empty + .personal-search,
+.personal-header.empty + .personal-search + .personal {
+  display: none;
 }
 .start-translation {
   display: flex;
@@ -59,6 +104,8 @@ h1 {
 }
 .start-translation .start-by-search {
   display: none;
+  position: relative;
+  flex-direction: column;
   flex: 1;
 }
 .start-translation .start-by-search .searchbox {
@@ -76,11 +123,70 @@ h1 {
   margin: 0;
   font-size: 16px;
 }
+.start-translation .start-by-search .search-recent-label,
+.start-translation .start-by-search .search-campaigns-label {
+  color: #777;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 5px 0;
+}
+.start-translation .start-by-search .search-results {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  flex: 1;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  border: 1px solid #CCC;
+  border-bottom: 2px solid #CCC;
+  padding: 10px;
+}
+.start-translation .start-by-search .search-campaigns {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  cursor: pointer;
+}
 .start-translation.searching .start-placeholder {
   display: none;
 }
 .start-translation.searching .start-by-search {
   display: flex;
+}
+.search-recent {
+  padding-bottom: 10px;
+}
+.search-recent .recent {
+  display: flex;
+  padding-left: 60px;
+  background-position: left center;
+  background-size: 50px;
+  background-repeat: no-repeat;
+  min-height: 60px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.search-recent .recent.suit {
+  background-image: url(../media/suit.jpg);
+}
+.search-recent .recent.dali {
+  background-image: url(../media/dali.jpg);
+}
+.search-campaigns .name {
+  display: flex;
+  padding-left: 60px;
+  background-position: 5px center;
+  background-size: 50px;
+  background-repeat: no-repeat;
+  min-height: 60px;
+}
+.search-campaigns .name[title="Famous Scientists"] {
+  background-image: url(../media/science-collection.png);
+}
+.search-campaigns .name[title="Wiki Loves Space"] {
+  background-image: url(../media/space-collection.png);
 }
 .suggestions,
 .personal {
@@ -101,7 +207,7 @@ h1 {
 }
 .suggestion .title {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 19px;
 }
 .suggestion .desc {
   color: #555;
@@ -161,7 +267,8 @@ h1 {
   font-size: 18px;
   color: #555;
   top: 0;
-  width: 100%;
+  left: 26px;
+  right: 26px;
   z-index: 100;
 }
 .collection .header .header-icon {
@@ -176,6 +283,20 @@ h1 {
 .collection .header .actions {
   display: flex;
   margin-left: auto;
+}
+.collection .header .stats {
+  opacity: 0.8;
+  background: transparent url("../media/stats.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/stats.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/stats.svg");
+  background-size: auto;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+.collection .header .stats:hover {
+  opacity: 1;
 }
 .collection .header .close-collection {
   opacity: 0.8;
@@ -224,8 +345,11 @@ h1 {
 .collection .footer .expand-action {
   display: none;
 }
-.personal .collection .separator:first-of-type,
-.personal .collection:last-of-type .separator:last-of-type,
+.suggestions .stats,
+.favs .stats {
+  display: none;
+}
+.personal .collection:nth-of-type(n+2) .separator:first-of-type,
 .suggestions .collection:first-child .separator:first-of-type,
 .suggestions .collection + .collection .separator:first-of-type {
   display: none;
@@ -261,6 +385,11 @@ h1 {
   norder-top: none;
   padding: 10px;
   cursor: pointer;
+  font-weight: bold;
+  color: #4A90E2;
+}
+.refresh:hover {
+  background-color: #FBFBFB;
 }
 .personal .collection .add-collection,
 .personal .favs .close-collection {
@@ -339,6 +468,49 @@ h1 {
 .personal[data-page="1"] .pagination .next {
   opacity: 0.3;
 }
+.categories {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 25px;
+  border: 1px solid #DDD;
+  border-bottom: none;
+  background: #F8F8F8;
+  padding: 5px 10px;
+}
+.categories .category {
+  color: #555;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 2px 10px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.categories .category.active,
+.categories .category.active:hover {
+  background: #DDD;
+  color: #333;
+}
+.categories .category:hover {
+  background: #EEE;
+}
+.new-campaign {
+  display: flex;
+  align-self: center;
+  opacity: 0.8;
+  background: transparent url("../media/folder-add.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/folder-add.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/folder-add.svg");
+  background-size: auto;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  border-left: 1px solid #ccc;
+  padding: 0 15px;
+}
+.new-campaign:hover {
+  opacity: 1;
+}
 .personal[data-page="0"] > .collection:nth-of-type(n+3) {
   display: none;
 }
@@ -352,12 +524,14 @@ h1 {
 .suggestions[data-page="0"] > *:nth-child(1n+6) {
   display: none;
 }
-.suggestions[data-page="1"] > *,
-.suggestions[data-page="1"] > *:nth-child(1n+11) {
+.suggestions[data-page="1"] > * {
   display: none;
 }
 .suggestions[data-page="1"] > *:nth-child(1n+6) {
   display: flex;
+}
+.suggestions[data-page="1"] > *:nth-child(1n+11) {
+  display: none;
 }
 .suggestions[data-page="2"] > *,
 .suggestions[data-page="2"] > *:nth-child(1n+16) {

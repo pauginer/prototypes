@@ -19,8 +19,25 @@ body {
 }
 
 h1 {
-margin: 25px;
-font-size: 25px;
+	margin: 50px 25px 20px 25px;
+	font-size: 21px;
+	color:#444;
+	&.empty {
+		display:none;
+	}
+}
+
+.personal-header {
+	.vector-image("../media/folder.svg", "../media/folder.png");
+	background-position: left center;
+	padding-left: 35px;
+}
+.suggestions-header {
+	.vector-image("../media/lightbulb-grey.svg", "../media/lightbulb-grey.png");
+	background-position: left center;
+	
+	padding: 2px 0;
+	padding-left: 35px;
 }
 
 .main-header {
@@ -28,6 +45,28 @@ font-size: 25px;
 	
 }
 
+.personal-search {
+	.vector-image("../media/search.svg", "../media/search.png");
+	background-position: left;
+	background-position: 5px center;
+	background-color: white;
+	background-size: 28px;
+	display: flex;
+	padding: 11px;
+	padding-left: 35px;
+	flex:1;
+	margin: 0;
+	font-size: 16px;
+	border: 1px solid #DDD;
+	border-bottom: none;
+	margin: 0 25px;
+	color: #777;
+}
+
+.personal-header.empty + .personal-search,
+.personal-header.empty + .personal-search + .personal{
+	display:none;
+}
 
 .start-translation {
 	display: flex;
@@ -69,7 +108,8 @@ font-size: 25px;
 	
 	.start-by-search{
 		display: none;
-		
+		position:relative;
+		flex-direction: column;
 		flex:1;
 		.searchbox {
 			.vector-image("../media/search.svg", "../media/search.png");
@@ -84,9 +124,37 @@ font-size: 25px;
 			font-size: 16px;
 			
 		}
+		
+		.search-recent-label, .search-campaigns-label{
+			color: #777;
+			font-weight: bold;
+			font-size: 14px;
+			padding: 5px 0;
+		}
+		
+		.search-results {
+			position: absolute;
+			display: flex;
+			flex-direction: column;
+			background: white;
+			flex: 1;
+			left:0;
+			right:0;
+			z-index: 200;
+			border: 1px solid #CCC;
+			border-bottom: 2px solid #CCC;
+			padding: 10px;
+		}
+		.search-campaigns {
+			display: flex;
+			flex-direction: column;
+			font-weight: bold;
+			cursor:pointer;
+		}
 	}
 	
 }
+
 
 .start-translation.searching {
 	.start-placeholder {
@@ -94,6 +162,48 @@ font-size: 25px;
 	}
 	.start-by-search{
 		display: flex;
+	}
+}
+
+.search-recent {
+	padding-bottom: 10px;
+	.recent {
+		display: flex;
+		padding-left: 60px;
+		background-position: left center;
+		background-size: 50px;
+		background-repeat: no-repeat;
+		min-height: 60px;
+		font-weight: bold;
+		cursor:pointer;
+
+	}
+	
+	.recent.suit {
+		background-image: url(../media/suit.jpg);
+	}
+	.recent.dali {
+		background-image: url(../media/dali.jpg);
+	}
+
+}
+
+.search-campaigns {
+	.name {
+		display: flex;
+		padding-left: 60px;
+		background-position: 5px center;
+		background-size: 50px;
+		background-repeat: no-repeat;
+		min-height: 60px;
+	}
+	.name[title="Famous Scientists"]{
+		background-image: url(../media/science-collection.png);
+		
+	}
+	
+	.name[title="Wiki Loves Space"]{
+		background-image: url(../media/space-collection.png);
 	}
 }
 
@@ -115,7 +225,7 @@ font-size: 25px;
 	}
 	.title {
 		font-weight: bold;
-		font-size: 20px;
+		font-size: 19px;
 	}
 	
 	.desc {
@@ -169,7 +279,9 @@ border-top: 1px solid #DDD;
 		font-size: 18px;
 		color: #555;
 		top: 0;
-		width: 100%;
+		//width: 100%;
+		left:26px;
+		right:26px;
 		z-index: 100;
 		
 		.header-icon {
@@ -183,6 +295,15 @@ border-top: 1px solid #DDD;
 		.actions {
 			display: flex;
 			margin-left: auto;
+		}
+		.stats {
+			.pop-on-hover;
+			.vector-image("../media/stats.svg", "../media/stats.png");
+			width: 22px;
+			height: 22px;
+			cursor: pointer;
+			margin-right: 10px;
+			
 		}
 		.close-collection {
 			.pop-on-hover;
@@ -226,9 +347,14 @@ border-top: 1px solid #DDD;
 
 }
 
+.suggestions .stats, .favs .stats {
+	display: none;
+}
+
 //Hide separators:
-.personal .collection .separator:first-of-type,
-.personal .collection:last-of-type .separator:last-of-type,
+//.personal .collection .separator:first-of-type,
+//.personal .collection:last-of-type .separator:last-of-type,
+.personal .collection:nth-of-type(n+2) .separator:first-of-type,
 .suggestions .collection:first-child .separator:first-of-type,
 .suggestions .collection + .collection .separator:first-of-type{
 	display:none;
@@ -269,7 +395,15 @@ border-top: 1px solid #DDD;
 	norder-top: none;
 	padding: 10px;
 	cursor:pointer;
+	font-weight: bold;
+	color: #4A90E2;
+	&:hover {
+		background-color: #FBFBFB;
+	}
 }
+
+
+
 
 .personal .collection .add-collection,
 .personal .favs .close-collection { display: none;}
@@ -339,6 +473,44 @@ display: none;
 }
 
 
+.categories {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 0 25px;
+	border: 1px solid #DDD;
+	border-bottom: none;
+	background: #F8F8F8;
+	padding: 5px 10px;
+	.category {
+		color: #555;
+		font-weight: bold;
+		font-size: 14px;
+		padding: 2px 10px;
+		border-radius: 2px;
+		cursor: pointer;
+		&.active, &.active:hover {
+			background: #DDD;
+			color: #333;
+		}
+		&:hover {
+			background: #EEE;
+		}
+	}
+}
+
+.new-campaign {
+	display: flex;
+	align-self: center;
+	.pop-on-hover;
+	.vector-image("../media/folder-add.svg", "../media/folder-add.png");
+	width: 22px;
+	height: 22px;
+	cursor: pointer;
+	border-left: 1px solid #ccc;
+	padding: 0 15px;
+}
+
 //PAGINATION OF PERSONAL COLLECTIONS
 
 .personal[data-page="0"] > .collection:nth-of-type(n+3){
@@ -359,13 +531,15 @@ display: none;
 display:none;
 }
 
-.suggestions[data-page="1"] > *, .suggestions[data-page="1"] > *:nth-child(1n+11){
+.suggestions[data-page="1"] > * {
 	display:none;
-	//background: red;
 }
 .suggestions[data-page="1"] > *:nth-child(1n+6){
 	display: flex;
-	//background: blue;
+}
+
+ .suggestions[data-page="1"] > *:nth-child(1n+11){
+	display:none;
 }
 
 .suggestions[data-page="2"] > *, .suggestions[data-page="2"] > *:nth-child(1n+16){
@@ -380,6 +554,7 @@ display:none;
 
 
 //IMAGES:
+
 
 .image {
 	width: 70px;

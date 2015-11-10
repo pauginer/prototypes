@@ -17,8 +17,9 @@
 	<div class="separator"></div>
 	<div class="header fixedsticky">
 		<div class="header-icon"></div>
-		<div class="name">{{name}}</div>
+		<div class="name" title="{{name}}">{{name}}</div>
 		<div class="actions"></div>
+			<div class="stats"></div>
 			<div class="add-collection"></div>
 			<div class="close-collection"></div>
 	</div>
@@ -55,16 +56,17 @@ var suggestionsData = [
 		{id: "badminton", title: "Badminton", desc: "Racket sport", collection: ""},
 		{id: "countries", title: "List of imaginary countries", desc: "Countries from literature and cinema", collection: ""},
 		{id: "padthai", title: "Pad Thai", desc: "Thai noodle dish", collection: ""},
-	{id: "curiosity", title: "Curiosity (Rover)", desc: "Vehicle on Mars", collection: "Wiki Loves Science"},
-		{id: "pillars", title: "Pillars of Creation", desc: "Astrophotography", collection: "Wiki Loves Science"},
-		{id: "gravity", title: "Gravity", desc: "Force of phisics", collection: "Wiki Loves Science"},
-		{id: "lightning", title: "Lightning", desc: "Electrical phenomenon", collection: "Wiki Loves Science"},
-		{id: "plants", title: "Plants in Space", desc: "Vegetable growth in zero gravity", collection: "Wiki Loves Science"},
+	{id: "curiosity", title: "Curiosity (Rover)", desc: "Vehicle on Mars", collection: "Wiki Loves Space"},
+		{id: "pillars", title: "Pillars of Creation", desc: "Astrophotography", collection: "Wiki Loves Space"},
+		{id: "gravity", title: "Gravity", desc: "Force of phisics", collection: "Wiki Loves Space"},
+		{id: "lightning", title: "Lightning", desc: "Electrical phenomenon", collection: "Wiki Loves Space"},
+		{id: "plants", title: "Plants in Space", desc: "Vegetable growth in zero gravity", collection: "Wiki Loves Space"},
 	{id: "trex", title: "Tyrannosaurus", desc: "Dinosaur species", collection: ""},
 	{id: "pyramid", title: "Pyramid of the Moon", desc: "Ancient pyramid in Mexico", collection: ""},
 	{id: "tajmahal", title: "Taj Mahal", desc: "Building in India", collection: ""},
-	
-
+	{id: "heli", title: "Helicopter prison escapes", desc: "List article", collection: ""},
+	{id: "hali", title: "Halifax Central Library", desc: "Public library in Halifax, Nova Scotia", collection: ""},
+	{id: "holi", title: "Holi", desc: "A spring festival, also known as the festival of colors", collection: ""}
 ];
 
 function loadSuggestions(){
@@ -155,6 +157,7 @@ function favSuggestion(){
 		favs.removeClass("small");
 	}
 	s.prependTo($(".favs .content"));
+	updateHeaders();
 	return false;
 }
 
@@ -162,6 +165,7 @@ function joinCampaign(){
 	var col = $(this).parents(".collection");
 	$(".personal").prepend(col);
 	$(".personal").prepend($(".favs"));
+	updateHeaders();
 	return false;
 }
 
@@ -172,7 +176,24 @@ function removeCollection(){
 	}else{
 		col.remove();
 	}
+	updateHeaders();
 	return false;
+}
+	
+function updateSearchResults(){
+	var nameList = $(".suggestions .collection .name").clone();
+	$(".search-results .search-campaigns").empty();
+	$(".search-results .search-campaigns").append(nameList);
+}
+
+function updateHeaders(){
+	var cols = $(".personal .collection").length >0;
+	if(cols){
+		$(".personal-header, .suggestions-header").removeClass("empty");
+	}else{
+		$(".personal-header, .suggestions-header").addClass("empty");
+	}
+	
 }
 	
 $(function(){
@@ -204,12 +225,14 @@ $(function(){
 	
 	//Search
 	$(".start-placeholder").click(function(){
+		updateSearchResults();
+		$(".start-by-search .searchbox").val("");
 		$(".start-translation").addClass("searching");
 		$(".start-by-search .searchbox").focus();
 		return false;
 	});
 	$("body").click(function(){ $(".start-translation").removeClass("searching"); });
-	
+	updateHeaders();
 });
 
 
@@ -218,8 +241,10 @@ $(function(){
 <body>
 <section class="main-header">W</section>
 
-<h1>Collections</h1>
+<h1 class="personal-header">Collections</h1>
+<div class="personal-search">Filter collections</div>
 <section class="personal" data-page="0">
+
 <div class="pagination">
 	<div class="page-label">3 collections</div>
 	<div class="actions">
@@ -228,18 +253,35 @@ $(function(){
 	</div>
 </div>
 </section>
-<h1>More suggestions</h1>
+<h1 class="suggestions-header">More suggestions</h1>
 <section class="start-translation">
 	<div class="start-placeholder">
 		<div class="start-translation-icon"></div>
 		<div class="start-translation-label">Start a new translation or join a campaign</div>
 	</div>
 	<div class="start-by-search">
-		<input class="searchbox" placeholder="Start a new translation or join a campaign"></input>
+		<input class="searchbox" placeholder="Search an article or existing campaigns"></input>
+	<div class="search-results">
+		<div class="search-recent-label">Recently edited</div>
+		<div class="search-recent">
+			<div class="recent suit">Space suit</div>
+			<div class="recent dali">Salvador Dalí</div>
+		</div>
+		<div class="search-campaigns-label">Active campaigns</div>
+		<div class="search-campaigns"></div>
 	</div>
-	
+	</div>
+	<div class="new-campaign"></div>
 </section>
-<section class="categories"></section>
+<section class="categories">
+	<div class="category active">Automatic</div>
+	<div class="category">People</div>
+	<div class="category">History</div>
+	<div class="category">Geography</div>
+	<div class="category">Science</div>
+	<div class="category">Arts</div>
+	<div class="category">&hellip;</div>
+</section>
 <section class="suggestions" data-page="0"></section>
 <section class="refresh">Refresh suggestions</section>
 </body>
