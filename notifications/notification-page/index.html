@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Notification Page</title>
+	<link rel="stylesheet" href="style/style.css">
+	<script src="lib/jquery.js"></script>
+	<script src="lib/handlebars.js"></script>
+	<script src="lib/helpers.js"></script>
+
+	<!-- FILTERS: -->
+	<script id="filters-template" type="text/x-handlebars-template">
+		<div class="status-filters">
+			<div class="status-filter status-all {{#is status 'all'}}active{{/is}}" data-item="all">All</div>
+			<div class="status-filter status-unread {{#is status 'unread'}}active{{/is}}" data-item="unread">Unread</div>
+			<div class="status-filter status-read {{#is status 'read'}}active{{/is}}" data-item="read">Read</div>
+		</div>
+		<div class="content-filters">
+			<div class="favorites">
+				<div class="favorites-title"><div class="icon"></div><div class="label">Favorites</div></div>
+				{{#each favorites}}
+					<div class="filter-item {{id}} {{#is ../filter id}}active{{/is}}" data-item="{{id}}"><div class="icon"></div><div class="label">{{title}}</div><div class="counter">{{counter}}</div></div>
+				{{/each}}
+				<div class="add-favorites"><div class="icon"></div><div class="label">Add more</div></div>
+			</div>
+			<div class="suggested">
+				{{#each suggestions}}
+									<div class="filter-section"><div class="icon"></div><div class="label">{{title}}</div><div class="counter">{{counter}}</div></div>
+					{{#each pages}}
+						<div class="filter-item"><div class="icon"></div><div class="label">{{title}}</div><div class="counter">{{counter}}</div></div>
+					{{/each}}
+				{{/each}}
+			</div>
+		</div>
+	</script>
+
+	<!-- NOTIFICATIONS: -->
+	<script id="notification-template" type="text/x-handlebars-template">
+			<div class="notification {{#if read}}read{{/if}}" data-notification="{{id}}">
+				<div class="icon {{icon}}"></div>
+				<div class="content">
+					<div class="description">
+						<div class="message">{{{message}}}</div>
+						<div class="close"></div>
+					</div>
+					<div class="actions">
+						<div class="action-list">
+						 {{#each actions}}
+							<div class="action"><div class="action-icon {{icon}}"></div><div class="action-name">{{name}}</div></div>
+						{{/each}}
+						{{#if more}}
+							<div class="more">
+								<div class="more-icon"></div>
+								<div class="more-panel hidden">
+								{{#each more}}
+									<div class="more-option">
+										<div class="more-option-icon {{icon}}"></div>
+										<div class="more-option-action">
+											<div class="more-option-name">{{name}}</div>
+											<div class="more-option-description">{{description}}</div>
+										</div>
+									</div>
+								{{/each}}
+								</div>
+							</div>
+
+						{{/if}}
+						</div>
+						<div class="timestamp">{{timestamp}}</div>
+					</div>
+				</div>
+
+			</div>
+	</script>
+	<script>
+	var filterData = {
+		status: "all",
+		favorites: [
+			{id: "all-contents", title: "All contents", counter:"300"},
+			{id: "usertalk", title: "User talk page", counter:"50"},
+			{id: "watched", title: "Watched pages", counter:"25"}
+		],
+		suggestions: [	
+			{id: "page", title: "Moai", counter:"300"}
+		],
+		filter: "all-contents"
+	};
+	
+	notificationsData = [
+	{id: "1",
+	 project: "Wikipedia",
+	 language: "English",
+	 icon: "talk",
+	 message: "<b>Ludmilla</b> left a message <b>in your talk page</b>",
+	 timestamp: "5 min.",
+	 read: false,
+	 page: "usertalk",
+	 actions: [{icon: "user", name: "Ludmilla"}],
+	 more: [{icon: "volume", name: "Adjust notification volume", description:"Talk page"}]
+	},
+	{id: "2",
+	 project: "Wikipedia",
+	 language: "English",
+	 icon: "thanks",
+	 message: "<b>Fama</b> thanked you for your edit on <b>talk:Plants in space</b>.",
+	 timestamp: "23 min.",
+	 read: false,
+	 page: "Plants in space",
+	 actions: [{icon: "user", name: "Fama"}],
+	 more: [{icon: "volume", name: "Adjust notification volume", description:"Thanks notifications"}]
+	},
+	{id: "3",
+	 project: "Wikipedia",
+	 language: "English",
+	 icon: "mention",
+	 message: "<b>Hal9k</b> mentioned you in “Nate Silver's best burrito project” on <b>talk:Burrito</b>",
+	 timestamp: "1 hour",
+	 read: false,
+	 page: "Burrito",
+	 actions: [{icon: "user", name: "Hal9k"}],
+	 more: [{icon: "volume", name: "Adjust notification volume", description:"Talk topic"}]},
+{id: "4",
+	 project: "Wikipedia",
+	 language: "English",
+	 icon: "talk",
+	 message: "<b>Hal9k</b> left you a message <b>in your talk page</b>.",
+	 timestamp: "3 hours",
+	 read: true,
+ 	 page: "usertalk",
+	 actions: [{icon: "user", name: "Hak9k"}],
+	 more: [{icon: "volume", name: "Adjust notification volume", description:"Talk page"}]},
+{id: "5",
+	 project: "Commons",
+	 language: "",
+	 icon: "picture",
+	 message: "<b>StanleyK</b> created a new topic on <b>talk:Exploding light bulb</b>",
+	 timestamp: "7 min.",
+	 read: false,
+ 	 page: "Exploding light bulb",
+	 actions: [{icon: "user", name: "Mycroft"}],
+	 more: [{icon: "volume", name: "Adjust notification volume", description:"File page"}]},
+{id: "6",
+	 project: "Commons",
+	 language: "",
+	 icon: "picture",
+	 message: "Your picture <b>Pillars of Creation</b> has been nominated for <b>Picture fo the month</b>",
+	 timestamp: "40 min.",
+	 read: false,
+ 	 page: "Pillars of creation",
+	 actions: [{icon: "user", name: "Mycroft"}],
+	 more: [{icon: "volume", name: "Adjust notification volume", description:"File page"}]},
+{id: "7",
+	 project: "Wikipedia",
+	 language: "Spanish",
+	 icon: "thanks",
+	 message: "<b>Julio</b> thanked you for your edit on <b>Quesadilla mexicana</b>.",
+	 timestamp: "1 day",
+	 read: false,
+ 	 page: "Quesadilla mexicana",
+	 actions: [{icon: "user", name: "Julio"}],
+	 more: [{icon: "volume", name: "Adjust notification volume", description:"Thanks notifications"}]},
+{id: "8",
+	 project: "Wikipedia",
+	 language: "Spanish",
+	 icon: "thanks",
+	 message: "<b>Fama</b> thanked you for your edit on <b>Quesadilla mexicana</b>.",
+	 timestamp: "30 days",
+	 read: true,
+ 	 page: "Quesadilla mexicana",
+	 actions: [{icon: "user", name: "Fama"}],
+	 more: [{icon: "volume", name: "Adjust notification volume", description:"Thanks notifications"}]}
+	];
+	
+	function notificationsByWiki(pro, lang){
+		var result = [];
+		$.each(notificationsData, function(i,v){
+			if(v["project"] == pro && v["language"] == lang){
+				result.push(v);
+			}
+		});
+		return result;
+	}
+
+	function getSuggestions(){
+		var result = [];
+		var groups = {};
+		$.each(notificationsData, function(i,v){
+			var key = v["project"];
+			if(!!v["language"]){ key = v["language"] + " " + key;}
+			
+			if(groups.hasOwnProperty(key)){
+				var page = {title: v["page"], counter: 10};
+				var pages = groups[key]["pages"];
+				var exists = $.inArray(v["page"],$.map(pages, function(p){return p["title"]})) >=0;
+				if(!exists){
+					groups[key]["pages"].push(page);
+					groups[key]["counter"] = 10; //TODO
+				}
+			} else {
+				var page = {title: v["page"], counter: 10} //TODO
+				groups[key] = {title: key, pages:[page], counter: 1};
+			}
+			
+		});
+		
+		result = Object.keys(groups).map(function (key) { return groups[key]; });
+		return result;
+	}
+
+	function updateFilters(){
+		var filtersTemplate = Handlebars.compile($("#filters-template").html());
+		$(".filters").empty();
+		filterData["suggestions"] = getSuggestions();
+		
+		var data = filterData;
+		var n = filtersTemplate(data);
+		var elt = $(n).appendTo($(".filters"));
+		//Bindings:
+		elt.find(".status-filter").click(actionChangeStatusFilter);
+		elt.find(".filter-item").click(actionChangeContentFilter);
+		
+		return elt;
+	}
+		
+	function actionChangeStatusFilter(){
+		filterData["status"] = $(this).data("item");
+		updateFilters();
+		updateNotifications();
+	}
+		
+	function actionChangeContentFilter(){
+		filterData["filter"] = $(this).data("item");
+		updateFilters();
+	}
+
+	function filterByStatus(notif){
+		var result = true;
+		var status = filterData["status"];
+		if( status !== "all" && (status == "read" && !notif["read"]||status == "unread" && notif["read"])){
+			result = false;
+		}
+		return result;
+	}
+	
+	function updateNotifications(){
+		var notificationTemplate = Handlebars.compile($("#notification-template").html());
+		$(".notification-list").empty();
+		$.each(notificationsData, function(i,v){
+			var notif = notificationTemplate(v);
+			if(filterByStatus(v)){
+				var elt = $(notif).appendTo($(".notification-list"));
+			}
+			
+		});
+	}
+	
+	$(function(){
+		updateFilters();
+		updateNotifications();
+	});
+	</script>
+  </head>
+  <body>
+	  <section class="notification-page">
+	  <div class="filters"></div>
+	  <div class="notification-feed">
+	  	<div class="navigation">
+			<div class="searchbar"><input class="search-input" placeholder="Search notifications"/><div class="search-close"></div></div>
+			<div class="pagination-counter"> <span><b class="current">50</b> of <span class="total">350</span></span></div>
+			<div class="pagination-controls">
+				<div class="previous"></div><div class="next"></div>
+			</div>
+		</div>
+		<div class="notification-list"></div>
+	  </div>
+	</section>
+  </body>
+</html>
