@@ -80,6 +80,7 @@ body {
 	
 	.add-favorites{
 		display: flex;
+		display: none; //TODO: We'll explore advanced filters later
 		padding: 5px 10px;
 		cursor: pointer;
 		.icon {
@@ -118,6 +119,20 @@ body {
 		&:hover {
 			background: #f5f5f5;
 		}
+		&.empty {
+			display: none;
+		}
+		&.active.empty {
+			display: flex;
+		}
+
+		&.active, &.active:hover {
+			background-color: #347BFF;
+			
+		}
+		.label {
+			mix-blend-mode: multiply;
+		}
 		.counter {
 			display: flex;
 			margin-left: auto;
@@ -125,6 +140,11 @@ body {
 			mix-blend-mode: multiply;
 		}
 	}
+	
+/*	.filter-section[data-item="Commons"] ~ .filter-item[data-wiki="Commons"] {
+	background: red;
+	}*/
+	
 	.filter-item {
 		display: flex;
 		flex-direction: row;
@@ -134,12 +154,20 @@ body {
 		&:hover {
 			background-color: #fbfbfb;
 		}
-		
-		&.active {
+		&.empty, &.empty.active.not-really {
+			display: none;
+		}
+		&.active.empty{
+			display: flex;
+		}
+
+		&.active, &.active:hover {
 			background-color: #347BFF;
 			
 		}
-		
+		&.active.not-really, &.active.not-really:hover {
+			background-color: transparent;
+		}
 		.icon {
 			display: flex;
 			width: 15px;
@@ -168,10 +196,16 @@ body {
 	background-size: contain;
 }
 
-.filter-item.usertalk .icon {
+.filter-item.allusertalk .icon {
 	.vector-image("../media/user.svg", "../media/user.png");
 	background-size: contain;
 }
+
+.filter-item.watched .icon {
+	.vector-image("../media/watched.svg", "../media/watched.png");
+	background-size: contain;
+}
+
 
 .notification-feed {
 	display: flex;

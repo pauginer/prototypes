@@ -25,9 +25,9 @@
 			</div>
 			<div class="suggested">
 				{{#each suggestions}}
-									<div class="filter-section"><div class="icon"></div><div class="label">{{title}}</div><div class="counter">{{counter}}</div></div>
+									<div class="filter-section {{#is ../filter title}}active{{/is}} {{#is counter 0}}empty{{/is}}" data-item="{{title}}"><div class="icon"></div><div class="label">{{title}}</div><div class="counter {{#is ../filter id}}active{{/is}}">{{counter}}</div></div>
 					{{#each pages}}
-						<div class="filter-item"><div class="icon"></div><div class="label">{{title}}</div><div class="counter">{{counter}}</div></div>
+						<div class="filter-item {{#is ../../filter title}}active{{/is}} {{#is ../title 'not' ../../wiki}}not-really{{/is}} {{#is counter 0}}empty{{/is}}" data-item="{{title}}" data-wiki="{{../title}}"><div class="icon"></div><div class="label">{{title}}</div><div class="counter">{{counter}}</div></div>
 					{{/each}}
 				{{/each}}
 			</div>
@@ -77,7 +77,7 @@
 		status: "all",
 		favorites: [
 			{id: "all-contents", title: "All contents", counter:"300"},
-			{id: "usertalk", title: "User talk page", counter:"50"},
+			{id: "allusertalk", title: "User talk page", counter:"50"},
 			{id: "watched", title: "Watched pages", counter:"25"}
 		],
 		suggestions: [	
@@ -85,8 +85,9 @@
 		],
 		filter: "all-contents"
 	};
-	
-	notificationsData = [
+	var watchlistData= ["Plants in space","Burrito",""];
+		
+	var notificationsData = [
 	{id: "1",
 	 project: "Wikipedia",
 	 language: "English",
@@ -94,7 +95,7 @@
 	 message: "<b>Ludmilla</b> left a message <b>in your talk page</b>",
 	 timestamp: "5 min.",
 	 read: false,
-	 page: "usertalk",
+	 page: "User talk page",
 	 actions: [{icon: "user", name: "Ludmilla"}],
 	 more: [{icon: "volume", name: "Adjust notification volume", description:"Talk page"}]
 	},
@@ -126,7 +127,7 @@
 	 message: "<b>Hal9k</b> left you a message <b>in your talk page</b>.",
 	 timestamp: "3 hours",
 	 read: true,
- 	 page: "usertalk",
+ 	 page: "User talk page",
 	 actions: [{icon: "user", name: "Hak9k"}],
 	 more: [{icon: "volume", name: "Adjust notification volume", description:"Talk page"}]},
 {id: "5",
@@ -152,6 +153,17 @@
 {id: "7",
 	 project: "Wikipedia",
 	 language: "Spanish",
+	 icon: "talk",
+	 message: "<b>Picasso</b> left a message <b>in your talk page</b>",
+	 timestamp: "5 min.",
+	 read: false,
+	 page: "User talk page",
+	 actions: [{icon: "user", name: "Picasso"}],
+	 more: [{icon: "volume", name: "Adjust notification volume", description:"Talk page"}]
+	},
+{id: "8",
+	 project: "Wikipedia",
+	 language: "Spanish",
 	 icon: "thanks",
 	 message: "<b>Julio</b> thanked you for your edit on <b>Quesadilla mexicana</b>.",
 	 timestamp: "1 day",
@@ -159,7 +171,7 @@
  	 page: "Quesadilla mexicana",
 	 actions: [{icon: "user", name: "Julio"}],
 	 more: [{icon: "volume", name: "Adjust notification volume", description:"Thanks notifications"}]},
-{id: "8",
+{id: "9",
 	 project: "Wikipedia",
 	 language: "Spanish",
 	 icon: "thanks",
@@ -189,16 +201,16 @@
 			if(!!v["language"]){ key = v["language"] + " " + key;}
 			
 			if(groups.hasOwnProperty(key)){
-				var page = {title: v["page"], counter: 10};
+				var page = {title: v["page"], counter: countNotifsForPage(v["page"], key)};
 				var pages = groups[key]["pages"];
 				var exists = $.inArray(v["page"],$.map(pages, function(p){return p["title"]})) >=0;
 				if(!exists){
 					groups[key]["pages"].push(page);
-					groups[key]["counter"] = 10; //TODO
+					//groups[key]["counter"] = 10; //TODO
 				}
 			} else {
-				var page = {title: v["page"], counter: 10} //TODO
-				groups[key] = {title: key, pages:[page], counter: 1};
+				var page = {title: v["page"], counter: countNotifsForPage(v["page"],key)} //TODO
+				groups[key] = {title: key, pages:[page], counter: countNotifsForWiki(key)};
 			}
 			
 		});
@@ -211,14 +223,13 @@
 		var filtersTemplate = Handlebars.compile($("#filters-template").html());
 		$(".filters").empty();
 		filterData["suggestions"] = getSuggestions();
-		
+		updateFavoriteCounters();
 		var data = filterData;
 		var n = filtersTemplate(data);
 		var elt = $(n).appendTo($(".filters"));
 		//Bindings:
 		elt.find(".status-filter").click(actionChangeStatusFilter);
-		elt.find(".filter-item").click(actionChangeContentFilter);
-		
+		elt.find(".filter-item, .filter-section").click(actionChangeContentFilter);
 		return elt;
 	}
 		
@@ -230,7 +241,9 @@
 		
 	function actionChangeContentFilter(){
 		filterData["filter"] = $(this).data("item");
+		filterData["wiki"] = $(this).data("wiki");
 		updateFilters();
+		updateNotifications();
 	}
 
 	function filterByStatus(notif){
@@ -241,14 +254,126 @@
 		}
 		return result;
 	}
+	function filterByContent(notif){
+		var result = true;
+		var filter = filterData.filter;
+		var page = notif["page"];
+		var wiki = filterData["wiki"];
+		result = isNotifAbout(notif, filter,page,wiki);
+		return result;
+	}
 	
+	function isNotifAbout(notif, filter, page, wiki){
+		var result = true;
+		if(filter=="all-contents"){
+			result = true;
+		} else if(filter == "allusertalk" ){
+			result = (page == "User talk page");
+		} else if (filter == "watched"){
+			result = $.inArray(page, watchlistData)>=0;
+		} else if (filter == "User talk page"){
+			result = (page == "User talk page" && (notif["language"] +" " + notif["project"] )== wiki);
+		} else {
+			result = (filter == page) || (filter == notif["project"]) || (filter == notif["language"] + " " + notif["project"]);
+		}
+		return result;
+	
+	}
+	
+	function countNotifsForWiki(wiki){
+		var result = 0;
+		$.each(notificationsData, function(i, notif){
+			if((wiki == notif["project"]) || (wiki == notif["language"] + " " + notif["project"])){
+			if(!notif["read"])
+				result = result +1;
+			}
+		});
+		return result;
+	}
+		
+	function countNotifsForPage(page,wiki){
+		var result = 0;
+		$.each(notificationsData, function(i, notif){
+			if(page =="User talk page"){
+				if(notif["page"] == "User talk page" && !notif["read"] && ((wiki == notif["project"]) || (wiki == notif["language"] + " " + notif["project"]))){
+					result = result + 1;
+				}
+			} else if(page == notif["page"]){
+				if(!notif["read"]){
+					result = result +1;
+				}
+			}
+		});
+		return result;
+	}
+
+	function countAllUnread(){
+		var result = 0;
+		$.each(notificationsData, function(i, notif){
+			if(!notif["read"]){
+					result = result +1;
+			}
+		});
+		return result;
+	}
+	
+	function countAllUsertalk(){
+		var result = 0;
+		$.each(notificationsData, function(i, notif){
+			if(!notif["read"] && notif["page"]=="User talk page"){
+					result = result +1;
+			}
+		});
+		return result;
+	}
+	
+	function countAllWatched(){
+		var result = 0;
+		$.each(notificationsData, function(i, notif){
+			if(!notif["read"] && $.inArray(notif["page"], watchlistData)>=0){
+					result = result +1;
+			}
+		});
+		return result;
+	}
+	
+	function updateFavoriteCounters(){
+		$.each(filterData.favorites,function(i,fav){
+			if(fav["id"] == "all-contents"){
+				fav.counter = countAllUnread();
+			} else if(fav["id"]=="allusertalk"){
+				fav.counter = countAllUsertalk();
+			} else if(fav["id"]=="watched"){
+				fav.counter = countAllWatched();
+			}
+			
+		});
+	}
+	
+	function findNotifById(id){
+		result = null;
+		$.each(notificationsData,function(i,notif){
+			if(notif["id"]== id){
+				result = notif;
+			}
+		});
+		return result;
+	}
+		
 	function updateNotifications(){
 		var notificationTemplate = Handlebars.compile($("#notification-template").html());
 		$(".notification-list").empty();
 		$.each(notificationsData, function(i,v){
 			var notif = notificationTemplate(v);
-			if(filterByStatus(v)){
+			if(filterByStatus(v) && filterByContent(v)){
 				var elt = $(notif).appendTo($(".notification-list"));
+				//Bindings:
+				elt.find(".close").click(function(){
+					v["read"]=true;
+					updateFilters();
+					updateNotifications();
+					
+				});
 			}
 			
 		});
