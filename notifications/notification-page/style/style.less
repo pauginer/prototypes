@@ -67,6 +67,7 @@ body {
 		color: #555;
 		.icon {
 			display: flex;
+			display:none;
 			.vector-image("../media/pin.svg", "../media/pin.png");
 			width: 20px;
 			height: 20px;
@@ -214,6 +215,49 @@ body {
 }
 
 
+.date-header {
+	display: flex;
+	flex-direction: row;
+	padding: 10px 0;
+	align-items: baseline;
+	margin-top: 25px;
+	
+	.title {
+		font-size: 24px;
+		margin-right: 10px;
+	}
+	.details {
+		font-size: 20px;
+		color: #777;
+	}
+	.mark-group {
+		display: flex;
+		flex-direction: row;
+		margin-left: auto;
+		cursor: pointer;
+		border: 1px solid #ccc;
+		padding: 5px 8px;
+		border-radius: 2px;
+		align-self: center;
+		&:hover {
+			background-color: #fbfbfb;
+		}
+		.icon {
+			.vector-image("../media/mark-all.svg", "../media/mark-all.png");
+			width: 15px;
+			height: 15px;
+			background-size: contain;
+			margin-right: 4px;
+			
+		}
+	}
+}
+
+.date-header:first-of-type{
+	padding-top: 0;
+	margin-top: 10px;
+}
+
 .navigation {
 	display: flex;
 	margin-bottom: 10px;
@@ -248,7 +292,11 @@ body {
 		cursor: pointer;
 		
 	}
-	
+
+	.searchbar.empty .search-close {
+		visibility: hidden;
+	}
+
 	.pagination-counter {
 		display: flex;
 		margin: 0 10px;
@@ -290,7 +338,7 @@ body {
 .notification-list {
 	display: flex;
 	flex-direction: column;
-	border: 1px solid #ddd;
+	//border: 1px solid #ddd;
 }
 
 .small-font{
@@ -318,7 +366,7 @@ body {
 	display: flex;
 	padding: 10px;
 	background: white;
-	border-bottom: 1px solid #DDD;
+	border: 1px solid #DDD;
 	color: #333;
 	cursor: pointer;
 	
@@ -436,6 +484,10 @@ body {
 		}
 	}
 	
+}
+
+.notification + .notification {
+	border-top:none;
 }
 
 .notification:hover {

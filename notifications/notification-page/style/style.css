@@ -62,6 +62,7 @@ body {
 }
 .content-filters .favorites-title .icon {
   display: flex;
+  display: none;
   background: transparent url("../media/pin.png") center center no-repeat;
   background-image: -webkit-linear-gradient(transparent, transparent), url("../media/pin.svg");
   background-image: linear-gradient(transparent, transparent), url("../media/pin.svg");
@@ -207,6 +208,48 @@ body {
   flex-direction: column;
   flex: 2;
 }
+.date-header {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 0;
+  align-items: baseline;
+  margin-top: 25px;
+}
+.date-header .title {
+  font-size: 24px;
+  margin-right: 10px;
+}
+.date-header .details {
+  font-size: 20px;
+  color: #777;
+}
+.date-header .mark-group {
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  padding: 5px 8px;
+  border-radius: 2px;
+  align-self: center;
+}
+.date-header .mark-group:hover {
+  background-color: #fbfbfb;
+}
+.date-header .mark-group .icon {
+  background: transparent url("../media/mark-all.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/mark-all.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/mark-all.svg");
+  background-size: auto;
+  width: 15px;
+  height: 15px;
+  background-size: contain;
+  margin-right: 4px;
+}
+.date-header:first-of-type {
+  padding-top: 0;
+  margin-top: 10px;
+}
 .navigation {
   display: flex;
   margin-bottom: 10px;
@@ -243,6 +286,9 @@ body {
   height: 15px;
   left: -25px;
   cursor: pointer;
+}
+.navigation .searchbar.empty .search-close {
+  visibility: hidden;
 }
 .navigation .pagination-counter {
   display: flex;
@@ -286,7 +332,6 @@ body {
 .notification-list {
   display: flex;
   flex-direction: column;
-  border: 1px solid #ddd;
 }
 .small-font {
   font-size: 13px;
@@ -298,7 +343,7 @@ body {
   display: flex;
   padding: 10px;
   background: white;
-  border-bottom: 1px solid #DDD;
+  border: 1px solid #DDD;
   color: #333;
   cursor: pointer;
 }
@@ -423,6 +468,9 @@ body {
 .notification .content .actions .action-list .more .more-icon.highlight,
 .notification .content .actions .action-list .more .more-icon:hover {
   background-color: #eee;
+}
+.notification + .notification {
+  border-top: none;
 }
 .notification:hover .action-name {
   color: #555;

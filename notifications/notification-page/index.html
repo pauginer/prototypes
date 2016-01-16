@@ -7,6 +7,7 @@
 	<script src="lib/jquery.js"></script>
 	<script src="lib/handlebars.js"></script>
 	<script src="lib/helpers.js"></script>
+	<script src="lib/moment.js"></script>
 
 	<!-- FILTERS: -->
 	<script id="filters-template" type="text/x-handlebars-template">
@@ -17,7 +18,7 @@
 		</div>
 		<div class="content-filters">
 			<div class="favorites">
-				<div class="favorites-title"><div class="icon"></div><div class="label">Favorites</div></div>
+				<div class="favorites-title"><div class="icon"></div><div class="label">Contents</div></div>
 				{{#each favorites}}
 					<div class="filter-item {{id}} {{#is ../filter id}}active{{/is}}" data-item="{{id}}"><div class="icon"></div><div class="label">{{title}}</div><div class="counter">{{counter}}</div></div>
 				{{/each}}
@@ -34,6 +35,12 @@
 		</div>
 	</script>
 
+	<!-- DATE HEADER -->
+<script id="date-header-template" type="text/x-handlebars-template">
+	<div class="date-header" data-item="{{id}}">{{#if short}}<div class="title">{{short}}</div> <div class="details">{{date}}</div> {{/if}}{{#unless short}}<div class="title">{{date}}</div>{{/unless}}
+	<div class="mark-group"><div class="icon"></div><div class="label">Mark group as read</div></div>
+	</div>
+</script>  
 	<!-- NOTIFICATIONS: -->
 	<script id="notification-template" type="text/x-handlebars-template">
 			<div class="notification {{#if read}}read{{/if}}" data-notification="{{id}}">
@@ -86,14 +93,16 @@
 		filter: "all-contents"
 	};
 	var watchlistData= ["Plants in space","Burrito",""];
-		
+	var currentPage = 0;
+	var pageSize = 6;
+	
 	var notificationsData = [
 	{id: "1",
 	 project: "Wikipedia",
 	 language: "English",
 	 icon: "talk",
 	 message: "<b>Ludmilla</b> left a message <b>in your talk page</b>",
-	 timestamp: "5 min.",
+	 timestamp: "1h",
 	 read: false,
 	 page: "User talk page",
 	 actions: [{icon: "user", name: "Ludmilla"}],
@@ -104,7 +113,7 @@
 	 language: "English",
 	 icon: "thanks",
 	 message: "<b>Fama</b> thanked you for your edit on <b>talk:Plants in space</b>.",
-	 timestamp: "23 min.",
+	 timestamp: "1h",
 	 read: false,
 	 page: "Plants in space",
 	 actions: [{icon: "user", name: "Fama"}],
@@ -115,7 +124,7 @@
 	 language: "English",
 	 icon: "mention",
 	 message: "<b>Hal9k</b> mentioned you in “Nate Silver's best burrito project” on <b>talk:Burrito</b>",
-	 timestamp: "1 hour",
+	 timestamp: "2h",
 	 read: false,
 	 page: "Burrito",
 	 actions: [{icon: "user", name: "Hal9k"}],
@@ -125,7 +134,7 @@
 	 language: "English",
 	 icon: "talk",
 	 message: "<b>Hal9k</b> left you a message <b>in your talk page</b>.",
-	 timestamp: "3 hours",
+	 timestamp: "3h",
 	 read: true,
  	 page: "User talk page",
 	 actions: [{icon: "user", name: "Hak9k"}],
@@ -135,7 +144,7 @@
 	 language: "",
 	 icon: "picture",
 	 message: "<b>StanleyK</b> created a new topic on <b>talk:Exploding light bulb</b>",
-	 timestamp: "7 min.",
+	 timestamp: "7h",
 	 read: false,
  	 page: "Exploding light bulb",
 	 actions: [{icon: "user", name: "Mycroft"}],
@@ -145,7 +154,7 @@
 	 language: "",
 	 icon: "picture",
 	 message: "Your picture <b>Pillars of Creation</b> has been nominated for <b>Picture fo the month</b>",
-	 timestamp: "40 min.",
+	 timestamp: "7h",
 	 read: false,
  	 page: "Pillars of creation",
 	 actions: [{icon: "user", name: "Mycroft"}],
@@ -155,7 +164,7 @@
 	 language: "Spanish",
 	 icon: "talk",
 	 message: "<b>Picasso</b> left a message <b>in your talk page</b>",
-	 timestamp: "5 min.",
+	 timestamp: "7h",
 	 read: false,
 	 page: "User talk page",
 	 actions: [{icon: "user", name: "Picasso"}],
@@ -176,13 +185,28 @@
 	 language: "Spanish",
 	 icon: "thanks",
 	 message: "<b>Fama</b> thanked you for your edit on <b>Quesadilla mexicana</b>.",
-	 timestamp: "30 days",
+	 timestamp: "1 day",
+	 read: true,
+ 	 page: "Quesadilla mexicana",
+	 actions: [{icon: "user", name: "Fama"}],
+	 more: [{icon: "volume", name: "Adjust notification volume", description:"Thanks notifications"}]},
+{id: "10",
+	 project: "Wikipedia",
+	 language: "Spanish",
+	 icon: "thanks",
+	 message: "<b>Ludmilla</b> thanked you for your edit on <b>Quesadilla mexicana</b>.",
+	 timestamp: "2 days",
 	 read: true,
  	 page: "Quesadilla mexicana",
 	 actions: [{icon: "user", name: "Fama"}],
 	 more: [{icon: "volume", name: "Adjust notification volume", description:"Thanks notifications"}]}
 	];
 	
+	function pageNext(){
+		currentPage = currentPage + 1;
+		updateNotifications();
+	}
+
 	function notificationsByWiki(pro, lang){
 		var result = [];
 		$.each(notificationsData, function(i,v){
@@ -260,6 +284,16 @@
 		var page = notif["page"];
 		var wiki = filterData["wiki"];
 		result = isNotifAbout(notif, filter,page,wiki);
+		return result;
+	}
+		
+	function filterBySearch(notif){
+		var result = true;
+		var query = $(".search-input").val();
+		var text = $("<div/>").append(notif["message"]).text();
+		if(query != ""){
+			result = (text.indexOf(query) >=0)
+		}
 		return result;
 	}
 	
@@ -359,13 +393,65 @@
 		});
 		return result;
 	}
+	
+	function getDate(notif){
+		result = 0;
+		var t = notif["timestamp"];
+		var dateText = t.split(" ")[0];
+		if(!dateText.endsWith("h")){
+			result = parseInt(dateText);
+		}
+		return result;
+	}
+	function createDateHeader(dateOffset){
+		var data ={id: dateOffset, date:"11 Oct. 2015", short:""};
 		
+		data["date"] = moment().subtract(dateOffset, 'days').format("D MMM YYYY");
+		if(dateOffset == 0){
+			data["short"] = "Today";
+		} else if (dateOffset == 1){
+			data["short"] = "Yesterday";
+		}
+		var dateHeaderTemplate = Handlebars.compile($("#date-header-template").html());
+		return dateHeaderTemplate(data);
+	}
+
+	function markReadNotifsByDate(offset){
+		$.each(notificationsData, function(i,notif){
+			if(offset == getDate(notif)){
+				notif["read"] = true;
+			} //TODO only mark as read if they are in the current page
+		});
+		updateNotifications();
+		updateFilters();
+	}
+
+	function fitsInPage(validItems){
+		var bottom = currentPage*pageSize;
+		var top = bottom + pageSize;
+		var pos = validItems;
+		return (pos >= bottom) && (pos < top)
+	}
+
 	function updateNotifications(){
 		var notificationTemplate = Handlebars.compile($("#notification-template").html());
 		$(".notification-list").empty();
+		var previousDate = -1;
+		var validItems = 0;
 		$.each(notificationsData, function(i,v){
 			var notif = notificationTemplate(v);
-			if(filterByStatus(v) && filterByContent(v)){
+			if(filterByStatus(v) && filterByContent(v) && filterBySearch(v)){
+				if(fitsInPage(validItems)){
+					var notifDate = getDate(v);
+					
+					if(previousDate != notifDate){
+						var header = $(createDateHeader(notifDate)).appendTo($(".notification-list"));
+						previousDate = notifDate;
+						
+						//Date Header Bindings:
+						header.find(".mark-group").click(function(){markReadNotifsByDate(notifDate)});
+					}
+
 				var elt = $(notif).appendTo($(".notification-list"));
 				//Bindings:
 				elt.find(".close").click(function(){
@@ -375,13 +461,32 @@
 					
 				});
 			}
-			
+		}
+			validItems = validItems + 1;
 		});
 	}
-	
+		
+function searchAction(){
+	var query = $(".search-input").val();
+	if(query != ""){
+		$(".searchbar").removeClass("empty");
+	}else{
+		$(".searchbar").addClass("empty");
+	}
+	updateNotifications();
+}
+
+function clearSearchAction(){
+	$(".search-input").val("");
+	searchAction();
+}
+
 	$(function(){
 		updateFilters();
 		updateNotifications();
+		
+		$(".search-input").keyup(searchAction);
+		$(".searchbar .search-close").click(clearSearchAction);
 	});
 	</script>
   </head>
@@ -390,7 +495,7 @@
 	  <div class="filters"></div>
 	  <div class="notification-feed">
 	  	<div class="navigation">
-			<div class="searchbar"><input class="search-input" placeholder="Search notifications"/><div class="search-close"></div></div>
+			<div class="searchbar empty"><input class="search-input" placeholder="Search notifications"/><div class="search-close"></div></div>
 			<div class="pagination-counter"> <span><b class="current">50</b> of <span class="total">350</span></span></div>
 			<div class="pagination-controls">
 				<div class="previous"></div><div class="next"></div>
