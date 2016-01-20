@@ -290,28 +290,32 @@ body {
 .navigation .searchbar.empty .search-close {
   visibility: hidden;
 }
-.navigation .pagination-counter {
+.pagination-counter {
   display: flex;
   margin: 0 10px;
   align-items: center;
 }
-.navigation .pagination-controls {
+.pagination-controls {
   display: flex;
 }
-.navigation .pagination-controls .previous,
-.navigation .pagination-controls .next {
+.pagination-controls .previous,
+.pagination-controls .next {
   min-width: 40px;
   min-height: 20px;
   border: 1px solid #ccc;
   border-radius: 2px;
   cursor: pointer;
 }
-.navigation .pagination-controls .previous:hover,
-.navigation .pagination-controls .next:hover {
+.pagination-controls .previous:hover,
+.pagination-controls .next:hover {
   background-color: #fbfbfb;
 }
-.navigation .pagination-controls .previous {
-  border-right: none;
+.pagination-controls .previous.disabled,
+.pagination-controls .next.disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.pagination-controls .previous {
   background: transparent url("../media/previous.png") center center no-repeat;
   background-image: -webkit-linear-gradient(transparent, transparent), url("../media/previous.svg");
   background-image: linear-gradient(transparent, transparent), url("../media/previous.svg");
@@ -320,7 +324,11 @@ body {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-.navigation .pagination-controls .next {
+.pagination-controls .previous.disabled {
+  border-right: none;
+}
+.pagination-controls .next {
+  border-left: none;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   background: transparent url("../media/next.png") center center no-repeat;
@@ -328,6 +336,18 @@ body {
   background-image: linear-gradient(transparent, transparent), url("../media/next.svg");
   background-size: auto;
   background-size: 20px;
+}
+.pagination-controls .previous.disabled + .next {
+  border-left: 1px solid #ccc;
+}
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 20px;
+  min-height: 40px;
+  margin-top: 20px;
+  border-top: 1px solid #eee;
 }
 .notification-list {
   display: flex;
@@ -355,7 +375,7 @@ body {
   border-bottom: none;
 }
 .notification.read {
-  background: #f5f5f5;
+  background: #f0f0f0;
 }
 .notification.read .close {
   display: none;
@@ -469,6 +489,9 @@ body {
 .notification .content .actions .action-list .more .more-icon:hover {
   background-color: #eee;
 }
+.more.active .more-icon {
+  background-color: #eee !important;
+}
 .notification + .notification {
   border-top: none;
 }
@@ -477,19 +500,37 @@ body {
 }
 .more-panel {
   position: absolute;
-  display: flex;
   display: none;
   flex-direction: column;
   border: 1px solid #AAA;
   border-bottom-width: 3px;
   border-radius: 2px;
   background: white;
-  padding: 10px;
-  min-width: 200px;
+  min-width: 250px;
+  z-index: 100;
+}
+.more.active .more-panel {
+  display: flex;
 }
 .more-panel .more-option {
   display: flex;
   flex-direction: row;
+  padding: 10px;
+}
+.more-panel .more-option:hover {
+  background: #eee;
+}
+.more-panel .more-option.action-read .more-option-icon {
+  background: transparent url("../media/mark-read.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/mark-read.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/mark-read.svg");
+  background-size: auto;
+}
+.more-panel .more-option.action-unread .more-option-icon {
+  background: transparent url("../media/mark-unread.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/mark-unread.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/mark-unread.svg");
+  background-size: auto;
 }
 .more-panel .more-option .more-option-icon {
   width: 20px;

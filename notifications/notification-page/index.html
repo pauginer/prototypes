@@ -43,7 +43,7 @@
 </script>  
 	<!-- NOTIFICATIONS: -->
 	<script id="notification-template" type="text/x-handlebars-template">
-			<div class="notification {{#if read}}read{{/if}}" data-notification="{{id}}">
+			<div class="notification {{#if read}}read{{/if}}" data-notification="{{id}}" data-url="{{url}}">
 				<div class="icon {{icon}}"></div>
 				<div class="content">
 					<div class="description">
@@ -55,10 +55,17 @@
 						 {{#each actions}}
 							<div class="action"><div class="action-icon {{icon}}"></div><div class="action-name">{{name}}</div></div>
 						{{/each}}
-						{{#if more}}
+							<!-- more -->
 							<div class="more">
 								<div class="more-icon"></div>
 								<div class="more-panel hidden">
+									<div class="more-option {{#if read}}action-unread{{/if}}{{#unless read}}action-read{{/unless}}">
+											<div class="more-option-icon"></div>
+											<div class="more-option-action">
+												<div class="more-option-name">{{#if read}}Mark as unread{{/if}}{{#unless read}}Mark as read{{/unless}}</div>
+												<div class="more-option-description">{{#if read}}Keep this notification as new{{/if}}{{#unless read}}Keep this notification as done{{/unless}}</div>
+											</div>
+									</div>
 								{{#each more}}
 									<div class="more-option">
 										<div class="more-option-icon {{icon}}"></div>
@@ -70,8 +77,7 @@
 								{{/each}}
 								</div>
 							</div>
-
-						{{/if}}
+							<!-- /more -->
 						</div>
 						<div class="timestamp">{{timestamp}}</div>
 					</div>
@@ -83,7 +89,7 @@
 	var filterData = {
 		status: "all",
 		favorites: [
-			{id: "all-contents", title: "All contents", counter:"300"},
+			{id: "all-contents", title: "Local contents", counter:"300"},
 			{id: "allusertalk", title: "User talk page", counter:"50"},
 			{id: "watched", title: "Watched pages", counter:"25"}
 		],
@@ -106,6 +112,7 @@
 	 read: false,
 	 page: "User talk page",
 	 actions: [{icon: "user", name: "Ludmilla"}],
+	 url: "http://wikipedia.org",
 	 more: [{icon: "volume", name: "Adjust notification volume", description:"Talk page"}]
 	},
 	{id: "2",
@@ -202,9 +209,46 @@
 	 more: [{icon: "volume", name: "Adjust notification volume", description:"Thanks notifications"}]}
 	];
 	
+	var totalItems = notificationsData.length;
+	
 	function pageNext(){
+		if((currentPage+1)*pageSize < totalItems){
 		currentPage = currentPage + 1;
 		updateNotifications();
+		$(".pagination-controls .previous").removeClass("disabled");
+			if((currentPage+1)*pageSize >= totalItems){
+				$(".pagination-controls .next").addClass("disabled");
+			}
+		}
+	}
+	
+	function pagePrev(){
+		if(currentPage>0){
+			currentPage = currentPage - 1;
+			updateNotifications();
+			$(".pagination-controls .next").removeClass("disabled");
+			if(currentPage == 0){
+				$(".pagination-controls .previous").addClass("disabled");
+			}
+		}
+	}	
+
+	function updatePageCount(){
+		var low = currentPage * pageSize +1;
+		var hi = (low + pageSize >= totalItems)? totalItems:low + pageSize - 1;
+		var current = low + " - " + hi;
+		$(".pagination-counter .current").text(current);
+		$(".pagination-counter .total").text(totalItems);
+		
+		if(currentPage ==0){
+			if(totalItems <= pageSize){
+			$(".pagination-controls .previous, .pagination-controls .next").addClass("disabled");
+			} else {
+			$(".pagination-controls .next").removeClass("disabled");
+			}
+		
+		}
+		
 	}
 
 	function notificationsByWiki(pro, lang){
@@ -244,6 +288,7 @@
 	}
 
 	function updateFilters(){
+		//currentPage = 0;
 		var filtersTemplate = Handlebars.compile($("#filters-template").html());
 		$(".filters").empty();
 		filterData["suggestions"] = getSuggestions();
@@ -258,16 +303,20 @@
 	}
 		
 	function actionChangeStatusFilter(){
+		currentPage = 0;
 		filterData["status"] = $(this).data("item");
 		updateFilters();
 		updateNotifications();
+		updatePageCount();
 	}
 		
 	function actionChangeContentFilter(){
+		currentPage = 0;
 		filterData["filter"] = $(this).data("item");
 		filterData["wiki"] = $(this).data("wiki");
 		updateFilters();
 		updateNotifications();
+		updatePageCount();
 	}
 
 	function filterByStatus(notif){
@@ -294,6 +343,7 @@
 		if(query != ""){
 			result = (text.indexOf(query) >=0)
 		}
+		updatePageCount();
 		return result;
 	}
 	
@@ -458,12 +508,37 @@
 					v["read"]=true;
 					updateFilters();
 					updateNotifications();
+					return false;
+				});
+				elt.find(".more").click(function(){
+					var active = $(this).hasClass("active");
+					$(".more.active").removeClass("active");
+					if(!active){
+						$(this).addClass("active");
+					}
+					return false;
+				});
 					
+				elt.find(".more-option.action-read, .more-option.action-unread").click(function(){
+					v["read"]= !v["read"];
+					updateFilters();
+					updateNotifications();
+					return false;
+				});
+				elt.click(function(){
+					var url = $(this).data("url");
+					v["read"] = true;
+					if(url!=""){
+						 window.open(url);
+					}
+					updateFilters();
+					updateNotifications();
 				});
 			}
-		}
 			validItems = validItems + 1;
+		}
 		});
+		totalItems = validItems;
 	}
 		
 function searchAction(){
@@ -473,6 +548,7 @@ function searchAction(){
 	}else{
 		$(".searchbar").addClass("empty");
 	}
+	currentPage = 0;
 	updateNotifications();
 }
 
@@ -484,9 +560,12 @@ function clearSearchAction(){
 	$(function(){
 		updateFilters();
 		updateNotifications();
+		updatePageCount();
 		
 		$(".search-input").keyup(searchAction);
 		$(".searchbar .search-close").click(clearSearchAction);
+		$(".pagination-controls .next").click(pageNext);
+		$(".pagination-controls .previous").click(pagePrev);
 	});
 	</script>
   </head>
@@ -498,11 +577,18 @@ function clearSearchAction(){
 			<div class="searchbar empty"><input class="search-input" placeholder="Search notifications"/><div class="search-close"></div></div>
 			<div class="pagination-counter"> <span><b class="current">50</b> of <span class="total">350</span></span></div>
 			<div class="pagination-controls">
-				<div class="previous"></div><div class="next"></div>
+				<div class="previous disabled"></div><div class="next"></div>
 			</div>
 		</div>
 		<div class="notification-list"></div>
+		<div class="footer">
+			<div class="pagination-counter"><span><b class="current">50</b> of <span class="total">350</span></span></div>
+			<div class="pagination-controls">
+				<div class="previous disabled"></div><div class="next"></div>
+			</div>
+		</div>
 	  </div>
+		  
 	</section>
   </body>
 </html>
