@@ -393,6 +393,13 @@ body {
 		background: #fbfbfb;
 	}
 	
+	q {
+		.medium-font;
+		color: #777;
+		padding: 5px 0;
+		display:inline-block;
+	}
+	
 	.notification-list.read &:last-child{
 		border-bottom: none;
 	}
@@ -413,6 +420,10 @@ body {
 			.vector-image("../media/thanks.svg", "../media/thanks.png");
 			background-size: contain;
 		}
+		&.flow-usertalk-post-reply {
+			.vector-image("../media/flow-usertalk-post-reply.svg", "../media/flow-usertalk-post-reply.png");
+			background-size: contain;
+		}
 		&.talk{
 			.vector-image("../media/talk.svg", "../media/talk.png");
 			background-size: contain;
@@ -423,6 +434,26 @@ body {
 		}
 		&.picture{
 			.vector-image("../media/picture.svg", "../media/picture.png");
+			background-size: contain;
+		}
+		&.linked{
+			.vector-image("../media/linked.svg", "../media/linked.png");
+			background-size: contain;
+		}
+		&.reverted{
+			.vector-image("../media/reverted.svg", "../media/reverted.png");
+			background-size: contain;
+		}
+		&.pagetriage-mark-as-reviewed{
+			.vector-image("../media/pagetriage-mark-as-reviewed.svg", "../media/pagetriage-mark-as-reviewed.png");
+			background-size: contain;
+		}
+		&.flow-new-topic{
+			.vector-image("../media/flow-new-topic.svg", "../media/flow-new-topic.png");
+			background-size: contain;
+		}
+		&.mention{
+			.vector-image("../media/mention.svg", "../media/mention.png");
 			background-size: contain;
 		}
 	}
@@ -465,12 +496,28 @@ body {
 					flex-direction: row;
 					align-items: center;
 					//font-weight: bold;
-					
+					margin-right: 10px;
 					.action-icon {
 						width: 15px;
 						height: 15px;
 						&.user{
 							.vector-image("../media/user.svg", "../media/user.png");
+				background-size: contain;
+						}
+						&.changes{
+							.vector-image("../media/changes.svg", "../media/changes.png");
+				background-size: contain;
+						}
+						&.link{
+							.vector-image("../media/link.svg", "../media/link.png");
+				background-size: contain;
+						}
+						&.thank{
+							.vector-image("../media/thank.svg", "../media/thank.png");
+				background-size: contain;
+						}
+						&.talkpage{
+							.vector-image("../media/talkpage.svg", "../media/talkpage.png");
 				background-size: contain;
 						}
 					}
@@ -483,7 +530,7 @@ body {
 					display: flex;
 					flex-direction: column;
 					position:relative;
-					margin: 0 10px;
+					//margin: 0 10px;
 					
 					.more-icon {
 						.vector-image("../media/more.svg", "../media/more.png");
@@ -545,12 +592,17 @@ body {
 				.vector-image("../media/mark-unread.svg", "../media/mark-unread.png");
 			}
 		
+		
 		.more-option-icon {
 			width: 20px;
 			height: 20px;
 			
 			&.volume{
 				.vector-image("../media/volume.svg", "../media/volume.png");
+			}
+			&.mute{
+							.vector-image("../media/mute.svg", "../media/mute.png");
+				background-size: contain;
 			}
 		}
 		.more-option-action {

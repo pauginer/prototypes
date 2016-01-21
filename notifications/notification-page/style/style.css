@@ -371,6 +371,12 @@ body {
   color: #111;
   background: #fbfbfb;
 }
+.notification q {
+  font-size: 15px;
+  color: #777;
+  padding: 5px 0;
+  display: inline-block;
+}
 .notification-list.read .notification:last-child {
   border-bottom: none;
 }
@@ -392,6 +398,13 @@ body {
   background-size: auto;
   background-size: contain;
 }
+.notification .icon.flow-usertalk-post-reply {
+  background: transparent url("../media/flow-usertalk-post-reply.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/flow-usertalk-post-reply.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/flow-usertalk-post-reply.svg");
+  background-size: auto;
+  background-size: contain;
+}
 .notification .icon.talk {
   background: transparent url("../media/talk.png") center center no-repeat;
   background-image: -webkit-linear-gradient(transparent, transparent), url("../media/talk.svg");
@@ -410,6 +423,41 @@ body {
   background: transparent url("../media/picture.png") center center no-repeat;
   background-image: -webkit-linear-gradient(transparent, transparent), url("../media/picture.svg");
   background-image: linear-gradient(transparent, transparent), url("../media/picture.svg");
+  background-size: auto;
+  background-size: contain;
+}
+.notification .icon.linked {
+  background: transparent url("../media/linked.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/linked.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/linked.svg");
+  background-size: auto;
+  background-size: contain;
+}
+.notification .icon.reverted {
+  background: transparent url("../media/reverted.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/reverted.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/reverted.svg");
+  background-size: auto;
+  background-size: contain;
+}
+.notification .icon.pagetriage-mark-as-reviewed {
+  background: transparent url("../media/pagetriage-mark-as-reviewed.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/pagetriage-mark-as-reviewed.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/pagetriage-mark-as-reviewed.svg");
+  background-size: auto;
+  background-size: contain;
+}
+.notification .icon.flow-new-topic {
+  background: transparent url("../media/flow-new-topic.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/flow-new-topic.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/flow-new-topic.svg");
+  background-size: auto;
+  background-size: contain;
+}
+.notification .icon.mention {
+  background: transparent url("../media/mention.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/mention.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/mention.svg");
   background-size: auto;
   background-size: contain;
 }
@@ -453,6 +501,7 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-right: 10px;
 }
 .notification .content .actions .action-list .action .action-icon {
   width: 15px;
@@ -465,6 +514,34 @@ body {
   background-size: auto;
   background-size: contain;
 }
+.notification .content .actions .action-list .action .action-icon.changes {
+  background: transparent url("../media/changes.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/changes.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/changes.svg");
+  background-size: auto;
+  background-size: contain;
+}
+.notification .content .actions .action-list .action .action-icon.link {
+  background: transparent url("../media/link.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/link.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/link.svg");
+  background-size: auto;
+  background-size: contain;
+}
+.notification .content .actions .action-list .action .action-icon.thank {
+  background: transparent url("../media/thank.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/thank.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/thank.svg");
+  background-size: auto;
+  background-size: contain;
+}
+.notification .content .actions .action-list .action .action-icon.talkpage {
+  background: transparent url("../media/talkpage.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/talkpage.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/talkpage.svg");
+  background-size: auto;
+  background-size: contain;
+}
 .notification .content .actions .action-list .action .action-name {
   padding-left: 5px;
   font-weight: bold;
@@ -473,7 +550,6 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
-  margin: 0 10px;
 }
 .notification .content .actions .action-list .more .more-icon {
   background: transparent url("../media/more.png") center center no-repeat;
@@ -541,6 +617,13 @@ body {
   background-image: -webkit-linear-gradient(transparent, transparent), url("../media/volume.svg");
   background-image: linear-gradient(transparent, transparent), url("../media/volume.svg");
   background-size: auto;
+}
+.more-panel .more-option .more-option-icon.mute {
+  background: transparent url("../media/mute.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/mute.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/mute.svg");
+  background-size: auto;
+  background-size: contain;
 }
 .more-panel .more-option .more-option-action {
   margin: 0 5px;
