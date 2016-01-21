@@ -236,6 +236,9 @@
 		var result = true;
 		var query = $(".search-input").val();
 		var text = $("<div/>").append(notif["message"]).text().toLowerCase();
+		$.each(notif["actions"], function(i, v){
+			text = text + " " + v.name.toLowerCase();
+		});
 		if(query != ""){
 			result = (text.indexOf(query.toLowerCase()) >=0)
 		}
