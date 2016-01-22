@@ -365,9 +365,14 @@
 		return dateHeaderTemplate(data);
 	}
 
+	function isNotifDisplayed(notif){
+		result = $(".notification[data-notification='" + notif["id"] + "']").length > 0;
+		return result;
+	}
+
 	function markReadNotifsByDate(offset){
 		$.each(notificationsData, function(i,notif){
-			if(offset == getDate(notif)){
+			if(offset == getDate(notif) && isNotifDisplayed(notif)){
 				notif["read"] = true;
 			} //TODO only mark as read if they are in the current page
 		});
