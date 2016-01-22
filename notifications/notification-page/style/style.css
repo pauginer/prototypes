@@ -101,7 +101,6 @@ body {
   flex-direction: column;
   box-shadow: 0 2px #eee inset;
   padding: 5px 0;
-  max-height: 300px;
   overflow-y: auto;
 }
 .content-filters .suggested .filter-item:hover {
@@ -216,8 +215,10 @@ body {
   margin-top: 25px;
 }
 .date-header .title {
-  font-size: 24px;
+  font-size: 20px;
+  font-weight: bold;
   margin-right: 10px;
+  color: #333;
 }
 .date-header .details {
   font-size: 20px;

@@ -418,6 +418,8 @@
 					return false;
 				});
 					
+				elt.find(".action").click(function(){return false;});
+					
 				elt.find(".more-option.action-read, .more-option.action-unread").click(function(){
 					v["read"]= !v["read"];
 					updateFilters();
