@@ -122,8 +122,18 @@ body {
 			background-size: contain;
 		}
 		.label {
-			display:flex;
+			//display:flex;
 		}
+	}
+	
+	.favorite-instructions {
+		//display: flex;
+		display:inline;
+		padding: 10px;
+		padding-top: 0;
+		color: #777;
+		font-size: 14px;
+		font-weight: normal;
 	}
 	
 	.add-favorites{
@@ -153,7 +163,7 @@ body {
 		//max-height: 300px;
 		overflow-y: auto;
 		& .filter-item:hover {
-			background: #f5f5f5;
+			background: #eee;
 		}
 	}
 	
@@ -165,7 +175,7 @@ body {
 		padding: 5px 10px;
 		cursor: pointer;
 		&:hover {
-			background: #f5f5f5;
+			background: #eee;
 		}
 		&.empty {
 			display: none;
@@ -203,7 +213,7 @@ body {
 		cursor: pointer;
 		
 		&:hover {
-			background-color: #fbfbfb;
+			background-color: #f0f0f0;
 		}
 		&.empty, &.empty.active.not-really {
 			display: none;

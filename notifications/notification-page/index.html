@@ -20,6 +20,7 @@
 		<div class="content-filters">
 			<div class="favorites">
 				<div class="favorites-title"><div class="icon"></div><div class="label">Contents</div></div>
+				<div class="favorite-instructions">Select a topic to view related notifications</div>
 				{{#each favorites}}
 					<div class="filter-item {{id}} {{#is ../filter id}}active{{/is}}" data-item="{{id}}"><div class="icon"></div><div class="label">{{title}}</div><div class="counter">{{counter}}</div></div>
 				{{/each}}
