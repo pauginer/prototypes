@@ -679,3 +679,47 @@ body {
 .more-panel .more-option .more-option-action .more-option-description {
   font-size: 13px;
 }
+body.dot .notification .content .description .close {
+  display: flex;
+  background: transparent url("../media/dot-unread.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/dot-unread.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/dot-unread.svg");
+  background-size: auto;
+  width: 20px;
+  height: 20px;
+}
+body.dot .notification .content .description .close:hover {
+  opacity: 0.8;
+}
+body.dot .notification.read .content .description .close {
+  display: flex;
+  background: transparent url("../media/dot-read.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/dot-read.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/dot-read.svg");
+  background-size: auto;
+}
+body.dot .notification.read .content .description .close:hover {
+  opacity: 0.8;
+}
+body.check .notification .content .description .close {
+  display: flex;
+  width: 20px;
+  height: 20px;
+  background: transparent url("../media/check-unread.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/check-unread.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/check-unread.svg");
+  background-size: auto;
+}
+body.check .notification .content .description .close:hover {
+  opacity: 0.8;
+}
+body.check .notification.read .content .description .close {
+  display: flex;
+  background: transparent url("../media/check-read.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/check-read.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/check-read.svg");
+  background-size: auto;
+}
+body.check .notification.read .content .description .close:hover {
+  opacity: 0.8;
+}

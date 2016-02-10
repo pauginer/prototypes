@@ -410,7 +410,7 @@
 				var elt = $(notif).appendTo($(".notification-list"));
 				//Bindings:
 				elt.find(".close").click(function(){
-					v["read"]=true;
+					v["read"]=!v["read"];
 					updateFilters();
 					updateNotifications();
 					return false;
@@ -464,7 +464,14 @@ function clearSearchAction(){
 	searchAction();
 }
 
+function applyVariant(){
+	var hash = window.location.hash;
+	var variant=hash.replace('#','');
+	$("body").addClass(variant);
+}
+		
 	$(function(){
+		applyVariant();
 		updateFilters();
 		updateNotifications();
 		updatePageCount();
@@ -473,6 +480,7 @@ function clearSearchAction(){
 		$(".searchbar .search-close").click(clearSearchAction);
 		$(".pagination-controls .next").click(pageNext);
 		$(".pagination-controls .previous").click(pagePrev);
+		
 	});
 	</script>
   </head>

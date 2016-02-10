@@ -683,3 +683,33 @@ body {
 		
 	}
 }
+
+body.dot  {
+	.notification .content .description .close{
+		display: flex;
+		.vector-image("../media/dot-unread.svg", "../media/dot-unread.png");
+		width: 20px;
+		height: 20px;
+		&:hover{opacity:0.8;}
+	}
+	.notification.read .content .description .close{
+		display: flex;
+		.vector-image("../media/dot-read.svg", "../media/dot-read.png");
+		&:hover{opacity:0.8;}
+	}
+}
+
+body.check  {
+	.notification .content .description .close{
+		display: flex;
+		width: 20px;
+		height: 20px;
+		.vector-image("../media/check-unread.svg", "../media/check-unread.png");
+		&:hover{opacity:0.8;}
+	}
+	.notification.read .content .description .close{
+		display: flex;
+		.vector-image("../media/check-read.svg", "../media/check-read.png");
+		&:hover{opacity:0.8;}
+	}
+}
