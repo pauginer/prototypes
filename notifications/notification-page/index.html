@@ -50,7 +50,7 @@
 				<div class="content">
 					<div class="description">
 						<div class="message">{{{message}}}</div>
-						<div class="close"></div>
+						<div class="close" {{#if read}}title="Mark as unread"{{/if}} {{#unless read}}title="Mark as read"{{/unless}}></div>
 					</div>
 					<div class="actions">
 						<div class="action-list">
