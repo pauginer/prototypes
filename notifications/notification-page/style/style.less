@@ -659,9 +659,11 @@ body {
 		
 		
 		.more-option-icon {
-			width: 20px;
-			height: 20px;
-			
+			width: 18px;
+			height: 18px;
+			display: flex;
+			flex-shrink: 0;
+			margin-right: 2px;
 			&.volume{
 				.vector-image("../media/volume.svg", "../media/volume.png");
 			}
@@ -674,9 +676,11 @@ body {
 			margin: 0 5px;
 			.more-option-name{
 				font-weight: bold;
+				color: #333;
 			}
 			.more-option-description{
 				.small-font;
+				margin-top:2px;
 			}
 			
 		}

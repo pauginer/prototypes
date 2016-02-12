@@ -740,7 +740,7 @@
 	 project: "Commons",
 	 language: "",
 	 icon: "picture",
-	 message: "Your picture <b>Pillars of Creation</b> has been nominated for <b>Picture fo the month</b>",
+	 message: "Your picture <b>Pillars of Creation</b> has been nominated for <b>Picture of the month</b>",
 	 timestamp: "6 days",
 	 read: false,
  	 page: "Pillars of creation",

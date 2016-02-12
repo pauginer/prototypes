@@ -654,8 +654,11 @@ body {
   background-size: auto;
 }
 .more-panel .more-option .more-option-icon {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  flex-shrink: 0;
+  margin-right: 2px;
 }
 .more-panel .more-option .more-option-icon.volume {
   background: transparent url("../media/volume.png") center center no-repeat;
@@ -675,9 +678,11 @@ body {
 }
 .more-panel .more-option .more-option-action .more-option-name {
   font-weight: bold;
+  color: #333;
 }
 .more-panel .more-option .more-option-action .more-option-description {
   font-size: 13px;
+  margin-top: 2px;
 }
 body.dot .notification .content .description .close {
   display: flex;
