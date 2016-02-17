@@ -709,11 +709,15 @@ body.check  {
 		width: 20px;
 		height: 20px;
 		.vector-image("../media/check-unread.svg", "../media/check-unread.png");
-		&:hover{opacity:0.8;}
+		&:hover{
+			opacity:0.8;}
 	}
 	.notification.read .content .description .close{
 		display: flex;
 		.vector-image("../media/check-read.svg", "../media/check-read.png");
-		&:hover{opacity:0.8;}
+		&:hover{
+			opacity:1;
+			.vector-image("../media/check-read-hi.svg", "../media/check-read-hi.png");
+		}
 	}
 }

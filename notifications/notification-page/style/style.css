@@ -726,5 +726,9 @@ body.check .notification.read .content .description .close {
   background-size: auto;
 }
 body.check .notification.read .content .description .close:hover {
-  opacity: 0.8;
+  opacity: 1;
+  background: transparent url("../media/check-read-hi.png") center center no-repeat;
+  background-image: -webkit-linear-gradient(transparent, transparent), url("../media/check-read-hi.svg");
+  background-image: linear-gradient(transparent, transparent), url("../media/check-read-hi.svg");
+  background-size: auto;
 }
