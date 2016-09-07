@@ -121,7 +121,54 @@ function scrollToFilter(){
   }
 }
 
+function highlightChange(){
+
+
+}
+
 //UPDATES
+function updateChanges(){
+    var filters = $(".tag").map(function() {
+      var tag = $(this);
+      if (tag.find(".color").length == 0)
+        return tag.data("id");
+    });
+    filters = filters.toArray();
+
+    var classList = "." + filters.join('.');
+    $(".changes .change").removeClass("hidden");
+
+    $(".changes .change").removeClass("red");
+
+    $.each($(".changes .change"),function(i,change){
+      //Check filters
+      if (filters.length >0 && $(change).is(classList) == false){
+        $(change).addClass("hidden");
+      }
+
+      //Highlight
+
+      var redTags = $(".tag").map(function() {
+        var tag = $(this);
+        if (tag.find(".color.red").length > 0)
+          return tag.data("id");
+      });
+      $.each(redTags,function(j,tag){
+        if($(change).hasClass(tag)){
+          $(change).addClass("red");
+        }
+      });
+
+
+
+
+    });
+
+
+
+    return classList;
+}
+
 function updateFilters(){
   var data = filtersData;
   var query = $(".search").val().trim();
@@ -181,6 +228,7 @@ function updateTags(){
   //Bindings:
   $(".remove").click(removeTag);
   $(".tag").click(selectTag);
+  updateChanges();
 }
 
 function filtersVisible(show){

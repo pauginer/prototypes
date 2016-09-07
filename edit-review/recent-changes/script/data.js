@@ -30,10 +30,10 @@ filtersData = { groups: [
     {id:"wikipedia", selected: false, name: "Wikipedia", description: "Edits to the Wikipedia namespace"}
   ]},
   {group: "Edit tags", url:'https://en.wikipedia.org/wiki/Special:Tags', search: true, filters:[
-    {id:"mobile-edit", selected: false, name: "Mobile edit", description: "For edits made from a mobile device"},
-    {id:"mobile-web-edit", selected: false, name: "Mobile web edit", description: "Edit made from mobile web site"},
+    {id:"mobile_edit", selected: false, name: "Mobile edit", description: "For edits made from a mobile device"},
+    {id:"mobile_web_edit", selected: false, name: "Mobile web edit", description: "Edit made from mobile web site"},
     {id:"visualeditor", selected: false, name: "Visual Edit", description: "	Edit made using the visual editor"},
-    {id:"mobile-app-edit", selected: false, name: "Mobile app edit", description: "Edits made from mobile apps"}
+    {id:"mobile_app_edit", selected: false, name: "Mobile app edit", description: "Edits made from mobile apps"}
   ]},
   {group: "Content categories", url:"https://en.wikipedia.org/wiki/Portal:Contents/Categories", search: true, filters:[
     {id:"cat-culture", selected: false, name: "Culture", description: "Recently edited"},
@@ -58,20 +58,22 @@ extendedFilters = { groups: [
     {id:"portal", selected: false, name: "Portal", description: "Edits to the Portal namespace"}
   ]},
   {group: "Edit tags", filters:[
-    {id:"mobile-edit", selected: false, name: "Mobile edit", description: "For edits made from a mobile device"},
-    {id:"mobile-web-edit", selected: false, name: "Mobile web edit", description: "Edit made from mobile web site"},
+    {id:"mobile_edit", selected: false, name: "Mobile edit", description: "For edits made from a mobile device"},
+    {id:"mobile_web_edit", selected: false, name: "Mobile web edit", description: "Edit made from mobile web site"},
     {id:"visualeditor", selected: false, name: "Visual Edit", description: "	Edit made using the visual editor"},
-    {id:"mobile-app-edit", selected: false, name: "Mobile app edit", description: "Edits made from mobile apps"},
+    {id:"mobile_app_edit", selected: false, name: "Mobile app edit", description: "Edits made from mobile apps"},
     {id:"section-blanking", selected: false, name: "Section blanking", description: "This edit blanked an entire section."},
     {id:"vandalism", selected: false, name: "Possible BLP issue or vandalism", description: "This edit might not adhere to the biographies of living persons policy."},
     {id:"repeating-characters", selected: false, name: "Repeating characters", description: "This edit contains a highly repetitive character sequence, like \"!!!!!!!\" or \"hahahahahahaha\"."},
-    {id:"canned-edit-summary", selected: false, name: "Canned edit summary", description: "Canned edit summary."},
+    {id:"canned_edit_summary", selected: false, name: "Canned edit summary", description: "Canned edit summary."},
     {id:"huggle", selected: false, name: "Huggle", description: "Edits made using the Huggle tool."},
     {id:"blanking", selected: false, name: "Blanking", description: "This edit blanked a substantial part of the article."},
     {id:"wpcleaner", selected: false, name: "WPCleaner", description: "	Edits made using the WPCleaner tool."},
     {id:"very-short-new-article", selected: false, name: "Very short new article", description: "very short new article"},
     {id:"possible-vandalism", selected: false, name: "Possible vandalism", description: "This edit may be vandalism."},
-    {id:"speedy-deletion-removal", selected: false, name: "Speedy deletion template removed", description: "This edit removed a speedy deletion template."}
+    {id:"speedy-deletion-removal", selected: false, name: "Speedy deletion template removed", description: "This edit removed a speedy deletion template."},
+    {id:"extraneous_markup", selected: false, name: "Extraneous markup", description: "Edits with extraneous markup added with the Edit toolbar."},
+    {id:"Possible_self_promotion_in_userspace", selected: false, name: "Possible self promotion in userspace", description: "User added typical promotional text to their user or user talk page."}
   ]},
   {group: "Content categories", filters:[
     {id:"cat-culture", selected: false, name: "Culture", description: "Wikipedia category"},
