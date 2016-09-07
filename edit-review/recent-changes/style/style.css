@@ -335,6 +335,15 @@ h1 {
 .change.blue {
   background: #99B2E5;
 }
+.change.green {
+  background: #7FD7C4;
+}
+.change.yellow {
+  background: #FFE599;
+}
+.change.orange {
+  background: #FFB590;
+}
 .change.red {
   background: #E59999;
 }
