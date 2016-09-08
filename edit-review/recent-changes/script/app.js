@@ -209,6 +209,7 @@ function updateFilters(){
   $(".options").click(showOptions);
   $(".visibility-panel .highlight").click(selectHighlight);
   $(".visibility-panel .option-filter").click(selectFilter);
+  $(".searchable .message").click(function(e){$(".search").focus()});
 
 }
 
@@ -218,8 +219,11 @@ function removeTag(e){
   updateFilterData(filterId, false);
   updateTags();
   updateFilters();
-  filtersVisible(true);
-  $(".search").focus();
+  if(!$(".filter-panel").hasClass("hidden")){
+    filtersVisible(true);
+      $(".search").focus();
+  }
+
   return false;
 }
 
