@@ -237,6 +237,9 @@ h1 {
 .filter-panel .searchable .view-more:hover {
   opacity: 0.75;
 }
+.filter-panel .group.compact ~ .filter.compact {
+  display: none;
+}
 .filter .check:checked ~ .options {
   display: flex;
 }

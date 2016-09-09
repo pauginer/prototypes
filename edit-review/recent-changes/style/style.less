@@ -185,6 +185,8 @@ h1 {
       color: #555A5F;
     }
 
+
+
     .filter {
       display: flex;
       padding: 10px 5px;
@@ -193,6 +195,7 @@ h1 {
       align-items: center;
 
       &:hover{ background-color: #fbfbfb;}
+
       & + .filter {
         border-top: 1px solid #EAECF0;
       }
@@ -200,6 +203,7 @@ h1 {
       &.suggested {
         background-color: #EAF3FF;
       }
+
       .check {
         width: 32px;
         height: 32px;
@@ -262,6 +266,9 @@ h1 {
     }
 
 }
+
+//Hide extra filters initially
+.filter-panel .group.compact ~ .filter.compact {display:none;}
 
 .filter .check:checked ~ .options {
   display:flex;

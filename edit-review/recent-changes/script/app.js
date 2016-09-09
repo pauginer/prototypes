@@ -57,18 +57,7 @@ function find(query){
   var result = {groups:[]};
   var groups = data.groups;
   $.each(groups, function(i,group){
-    var filters = [];
-    if(group.search){ //extended search
-      $.each(extendedFilters.groups, function(k,extended){
-        if(group.group == extended.group){
-            filters = findInGroup(extended, query);
-        }
-      });
-    }else {
-      filters = findInGroup(group, query);
-    }
-
-
+    var filters = findInGroup(group, query);
     if (filters.length > 0){
       var g = {group: group.group, filters: filters};
       result.groups.push(g);
