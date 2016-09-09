@@ -35,14 +35,20 @@ function updateFilterData(id, selected){
   filter.selected = selected;
 }
 
-function findInGroup(group, query){
+function findInGroup(group, query, expanded){
   var result = [];
 
   $.each(group.filters, function(i,filter){
     var info = filter.name.toLowerCase()+ filter.description.toLowerCase();
     var q = query.toLowerCase();
     //var matches = info.indexOf(q)!= -1; //contains
-    var matches = info.indexOf(q) == 0;   //startsWith
+    //var matches = info.indexOf(q) == 0;   //startsWith
+    var matches = false;
+    if(!!expanded){
+      matches = info.indexOf(q) == 0;   //startsWith
+    }else{
+      matches = info.indexOf(q)!= -1; //contains
+    }
 
     if(matches){
       result.push(filter);
@@ -52,12 +58,12 @@ function findInGroup(group, query){
   return result;
 }
 
-function find(query){
+function find(query,extended){
   var data = filtersData;
   var result = {groups:[]};
   var groups = data.groups;
   $.each(groups, function(i,group){
-    var filters = findInGroup(group, query);
+    var filters = findInGroup(group, query, !!extended);
     if (filters.length > 0){
       var g = {group: group.group, filters: filters};
       result.groups.push(g);
@@ -124,18 +130,50 @@ function highlightChange(change, color){
 
 }
 
+function meetsFiltersOr(classList){
+  var result = true;
+  var data = filtersData;
+  $.each(data.groups, function(i,group){
+    var hasActiveFilters = false;
+    var anyMatches = false;
+    var numberOfActiveFilters = $.grep(group.filters, function(item){ return !!item.selected;}).length;
+
+    $.each(group.filters, function(j,filter){
+      var isOnlyOneColoredFilter = (numberOfActiveFilters ==1) && !!filter.color;
+
+      if(filter.selected && !isOnlyOneColoredFilter){
+        hasActiveFilters = true;
+        var matches = ($.inArray(filter.id, classList) >= 0 );
+        anyMatches = anyMatches || matches;
+      }
+    });
+    if( hasActiveFilters){
+      result = result && anyMatches;
+    }
+  });
+  return result;
+
+}
+
+function meetsFiltersAnd(classList){
+  var result = true;
+  var data = filtersData;
+  $.each(data.groups, function(i,group){
+    var activeFilters = $.grep(group.filters, function(f){return !!f.selected && !f.color;})
+    $.each(activeFilters, function(j,filter){
+      var matches = $.inArray(filter.id, classList) >= 0;
+      result = result && matches;
+    });
+  });
+  return result;
+
+}
+
+
+var meetsFilters = meetsFiltersOr;
 //UPDATES
 function updateChanges(){
-    var filters = $(".tag").map(function() {
-      var tag = $(this);
-      if (tag.find(".color").length == 0)
-        return tag.data("id");
-    });
-    filters = filters.toArray();
-
-    var classList = "." + filters.join('.');
     $(".changes .change").removeClass("hidden");
-
     $(".changes .change").removeClass("blue");
     $(".changes .change").removeClass("green");
     $(".changes .change").removeClass("yellow");
@@ -143,8 +181,10 @@ function updateChanges(){
     $(".changes .change").removeClass("red");
 
     $.each($(".changes .change"),function(i,change){
+
       //Check filters
-      if (filters.length >0 && $(change).is(classList) == false){
+      var matches = meetsFilters($(change).attr("class").split(' '));
+      if (!matches){
         $(change).addClass("hidden");
       }
 
@@ -154,27 +194,8 @@ function updateChanges(){
       highlightChange($(change), "yellow");
       highlightChange($(change), "orange");
       highlightChange($(change), "red");
-
-      /*
-      var redTags = $(".tag").map(function() {
-        var tag = $(this);
-        if (tag.find(".color.red").length > 0)
-          return tag.data("id");
-      });
-      $.each(redTags,function(j,tag){
-        if($(change).hasClass(tag)){
-          $(change).addClass("red");
-        }
-      });
-      */
-
-
-
     });
 
-
-
-    return classList;
 }
 
 function updateFilters(){
@@ -182,6 +203,9 @@ function updateFilters(){
   var query = $(".search").val().trim();
   if(query.length > 0) {
     data = find(query);
+    if(data.length == 0){
+      data = find(query, true); //extended search
+    }
   }
   var html = filtersTemplate(data);
   $(".filter-panel").html(html);
