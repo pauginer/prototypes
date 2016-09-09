@@ -83,12 +83,14 @@ function showOptions(e){
 function selectHighlight(e){
   var panel = $(this).parents(".visibility-panel");
   panel.find(".active").removeClass("active");
-  panel.find(".option-highlight").addClass("active");
+  //panel.find(".option-highlight").addClass("active");
   $(this).addClass("active");
 
+  var color = $(this).attr("name");
   var filter = $(this).parents(".filter");
+  filter.attr("data-color", color);
   var data = getFilterDataById(filter.data("id"));
-  data.color = $(this).attr("name");
+  data.color = color;
   updateTags();
 }
 
@@ -98,9 +100,11 @@ function selectFilter(e){
   //panel.find(".option-filter").addClass("active");
   $(this).addClass("active");
 
+  var color = false;
   var filter = $(this).parents(".filter");
+  filter.attr("data-color", color);
   var data = getFilterDataById(filter.data("id"));
-  data.color = false;
+  data.color = color;
   updateTags();
 }
 

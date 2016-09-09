@@ -204,7 +204,6 @@ h1 {
   position: relative;
   width: 40px;
   height: 20px;
-  background: center url(../images/cog.svg) no-repeat;
   background-size: auto 18px;
   background-color: white;
   border-radius: 2px;
@@ -246,6 +245,48 @@ h1 {
 .options.active .visibility-panel {
   display: flex;
 }
+.options .icon {
+  display: flex;
+  flex: none;
+  width: 20px;
+  height: 20px;
+  background: center center url(../images/marker.svg) no-repeat;
+  margin-right: 10px;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.options .icon:after {
+  content: "";
+  display: flex;
+  align-self: center;
+  margin-left: 25px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #222;
+}
+.filter[data-color='blue'] .options .icon {
+  background: #3366cc;
+  border-radius: 100%;
+}
+.filter[data-color='green'] .options .icon {
+  background: #00AF89;
+  border-radius: 100%;
+}
+.filter[data-color='yellow'] .options .icon {
+  background: #FFCC33;
+  border-radius: 100%;
+}
+.filter[data-color='orange'] .options .icon {
+  background: #FF6D22;
+  border-radius: 100%;
+}
+.filter[data-color='red'] .options .icon {
+  background: #CC3333;
+  border-radius: 100%;
+}
 .visibility-panel {
   border: 1px solid #A2A9B1;
   box-shadow: 0 2px 0 1px rgba(0, 0, 0, 0.1);
@@ -259,40 +300,25 @@ h1 {
   right: 0;
   z-index: 100;
   min-width: 200px;
-  min-height: 100px;
   font-size: 16px;
 }
 .option-filter {
-  display: flex;
-  cursor: pointer;
-  flex-direction: row;
-  padding: 10px;
-  border-bottom: 1px solid #EAECF0;
-  align-items: center;
-}
-.option-filter .icon {
-  flex: none;
-  width: 16px;
-  height: 16px;
   border: 1px dashed #333;
+  cursor: pointer;
+  width: 22px;
+  height: 22px;
   border-radius: 100%;
   margin-right: 10px;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
-.option-filter .label {
-  flex: auto;
-}
-.option-filter .selected {
-  flex: none;
-  width: 18px;
-  height: 18px;
-  background-size: contain;
-  margin-left: auto;
-}
-.option-filter.active .selected {
-  background: center center url(../images/check.svg) no-repeat;
+.option-filter.active {
+  background-image: url(../images/check.svg);
 }
 .label-highlight {
   padding: 10px 10px 0 10px;
+  font-weight: bold;
 }
 .option-highlight {
   display: flex;
@@ -324,7 +350,7 @@ h1 {
 .option-highlight .red {
   background-color: #CC3333;
 }
-.option-highlight.active .highlight.active {
+.visibility-panel .highlight.active {
   background-image: url(../images/check-white.svg);
 }
 .changes {

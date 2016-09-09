@@ -17,21 +17,18 @@
         {{group}}
       </div>
       {{#each filters}}
-      <div  class="filter {{#unless selected}}{{#if compact}}compact{{/if}}{{/unless}}" data-id="{{id}}">
+      <div  class="filter {{#unless selected}}{{#if compact}}compact{{/if}}{{/unless}}" data-id="{{id}}" data-color="{{color}}">
         <input class="check" type="checkbox" id="{{id}}" {{#if selected}}checked="checked"{{/if}}></input>
         <label class="details" for="{{id}}">
           <div class="name">{{name}}</div>
           <div class="description">{{description}}</div>
         </label>
-        <div class="options">
+        <div class="options" title="highlight color"> <div class="icon"></div>
           <div class="visibility-panel">
-            <div class="option-filter {{#unless color}}active{{/unless}}">
-              <div class="icon"></div>
-              <div class="label">Filter</div>
-              <div class="selected"></div>
-            </div>
-            <div class="label-highlight"> Highlight</div>
+            <div class="label-highlight"> Highlight color</div>
             <div class="option-highlight {{#if color}} active{{/if}}">
+              <div class="option-filter {{#unless color}}active{{/unless}}">
+              </div>
               <div name = "blue" class="highlight blue {{#is color 'blue'}} active {{/is}}"></div>
               <div name = "green" class="highlight green {{#is color 'green'}} active {{/is}}"></div>
               <div name = "yellow" class="highlight yellow {{#is color 'yellow'}} active {{/is}}"></div>
@@ -44,7 +41,7 @@
       {{/each}}
       {{#if compact}}
       <div class="searchable">
-        <div class="message"> More available as you type</div>
+        <div class="message"> More available as you search</div>
         <a href="{{url}}" target="_blank" class="view-more"></a>
       </div>
       {{/if}}
