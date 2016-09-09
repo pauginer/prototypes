@@ -332,10 +332,15 @@ function clearWhenTyping(e){
   }
 }
 
+function loadChangesData(){
+    $(".changes").load("changes.html", addMetadataToChanges);
+}
+
 $(function(){ //Initialization:
   tagsTemplate = Handlebars.compile($("#tags-template").html());
   filtersTemplate = Handlebars.compile($("#filters-template").html());
 
+  loadChangesData();
   updateFilters();
   updateTags();
 

@@ -5,8 +5,9 @@ filtersData = { groups: [
   ]},
   {group: "Contribution quality", filters:[
       {id:"good", selected: false, name: "Positive", description: "Automatically considered as constructive"},
-      {id:"bad", selected: false, name: "Problematic", description: "Automatically considered as damaging at different degrees."},
-      {id:"very-bad", selected: false, name: "Problematic (most damaging)", description: "Automatically considered as highly damaging."}
+      {id:"very-good", selected: false, name: "Positive (highest)", description: "Automatically considered as highly constructive"},
+      {id:"damaging", selected: false, name: "Problematic", description: "Automatically considered as damaging at different degrees."},
+      {id:"very-damaging", selected: false, name: "Problematic (most damaging)", description: "Automatically considered as highly damaging."}
   ]},
   {group: "User intent", filters:[
     {id:"good-faith", selected: false, name: "Good-faith", description: "Automatically considered to be made in good-faith"},
@@ -36,22 +37,22 @@ filtersData = { groups: [
     {id:"portal", selected: false, compact: true, name: "Portal", description: "Edits to the Portal namespace"}
   ]},
   {group: "Edit tags", url:'https://en.wikipedia.org/wiki/Special:Tags', compact: true, filters:[
-    {id:"mobile_edit", selected: false, name: "Mobile edit", description: "For edits made from a mobile device"},
-    {id:"mobile_web_edit", selected: false, name: "Mobile web edit", description: "Edit made from mobile web site"},
-    {id:"visualeditor", selected: false, name: "Visual Edit", description: "	Edit made using the visual editor"},
-    {id:"mobile_app_edit", selected: false, name: "Mobile app edit", description: "Edits made from mobile apps"},
-    {id:"section-blanking", selected: false, compact: true, name: "Section blanking", description: "This edit blanked an entire section."},
-    {id:"vandalism", selected: false, compact: true, name: "Possible BLP issue or vandalism", description: "This edit might not adhere to the biographies of living persons policy."},
-    {id:"repeating-characters", selected: false, compact: true, name: "Repeating characters", description: "This edit contains a highly repetitive character sequence, like \"!!!!!!!\" or \"hahahahahahaha\"."},
-    {id:"canned_edit_summary", selected: false, compact: true, name: "Canned edit summary", description: "Canned edit summary."},
-    {id:"huggle", selected: false, compact: true, name: "Huggle", description: "Edits made using the Huggle tool."},
-    {id:"blanking", selected: false, compact: true, name: "Blanking", description: "This edit blanked a substantial part of the article."},
-    {id:"wpcleaner", selected: false, compact: true, name: "WPCleaner", description: "	Edits made using the WPCleaner tool."},
-    {id:"very-short-new-article", selected: false, compact: true, name: "Very short new article", description: "very short new article"},
-    {id:"possible-vandalism", selected: false, compact: true, name: "Possible vandalism", description: "This edit may be vandalism."},
-    {id:"speedy-deletion-removal", selected: false, compact: true, name: "Speedy deletion template removed", description: "This edit removed a speedy deletion template."},
-    {id:"extraneous_markup", selected: false, compact: true, name: "Extraneous markup", description: "Edits with extraneous markup added with the Edit toolbar."},
-    {id:"Possible_self_promotion_in_userspace", selected: false, compact: true, name: "Possible self promotion in userspace", description: "User added typical promotional text to their user or user talk page."}
+    {id:"mw-tag-mobile_edit", selected: false, name: "Mobile edit", description: "For edits made from a mobile device"},
+    {id:"mw-tag-mobile_web_edit", selected: false, name: "Mobile web edit", description: "Edit made from mobile web site"},
+    {id:"mw-tag-visualeditor", selected: false, name: "Visual Edit", description: "Edit made using the visual editor"},
+    {id:"mw-tag-mobile_app_edit", selected: false, name: "Mobile app edit", description: "Edits made from mobile apps"},
+    {id:"mw-tag-section-blanking", selected: false, compact: true, name: "Section blanking", description: "This edit blanked an entire section."},
+    {id:"mw-tag-vandalism", selected: false, compact: true, name: "Possible BLP issue or vandalism", description: "This edit might not adhere to the biographies of living persons policy."},
+    {id:"mw-tag-repeating-characters", selected: false, compact: true, name: "Repeating characters", description: "This edit contains a highly repetitive character sequence, like \"!!!!!!!\" or \"hahahahahahaha\"."},
+    {id:"mw-tag-canned_edit_summary", selected: false, compact: true, name: "Canned edit summary", description: "Canned edit summary."},
+    {id:"mw-tag-huggle", selected: false, compact: true, name: "Huggle", description: "Edits made using the Huggle tool."},
+    {id:"mw-tag-blanking", selected: false, compact: true, name: "Blanking", description: "This edit blanked a substantial part of the article."},
+    {id:"mw-tag-wpcleaner", selected: false, compact: true, name: "WPCleaner", description: "	Edits made using the WPCleaner tool."},
+    {id:"mw-tag-very-short-new-article", selected: false, compact: true, name: "Very short new article", description: "very short new article"},
+    {id:"mw-tag-possible-vandalism", selected: false, compact: true, name: "Possible vandalism", description: "This edit may be vandalism."},
+    {id:"mw-tag-speedy-deletion-removal", selected: false, compact: true, name: "Speedy deletion template removed", description: "This edit removed a speedy deletion template."},
+    {id:"mw-tag-extraneous_markup", selected: false, compact: true, name: "Extraneous markup", description: "Edits with extraneous markup added with the Edit toolbar."},
+    {id:"mw-tag-Possible_self_promotion_in_userspace", selected: false, compact: true, name: "Possible self promotion in userspace", description: "User added typical promotional text to their user or user talk page."}
   ]},
   {group: "Content categories", url:"https://en.wikipedia.org/wiki/Portal:Contents/Categories", compact: true, filters:[
     {id:"cat-culture", selected: false, name: "Culture", description: "Wikipedia category"},
