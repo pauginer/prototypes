@@ -5,7 +5,7 @@ filtersData = { groups: [
   ]},
   {group: "Contribution quality", filters:[
       {id:"good", selected: false, name: "Positive", description: "Automatically considered as constructive"},
-      {id:"very-good", selected: false, name: "Positive (highest)", description: "Automatically considered as highly constructive"},
+      {id:"very-good", selected: false, name: "Positive (most constructive)", description: "Automatically considered as highly constructive"},
       {id:"damaging", selected: false, name: "Problematic", description: "Automatically considered as damaging at different degrees."},
       {id:"very-damaging", selected: false, name: "Problematic (most damaging)", description: "Automatically considered as highly damaging."}
   ]},
