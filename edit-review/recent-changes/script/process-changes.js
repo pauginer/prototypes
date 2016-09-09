@@ -94,6 +94,7 @@ $(".change a").each(function(i,a){
   var url= $(a).attr("href");
   url = "//en.wikipedia.org"+url;
   $(a).attr("href", url);
+  $(a).attr("target", "__blank");
 });
 
 
