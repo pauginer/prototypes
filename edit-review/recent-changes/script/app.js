@@ -106,7 +106,7 @@ function scrollToFilter(){
   var panelHeight = $('.filter-panel').height();
   var pos = scrollPos + targetPos - dialogOffset;
   if (pos<scrollPos || pos - scrollPos > panelHeight){ //out of viewport:
-    $('.filter-panel').animate({scrollTop: pos }, 1000);
+    $('.filter-panel').animate({scrollTop: pos }, 500);
   }
 }
 
@@ -189,7 +189,12 @@ function updateFilters(){
   //Bindings:
   $(".check").change(function() {
     updateFilterData(this.id, this.checked);
-    clearQuery();
+    var isQuery = $(".search").val().length >0;
+    if(isQuery){
+        clearQuery();
+        updateFilters();
+    }
+
     updateTags();
     $(".search").focus();
 
