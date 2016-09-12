@@ -49,6 +49,10 @@ $(".change:not(.unregistered)").addClass("registered");
 //Mark edits from those users without a talk page as newcomers
 $("a.new[title^='User']").parent(".change").addClass("newcomer");
 
+probablyAddClass($(".change.registered:not(.newcomer)"), "experienced", 50);
+$(".change.registered:not(.newcomer, .experienced)").addClass("most-experienced");
+
+
 //All edits by others:
 $(".change").addClass("others");
 
