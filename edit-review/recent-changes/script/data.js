@@ -3,13 +3,13 @@ filtersData = { groups: [
     {id:"unpatrolled", selected: false, name: "Pending review", description: "Edits not reviewed yet"},
     {id:"patrolled", selected: false, name: "Completed review", description: "Edits already reviewed"}
   ]},
-  {group: "Contribution quality (estimated)", filters:[
+  {group: "Contribution quality (predicted)", filters:[
       {id:"very-good", selected: false, name: "Very likely good", description: "Edits with 90-100% probability of being useful."},
       {id:"good", selected: false, name: "Likely good", description: "Edits with 65-100% probability of being useful."},
       {id:"damaging", selected: false, name: "Likely has problems", description: "Edits with a 65-100% probability of being a flawed or damaging."},
       {id:"very-damaging", selected: false, name: "Very likely has problems", description: "Edits with a 90-100% probability of being a flawed or damaging."}
   ]},
-  {group: "User intent", filters:[
+  {group: "User intent (predicted)", filters:[
     {id:"good-faith", selected: false, name: "Good-faith", description: "Automatically considered to be made in good-faith"},
     {id:"bad-faith", selected: false, name: "Probably bad faith", description: "Automatically considered as being made in bad faith"}
   ]},

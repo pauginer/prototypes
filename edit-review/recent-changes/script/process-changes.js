@@ -44,7 +44,10 @@ $(".change .mw-anonuserlink").parent(".change").addClass("unregistered");
 $(".change:not(.unregistered)").addClass("registered");
 
 //Mark 25% of registered users as newcomers
-probablyAddClass($(".change.registered"), "newcomer", 25);
+//probablyAddClass($(".change.registered"), "newcomer", 25);
+
+//Mark edits from those users without a talk page as newcomers
+$("a.new[title^='User']").parent(".change").addClass("newcomer");
 
 //All edits by others:
 $(".change").addClass("others");
