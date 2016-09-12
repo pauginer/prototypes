@@ -392,6 +392,7 @@ $(function(){ //Initialization:
   $("body").click(function(e){
     if ($(e.target).parents(".filters").length == 0){
       filtersVisible(false);
+      $(".tags .tag.active").removeClass("active");
     }
   });
 });
