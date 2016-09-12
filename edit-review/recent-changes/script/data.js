@@ -3,7 +3,7 @@
 filterSubsets = [ ["very-good", "good"], ["very-damaging", "damaging"] ];
 
 //Filter sets where they represent the full search space
-filterComplete = [["minor","regular"], ["registered", "unregistered"], ["own","others"], ["newcomer","experienced"]];
+filterComplete = [["minor","regular"], ["registered", "unregistered"], ["own","others"], ["newcomer","experienced", "most-experienced"]];
 
 filtersData = { groups: [
   {group: "Review", filters:[
@@ -22,7 +22,8 @@ filtersData = { groups: [
   ]},
   {group: "User experience level", filters:[
     {id:"newcomer", selected: false, name: "Newcomer", description: "Editors that joined recently or with few edits"},
-    {id:"experienced", selected: false, name: "More experienced", description: "Edits by those who are not Newcomers."}
+    {id:"experienced", selected: false, name: "More experienced", description: "Edits by those who are not Newcomers, but not the most experienced editors either."},
+    {id:"most-experienced", selected: false, name: "Most experienced", description: "Edits by the most productive editors."}
   ]},
   {group: "Users", filters:[
     {id:"registered", selected: false, name: "Registered", description: "Editor with an account considered as highly damaging"},
