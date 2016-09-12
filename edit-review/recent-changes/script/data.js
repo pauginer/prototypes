@@ -3,7 +3,7 @@
 filterSubsets = [ ["very-good", "good"], ["very-damaging", "damaging"] ];
 
 //Filter sets where they represent the full search space
-filterComplete = [["minor","regular"], ["registered", "unregistered"], ["own","others"]];
+filterComplete = [["minor","regular"], ["registered", "unregistered"], ["own","others"], ["newcomer","experienced"]];
 
 filtersData = { groups: [
   {group: "Review", filters:[
@@ -20,10 +20,13 @@ filtersData = { groups: [
     {id:"good-faith", selected: false, name: "Good-faith", description: "Automatically considered to be made in good-faith"},
     {id:"bad-faith", selected: false, name: "Probably bad faith", description: "Automatically considered as being made in bad faith"}
   ]},
+  {group: "User experience level", filters:[
+    {id:"newcomer", selected: false, name: "Newcomer", description: "Editors that joined recently or with few edits"},
+    {id:"experienced", selected: false, name: "More experienced", description: "Edits by those who are not Newcomers."}
+  ]},
   {group: "Users", filters:[
     {id:"registered", selected: false, name: "Registered", description: "Editor with an account considered as highly damaging"},
     {id:"unregistered", selected: false, name: "Unregistered", description: "Anonymous editor"},
-    {id:"newcomer", selected: false, name: "Newcomer", description: "Editors that joined recently or with few edits"},
     {id:"own", selected: false, name: "Your edits", description: "Edits by you"},
     {id:"others", selected: false, name: "Edits by others", description: "Edits created by other users (not you)"}
   ]},

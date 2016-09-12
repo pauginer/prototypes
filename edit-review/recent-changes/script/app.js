@@ -302,13 +302,13 @@ function updateTags(){
           tags.push(tag);
       }
     });
-
     if(tags.length == list.length){
         $.each(tags, function(i, tag){
           tag.addClass("useless");
+          var title = tag.attr("title") + " (No effect in the current result since all complementary filters have been added too)";
+          tag.attr("title", title);
         });
     }
-
   })
 
 }
