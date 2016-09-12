@@ -294,6 +294,23 @@ function updateTags(){
     }
   });
 
+  $.each(filterComplete, function(i, list){
+    var tags =[];
+    $.each(list, function(j, tagId){
+      var tag = $(".tag[data-id='"+ tagId + "']:not([data-color])");
+      if(tag.length>0){
+          tags.push(tag);
+      }
+    });
+
+    if(tags.length == list.length){
+        $.each(tags, function(i, tag){
+          tag.addClass("useless");
+        });
+    }
+
+  })
+
 }
 
 function filtersVisible(show){

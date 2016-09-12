@@ -1,4 +1,9 @@
+
+//Filter tuples where the first is a subset of the second
 filterSubsets = [ ["very-good", "good"], ["very-damaging", "damaging"] ];
+
+//Filter sets where they represent the full search space
+filterComplete = [["minor","regular"], ["registered", "unregistered"], ["own","others"]];
 
 filtersData = { groups: [
   {group: "Review", filters:[
