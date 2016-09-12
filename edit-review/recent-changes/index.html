@@ -46,6 +46,7 @@
       </div>
       {{/if}}
       {{/each}}
+      {{#unless groups}}<div class='no-results'>No filters found</div>{{/unless}}
     </script>
     <script id="tags-template" type="text/x-handlebars-template">
       {{#each tags}}
@@ -102,6 +103,12 @@
         <div class="dates"> <div class="icon"></div>7 days<div class="more"></div></div>
       </section>
       <section class="changes">
+      </section>
+      <section class="changes-empty hidden">
+        <div class="message">
+          <div class="title">No contributions meet the selected criteria </div>
+          <div class="description">Try making the search broader by removing some filters.</div>
+        </div>
       </section>
     </section>
   </body>

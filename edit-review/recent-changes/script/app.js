@@ -200,6 +200,14 @@ function updateChanges(){
       highlightChange($(change), "red");
     });
 
+    if ($(".changes .change").length >0 && $(".changes .change:not(.hidden)").length == 0){
+      $(".changes-empty").removeClass("hidden");
+      $(".changes").addClass("hidden");
+    } else {
+      $(".changes-empty").addClass("hidden");
+      $(".changes").removeClass("hidden");
+    }
+
 }
 
 function updateFilters(){
@@ -207,11 +215,13 @@ function updateFilters(){
   var query = $(".search").val().trim();
   if(query.length > 0) {
     data = find(query);
-    if(data.length == 0){
+    if(data.groups.length == 0){
       data = find(query, true); //extended search
     }
   }
   var html = filtersTemplate(data);
+
+
   $(".filter-panel").html(html);
   $(".tag").removeClass("active");
   //Bindings:
@@ -300,7 +310,7 @@ function searchWhenTyping(e){
     var filters = $(".filter-panel .filter.suggested .check");
     if(filters.length > 0){
       var first = filters[0];
-      console.debug(first.id);
+      //console.debug(first.id);
       updateFilterData(first.id, !first.checked);
       clearQuery();
     }
