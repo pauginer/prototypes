@@ -84,16 +84,16 @@ $(".change[class^='mw-changeslist-ns100-']").addClass("portal talk");
 
 //CATEGORIES
 //Assigning some random categories to articles
-probablyAddClass($(".change.article"), "cat-culture", 5);
-probablyAddClass($(".change.article"), "cat-geography", 5);
-probablyAddClass($(".change.article"), "cat-health", 5);
-probablyAddClass($(".change.article"), "cat-history", 5);
-probablyAddClass($(".change.article"), "cat-science", 5);
-probablyAddClass($(".change.article"), "cat-people", 5);
-probablyAddClass($(".change.article"), "cat-philosophy", 5);
-probablyAddClass($(".change.article"), "cat-religion", 5);
-probablyAddClass($(".change.article"), "cat-society", 5);
-probablyAddClass($(".change.article"), "cat-technology", 5);
+probablyAddClass($(".change.article"), "cat-culture", 10);
+probablyAddClass($(".change.article"), "cat-geography", 10);
+probablyAddClass($(".change.article"), "cat-health", 10);
+probablyAddClass($(".change.article"), "cat-history", 10);
+probablyAddClass($(".change.article"), "cat-science", 10);
+probablyAddClass($(".change.article"), "cat-people", 10);
+probablyAddClass($(".change.article"), "cat-philosophy", 10);
+probablyAddClass($(".change.article"), "cat-religion", 10);
+probablyAddClass($(".change.article"), "cat-society", 10);
+probablyAddClass($(".change.article"), "cat-technology", 10);
 
 
 //Replace links:
