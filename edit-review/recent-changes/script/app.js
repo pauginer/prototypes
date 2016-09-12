@@ -221,7 +221,6 @@ function updateFilters(){
   }
   var html = filtersTemplate(data);
 
-
   $(".filter-panel").html(html);
   $(".tag").removeClass("active");
   //Bindings:
@@ -284,6 +283,17 @@ function updateTags(){
   $(".remove").click(removeTag);
   $(".tag").click(selectTag);
   updateChanges();
+
+  //Incompatibilities:
+  $.each(filterSubsets, function(i,pair){
+    if($(".tag[data-id='"+ pair[0] +"'], .tag[data-id='" + pair[1] +"']").length == 2){
+      var tag = $(".tag[data-id='" + pair[0] + "']");
+      tag.addClass("useless");
+      var title = tag.attr("title") + " (No effect in the current results since it is already included in \""+ $(".tag[data-id='" + pair[1] + "'] .name").text() +"\" )";
+      tag.attr("title", title);
+    }
+  });
+
 }
 
 function filtersVisible(show){

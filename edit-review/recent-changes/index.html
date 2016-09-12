@@ -50,7 +50,7 @@
     </script>
     <script id="tags-template" type="text/x-handlebars-template">
       {{#each tags}}
-      <div class="tag" data-id="{{id}}" title="{{description}}">
+      <div class="tag" data-id="{{id}}" {{#if color}}data-color= "{{color}}"{{/if}} title="{{description}}">
         {{#if color}}<div class="color {{color}}"></div>{{/if}}
         <div class="name">{{name}}</div>
         <div class="remove"></div></div>

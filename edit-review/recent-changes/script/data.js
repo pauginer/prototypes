@@ -1,3 +1,5 @@
+filterSubsets = [ ["very-good", "good"], ["very-damaging", "damaging"] ];
+
 filtersData = { groups: [
   {group: "Review", filters:[
     {id:"unpatrolled", selected: false, name: "Pending review", description: "Edits not reviewed yet"},
