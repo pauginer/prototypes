@@ -48,7 +48,7 @@ a.new, #p-personal a.new {
   flex:auto;
 }
 
-.prelude, .filters, .changes {
+.prelude, .filters, .actions, .changes {
   max-width: 950px;
 }
 
@@ -416,6 +416,44 @@ h1 {
 
 .visibility-panel .highlight.active{
   background-image: url(../images/check-white.svg);
+}
+
+.actions{
+  padding: 10px 20px;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  .pagination, .dates {
+    cursor: pointer;
+    border: 1px solid #A2A9B1;
+    border-radius: 2px;
+    padding: 8px 16px;
+    margin-left: 8px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .more{
+      content:"";
+      //display: inline-block;
+      display: flex;
+      align-self: center;
+      margin-left: 8px;
+      width: 0;
+       height: 0;
+       border-left: 5px solid transparent;
+       border-right: 5px solid transparent;
+       border-top: 5px solid #222;
+    }
+  }
+
+  .dates .icon {
+    width: 18px;
+    height: 18px;
+    background: center center url(../images/calendar.svg) no-repeat;
+    background-size: contain;
+    margin-right: 8px;
+  }
 }
 
 .changes {
