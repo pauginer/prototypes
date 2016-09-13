@@ -17,8 +17,8 @@
     <link rel="stylesheet" href="style/style.css" media="screen" charset="utf-8">
     <script id="filters-template" type="text/x-handlebars-template">
       {{#each groups}}
-      <div  class="group {{#if compact}}compact{{/if}}">
-        {{group}}
+      <div  class="group {{#if compact}}compact{{/if}}" data-id="{{group}}">
+        <div class="title">{{group}}</div>
         {{#if info}} <span class="whatsthis" data-tooltip-content="#whats-{{info}}">
          What's this? </span> {{/if}}
       </div>

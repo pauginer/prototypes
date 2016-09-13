@@ -275,6 +275,19 @@ function selectTag(e){
 
 }
 
+function highlightActiveGroups(){
+  var data = filtersData;
+  $(".filter-panel .group.active").removeClass("active");
+
+    $.each(data.groups, function(i,group){
+      $.each(group.filters, function(j,filter){
+        if(filter.selected){
+          $(".filter-panel .group[data-id='"+ group.group +"']").addClass("active");
+        }
+      });
+    });
+}
+
 function updateTags(){
   var data = {tags: getSelectedFilters(filtersData)};
   var html = tagsTemplate(data);
@@ -282,6 +295,7 @@ function updateTags(){
   //Bindings:
   $(".remove").click(removeTag);
   $(".tag").click(selectTag);
+  highlightActiveGroups();
   updateChanges();
 
   //Incompatibilities:
@@ -315,6 +329,7 @@ function updateTags(){
   updateTooltips();
 
 }
+
 
 function filtersVisible(show){
   if(show){

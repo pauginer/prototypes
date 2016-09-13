@@ -190,6 +190,10 @@ h1 {
   color: #555A5F;
   display: flex;
 }
+.filter-panel .group.active .title {
+  font-weight: bold;
+  color: #555A5F;
+}
 .filter-panel .whatsthis {
   cursor: pointer;
   color: #3366CC;
