@@ -25,8 +25,13 @@ $(".change:not(.unpatrolled)").addClass("patrolled");
 //Make 20% of the damaging edits to be very-damaging
 probablyAddClass($(".change.damaging"), "very-damaging", 20);
 
+//Make damaging and very damaging changes to also become "maybe damaging", including also additional ones:
+$(".change.damaging, .change.very-damaging").addClass("maybe-damaging");
+probablyAddClass($(".change:not(.damaging)"), "maybe-damaging", 20);
+
+
 //Make 50% of the non-damaging edits to be good
-probablyAddClass($(".change:not(.damaging)"), "good", 50);
+probablyAddClass($(".change:not(.maybe-damaging)"), "good", 50);
 
 //Make 20% of the good edits to be very-good
 probablyAddClass($(".change.good"), "very-good", 20);
@@ -35,7 +40,9 @@ probablyAddClass($(".change.good"), "very-good", 20);
 
 //Mark 1/2 as good-faith, and 1/3 of the damaging edits as bad-faith leaving the rest undefined.
 probablyAddClass($(".change"), "good-faith", 50);
-probablyAddClass($(".change:not(.good-faith).damaging"), "bad-faith", 33);
+probablyAddClass($(".change.good-faith"), "very-good-faith", 20);
+probablyAddClass($(".change:not(.good-faith).damaging"), "bad-faith", 60);
+probablyAddClass($(".change.bad-faith"), "very-bad-faith", 20);
 
 //USER TYPES
 

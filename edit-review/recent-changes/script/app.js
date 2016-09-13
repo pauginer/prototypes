@@ -289,7 +289,8 @@ function updateTags(){
     if($(".tag[data-id='"+ pair[0] +"'], .tag[data-id='" + pair[1] +"']").length == 2){
       var tag = $(".tag[data-id='" + pair[0] + "']");
       tag.addClass("useless");
-      var title = tag.attr("title") + " (No effect in the current results since it is already included in \""+ $(".tag[data-id='" + pair[1] + "'] .name").text() +"\" )";
+
+      var title = tag.data("description") + " Has no effect in the current results since it is already included in \""+ $(".tag[data-id='" + pair[1] + "'] .name").text() +"\". Consider highlighting it with color instead.";
       tag.attr("title", title);
     }
   });
