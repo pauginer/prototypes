@@ -406,7 +406,13 @@ $(function(){ //Initialization:
 
   $(".search").keyup(searchWhenTyping);
   $(".search").keydown(clearWhenTyping);
-  $(".search").focus(function(){filtersVisible(true);});
+  $(".search").focus(function(){
+    filtersVisible(true);
+    $(this).parent(".searchbar").addClass("active");
+  });
+  $(".search").blur(function(){
+    $(this).parent(".searchbar").removeClass("active");
+  });
   $(".search-icon").click(function(){$(".search").focus();});
   $("body").click(function(e){
     if ($(e.target).parents(".filters").length == 0){

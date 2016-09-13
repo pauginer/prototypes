@@ -49,9 +49,9 @@ a.new, #p-personal a.new {
   flex:auto;
 }
 
-.prelude, .filters, .actions, .changes, .changes-empty {
+/*.prelude, .filters, .actions, .changes, .changes-empty {
   max-width: 950px;
-}
+}*/
 
 .personal {
   min-width: 600px;
@@ -109,6 +109,11 @@ h1 {
     flex-direction: row;
     align-items: center;
     padding: 0 5px;
+
+    &.active {
+      border-color: #3366cc;
+      box-shadow: 0 0 0 1px #3366cc inset;
+    }
 
     .search-icon {
       width: 16px;
@@ -178,6 +183,7 @@ h1 {
       font-size: 16px;
       border: none;
       outline: none;
+      background-color: transparent;
     }
 
 }

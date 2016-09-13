@@ -41,13 +41,9 @@ a.new,
   flex-direction: column;
   flex: auto;
 }
-.prelude,
-.filters,
-.actions,
-.changes,
-.changes-empty {
+/*.prelude, .filters, .actions, .changes, .changes-empty {
   max-width: 950px;
-}
+}*/
 .personal {
   min-width: 600px;
   height: 37px;
@@ -96,6 +92,10 @@ h1 {
   flex-direction: row;
   align-items: center;
   padding: 0 5px;
+}
+.searchbar.active {
+  border-color: #3366cc;
+  box-shadow: 0 0 0 1px #3366cc inset;
 }
 .searchbar .search-icon {
   width: 16px;
@@ -160,6 +160,7 @@ h1 {
   font-size: 16px;
   border: none;
   outline: none;
+  background-color: transparent;
 }
 .tag.useless:not([data-color]) {
   color: #9AA0A7;
