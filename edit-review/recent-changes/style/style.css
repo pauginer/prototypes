@@ -187,6 +187,12 @@ h1 {
   background: #EAECF0;
   padding: 8px 10px;
   color: #555A5F;
+  display: flex;
+}
+.filter-panel .whatsthis {
+  cursor: pointer;
+  color: #3366CC;
+  margin: 0 10px;
 }
 .filter-panel .filter {
   display: flex;

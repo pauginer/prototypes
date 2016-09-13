@@ -241,7 +241,7 @@ function updateFilters(){
   $(".visibility-panel .highlight").click(selectHighlight);
   $(".visibility-panel .option-filter").click(selectFilter);
   $(".searchable .message").click(function(e){$(".search").focus()});
-
+  updateTooltips();
 }
 
 function removeTag(e){
@@ -312,6 +312,8 @@ function updateTags(){
     }
   })
 
+  updateTooltips();
+
 }
 
 function filtersVisible(show){
@@ -372,6 +374,22 @@ function clearWhenTyping(e){
       updateTags();
     }
   }
+}
+
+function updateTooltips(){
+  $('.tags .tag, .filter-panel .options').tooltipster({
+    theme: 'tooltipster-light',
+    contentCloning: true,
+    maxWidth: 400,
+    delay: 600
+    });
+
+    $(".filter-panel .whatsthis").tooltipster({
+      theme: 'tooltipster-light',
+      trigger: 'click',
+      contentCloning: true,
+      maxWidth: 400
+      });
 }
 
 function loadChangesData(){

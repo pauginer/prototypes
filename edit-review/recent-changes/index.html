@@ -4,6 +4,10 @@
     <meta charset="utf-8">
     <title>Recent Changes</title>
     <script src="lib/jquery.js"></script>
+     <link rel="stylesheet" type="text/css" href="lib/tooltipster/css/tooltipster.bundle.min.css" />
+     <link rel="stylesheet" type="text/css" href="lib/tooltipster/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-borderless.min.css" />
+     <link rel="stylesheet" type="text/css" href="lib/tooltipster/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-light.min.css" />
+     <script type="text/javascript" src="lib/tooltipster/js/tooltipster.bundle.min.js"></script>
     <script src="lib/handlebars.js"></script>
     <script src="lib/helpers.js"></script>
     <script src="lib/moment.js"></script>
@@ -15,6 +19,8 @@
       {{#each groups}}
       <div  class="group {{#if compact}}compact{{/if}}">
         {{group}}
+        {{#if info}} <span class="whatsthis" data-tooltip-content="#whats-{{info}}">
+         What's this? </span> {{/if}}
       </div>
       {{#each filters}}
       <div  class="filter {{#unless selected}}{{#if compact}}compact{{/if}}{{/unless}}" data-id="{{id}}" data-color="{{color}}">
@@ -111,5 +117,17 @@
         </div>
       </section>
     </section>
+    <div class="tooltip_templates hidden">
+      <span id="whats-quality">
+          <h3>Automatic quality prediction</h3>
+          <p>Filter edits based on how good or bad they are. This is automatically predicted by ORES, a machine learning service, based on a large set of previous examples.</p>
+          <p>Several filters are provided for you to adjust how strict you need results to be. More strict filters will produce fewer but more accurate results, while less strict filters will provide a wider set of results with less precision.</p>
+      </span>
+      <span id="whats-intent">
+        <h3>Automatic user intent prediction</h3>
+        <p>Filter edits based whether or not an edit was made in good-faith. This is automatically predicted by ORES, a machine learning service, based on a large set of previous examples.</p>
+        <p>Several filters are provided for you to adjust how strict you need results to be. More strict filters will produce fewer but more accurate results, while less strict filters will provide a wider set of results with less precision.</p>
+      </span>
+    </div>
   </body>
 </html>
