@@ -11,8 +11,8 @@ filtersData = { groups: [
     {id:"patrolled", selected: false, name: "Completed review", description: "Edits already reviewed."}
   ]},
   {group: "Contribution quality (predicted)", info:"quality", filters:[
-      {id:"very-good", selected: false, name: "Very likely constructive", description: "Edits with 90-100% probability of being helpful."},
-      {id:"good", selected: false, name: "Likely constructive", description: "Edits with 50-100% probability of being helpful."},
+      {id:"very-good", selected: false, name: "Very likely good", description: "Edits with 90-100% probability of being helpful."},
+      {id:"good", selected: false, name: "Likely good", description: "Edits with 50-100% probability of being helpful."},
       {id:"maybe-damaging", selected: false, name: "May have problems", description: "Edits with a 20-100% probability of being flawed or damaging."},
       {id:"damaging", selected: false, name: "Likely have problems", description: "Edits with a 50-100% probability of being a flawed or damaging."},
       {id:"very-damaging", selected: false, name: "Very likely have problems", description: "Edits with a 90-100% probability of being flawed or damaging."}
@@ -29,7 +29,7 @@ filtersData = { groups: [
     {id:"most-experienced", selected: false, name: "Most experienced", description: "Edits by the most productive editors."}
   ]},
   {group: "Users", filters:[
-    {id:"registered", selected: false, name: "Registered", description: "Editor with an account considered as highly damaging."},
+    {id:"registered", selected: false, name: "Registered", description: "Logged-in users."},
     {id:"unregistered", selected: false, name: "Unregistered", description: "Anonymous editor."},
     {id:"own", selected: false, name: "Your edits", description: "Edits by you."},
     {id:"others", selected: false, name: "Edits by others", description: "Edits created by other users (not you)."}
