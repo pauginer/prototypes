@@ -13,8 +13,8 @@ filtersData = { groups: [
   {group: "Contribution quality (predicted)", info:"quality", filters:[
       {id:"very-good", selected: false, name: "Very likely constructive", description: "Edits with 90-100% probability of being helpful."},
       {id:"good", selected: false, name: "Likely constructive", description: "Edits with 50-100% probability of being helpful."},
-      {id:"maybe-damaging", selected: false, name: "May have problems", description: "Edits with a 50-100% probability of being flawed or damaging."},
-      {id:"damaging", selected: false, name: "Likely have problems", description: "Edits with a 65-100% probability of being a flawed or damaging."},
+      {id:"maybe-damaging", selected: false, name: "May have problems", description: "Edits with a 20-100% probability of being flawed or damaging."},
+      {id:"damaging", selected: false, name: "Likely have problems", description: "Edits with a 50-100% probability of being a flawed or damaging."},
       {id:"very-damaging", selected: false, name: "Very likely have problems", description: "Edits with a 90-100% probability of being flawed or damaging."}
   ]},
   {group: "User intent (predicted)", info:"intent",filters:[
