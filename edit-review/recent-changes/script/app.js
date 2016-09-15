@@ -371,7 +371,17 @@ function updateTags(){
           tag.attr("title", title);
         });
     }
-  })
+  });
+
+  //Highlight fitering
+  var areHighlights = $(".tag[data-color]").length >0;
+  if(areHighlights){
+    $(".filter-highlights").removeClass("hidden");
+    updateFilterHighlights();
+  } else {
+    $(".filter-highlights").addClass("hidden");
+    filerHighlights = true;
+  }
 
   updateTooltips();
 
@@ -439,23 +449,48 @@ function clearWhenTyping(e){
 }
 
 function updateTooltips(){
-  $('.tags .tag, .filter-panel .options').tooltipster({
+  $('.tags .tag:not(.tooltipstered), .filter-panel .options:not(.tooltipstered), .filter-highlights:not(.tooltipstered)').tooltipster({
     theme: 'tooltipster-light',
-    contentCloning: true,
     maxWidth: 400,
     delay: 600
     });
 
-    $(".filter-panel .whatsthis").tooltipster({
+    $(".filter-panel .whatsthis:not(.tooltipstered)").tooltipster({
       theme: 'tooltipster-light',
       trigger: 'click',
       contentCloning: true,
       maxWidth: 400
       });
+
+
 }
 
 function loadChangesData(){
     $(".changes").load("changes.html", addMetadataToChanges);
+}
+
+
+function updateFilterHighlights(){
+  var button = $(".filter-highlights");
+  if(filerHighlights){
+    button.addClass("active");
+    button.tooltipster("close");
+    button.tooltipster('content', "Highlights are used to filter results");
+    $(".tag[data-color]").removeClass("useless");
+  } else {
+    button.removeClass("active");
+    button.tooltipster("close");
+    button.tooltipster('content', "Highlights are ignored when filtering results");
+    $(".tag[data-color]").addClass("useless");
+  }
+
+  updateChanges();
+}
+
+function toggleFilterHighlights(e){
+  filerHighlights = !filerHighlights;
+  updateFilterHighlights();
+  $(this).tooltipster("open");
 }
 
 var filerHighlights = true;
@@ -468,6 +503,8 @@ $(function(){ //Initialization:
   loadChangesData();
   updateFilters();
   updateTags();
+
+  $(".filter-highlights").click(toggleFilterHighlights);
 
   $(".search").keyup(searchWhenTyping);
   $(".search").keydown(clearWhenTyping);

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="24px"
+   height="20px"
+   viewBox="0 0 24 20"
+   version="1.1"
+   id="svg2"
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="filter-highlights-white.svg">
+  <metadata
+     id="metadata16">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="717"
+     inkscape:window-height="480"
+     id="namedview14"
+     showgrid="false"
+     inkscape:zoom="11.8"
+     inkscape:cx="5.220339"
+     inkscape:cy="9.1949153"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="Recent-Changes-scenarios" />
+  <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+  <title
+     id="title4">filter-highlights</title>
+  <desc
+     id="desc6">Created with Sketch.</desc>
+  <defs
+     id="defs8" />
+  <g
+     id="Recent-Changes-scenarios"
+     stroke="none"
+     stroke-width="1"
+     fill="none"
+     fill-rule="evenodd">
+    <g
+       id="RC---vandalism---less-urgent-open-Copy-20"
+       transform="translate(-642.000000, -230.000000)"
+       fill="#222222"
+       style="fill:#ffffff;fill-opacity:1">
+      <g
+         id="Group"
+         transform="translate(632.000000, 222.000000)"
+         style="fill:#ffffff;fill-opacity:1">
+        <path
+           d="M23.7736157,24.9021007 L23.86784,24.7388995 C24.5234981,23.6032664 24.7687437,21.6582844 24.4156927,20.3949516 L24.320459,20.054174 L24.4549641,19.8091027 L27.8088511,14 L33.8599997,17.4936323 L30.5061127,23.3027349 L30.3693287,23.5396517 L30.0183883,23.6296694 C28.7476535,23.9556182 27.1852234,25.1418158 26.5303454,26.2760977 L26.4361211,26.4392989 L25.9520292,26.1598084 L25.2533028,27.3700381 L23,27.4897168 L24.2712943,25.1894356 L23.7736157,24.9021007 Z M10,8.66666667 L27.5,8.66666667 L20.5,16.8333333 L20.5,25 C18.5166667,25 17,23.4833333 17,21.5 L17,16.8333333 L10,8.66666667 Z"
+           id="filter-highlights"
+           style="fill:#ffffff;fill-opacity:1" />
+      </g>
+    </g>
+  </g>
+</svg>

@@ -393,7 +393,8 @@ h1 {
   justify-content: flex-end;
 }
 .actions .pagination,
-.actions .dates {
+.actions .dates,
+.actions .filter-highlights {
   cursor: pointer;
   border: 1px solid #A2A9B1;
   border-radius: 2px;
@@ -405,7 +406,8 @@ h1 {
   align-items: center;
 }
 .actions .pagination .more,
-.actions .dates .more {
+.actions .dates .more,
+.actions .filter-highlights .more {
   content: "";
   display: flex;
   align-self: center;
@@ -415,6 +417,22 @@ h1 {
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   border-top: 5px solid #222;
+}
+.actions .filter-highlights {
+  padding: 4px 12px;
+}
+.actions .filter-highlights.active {
+  background-color: #36c;
+  border-color: #36c;
+}
+.actions .filter-highlights.active .icon {
+  background-image: url(../images/filter-highlights-white.svg);
+}
+.actions .filter-highlights .icon {
+  background: center center url(../images/filter-highlights.svg) no-repeat;
+  background-size: contain;
+  width: 22px;
+  height: 22px;
 }
 .actions .dates .icon {
   width: 18px;
@@ -429,7 +447,7 @@ h1 {
   flex-direction: column;
 }
 .hidden {
-  display: none;
+  display: none !important;
 }
 .change.blue {
   background-color: #BCCDEF;
