@@ -162,7 +162,7 @@ h1 {
   outline: none;
   background-color: transparent;
 }
-.tag.useless:not([data-color]) {
+.tag.useless {
   color: #9AA0A7;
   background-color: white;
   border-color: #C8CCD1;

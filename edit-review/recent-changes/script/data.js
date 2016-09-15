@@ -3,7 +3,7 @@
 filterSubsets = [ ["very-good", "good"], ["damaging", "maybe-damaging"], ["very-damaging", "damaging"], ["very-damaging", "maybe-damaging"], ["very-good-faith","good-faith"], ["very-bad-faith","bad-faith"]];
 
 //Filter sets where they represent the full search space
-filterComplete = [["minor","regular"], ["registered", "unregistered"], ["own","others"], ["newcomer","experienced", "most-experienced"]];
+filterComplete = [["unpatrolled", "patrolled"], ["minor","regular"], ["registered", "unregistered"], ["own","others"], ["newcomer","experienced", "most-experienced"]];
 
 filtersData = { groups: [
   {group: "Review", filters:[
@@ -34,7 +34,7 @@ filtersData = { groups: [
     {id:"own", selected: false, name: "Your edits", description: "Edits by you."},
     {id:"others", selected: false, name: "Edits by others", description: "Edits created by other users (not you)."}
   ]},
-  {group: "Change size", filters:[
+  {group: "Change importance", filters:[
     {id:"minor", selected: false, name: "Minor edit", description: "Edits the author labeled as minor."},
     {id:"regular", selected: false, name: "Non minor edits", description: "Edits not labeled as minor."}
   ]},

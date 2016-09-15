@@ -134,7 +134,55 @@ function highlightChange(change, color){
 
 }
 
+
+function meetsFiltersOrOptionalHighlight(classList){
+  var result = true;
+  var data = filtersData;
+  $.each(data.groups, function(i,group){
+    var hasActiveFilters = false;
+    var anyMatches = false;
+    var numberOfActiveFilters = $.grep(group.filters, function(item){ return !!item.selected;}).length;
+
+    $.each(group.filters, function(j,filter){
+      var isColored = filter.color;
+      if(filter.selected && filerHighlights || filter.selected && !filerHighlights && !isColored){
+        hasActiveFilters = true;
+        var matches = ($.inArray(filter.id, classList) >= 0 );
+        anyMatches = anyMatches || matches;
+      }
+    });
+    if( hasActiveFilters){
+      result = result && anyMatches;
+    }
+  });
+  return result;
+
+}
+
 function meetsFiltersOr(classList){
+  var result = true;
+  var data = filtersData;
+  $.each(data.groups, function(i,group){
+    var hasActiveFilters = false;
+    var anyMatches = false;
+    var numberOfActiveFilters = $.grep(group.filters, function(item){ return !!item.selected;}).length;
+
+    $.each(group.filters, function(j,filter){
+      if(filter.selected){
+        hasActiveFilters = true;
+        var matches = ($.inArray(filter.id, classList) >= 0 );
+        anyMatches = anyMatches || matches;
+      }
+    });
+    if( hasActiveFilters){
+      result = result && anyMatches;
+    }
+  });
+  return result;
+
+}
+
+function meetsFiltersOrExceptSingleHighlights(classList){
   var result = true;
   var data = filtersData;
   $.each(data.groups, function(i,group){
@@ -174,7 +222,6 @@ function meetsFiltersAnd(classList){
 }
 
 
-var meetsFilters = meetsFiltersOr;
 //UPDATES
 function updateChanges(){
     $(".changes .change").removeClass("hidden");
@@ -300,7 +347,7 @@ function updateTags(){
 
   //Incompatibilities:
   $.each(filterSubsets, function(i,pair){
-    if($(".tag[data-id='"+ pair[0] +"'], .tag[data-id='" + pair[1] +"']").length == 2){
+    if($(".tag[data-id='"+ pair[0] +"']:not([data-color]), .tag[data-id='" + pair[1] +"']").length == 2){
       var tag = $(".tag[data-id='" + pair[0] + "']");
       tag.addClass("useless");
 
@@ -320,7 +367,7 @@ function updateTags(){
     if(tags.length == list.length){
         $.each(tags, function(i, tag){
           tag.addClass("useless");
-          var title = tag.attr("title") + " (No effect in the current result since all complementary filters have been added too)";
+          var title = tag.attr("title") + " No effect in the current result since all complementary filters have been added too";
           tag.attr("title", title);
         });
     }
@@ -410,6 +457,9 @@ function updateTooltips(){
 function loadChangesData(){
     $(".changes").load("changes.html", addMetadataToChanges);
 }
+
+var filerHighlights = true;
+var meetsFilters = meetsFiltersOrOptionalHighlight;
 
 $(function(){ //Initialization:
   tagsTemplate = Handlebars.compile($("#tags-template").html());
