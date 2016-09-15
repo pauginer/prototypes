@@ -388,6 +388,24 @@ function updateTags(){
 }
 
 
+function areOnlyCompleteHighlights(){
+  //check if current highlights result in the full set of results
+  var result = false;
+  $.each(filterComplete, function(i, list){
+    var tags =[];
+    $.each(list, function(j, tagId){
+      var tag = $(".tag[data-id='"+ tagId + "'][data-color]");
+      if(tag.length>0){
+          tags.push(tag);
+      }
+    });
+    if(tags.length == list.length && list.length == $(".tag").length){
+        result = true;
+    }
+  });
+  return result;
+}
+
 function filtersVisible(show){
   if(show){
     $(".filter-panel").removeClass("hidden");
@@ -472,10 +490,13 @@ function loadChangesData(){
 
 function updateFilterHighlights(){
   var button = $(".filter-highlights");
-  if(filerHighlights){
+  var onlyComplete = areOnlyCompleteHighlights();
+  if(onlyComplete){
+    button.addClass("hidden");
+  } else if(filerHighlights){
     button.addClass("active");
     button.tooltipster("close");
-    button.tooltipster('content', "Highlights are used to filter results");
+    button.tooltipster('content', "Highlights are used to filter more results.");
     $(".tag[data-color]").removeClass("useless");
   } else {
     button.removeClass("active");
