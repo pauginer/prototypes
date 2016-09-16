@@ -6,10 +6,6 @@ filterSubsets = [ ["very-good", "good"], ["damaging", "maybe-damaging"], ["very-
 filterComplete = [["unpatrolled", "patrolled"], ["minor","regular"], ["registered", "unregistered"], ["own","others"], ["newcomer","experienced", "most-experienced"],["bot", "human"]];
 
 filtersData = { groups: [
-  {group: "Review", filters:[
-    {id:"unpatrolled", selected: false, name: "Pending review", description: "Edits not reviewed yet."},
-    {id:"patrolled", selected: false, name: "Completed review", description: "Edits already reviewed."}
-  ]},
   {group: "Contribution quality (predicted)", info:"quality", filters:[
       {id:"very-good", selected: false, name: "Very likely good", description: "Edits with 90-100% probability of being helpful."},
       {id:"good", selected: false, name: "Likely good", description: "Edits with 50-100% probability of being helpful."},
@@ -35,6 +31,10 @@ filtersData = { groups: [
     {id:"human", selected: false, name: "Human (not bot)", description: "Edits made by a human editor."},
     {id:"own", selected: false, name: "Your edits", description: "Edits by you."},
     {id:"others", selected: false, name: "Edits by others", description: "Edits created by other users (not you)."}
+  ]},
+  {group: "Review", filters:[
+    {id:"unpatrolled", selected: false, name: "Pending review", description: "Edits not reviewed yet."},
+    {id:"patrolled", selected: false, name: "Completed review", description: "Edits already reviewed."}
   ]},
   {group: "Change importance", filters:[
     {id:"minor", selected: false, name: "Minor edit", description: "Edits the author labeled as minor."},
