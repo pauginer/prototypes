@@ -66,10 +66,6 @@ $(".change:not(.bot)").addClass("human");
 //All edits by others:
 $(".change").addClass("others");
 
-//CHANGE SIZE
-//Mark minor edits and keep the rest as regular
-$(".change .minoredit").parent(".change").addClass("minor");
-$(".change:not(.minor)").addClass("regular");
 
 //CONTENT TYPE
 
@@ -91,6 +87,18 @@ $(".change[class^='mw-changeslist-ns14-']").addClass("category");
 $(".change[class^='mw-changeslist-ns14-']").addClass("category talk");
 $(".change[class^='mw-changeslist-ns100-']").addClass("portal");
 $(".change[class^='mw-changeslist-ns100-']").addClass("portal talk");
+
+
+//SUBJECT OF CHANGE
+$(".change .newpage").parent(".change").addClass("new-page");
+$(".change.category").addClass("categorization");
+$(".change .wikibase-edit").parent(".change").addClass("wikidata-edit");
+$(".change:not(.new-page):not(.categorization):not(.wikidata-edit)").addClass("content-edit");
+
+//CHANGE SIZE
+//Mark minor edits and keep the rest as regular
+$(".change .minoredit").parent(".change").addClass("minor");
+$(".change:not(.minor)").addClass("regular");
 
 //CATEGORIES
 //Assigning some random categories to articles

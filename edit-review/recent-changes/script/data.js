@@ -40,6 +40,12 @@ filtersData = { groups: [
     {id:"minor", selected: false, name: "Minor edit", description: "Edits the author labeled as minor."},
     {id:"regular", selected: false, name: "Non minor edits", description: "Edits not labeled as minor."}
   ]},
+  {group: "Change outcome", filters:[
+    {id:"new-page", selected: false, name: "New page creation", description: "Edits creating new pages."},
+    {id:"categorization", selected: false, name: "Page categorization", description: "Edits changing page categories."},
+    {id:"wikidata-edit", selected: false, name: "Wikidata edits", description: "Edits modifying Wikidata properties."},
+    {id:"content-edit", selected: false, name: "Content edits", description: "Edits modifying the content of a page."}
+  ]},
   {group: "Content type", compact: true, url:'https://en.wikipedia.org/wiki/Wikipedia:Namespace', filters:[
     {id:"article", selected: false, name: "Article", description: "Edits to the main content."},
     {id:"talk", selected: false, name: "Talk", description: "Edits to talk pages."},
