@@ -59,6 +59,9 @@ $("a.new[title^='User']").parent(".change").addClass("newcomer");
 probablyAddClass($(".change.registered:not(.newcomer)"), "experienced", 50);
 $(".change.registered:not(.newcomer, .experienced)").addClass("most-experienced");
 
+//Mark bots and the rest as human
+$(".change .botedit").parent(".change").addClass("bot");
+$(".change:not(.bot)").addClass("human");
 
 //All edits by others:
 $(".change").addClass("others");

@@ -3,7 +3,7 @@
 filterSubsets = [ ["very-good", "good"], ["damaging", "maybe-damaging"], ["very-damaging", "damaging"], ["very-damaging", "maybe-damaging"], ["very-good-faith","good-faith"], ["very-bad-faith","bad-faith"]];
 
 //Filter sets where they represent the full search space
-filterComplete = [["unpatrolled", "patrolled"], ["minor","regular"], ["registered", "unregistered"], ["own","others"], ["newcomer","experienced", "most-experienced"]];
+filterComplete = [["unpatrolled", "patrolled"], ["minor","regular"], ["registered", "unregistered"], ["own","others"], ["newcomer","experienced", "most-experienced"],["bot", "human"]];
 
 filtersData = { groups: [
   {group: "Review", filters:[
@@ -24,13 +24,15 @@ filtersData = { groups: [
     {id:"very-bad-faith", selected: false, name: "Very likely bad faith", description: "Edits with  90-100% probability of being in bad faith."}
   ]},
   {group: "User experience level", filters:[
-    {id:"newcomer", selected: false, name: "Newcomer", description: "Editors that joined recently or with few edits."},
-    {id:"experienced", selected: false, name: "More experienced", description: "Edits by those who are not Newcomers, but not the most experienced editors either."},
-    {id:"most-experienced", selected: false, name: "Most experienced", description: "Edits by the most productive editors."}
+    {id:"newcomer", selected: false, name: "Newcomer", description: "Very new editors: fewer than 10 edits and 4 days of activity."},
+    {id:"experienced", selected: false, name: "Experienced", description: "More days of activity and edits than “Newcomers” but fewer than “More experienced.”"},
+    {id:"most-experienced", selected: false, name: "More experienced", description: "More than 30 days of activity and 500 edits."}
   ]},
   {group: "Users", filters:[
     {id:"registered", selected: false, name: "Registered", description: "Logged-in users."},
     {id:"unregistered", selected: false, name: "Unregistered", description: "Anonymous editor."},
+    {id:"bot", selected: false, name: "Bot", description: "Edits made by automated tools."},
+    {id:"human", selected: false, name: "Human (not bot)", description: "Edits made by a human editor."},
     {id:"own", selected: false, name: "Your edits", description: "Edits by you."},
     {id:"others", selected: false, name: "Edits by others", description: "Edits created by other users (not you)."}
   ]},
