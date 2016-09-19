@@ -115,7 +115,7 @@ probablyAddClass($(".change.article"), "cat-technology", 10);
 
 
 //Replace links:
-$(".change a").each(function(i,a){
+$(".change a[href^='/']:not([href^='//'])").each(function(i,a){
   var url= $(a).attr("href");
   url = "//en.wikipedia.org"+url;
   $(a).attr("href", url);
