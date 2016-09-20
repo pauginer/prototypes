@@ -28,7 +28,7 @@ filtersData = { groups: [
     {id:"registered", selected: false, name: "Registered", description: "Logged-in users."},
     {id:"unregistered", selected: false, name: "Unregistered", description: "Anonymous editor."},
     {id:"bot", selected: false, name: "Bot", description: "Edits made by automated tools."},
-    {id:"human", selected: false, name: "Human (not bot)", description: "Edits made by a human editor."},
+    {id:"human", selected: true, name: "Human (not bot)", description: "Edits made by a human editor."},
     {id:"own", selected: false, name: "Your edits", description: "Edits by you."},
     {id:"others", selected: false, name: "Edits by others", description: "Edits created by other users (not you)."}
   ]},
@@ -40,11 +40,11 @@ filtersData = { groups: [
     {id:"minor", selected: false, name: "Minor edit", description: "Edits the author labeled as minor."},
     {id:"regular", selected: false, name: "Non minor edits", description: "Edits not labeled as minor."}
   ]},
-  {group: "Change outcome", filters:[
-    {id:"new-page", selected: false, name: "New page creation", description: "Edits creating new pages."},
+  {group: "Effect of change", filters:[
+    {id:"content-edit", selected: true, name: "Content edits", description: "Edits modifying the content of a page."},
+    {id:"new-page", selected: true, name: "New page creation", description: "Edits creating new pages."},
     {id:"categorization", selected: false, name: "Page categorization", description: "Edits changing page categories."},
-    {id:"wikidata-edit", selected: false, name: "Wikidata edits", description: "Edits modifying Wikidata properties."},
-    {id:"content-edit", selected: false, name: "Content edits", description: "Edits modifying the content of a page."}
+    {id:"wikidata-edit", selected: false, name: "Wikidata edits", description: "Edits modifying Wikidata properties."}
   ]},
   {group: "Content type", compact: true, url:'https://en.wikipedia.org/wiki/Wikipedia:Namespace', filters:[
     {id:"article", selected: false, name: "Article", description: "Edits to the main content."},

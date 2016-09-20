@@ -3,6 +3,10 @@
 var tagsTemplate =null;
 var filtersTemplate = null;
 
+var announceFilterHighlight = false;
+var firstTimeFilterHighlight = true;
+
+
 //API
 
 function getFilterDataById (id){
@@ -128,6 +132,7 @@ function highlightChange(change, color){
   });
   $.each(redTags,function(j,tag){
     if(change.hasClass(tag)){
+      change.addClass("color");
       change.addClass(color);
     }
   });
@@ -225,6 +230,7 @@ function meetsFiltersAnd(classList){
 //UPDATES
 function updateChanges(){
     $(".changes .change").removeClass("hidden");
+    $(".changes .change").removeClass("color");
     $(".changes .change").removeClass("blue");
     $(".changes .change").removeClass("green");
     $(".changes .change").removeClass("yellow");
@@ -375,9 +381,16 @@ function updateTags(){
 
   //Highlight fitering
   var areHighlights = $(".tag[data-color]").length >0;
+  var onlyHighlights = $(".change:not(.hidden):not(.color)").length == 0;
   if(areHighlights){
     $(".filter-highlights").removeClass("hidden");
     updateFilterHighlights();
+
+    if(onlyHighlights && firstTimeFilterHighlight){
+      announceFilterHighlight = true;
+      firstTimeFilterHighlight = false;
+    }
+
   } else {
     $(".filter-highlights").addClass("hidden");
     filerHighlights = true;
@@ -411,6 +424,12 @@ function filtersVisible(show){
     $(".filter-panel").removeClass("hidden");
   }else{
     $(".filter-panel").addClass("hidden");
+    if(announceFilterHighlight){
+      announceFilterHighlight = false;
+      $(".filter-highlights").tooltipster("content","All results are highlighted because highlights are used for filtering by default. You can make highlight not to filter to get more results.");
+      $(".filter-highlights").tooltipster("open");
+
+    }
   }
 }
 
@@ -467,11 +486,18 @@ function clearWhenTyping(e){
 }
 
 function updateTooltips(){
-  $('.tags .tag:not(.tooltipstered), .filter-panel .options:not(.tooltipstered), .filter-highlights:not(.tooltipstered)').tooltipster({
+  $('.tags .tag:not(.tooltipstered), .filter-panel .options:not(.tooltipstered)').tooltipster({
     theme: 'tooltipster-light',
     maxWidth: 400,
     delay: 600
     });
+    $('.filter-highlights:not(.tooltipstered)').tooltipster({
+      theme: 'tooltipster-light',
+      maxWidth: 400,
+      delay: 600,
+      side: "bottom",
+      timer: 6000
+      });
 
     $(".filter-panel .whatsthis:not(.tooltipstered)").tooltipster({
       theme: 'tooltipster-light',
