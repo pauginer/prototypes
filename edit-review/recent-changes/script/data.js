@@ -19,18 +19,22 @@ filtersData = { groups: [
     {id:"bad-faith", selected: false, name: "Likely bad faith", description: "Edits with 50-100% probability of being in bad faith."},
     {id:"very-bad-faith", selected: false, name: "Very likely bad faith", description: "Edits with  90-100% probability of being in bad faith."}
   ]},
-  {group: "User experience level", filters:[
+  {group: "User registration", filters:[
+    {id:"registered", selected: false, name: "Registered", description: "Logged-in users."},
+    {id:"unregistered", selected: false, name: "Unregistered", description: "Anonymous editor."}
+  ]},
+  {group: "User experience level (for registered users)", filters:[
     {id:"newcomer", selected: false, name: "Newcomer", description: "Very new editors: fewer than 10 edits and 4 days of activity."},
     {id:"experienced", selected: false, name: "Experienced", description: "More days of activity and edits than “Newcomers” but fewer than “More experienced.”"},
     {id:"most-experienced", selected: false, name: "More experienced", description: "More than 30 days of activity and 500 edits."}
   ]},
-  {group: "Users", filters:[
-    {id:"registered", selected: false, name: "Registered", description: "Logged-in users."},
-    {id:"unregistered", selected: false, name: "Unregistered", description: "Anonymous editor."},
-    {id:"bot", selected: false, name: "Bot", description: "Edits made by automated tools."},
-    {id:"human", selected: true, name: "Human (not bot)", description: "Edits made by a human editor."},
+  {group: "Edit authorship", filters:[
     {id:"own", selected: false, name: "Your edits", description: "Edits by you."},
     {id:"others", selected: false, name: "Edits by others", description: "Edits created by other users (not you)."}
+  ]},
+  {group: "Automated contributions", filters:[
+    {id:"bot", selected: false, name: "Bot", description: "Edits made by automated tools."},
+    {id:"human", selected: true, name: "Human (not bot)", description: "Edits made by a human editor."}
   ]},
   {group: "Review", filters:[
     {id:"unpatrolled", selected: false, name: "Pending review", description: "Edits not reviewed yet."},
