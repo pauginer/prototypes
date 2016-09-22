@@ -279,6 +279,7 @@ function updateFilters(){
   //Bindings:
   $(".check").change(function() {
     updateFilterData(this.id, this.checked);
+    $(this).parent(".filter").toggleClass("active");
     var isQuery = $(".search").val().length >0;
     if(isQuery){
         clearQuery();
@@ -331,13 +332,34 @@ function selectTag(e){
 function highlightActiveGroups(){
   var data = filtersData;
   $(".filter-panel .group.active").removeClass("active");
+    $(".filter-panel .filter.inactive").removeClass("inactive");
 
     $.each(data.groups, function(i,group){
+      var activeGroup = false;
+      var implicitActive = [];
+
       $.each(group.filters, function(j,filter){
         if(filter.selected){
           $(".filter-panel .group[data-id='"+ group.group +"']").addClass("active");
+          activeGroup = true;
+          $.each(filterSubsets,function(k,v){
+            if(filter.id == v[1]){
+              implicitActive.push(v[0]);
+            }
+          });
+
         }
       });
+
+      if(activeGroup){ //Darken inactive filters
+        $.each(group.filters, function(j,filter){
+          var isImplicit = implicitActive.indexOf(filter.id) >=0;
+          if(!filter.selected && !isImplicit){
+            $(".filter-panel .filter[data-id='"+ filter.id +"']").addClass("inactive");
+          }
+        });
+      }
+
     });
 }
 

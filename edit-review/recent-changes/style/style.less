@@ -188,10 +188,11 @@ h1 {
 
 }
 
-.tag.useless {
+.searchbar .tag.useless {
   color: #9AA0A7;
   background-color: white;
   border-color: #C8CCD1;
+  .remove {opacity:0.7;}
 }
 
 .panel {
@@ -218,7 +219,7 @@ h1 {
       display: flex;
       &.active .title {
         font-weight: bold;
-        color: #555A5F
+        color: #333;
       }
     }
 
@@ -236,6 +237,16 @@ h1 {
       cursor: pointer;
       flex-direction: row;
       align-items: center;
+
+
+      &.active, &.active:hover {
+        background-color: white;
+      }
+
+      &.inactive {
+        background-color: #F8F9FA;
+        & .details .name, & .details .description {color: #54595D;}
+      }
 
       &:hover{ background-color: #fbfbfb;}
 
