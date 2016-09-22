@@ -339,15 +339,18 @@ function highlightActiveGroups(){
       var implicitActive = [];
 
       $.each(group.filters, function(j,filter){
+        var isHighlightWithoutFitler = !!filter.color && !filerHighlights;
         if(filter.selected){
           $(".filter-panel .group[data-id='"+ group.group +"']").addClass("active");
-          activeGroup = true;
-          $.each(filterSubsets,function(k,v){
-            if(filter.id == v[1]){
-              implicitActive.push(v[0]);
-            }
-          });
+          if(!isHighlightWithoutFitler){
+            activeGroup = true;
+            $.each(filterSubsets,function(k,v){
+              if(filter.id == v[1]){
+                implicitActive.push(v[0]);
+              }
+            });
 
+          }
         }
       });
 
@@ -553,6 +556,7 @@ function updateFilterHighlights(){
     $(".tag[data-color]").addClass("useless");
   }
 
+  highlightActiveGroups();
   updateChanges();
 }
 
