@@ -302,8 +302,9 @@ function removeTag(e){
   var tag = $(e.target).parent(".tag");
   var filterId = $(tag).data("id");
   updateFilterData(filterId, false);
-  updateTags();
   updateFilters();
+  updateTags();
+  
   if(!$(".filter-panel").hasClass("hidden")){
     filtersVisible(true);
       $(".search").focus();
