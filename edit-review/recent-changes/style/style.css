@@ -442,6 +442,14 @@ h1 {
 .actions .filter-highlights.active .icon {
   background-image: url(../images/filter-highlights-white.svg);
 }
+.actions .filter-highlights.disabled {
+  cursor: default;
+  background-color: #C8CCD1;
+  border-color: #C8CCD1;
+}
+.actions .filter-highlights.disabled .icon {
+  background-image: url(../images/filter-highlights-white.svg);
+}
 .actions .filter-highlights .icon {
   background: center center url(../images/filter-highlights.svg) no-repeat;
   background-size: contain;

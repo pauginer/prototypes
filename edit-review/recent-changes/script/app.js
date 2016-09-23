@@ -408,7 +408,7 @@ function updateTags(){
   var areHighlights = $(".tag[data-color]").length >0;
   var onlyHighlights = $(".change:not(.hidden):not(.color)").length == 0;
   if(areHighlights){
-    $(".filter-highlights").removeClass("hidden");
+    $(".filter-highlights").removeClass("disabled");
     updateFilterHighlights();
 
     if(onlyHighlights && firstTimeFilterHighlight){
@@ -417,7 +417,7 @@ function updateTags(){
     }
 
   } else {
-    $(".filter-highlights").addClass("hidden");
+    $(".filter-highlights").addClass("disabled");
     filerHighlights = true;
   }
 
@@ -542,8 +542,14 @@ function loadChangesData(){
 function updateFilterHighlights(){
   var button = $(".filter-highlights");
   var onlyComplete = areOnlyCompleteHighlights();
-  if(onlyComplete){
-    button.addClass("hidden");
+  var isDisabled = button.hasClass("disabled");
+  if (isDisabled){
+    button.tooltipster("close");
+    button.tooltipster('content', "When highligh colors are used, you can control whether to use them for filtering results or not.");
+  }else if(onlyComplete){
+    button.addClass("disabled");
+    button.tooltipster("close");
+    button.tooltipster('content', "Highlight is already applied to all results.");
   } else if(filerHighlights){
     button.addClass("active");
     button.tooltipster("close");
@@ -561,9 +567,13 @@ function updateFilterHighlights(){
 }
 
 function toggleFilterHighlights(e){
-  filerHighlights = !filerHighlights;
-  updateFilterHighlights();
-  $(this).tooltipster("open");
+  var isDisabled = $(".filter-highlights").hasClass("disabled");
+  if(!isDisabled){
+    filerHighlights = !filerHighlights;
+    updateFilterHighlights();
+    $(this).tooltipster("open");
+  }
+
 }
 
 var filerHighlights = true;
