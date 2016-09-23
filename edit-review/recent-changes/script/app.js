@@ -545,7 +545,7 @@ function updateFilterHighlights(){
   var isDisabled = button.hasClass("disabled");
   if (isDisabled){
     button.tooltipster("close");
-    button.tooltipster('content', "When highligh colors are used, you can control whether to use them for filtering results or not.");
+    button.tooltipster('content', "When filters are asigned a color, you can control whether they restrict further the results or not.");
   }else if(onlyComplete){
     button.addClass("disabled");
     button.tooltipster("close");
