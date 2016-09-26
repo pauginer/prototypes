@@ -6,13 +6,13 @@ filterSubsets = [ ["very-good", "good"], ["damaging", "maybe-damaging"], ["very-
 filterComplete = [["unpatrolled", "patrolled"], ["minor","regular"], ["registered", "unregistered"], ["own","others"], ["newcomer","experienced", "most-experienced"],["bot", "human"]];
 
 filtersData = { groups: [
-  {group: "Contribution quality (predicted)", info:"quality", filters:[
+  {group: "Contribution quality", info:"quality", filters:[
       {id:"very-damaging", selected: false, name: "<label>Very likely</label> have problems", description: "80% prediction accuracy. Finds 30% of flawed or damaging edits."},
       {id:"damaging", selected: false, name: "<label>Likely</label> have problems", description: "40% prediction accuracy. Finds 50% of flawed or damaging edits."},
       {id:"maybe-damaging", selected: false, name: "<label>May</label> have problems", description: "15% prediction accuracy. Finds 90% of flawed or damaging edits."},
       {id:"very-good", selected: false, name: "<label>Very likely</label> good", description: "99% prediction accuracy. Finds 92% of problem-free edits"}
   ]},
-  {group: "User intent (predicted)", info:"intent",filters:[
+  {group: "User intent", info:"intent",filters:[
     {id:"very-bad-faith", selected: false, name: "<label>Likely</label> bad faith", description: "50% prediction accuracy. Finds 25% of bad-faith edits."},
     {id:"bad-faith", selected: false, name: "<label>May be</label> bad faith", description: "20% prediction accuracy. Finds 75% of bad-faith edits."},
     {id:"good-faith", selected: false, name: "<label>Likely</label> good faith", description: "99% prediction accuracy. Finds 90% of good faith edits."}
