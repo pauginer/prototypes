@@ -7,17 +7,16 @@ filterComplete = [["unpatrolled", "patrolled"], ["minor","regular"], ["registere
 
 filtersData = { groups: [
   {group: "Contribution quality (predicted)", info:"quality", filters:[
-      {id:"very-good", selected: false, name: "Very likely good", description: "Edits with 90-100% probability of being helpful."},
-      {id:"good", selected: false, name: "Likely good", description: "Edits with 50-100% probability of being helpful."},
-      {id:"maybe-damaging", selected: false, name: "May have problems", description: "Edits with a 20-100% probability of being flawed or damaging."},
-      {id:"damaging", selected: false, name: "Likely have problems", description: "Edits with a 50-100% probability of being a flawed or damaging."},
-      {id:"very-damaging", selected: false, name: "Very likely have problems", description: "Edits with a 90-100% probability of being flawed or damaging."}
+      {id:"very-damaging", selected: false, name: "<label>Very likely</label> have problems", description: "80% prediction accuracy. Finds 30% of flawed or damaging edits."},
+      {id:"damaging", selected: false, name: "<label>Likely</label> have problems", description: "40% prediction accuracy. Finds 50% of flawed or damaging edits."},
+      {id:"maybe-damaging", selected: false, name: "<label>May</label> have problems", description: "15% prediction accuracy. Finds 90% of flawed or damaging edits."},
+      {id:"very-good", selected: false, name: "<label>Very likely</label> good", description: "99% prediction accuracy. Finds 92% of problem-free edits"}
   ]},
   {group: "User intent (predicted)", info:"intent",filters:[
-    {id:"very-good-faith", selected: false, name: "Very likely good faith", description: "Edits with  93-100% probability of being in good faith."},
-    {id:"good-faith", selected: false, name: "Likely good faith", description: "Edits with 50-100% probability of being in good faith."},
-    {id:"bad-faith", selected: false, name: "Likely bad faith", description: "Edits with 50-100% probability of being in bad faith."},
-    {id:"very-bad-faith", selected: false, name: "Very likely bad faith", description: "Edits with  90-100% probability of being in bad faith."}
+    {id:"very-bad-faith", selected: false, name: "<label>Likely</label> bad faith", description: "50% prediction accuracy. Finds 25% of bad-faith edits."},
+    {id:"bad-faith", selected: false, name: "<label>May be</label> bad faith", description: "20% prediction accuracy. Finds 75% of bad-faith edits."},
+    {id:"good-faith", selected: false, name: "<label>Likely</label> good faith", description: "99% prediction accuracy. Finds 90% of good faith edits."}
+
   ]},
   {group: "User registration", filters:[
     {id:"registered", selected: false, name: "Registered", description: "Logged-in users."},

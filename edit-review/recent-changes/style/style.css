@@ -244,6 +244,9 @@ h1 {
   font-size: 16px;
   font-weight: bold;
 }
+.filter-panel .filter .details .name label {
+  font-weight: normal;
+}
 .filter-panel .filter .details .description {
   color: #464A4F;
 }
