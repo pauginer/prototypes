@@ -45,7 +45,7 @@ filtersData = { groups: [
   {group: "Effect of change", filters:[
     {id:"content-edit", selected: true, name: "Content edits", description: "Edits modifying the content of a page."},
     {id:"new-page", selected: true, name: "New page creation", description: "Edits creating new pages."},
-    {id:"categorization", selected: false, name: "Page categorization", description: "Edits changing page categories."},
+    {id:"categorization", selected: false, name: "Page categorization", description: "Pages added or removed from categories."},
     {id:"wikidata-edit", selected: false, name: "Wikidata edits", description: "Edits modifying Wikidata properties."}
   ]},
   {group: "Content type", compact: true, url:'https://en.wikipedia.org/wiki/Wikipedia:Namespace', filters:[
