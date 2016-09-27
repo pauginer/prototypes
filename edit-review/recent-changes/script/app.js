@@ -595,6 +595,9 @@ $(function(){ //Initialization:
   $(".search").keyup(searchWhenTyping);
   $(".search").keydown(clearWhenTyping);
   $(".search").focus(function(){
+    if($(".filter-panel").hasClass("hidden") && $('body').scrollTop() < 200){
+      $('body').animate({scrollTop: 220 }, 200);
+    }
     filtersVisible(true);
     $(this).parent(".searchbar").addClass("active");
   });
