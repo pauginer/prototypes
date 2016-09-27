@@ -234,8 +234,8 @@ h1 {
   background-color: #EAF3FF;
 }
 .filter-panel .filter .check {
-  width: 32px;
-  height: 32px;
+  margin-right: 12px;
+  font-size: 200%;
 }
 .filter-panel .filter .details {
   display: flex;
