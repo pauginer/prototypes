@@ -124,6 +124,10 @@ h1 {
   background: #EAF3FF;
   border-color: #3366cc;
 }
+.searchbar .tags .tag i {
+  font-weight: normal;
+  font-style: normal;
+}
 .searchbar .tags .tag .color {
   flex: none;
   width: 10px;
