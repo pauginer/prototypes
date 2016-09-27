@@ -229,6 +229,7 @@ function meetsFiltersAnd(classList){
 
 //UPDATES
 function updateChanges(){
+  window.setTimeout(function(){
     $(".changes .change").removeClass("hidden");
     $(".changes .change").removeClass("color");
     $(".changes .change").removeClass("blue");
@@ -260,6 +261,7 @@ function updateChanges(){
       $(".changes-empty").addClass("hidden");
       $(".changes").removeClass("hidden");
     }
+  });
 
 }
 
@@ -304,7 +306,7 @@ function removeTag(e){
   updateFilterData(filterId, false);
   updateFilters();
   updateTags();
-  
+
   if(!$(".filter-panel").hasClass("hidden")){
     filtersVisible(true);
       $(".search").focus();
