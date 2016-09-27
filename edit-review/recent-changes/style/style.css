@@ -204,7 +204,7 @@ h1 {
 }
 .filter-panel .filter {
   display: flex;
-  padding: 10px 5px;
+  padding: 0 5px;
   cursor: pointer;
   flex-direction: row;
   align-items: center;
@@ -238,14 +238,16 @@ h1 {
   flex-direction: column;
   cursor: pointer;
   flex: auto;
+  padding: 10px 0;
 }
 .filter-panel .filter .details .name {
   color: #222;
   font-size: 16px;
   font-weight: bold;
 }
-.filter-panel .filter .details .name label {
+.filter-panel .filter .details .name i {
   font-weight: normal;
+  font-style: normal;
 }
 .filter-panel .filter .details .description {
   color: #464A4F;

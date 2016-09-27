@@ -7,15 +7,15 @@ filterComplete = [["unpatrolled", "patrolled"], ["minor","regular"], ["registere
 
 filtersData = { groups: [
   {group: "Contribution quality", info:"quality", filters:[
-      {id:"very-good", selected: false, name: "<label>Very likely</label> good", description: "Finds almost all problem-free edits with very high accuracy."},
-      {id:"very-damaging", selected: false, name: "<label>Very likely</label> have problems", description: "Finds only a third of flawed or damaging edits but with high accuracy."},
-      {id:"damaging", selected: false, name: "<label>Likely</label> have problems", description: "Finds half of flawed or damaging edits with medium accuracy."},
-      {id:"maybe-damaging", selected: false, name: "<label>May</label> have problems", description: "Finds most flawed or damaging edits but with lower accuracy."}
+      {id:"very-good", selected: false, name: "<i>Very likely</i> good", description: "Finds almost all problem-free edits with very high accuracy."},
+      {id:"very-damaging", selected: false, name: "<i>Very likely</i> have problems", description: "Finds only a third of flawed or damaging edits but with high accuracy."},
+      {id:"damaging", selected: false, name: "<i>Likely</i> have problems", description: "Finds half of flawed or damaging edits with medium accuracy."},
+      {id:"maybe-damaging", selected: false, name: "<i>May</i> have problems", description: "Finds most flawed or damaging edits but with lower accuracy."}
   ]},
   {group: "User intent", info:"intent",filters:[
-    {id:"good-faith", selected: false, name: "<label>Very likely</label> good faith", description: "Finds almost all good-faith edits with a very high accuracy."},
-    {id:"very-bad-faith", selected: false, name: "<label>Likely</label> bad faith", description: "Finds a quarter of bad-faith edits with medium accuracy."},
-    {id:"bad-faith", selected: false, name: "<label>May be</label> bad faith", description: "Finds most bad-faith edits but with a lower accuracy."}
+    {id:"good-faith", selected: false, name: "<i>Very likely</i> good faith", description: "Finds almost all good-faith edits with a very high accuracy."},
+    {id:"very-bad-faith", selected: false, name: "<i>Likely</i> bad faith", description: "Finds a quarter of bad-faith edits with medium accuracy."},
+    {id:"bad-faith", selected: false, name: "<i>May be</i> bad faith", description: "Finds most bad-faith edits but with a lower accuracy."}
   ]},
   {group: "User registration", filters:[
     {id:"registered", selected: false, name: "Registered", description: "Logged-in users."},
