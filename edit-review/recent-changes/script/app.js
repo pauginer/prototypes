@@ -229,7 +229,7 @@ function meetsFiltersAnd(classList){
 
 //UPDATES
 function updateChanges(){
-  window.setTimeout(function(){
+  //window.setTimeout(function(){
     $(".changes .change").removeClass("hidden");
     $(".changes .change").removeClass("color");
     $(".changes .change").removeClass("blue");
@@ -261,7 +261,7 @@ function updateChanges(){
       $(".changes-empty").addClass("hidden");
       $(".changes").removeClass("hidden");
     }
-  });
+  //});
 
 }
 
@@ -370,62 +370,63 @@ function highlightActiveGroups(){
 }
 
 function updateTags(){
-  var data = {tags: getSelectedFilters(filtersData)};
-  var html = tagsTemplate(data);
-  $(".searchbar .tags").html(html);
-  //Bindings:
-  $(".remove").click(removeTag);
-  $(".tag").click(selectTag);
-  highlightActiveGroups();
-  updateChanges();
+  window.setTimeout(function(){
+    var data = {tags: getSelectedFilters(filtersData)};
+    var html = tagsTemplate(data);
+    $(".searchbar .tags").html(html);
+    //Bindings:
+    $(".remove").click(removeTag);
+    $(".tag").click(selectTag);
+    highlightActiveGroups();
+    updateChanges();
 
-  //Incompatibilities:
-  $.each(filterSubsets, function(i,pair){
-    if($(".tag[data-id='"+ pair[0] +"']:not([data-color]), .tag[data-id='" + pair[1] +"']").length == 2){
-      var tag = $(".tag[data-id='" + pair[0] + "']");
-      tag.addClass("useless");
+    //Incompatibilities:
+    $.each(filterSubsets, function(i,pair){
+      if($(".tag[data-id='"+ pair[0] +"']:not([data-color]), .tag[data-id='" + pair[1] +"']").length == 2){
+        var tag = $(".tag[data-id='" + pair[0] + "']");
+        tag.addClass("useless");
 
-      var title = tag.data("description") + " Has no effect in the current results since it is already included in \""+ $(".tag[data-id='" + pair[1] + "'] .name").text() +"\". Consider highlighting it with color instead.";
-      tag.attr("title", title);
-    }
-  });
-
-  $.each(filterComplete, function(i, list){
-    var tags =[];
-    $.each(list, function(j, tagId){
-      var tag = $(".tag[data-id='"+ tagId + "']:not([data-color])");
-      if(tag.length>0){
-          tags.push(tag);
+        var title = tag.data("description") + " Has no effect in the current results since it is already included in \""+ $(".tag[data-id='" + pair[1] + "'] .name").text() +"\". Consider highlighting it with color instead.";
+        tag.attr("title", title);
       }
     });
-    if(tags.length == list.length){
-        $.each(tags, function(i, tag){
-          tag.addClass("useless");
-          var title = tag.attr("title") + " No effect in the current result since all complementary filters have been added too";
-          tag.attr("title", title);
-        });
+
+    $.each(filterComplete, function(i, list){
+      var tags =[];
+      $.each(list, function(j, tagId){
+        var tag = $(".tag[data-id='"+ tagId + "']:not([data-color])");
+        if(tag.length>0){
+            tags.push(tag);
+        }
+      });
+      if(tags.length == list.length){
+          $.each(tags, function(i, tag){
+            tag.addClass("useless");
+            var title = tag.attr("title") + " No effect in the current result since all complementary filters have been added too";
+            tag.attr("title", title);
+          });
+      }
+    });
+
+    //Highlight fitering
+    var areHighlights = $(".tag[data-color]").length >0;
+    var onlyHighlights = $(".change:not(.hidden):not(.color)").length == 0;
+    if(areHighlights){
+      $(".filter-highlights").removeClass("disabled");
+      updateFilterHighlights();
+
+      if(onlyHighlights && firstTimeFilterHighlight){
+        announceFilterHighlight = true;
+        firstTimeFilterHighlight = false;
+      }
+
+    } else {
+      $(".filter-highlights").addClass("disabled");
+      filerHighlights = true;
     }
+
+    updateTooltips();
   });
-
-  //Highlight fitering
-  var areHighlights = $(".tag[data-color]").length >0;
-  var onlyHighlights = $(".change:not(.hidden):not(.color)").length == 0;
-  if(areHighlights){
-    $(".filter-highlights").removeClass("disabled");
-    updateFilterHighlights();
-
-    if(onlyHighlights && firstTimeFilterHighlight){
-      announceFilterHighlight = true;
-      firstTimeFilterHighlight = false;
-    }
-
-  } else {
-    $(".filter-highlights").addClass("disabled");
-    filerHighlights = true;
-  }
-
-  updateTooltips();
-
 }
 
 
@@ -543,6 +544,7 @@ function loadChangesData(){
 
 
 function updateFilterHighlights(){
+  window.setTimeout(function(){
   var button = $(".filter-highlights");
   var onlyComplete = areOnlyCompleteHighlights();
   var isDisabled = button.hasClass("disabled");
@@ -567,6 +569,7 @@ function updateFilterHighlights(){
 
   highlightActiveGroups();
   updateChanges();
+});
 }
 
 function toggleFilterHighlights(e){
