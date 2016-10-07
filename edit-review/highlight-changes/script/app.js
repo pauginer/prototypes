@@ -125,17 +125,11 @@ function scrollToFilter(){
 }
 
 function highlightChange(change, color){
-/*  var redTags = $(".tag").map(function() {
-    var tag = $(this);
-    if (tag.find(".color."+color).length > 0)
-      return tag.data("id");
-  });*/
-
 var allFilters = $.map(filtersData.groups, function(g){return g.filters;});
 var filtersOfColor = $.grep(allFilters, function(f){ if(f.color == color){return f;} });
-var redTags = $.map(filtersOfColor, function(f){return f.id});
+var colorTags = $.map(filtersOfColor, function(f){return f.id});
 
-  $.each(redTags,function(j,tag){
+  $.each(colorTags,function(j,tag){
     if(change.hasClass(tag)){
       change.addClass("color");
       change.addClass(color);

@@ -426,7 +426,8 @@ h1 {
 }
 .actions .pagination,
 .actions .dates,
-.actions .filter-highlights {
+.actions .filter-highlights,
+.actions .highlight-results {
   cursor: pointer;
   border: 1px solid #A2A9B1;
   border-radius: 2px;
@@ -439,7 +440,8 @@ h1 {
 }
 .actions .pagination .more,
 .actions .dates .more,
-.actions .filter-highlights .more {
+.actions .filter-highlights .more,
+.actions .highlight-results .more {
   content: "";
   display: flex;
   align-self: center;
@@ -473,6 +475,13 @@ h1 {
   background-size: contain;
   width: 22px;
   height: 22px;
+}
+.actions .highlight-results .icon {
+  width: 18px;
+  height: 18px;
+  background: center center url(../images/marker.svg) no-repeat;
+  background-size: contain;
+  margin-right: 8px;
 }
 .actions .dates .icon {
   width: 18px;
