@@ -93,7 +93,7 @@ h1 {
   box-sizing: border-box;
   flex-direction: row;
   align-items: center;
-  padding: 0 3px;
+  padding: 0 10px;
 }
 .searchbar.active {
   border-color: #3366cc;
@@ -501,6 +501,8 @@ h1 {
 .actions .highlight-panel .highlight-section {
   padding: 10px;
   background-color: #EAECF0;
+  color: #333;
+  font-weight: bold;
 }
 .actions .highlight-criteria {
   display: flex;

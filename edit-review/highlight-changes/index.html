@@ -29,20 +29,6 @@
           <div class="name">{{{name}}}</div>
           <div class="description">{{description}}</div>
         </label>
-        <div class="options" title="Highlight color"> <div class="icon"></div>
-          <div class="visibility-panel">
-            <div class="label-highlight"> Highlight color</div>
-            <div class="option-highlight {{#if color}} active{{/if}}">
-              <div class="option-filter {{#unless color}}active{{/unless}}">
-              </div>
-              <div name = "blue" class="highlight blue {{#is color 'blue'}} active {{/is}}"></div>
-              <div name = "green" class="highlight green {{#is color 'green'}} active {{/is}}"></div>
-              <div name = "yellow" class="highlight yellow {{#is color 'yellow'}} active {{/is}}"></div>
-              <div name = "orange" class="highlight orange {{#is color 'orange'}} active {{/is}}"></div>
-              <div name = "red" class="highlight red {{#is color 'red'}} active {{/is}}"></div>
-            </div>
-          </div>
-        </div>
       </div>
       {{/each}}
       {{#if compact}}
@@ -66,7 +52,7 @@
       {{#each groups}}
         <div class="highlight-section" data-id="{{group}}">{{group}}</div>
         {{#each filters}}
-        <div class="highlight-criteria filter" data-id="{{id}}">
+        <div class="highlight-criteria filter" data-id="{{id}}" title="{{description}}">
           <div class="description">
             <div class="color-indicator option-filter {{color}}"></div> <div class="label">{{{name}}}</div>
           </div>
@@ -135,7 +121,6 @@
           <div class="highlight-results"><div class="icon"></div>Highlight results <div class="more"></div></div>
           <div class= "highlight-panel hidden">Highlight panel</div>
         </div>
-        <div class="filter-highlights active disabled" title = "When filters are asigned a color, you can control whether they restrict further the results or not."><div class="icon"></div></div>
         <div class="pagination">Last 500 changes <div class="more"></div></div>
         <div class="dates"> <div class="icon"></div>7 days<div class="more"></div></div>
       </section>

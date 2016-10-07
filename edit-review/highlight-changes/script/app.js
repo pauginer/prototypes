@@ -4,10 +4,6 @@ var tagsTemplate =null;
 var filtersTemplate = null;
 var highlightsTemplate = null;
 
-var announceFilterHighlight = false;
-var firstTimeFilterHighlight = true;
-
-
 //API
 
 function getFilterDataById (id){
@@ -424,17 +420,9 @@ function updateTags(){
     var areHighlights = $(".tag[data-color]").length >0;
     var onlyHighlights = $(".change:not(.hidden):not(.color)").length == 0;
     if(areHighlights){
-      $(".filter-highlights").removeClass("disabled");
-      updateFilterHighlights();
-
-      if(onlyHighlights && firstTimeFilterHighlight){
-        announceFilterHighlight = true;
-        firstTimeFilterHighlight = false;
-      }
-
+      $(".changes").addClass("highlights");
     } else {
-      $(".filter-highlights").addClass("disabled");
-      filerHighlights = true;
+      $(".changes").removeClass("highlights");
     }
 
     updateTooltips();
@@ -465,12 +453,6 @@ function filtersVisible(show){
     $(".filter-panel").removeClass("hidden");
   }else{
     $(".filter-panel").addClass("hidden");
-    if(announceFilterHighlight){
-      announceFilterHighlight = false;
-      $(".filter-highlights").tooltipster("content","All results are highlighted because highlights are used for filtering by default. You can make highlight not to filter to get more results.");
-      $(".filter-highlights").tooltipster("open");
-
-    }
   }
 }
 
@@ -584,15 +566,6 @@ function updateFilterHighlights(){
 });
 }
 
-function toggleFilterHighlights(e){
-  var isDisabled = $(".filter-highlights").hasClass("disabled");
-  if(!isDisabled){
-    filerHighlights = !filerHighlights;
-    updateFilterHighlights();
-    $(this).tooltipster("open");
-  }
-
-}
 
 var filerHighlights = true;
 var meetsFilters = meetsFiltersOrOptionalHighlight;
@@ -604,8 +577,6 @@ $(function(){ //Initialization:
   loadChangesData();
   updateFilters();
   updateTags();
-
-  $(".filter-highlights").click(toggleFilterHighlights);
 
   $(".search").keyup(searchWhenTyping);
   $(".search").keydown(clearWhenTyping);
