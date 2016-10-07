@@ -217,6 +217,7 @@ h1 {
 .filter-panel {
     .panel;
     //min-height: 200px;
+    z-index: 100;
     max-height: 70vh;
     max-width: 650px;
     overflow-y: auto;
@@ -350,7 +351,7 @@ h1 {
   display:flex;
 }
 
-.options.active .visibility-panel{
+.options.active .visibility-panel, .visibility-panel.active{
   display: flex;
 }
 
@@ -403,14 +404,23 @@ h1 {
   border-radius: 100%;
 }
 
-.visibility-panel {
+.filter-panel .visibility-panel {
   .panel;
+  position:absolute;
+  background: white;
+}
+
+.visibility-panel {
+  //.panel;
+  background: #EAECF0;
+  border-bottom: 1px solid #C8CCD1;
+  border-top: 1px solid #C8CCD1;
   cursor:default;
   margin-top: -1px;
   //display: flex;
   display:none;
   flex-direction: column;
-  position:absolute;
+  //position:absolute;
   top: 100%;
   right:0;
   z-index: 100;
@@ -419,7 +429,9 @@ h1 {
   font-size: 16px;
 }
 .option-filter {
-  border: 1px dashed #333;
+  //border: 1px dashed #333;
+  //border: 1px dashed #72777D;
+  border: 1px dashed #72777D;
   cursor: pointer;
   width: 22px;
   height: 22px;
@@ -428,6 +440,7 @@ h1 {
   background-size: 20px;
   background-repeat: no-repeat;
   background-position: center center;
+  background-color: white;
 
   &.active {
     background-image: url(../images/check.svg);
@@ -525,6 +538,70 @@ h1 {
       height: 22px;
     }
 
+  }
+
+  .highlight-group {
+    position: relative;
+  }
+
+  .highlight-panel {
+    .panel;
+    min-width: 250px;
+    position: absolute;
+    margin:0 8px;
+    margin-top:-1px;
+    max-height: 70vh;
+    overflow: auto;
+    .highlight-section {
+      padding: 10px;
+      background-color: #EAECF0;
+    }
+  }
+
+  .highlight-criteria {
+    //padding: 10px;
+    display: flex;
+    flex-direction: column;
+    cursor:pointer;
+    &:hover {
+      background-color: #fbfbfb;
+    }
+    .description {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .description .color-indicator {
+      display: flex;
+      width: 14px;
+      height: 14px;
+
+      &.blue {
+        background-color: #3366cc;
+        border: 1px solid #3366cc;
+      }
+      &.green {
+        background-color: #00AF89;
+        border: 1px solid #00AF89;
+      }
+      &.yellow {
+        background-color: #FFCC33;
+        border: 1px solid #FFCC33;
+      }
+      &.orange {
+        background-color: #FF6D22;
+        border: 1px solid #FF6D22;
+      }
+      &.red {
+        background-color: #CC3333;
+        border: 1px solid #CC3333;
+      }
+    }
+
+    i {
+      font-style: normal;
+    }
   }
 
   .highlight-results .icon {

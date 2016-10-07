@@ -190,6 +190,7 @@ h1 {
 .filter-panel {
   border: 1px solid #A2A9B1;
   box-shadow: 0 2px 0 1px rgba(0, 0, 0, 0.1);
+  z-index: 100;
   max-height: 70vh;
   max-width: 650px;
   overflow-y: auto;
@@ -308,7 +309,8 @@ h1 {
 .filter .check:checked ~ .options {
   display: flex;
 }
-.options.active .visibility-panel {
+.options.active .visibility-panel,
+.visibility-panel.active {
   display: flex;
 }
 .options .icon {
@@ -353,15 +355,20 @@ h1 {
   background: #CC3333;
   border-radius: 100%;
 }
-.visibility-panel {
+.filter-panel .visibility-panel {
   border: 1px solid #A2A9B1;
   box-shadow: 0 2px 0 1px rgba(0, 0, 0, 0.1);
+  position: absolute;
   background: white;
+}
+.visibility-panel {
+  background: #EAECF0;
+  border-bottom: 1px solid #C8CCD1;
+  border-top: 1px solid #C8CCD1;
   cursor: default;
   margin-top: -1px;
   display: none;
   flex-direction: column;
-  position: absolute;
   top: 100%;
   right: 0;
   z-index: 100;
@@ -369,7 +376,7 @@ h1 {
   font-size: 16px;
 }
 .option-filter {
-  border: 1px dashed #333;
+  border: 1px dashed #72777D;
   cursor: pointer;
   width: 22px;
   height: 22px;
@@ -378,6 +385,7 @@ h1 {
   background-size: 20px;
   background-repeat: no-repeat;
   background-position: center center;
+  background-color: white;
 }
 .option-filter.active {
   background-image: url(../images/check.svg);
@@ -475,6 +483,65 @@ h1 {
   background-size: contain;
   width: 22px;
   height: 22px;
+}
+.actions .highlight-group {
+  position: relative;
+}
+.actions .highlight-panel {
+  border: 1px solid #A2A9B1;
+  box-shadow: 0 2px 0 1px rgba(0, 0, 0, 0.1);
+  background: white;
+  min-width: 250px;
+  position: absolute;
+  margin: 0 8px;
+  margin-top: -1px;
+  max-height: 70vh;
+  overflow: auto;
+}
+.actions .highlight-panel .highlight-section {
+  padding: 10px;
+  background-color: #EAECF0;
+}
+.actions .highlight-criteria {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+.actions .highlight-criteria:hover {
+  background-color: #fbfbfb;
+}
+.actions .highlight-criteria .description {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+.actions .highlight-criteria .description .color-indicator {
+  display: flex;
+  width: 14px;
+  height: 14px;
+}
+.actions .highlight-criteria .description .color-indicator.blue {
+  background-color: #3366cc;
+  border: 1px solid #3366cc;
+}
+.actions .highlight-criteria .description .color-indicator.green {
+  background-color: #00AF89;
+  border: 1px solid #00AF89;
+}
+.actions .highlight-criteria .description .color-indicator.yellow {
+  background-color: #FFCC33;
+  border: 1px solid #FFCC33;
+}
+.actions .highlight-criteria .description .color-indicator.orange {
+  background-color: #FF6D22;
+  border: 1px solid #FF6D22;
+}
+.actions .highlight-criteria .description .color-indicator.red {
+  background-color: #CC3333;
+  border: 1px solid #CC3333;
+}
+.actions .highlight-criteria i {
+  font-style: normal;
 }
 .actions .highlight-results .icon {
   width: 18px;

@@ -6,13 +6,13 @@ filterSubsets = [ ["very-good", "good"], ["damaging", "maybe-damaging"], ["very-
 filterComplete = [["unpatrolled", "patrolled"], ["minor","regular"], ["registered", "unregistered"], ["own","others"], ["newcomer","experienced", "most-experienced"],["bot", "human"]];
 
 filtersData = { groups: [
-  {group: "Contribution quality (use higher prediction accuracy for fewer false positives)", info:"quality", filters:[
+  {group: "Contribution quality", clarification: "(use higher prediction accuracy for fewer false positives)", info:"quality", filters:[
       {id:"very-good", selected: false, name: "<i>Very likely</i> good", description: "Highly accurate at finding almost all problem-free edits."},
       {id:"very-damaging", selected: false, name: "<i>Very likely</i> have problems", description: "Highly accurate at finding the top 30% of flawed or damaging edits."},
       {id:"damaging", selected: false, name: "<i>Likely</i> have problems", description: "Finds half of flawed or damaging edits with medium accuracy."},
       {id:"maybe-damaging", selected: false, name: "<i>May</i> have problems", description: "Finds most flawed or damaging edits but with lower accuracy."}
   ]},
-  {group: "User intent (use higher prediction accuracy for fewer false positives)", info:"intent",filters:[
+  {group: "User intent", clarification: "(use higher prediction accuracy for fewer false positives)", info:"intent",filters:[
     {id:"good-faith", selected: false, name: "<i>Very likely</i> good faith", description: "Highly accurate at finding almost all good-faith edits."},
     {id:"very-bad-faith", selected: false, name: "<i>Likely</i> bad faith", description: "Highly accurate at finding the top 20% of bad-faith edits."},
     {id:"bad-faith", selected: false, name: "<i>May be</i> bad faith", description: "Finds most bad-faith edits but with a lower accuracy."}
@@ -21,7 +21,7 @@ filtersData = { groups: [
     {id:"registered", selected: false, name: "Registered", description: "Logged-in users."},
     {id:"unregistered", selected: false, name: "Unregistered", description: "Anonymous editor."}
   ]},
-  {group: "User experience level (for registered users)", filters:[
+  {group: "User experience level", clarification: "(for registered users)", filters:[
     {id:"newcomer", selected: false, name: "Newcomer", description: "Very new editors: fewer than 10 edits and 4 days of activity."},
     {id:"experienced", selected: false, name: "Experienced", description: "More days of activity and edits than “Newcomers” but fewer than “More experienced.”"},
     {id:"most-experienced", selected: false, name: "More experienced", description: "More than 30 days of activity and 500 edits."}

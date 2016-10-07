@@ -2,6 +2,7 @@
 
 var tagsTemplate =null;
 var filtersTemplate = null;
+var highlightsTemplate = null;
 
 var announceFilterHighlight = false;
 var firstTimeFilterHighlight = true;
@@ -95,7 +96,28 @@ function selectHighlight(e){
   filter.attr("data-color", color);
   var data = getFilterDataById(filter.data("id"));
   data.color = color;
+
+  $(this).closest(".highlight-criteria").find(".color-indicator").removeClass("blue green yellow orange red");
+  $(this).closest(".highlight-criteria").find(".color-indicator").addClass(color);
   updateTags();
+  panel.removeClass("active");
+}
+
+function removeHighlight(e){
+  var panel = $(this).parents(".visibility-panel");
+  panel.find(".active").removeClass("active");
+  //panel.find(".option-highlight").addClass("active");
+  $(this).addClass("active");
+
+  var color = false;
+  var filter = $(this).parents(".filter");
+  filter.attr("data-color", color);
+  var data = getFilterDataById(filter.data("id"));
+  data.color = color;
+
+  $(this).closest(".highlight-criteria").find(".color-indicator").removeClass("blue green yellow orange red");
+  updateTags();
+  panel.removeClass("active");
 }
 
 function selectFilter(e){
@@ -226,6 +248,34 @@ function updateChanges(){
 
 }
 
+function updateHighlightMenu(){
+  var data = filtersData;
+  var allFilters = $.map(filtersData.groups, function(g){return g.filters;});
+  var activeFilters = $.grep(allFilters, function(f){ if(f.selected){return f;} });
+
+  if(activeFilters.length>0){
+    var group = {group:"Active filters", filters:activeFilters};
+    var groups = $.merge([group],filtersData.groups);
+    data = {groups: groups};
+    console.debug(groups);
+  }
+
+  var html = highlightsTemplate(data);
+  $(".highlight-panel").html(html);
+  //Bindings:
+  $(".highlight-criteria .description").click(function(e){ //Show/hide visibility panel
+    var panel= $(this).parent(".highlight-criteria").find(".visibility-panel");
+    var isActive = panel.hasClass("active");
+    $(".highlight-criteria .visibility-panel").removeClass("active");
+    if(!isActive){
+      panel.addClass("active");
+    }
+  });
+
+  $(".visibility-panel .highlight").click(selectHighlight);
+  $(".visibility-panel .option-filter").click(removeHighlight);
+}
+
 function updateFilters(){
   var data = filtersData;
   var query = $(".search").val().trim();
@@ -259,6 +309,7 @@ function updateFilters(){
   $(".visibility-panel .option-filter").click(selectFilter);
   $(".searchable .message").click(function(e){$(".search").focus()});
   updateTooltips();
+  updateHighlightMenu();
 }
 
 function removeTag(e){
@@ -549,7 +600,7 @@ var meetsFilters = meetsFiltersOrOptionalHighlight;
 $(function(){ //Initialization:
   tagsTemplate = Handlebars.compile($("#tags-template").html());
   filtersTemplate = Handlebars.compile($("#filters-template").html());
-
+  highlightsTemplate =  Handlebars.compile($("#highlights-template").html());
   loadChangesData();
   updateFilters();
   updateTags();
@@ -569,10 +620,18 @@ $(function(){ //Initialization:
     $(this).parent(".searchbar").removeClass("active");
   });
   $(".search-icon").click(function(){$(".search").focus();});
+
+  $(".highlight-results").click(function(){$(".highlight-panel").toggleClass("hidden")});
+
   $("body").click(function(e){
     if ($(e.target).parents(".filters").length == 0){
       filtersVisible(false);
       $(".tags .tag.active").removeClass("active");
+    }
+
+    if ($(e.target).closest(".highlight-group").length == 0){
+      $(".highlight-panel").addClass("hidden");
+      $(".visibility-panel ").removeClass("active");
     }
   });
 });

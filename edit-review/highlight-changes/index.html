@@ -18,7 +18,7 @@
     <script id="filters-template" type="text/x-handlebars-template">
       {{#each groups}}
       <div  class="group {{#if compact}}compact{{/if}}" data-id="{{group}}">
-        <div class="title">{{group}}</div>
+        <div class="title">{{group}} {{clarification}}</div>
         {{#if info}} <span class="whatsthis" data-tooltip-content="#whats-{{info}}">
          What's this? </span> {{/if}}
       </div>
@@ -60,6 +60,29 @@
         {{#if color}}<div class="color {{color}}"></div>{{/if}}
         <div class="name">{{{name}}}</div>
         <div class="remove"></div></div>
+      {{/each}}
+    </script>
+    <script id="highlights-template" type="text/x-handlebars-template">
+      {{#each groups}}
+        <div class="highlight-section" data-id="{{group}}">{{group}}</div>
+        {{#each filters}}
+        <div class="highlight-criteria filter" data-id="{{id}}">
+          <div class="description">
+            <div class="color-indicator option-filter {{color}}"></div> <div class="label">{{{name}}}</div>
+          </div>
+          <div class="visibility-panel">
+            <div class="option-highlight {{#if color}} active{{/if}}">
+              <div class="option-filter {{#unless color}}active{{/unless}}">
+              </div>
+              <div name = "blue" class="highlight blue {{#is color 'blue'}} active {{/is}}"></div>
+              <div name = "green" class="highlight green {{#is color 'green'}} active {{/is}}"></div>
+              <div name = "yellow" class="highlight yellow {{#is color 'yellow'}} active {{/is}}"></div>
+              <div name = "orange" class="highlight orange {{#is color 'orange'}} active {{/is}}"></div>
+              <div name = "red" class="highlight red {{#is color 'red'}} active {{/is}}"></div>
+            </div>
+          </div>
+        </div>
+        {{/each}}
       {{/each}}
     </script>
   </head>
@@ -108,7 +131,10 @@
         <div class= "filter-panel hidden">Filter panel</div>
       </section>
       <section class="actions">
-        <div class="highlight-results"><div class="icon"></div>Highlight results <div class="more"></div></div>
+        <div class="highlight-group">
+          <div class="highlight-results"><div class="icon"></div>Highlight results <div class="more"></div></div>
+          <div class= "highlight-panel hidden">Highlight panel</div>
+        </div>
         <div class="filter-highlights active disabled" title = "When filters are asigned a color, you can control whether they restrict further the results or not."><div class="icon"></div></div>
         <div class="pagination">Last 500 changes <div class="more"></div></div>
         <div class="dates"> <div class="icon"></div>7 days<div class="more"></div></div>
