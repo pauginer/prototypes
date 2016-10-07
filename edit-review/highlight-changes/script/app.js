@@ -125,11 +125,16 @@ function scrollToFilter(){
 }
 
 function highlightChange(change, color){
-  var redTags = $(".tag").map(function() {
+/*  var redTags = $(".tag").map(function() {
     var tag = $(this);
     if (tag.find(".color."+color).length > 0)
       return tag.data("id");
-  });
+  });*/
+
+var allFilters = $.map(filtersData.groups, function(g){return g.filters;});
+var filtersOfColor = $.grep(allFilters, function(f){ if(f.color == color){return f;} });
+var redTags = $.map(filtersOfColor, function(f){return f.id});
+
   $.each(redTags,function(j,tag){
     if(change.hasClass(tag)){
       change.addClass("color");
@@ -187,44 +192,6 @@ function meetsFiltersOr(classList){
 
 }
 
-function meetsFiltersOrExceptSingleHighlights(classList){
-  var result = true;
-  var data = filtersData;
-  $.each(data.groups, function(i,group){
-    var hasActiveFilters = false;
-    var anyMatches = false;
-    var numberOfActiveFilters = $.grep(group.filters, function(item){ return !!item.selected;}).length;
-
-    $.each(group.filters, function(j,filter){
-      var isOnlyOneColoredFilter = (numberOfActiveFilters ==1) && !!filter.color;
-
-      if(filter.selected && !isOnlyOneColoredFilter){
-        hasActiveFilters = true;
-        var matches = ($.inArray(filter.id, classList) >= 0 );
-        anyMatches = anyMatches || matches;
-      }
-    });
-    if( hasActiveFilters){
-      result = result && anyMatches;
-    }
-  });
-  return result;
-
-}
-
-function meetsFiltersAnd(classList){
-  var result = true;
-  var data = filtersData;
-  $.each(data.groups, function(i,group){
-    var activeFilters = $.grep(group.filters, function(f){return !!f.selected && !f.color;})
-    $.each(activeFilters, function(j,filter){
-      var matches = $.inArray(filter.id, classList) >= 0;
-      result = result && matches;
-    });
-  });
-  return result;
-
-}
 
 
 //UPDATES
