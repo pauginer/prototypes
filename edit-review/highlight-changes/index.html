@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Recent Changes</title>
+    <script src="lib/jquery.js"></script>
+     <link rel="stylesheet" type="text/css" href="lib/tooltipster/css/tooltipster.bundle.min.css" />
+     <link rel="stylesheet" type="text/css" href="lib/tooltipster/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-borderless.min.css" />
+     <link rel="stylesheet" type="text/css" href="lib/tooltipster/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-light.min.css" />
+     <script type="text/javascript" src="lib/tooltipster/js/tooltipster.bundle.min.js"></script>
+    <script src="lib/handlebars.js"></script>
+    <script src="lib/helpers.js"></script>
+    <script src="lib/moment.js"></script>
+    <script src="script/data.js"></script>
+    <script src="script/process-changes.js"></script>
+    <script src="script/app.js"></script>
+    <link rel="stylesheet" href="style/style.css" media="screen" charset="utf-8">
+    <script id="filters-template" type="text/x-handlebars-template">
+      {{#each groups}}
+      <div  class="group {{#if compact}}compact{{/if}}" data-id="{{group}}">
+        <div class="title">{{group}}</div>
+        {{#if info}} <span class="whatsthis" data-tooltip-content="#whats-{{info}}">
+         What's this? </span> {{/if}}
+      </div>
+      {{#each filters}}
+      <div  class="filter{{#if selected}} active{{/if}}{{#unless selected}}{{#if compact}} compact{{/if}}{{/unless}}" data-id="{{id}}" data-color="{{color}}">
+        <input class="check" type="checkbox" id="{{id}}" {{#if selected}}checked="checked"{{/if}}></input>
+        <label class="details" for="{{id}}">
+          <div class="name">{{{name}}}</div>
+          <div class="description">{{description}}</div>
+        </label>
+        <div class="options" title="Highlight color"> <div class="icon"></div>
+          <div class="visibility-panel">
+            <div class="label-highlight"> Highlight color</div>
+            <div class="option-highlight {{#if color}} active{{/if}}">
+              <div class="option-filter {{#unless color}}active{{/unless}}">
+              </div>
+              <div name = "blue" class="highlight blue {{#is color 'blue'}} active {{/is}}"></div>
+              <div name = "green" class="highlight green {{#is color 'green'}} active {{/is}}"></div>
+              <div name = "yellow" class="highlight yellow {{#is color 'yellow'}} active {{/is}}"></div>
+              <div name = "orange" class="highlight orange {{#is color 'orange'}} active {{/is}}"></div>
+              <div name = "red" class="highlight red {{#is color 'red'}} active {{/is}}"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+      {{#if compact}}
+      <div class="searchable">
+        <div class="message"> More available as you search</div>
+        <a href="{{url}}" target="_blank" class="view-more"></a>
+      </div>
+      {{/if}}
+      {{/each}}
+      {{#unless groups}}<div class='no-results'>No filters found</div>{{/unless}}
+    </script>
+    <script id="tags-template" type="text/x-handlebars-template">
+      {{#each tags}}
+      <div class="tag" data-id="{{id}}" {{#if color}}data-color= "{{color}}"{{/if}} data-description="{{description}}" title="{{description}}">
+        {{#if color}}<div class="color {{color}}"></div>{{/if}}
+        <div class="name">{{{name}}}</div>
+        <div class="remove"></div></div>
+      {{/each}}
+    </script>
+  </head>
+  <body>
+    <section class="sidebar"></section>
+    <section class="main-page">
+      <section class="personal"></section>
+      <section class="header">
+          <section class="header-tab"></section>
+          <section class="header-search"></section>
+      </section>
+      <section class="prelude">
+        <h1>Recent changes</h1>
+        <div class="mw-specialpage-summary">
+        <p>This is a list of recent changes to Wikipedia.
+        </p>
+        </div>
+        <div lang="en" dir="ltr">
+          <table class="plainlinks" id="recentchangestext" style="clear:both; background:transparent; font-size:smaller;" role="presentation">
+          <tbody><tr>
+          <th style="text-align: right;"> <a href="#/wiki/MediaWiki:Recentchangestext" title="MediaWiki:Recentchangestext">This page</a>:
+          </th>
+          <td> <a href="#/wiki/MediaWiki_talk:Recentchangestext" title="MediaWiki talk:Recentchangestext">Discuss this page</a> – <a href="#/wiki/Help:Recent_changes" title="Help:Recent changes">What does this page mean?</a> Recent changes for: <a href="#/wiki/Special:RecentChangesLinked/Wikipedia:Featured_articles" title="Special:RecentChangesLinked/Wikipedia:Featured articles">Featured articles</a> – <a href="#/wiki/Special:RecentChangesLinked/Wikipedia:Good_articles/all" title="Special:RecentChangesLinked/Wikipedia:Good articles/all">Good articles</a> – <a href="#/wiki/Special:RecentChangesLinked/Category:Living_people" title="Special:RecentChangesLinked/Category:Living people">Living people</a> – <span class="plainlinks"><a class="external text" href="#//en.wikipedia.org/w/index.php?title=Special:RecentChangesLinked&amp;namespace=0&amp;target=Wikipedia%3AVital+articles">Vital articles</a></span>
+          </td></tr>
+          <tr>
+          <th style="text-align: right;"> Utilities:
+          </th>
+          <td> <a href="#/wiki/Wikipedia:Recent_changes_patrol" title="Wikipedia:Recent changes patrol">RC patrol</a> – <a href="#/wiki/Special:NewPagesFeed" title="Special:NewPagesFeed">New pages</a> – <a class="external text" href="#//en.wikipedia.org/w/index.php?title=Special:Contributions&amp;contribs=newbie">New editors' contribs</a> – <a class="external text" href="#//en.wikipedia.org/w/index.php?title=Special:Recentchanges&amp;hideliu=1&amp;hideanons=0">IPs' contribs</a> – <a class="external text" href="#https://en.wikipedia.org/w/index.php?namespace=&amp;tagfilter=mobile+edit&amp;title=Special%3ARecentChanges">Mobile contribs</a> – <a href="#/wiki/Wikipedia:Cleanup" title="Wikipedia:Cleanup">Cleanup</a> – <a href="#/wiki/Wikipedia:Administrator_intervention_against_vandalism" title="Wikipedia:Administrator intervention against vandalism">Vandalism</a>  – <a href="#/wiki/Wikipedia:Articles_for_deletion" title="Wikipedia:Articles for deletion">Deletion</a> – <a href="#/wiki/Wikipedia:Requests_for_comment" title="Wikipedia:Requests for comment">RfC</a> – <a href="#/wiki/Category:Wikipedia_backlog" title="Category:Wikipedia backlog">Backlogs</a>
+          </td></tr>
+          <tr>
+          <th style="text-align: right;"> <a href="#/wiki/Wikipedia:About" title="Wikipedia:About">About us</a>:
+          </th>
+          <td> <a href="#/wiki/Wikipedia:Introduction" title="Wikipedia:Introduction">Introduction</a>/<a href="#/wiki/Wikipedia:FAQ" title="Wikipedia:FAQ">FAQ</a>/<a href="#/wiki/Wikipedia:Policies_and_guidelines" title="Wikipedia:Policies and guidelines">Policy</a> – <a href="#/wiki/Special:Statistics" title="Special:Statistics">Stats</a> – <a href="#/wiki/Wikipedia:News" title="Wikipedia:News">News</a> – <a href="#/wiki/Wikipedia:Milestones" title="Wikipedia:Milestones">Milestones</a> – <a href="#/wiki/Wikipedia:Village_pump" title="Wikipedia:Village pump">Village pump</a> – <a href="#/wiki/Wikipedia:Mailing_lists" title="Wikipedia:Mailing lists">Mailing lists</a> – <a href="#/wiki/Wikipedia:IRC" title="Wikipedia:IRC">Chat</a> – <a href="#/wiki/Wikipedia:Wikipedia_Signpost" title="Wikipedia:Wikipedia Signpost"><i>Wikipedia Signpost</i></a>
+          </td></tr></tbody></table>
+          </div>
+      </section>
+      <section class="filters">
+        <div class="searchbar">
+          <div class="search-icon"></div>
+          <div class="tags"></div>
+          <input class="search" placeholder="Filter recent changes"></input>
+        </div>
+        <div class= "filter-panel hidden">Filter panel</div>
+      </section>
+      <section class="actions">
+        <div class="filter-highlights active disabled" title = "When filters are asigned a color, you can control whether they restrict further the results or not."><div class="icon"></div></div>
+        <div class="pagination">Last 500 changes <div class="more"></div></div>
+        <div class="dates"> <div class="icon"></div>7 days<div class="more"></div></div>
+      </section>
+      <section class="changes">
+      </section>
+      <section class="changes-empty hidden">
+        <div class="message">
+          <div class="title">No contributions meet the selected criteria </div>
+          <div class="description">Try making the search broader by removing some filters.</div>
+        </div>
+      </section>
+    </section>
+    <div class="tooltip_templates hidden">
+      <span id="whats-quality">
+          <h3>Automatic quality prediction</h3>
+          <p>Filter edits based on how good or bad they are. This is automatically predicted by ORES, a machine learning service, based on a large set of previous examples.</p>
+          <p>Several filters are provided for you to adjust how strict you need results to be. More strict filters will produce fewer but more accurate results, while less strict filters will provide a wider set of results with less precision.</p>
+      </span>
+      <span id="whats-intent">
+        <h3>Automatic user intent prediction</h3>
+        <p>Filter edits based whether or not an edit was made in good-faith. This is automatically predicted by ORES, a machine learning service, based on a large set of previous examples.</p>
+        <p>Several filters are provided for you to adjust how strict you need results to be. More strict filters will produce fewer but more accurate results, while less strict filters will provide a wider set of results with less precision.</p>
+      </span>
+    </div>
+  </body>
+</html>
