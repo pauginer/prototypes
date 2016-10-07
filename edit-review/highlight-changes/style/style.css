@@ -88,10 +88,12 @@ h1 {
   flex-wrap: wrap;
   border: 1px solid #A2A9B1;
   border-radius: 2px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
   box-sizing: border-box;
   flex-direction: row;
   align-items: center;
-  padding: 0 5px;
+  padding: 0 3px;
 }
 .searchbar.active {
   border-color: #3366cc;
@@ -104,59 +106,6 @@ h1 {
   background-size: contain;
   margin: 0 2px;
 }
-.searchbar .tags {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-.searchbar .tags .tag {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  cursor: pointer;
-  margin: 5px;
-  padding: 5px;
-  border: 1px solid #979797;
-  border-radius: 2px;
-  background: #fbfbfb;
-}
-.searchbar .tags .tag.active {
-  background: #EAF3FF;
-  border-color: #3366cc;
-}
-.searchbar .tags .tag i {
-  font-weight: normal;
-  font-style: normal;
-}
-.searchbar .tags .tag .color {
-  flex: none;
-  width: 10px;
-  height: 10px;
-  border-radius: 100%;
-  margin-right: 5px;
-}
-.searchbar .tags .tag .color.blue {
-  background-color: #3366cc;
-}
-.searchbar .tags .tag .color.green {
-  background-color: #00AF89;
-}
-.searchbar .tags .tag .color.yellow {
-  background-color: #FFCC33;
-}
-.searchbar .tags .tag .color.orange {
-  background-color: #FF6D22;
-}
-.searchbar .tags .tag .color.red {
-  background-color: #CC3333;
-}
-.searchbar .tags .tag .remove {
-  margin-left: 5px;
-  width: 12px;
-  height: 12px;
-  background: url(../images/close.svg) no-repeat;
-  background-size: contain;
-}
 .searchbar .search {
   display: flex;
   flex: auto;
@@ -166,12 +115,71 @@ h1 {
   outline: none;
   background-color: transparent;
 }
-.searchbar .tag.useless {
+.tagbox {
+  background: #F8F9FA;
+  border: 1px solid #A2A9B1;
+  border-bottom: none;
+  padding: 10px 5px;
+}
+.tags {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.tags .tag {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid #979797;
+  border-radius: 2px;
+  background: white;
+}
+.tags .tag.active {
+  background: #EAF3FF;
+  border-color: #3366cc;
+}
+.tags .tag i {
+  font-weight: normal;
+  font-style: normal;
+}
+.tags .tag .color {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  margin-right: 5px;
+}
+.tags .tag .color.blue {
+  background-color: #3366cc;
+}
+.tags .tag .color.green {
+  background-color: #00AF89;
+}
+.tags .tag .color.yellow {
+  background-color: #FFCC33;
+}
+.tags .tag .color.orange {
+  background-color: #FF6D22;
+}
+.tags .tag .color.red {
+  background-color: #CC3333;
+}
+.tags .tag .remove {
+  margin-left: 5px;
+  width: 12px;
+  height: 12px;
+  background: url(../images/close.svg) no-repeat;
+  background-size: contain;
+}
+.tag.useless {
   color: #9AA0A7;
   background-color: white;
   border-color: #C8CCD1;
 }
-.searchbar .tag.useless .remove {
+.tag.useless .remove {
   opacity: 0.7;
 }
 .panel {

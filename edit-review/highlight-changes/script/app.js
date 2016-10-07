@@ -373,7 +373,7 @@ function updateTags(){
   window.setTimeout(function(){
     var data = {tags: getSelectedFilters(filtersData)};
     var html = tagsTemplate(data);
-    $(".searchbar .tags").html(html);
+    $(".tags").html(html);
     //Bindings:
     $(".remove").click(removeTag);
     $(".tag").click(selectTag);
