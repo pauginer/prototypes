@@ -602,17 +602,16 @@ $(function(){ //Initialization:
     var isHidden = panel.hasClass("hidden");
     if(isHidden){
         panel.removeClass("hidden");
+        if ($('body').scrollTop() < 200){
+          $('body,html').animate({scrollTop: 220 }, 200);
+        }
     }else{
       closeHighlightPanel();
     }
 
-    if ($('body').scrollTop() < 200){
-      $('body,html').animate({scrollTop: 220 }, 200);
-    }
   });
 
   $(".highlight-panel").scroll(function(e){
-    console.debug($(this).scrollTop());
     if($(this).scrollTop()>0){
       $(this).removeClass("compact");
     }
