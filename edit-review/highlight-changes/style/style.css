@@ -516,6 +516,12 @@ h1 {
 .actions .highlight-criteria:hover {
   background-color: #fbfbfb;
 }
+.actions .highlight-criteria.inactive {
+  background-color: #F8F9FA;
+}
+.actions .highlight-criteria.inactive .description {
+  color: #54595D;
+}
 .actions .highlight-criteria .description {
   display: flex;
   align-items: center;

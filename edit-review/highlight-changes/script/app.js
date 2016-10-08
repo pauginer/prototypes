@@ -347,7 +347,7 @@ function selectTag(e){
 function highlightActiveGroups(){
   var data = filtersData;
   $(".filter-panel .group.active").removeClass("active");
-    $(".filter-panel .filter.inactive").removeClass("inactive");
+    $(".filter.inactive").removeClass("inactive");
 
     $.each(data.groups, function(i,group){
       var activeGroup = false;
@@ -373,7 +373,7 @@ function highlightActiveGroups(){
         $.each(group.filters, function(j,filter){
           var isImplicit = implicitActive.indexOf(filter.id) >=0;
           if(!filter.selected && !isImplicit){
-            $(".filter-panel .filter[data-id='"+ filter.id +"']").addClass("inactive");
+            $(".filter[data-id='"+ filter.id +"']").addClass("inactive");
           }
         });
       }
@@ -389,6 +389,7 @@ function updateTags(){
     //Bindings:
     $(".remove").click(removeTag);
     $(".tag").click(selectTag);
+    updateHighlightMenu();
     highlightActiveGroups();
     updateChanges();
 
@@ -430,7 +431,7 @@ function updateTags(){
     }
 
     updateTooltips();
-    updateHighlightMenu();
+
   });
 }
 
