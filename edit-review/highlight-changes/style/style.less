@@ -552,6 +552,10 @@ h1 {
     margin-top:-1px;
     max-height: 70vh;
     overflow: auto;
+    transition: height 1s ease;
+    &.compact{
+      max-height: 200px;
+    }
     .highlight-section {
       padding: 10px;
       background-color: #EAECF0;

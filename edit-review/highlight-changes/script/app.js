@@ -253,7 +253,6 @@ function updateHighlightMenu(){
     var group = {group:"Active filters", filters:activeFilters};
     var groups = $.merge([group],filtersData.groups);
     data = {groups: groups};
-    console.debug(groups);
   }
 
   var html = highlightsTemplate(data);
@@ -270,6 +269,12 @@ function updateHighlightMenu(){
 
   $(".visibility-panel .highlight").click(selectHighlight);
   $(".visibility-panel .option-filter").click(removeHighlight);
+}
+
+function closeHighlightPanel(){
+  $(".highlight-panel").scrollTop(0);
+  $(".highlight-panel").addClass("hidden compact");
+  $(".visibility-panel").removeClass("active");
 }
 
 function updateFilters(){
@@ -305,7 +310,6 @@ function updateFilters(){
   $(".visibility-panel .option-filter").click(selectFilter);
   $(".searchable .message").click(function(e){$(".search").focus()});
   updateTooltips();
-  updateHighlightMenu();
 }
 
 function removeTag(e){
@@ -426,6 +430,7 @@ function updateTags(){
     }
 
     updateTooltips();
+    updateHighlightMenu();
   });
 }
 
@@ -579,7 +584,7 @@ $(function(){ //Initialization:
   updateTags();
 
   $(".search").keyup(searchWhenTyping);
-  $(".search").keydown(clearWhenTyping);
+  //$(".search").keydown(clearWhenTyping);
   $(".search").focus(function(){
     if($(".filter-panel").hasClass("hidden") && $('body').scrollTop() < 200){
       $('body,html').animate({scrollTop: 220 }, 200);
@@ -592,7 +597,26 @@ $(function(){ //Initialization:
   });
   $(".search-icon").click(function(){$(".search").focus();});
 
-  $(".highlight-results").click(function(){$(".highlight-panel").toggleClass("hidden")});
+  $(".highlight-results").click(function(){
+    var panel = $(".highlight-panel");
+    var isHidden = panel.hasClass("hidden");
+    if(isHidden){
+        panel.removeClass("hidden");
+    }else{
+      closeHighlightPanel();
+    }
+
+    if ($('body').scrollTop() < 200){
+      $('body,html').animate({scrollTop: 220 }, 200);
+    }
+  });
+
+  $(".highlight-panel").scroll(function(e){
+    console.debug($(this).scrollTop());
+    if($(this).scrollTop()>0){
+      $(this).removeClass("compact");
+    }
+  });
 
   $("body").click(function(e){
     if ($(e.target).parents(".filters").length == 0){
@@ -601,8 +625,7 @@ $(function(){ //Initialization:
     }
 
     if ($(e.target).closest(".highlight-group").length == 0){
-      $(".highlight-panel").addClass("hidden");
-      $(".visibility-panel ").removeClass("active");
+      closeHighlightPanel();
     }
   });
 });
