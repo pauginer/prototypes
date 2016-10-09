@@ -310,6 +310,10 @@ function updateFilters(){
   $(".visibility-panel .option-filter").click(selectFilter);
   $(".searchable .message").click(function(e){$(".search").focus()});
   updateTooltips();
+  $(".highlighter").click(function(){
+    //$(this).closest(".filter-panel").toggleClass("highlighting");
+    $("body").toggleClass("highlighting");
+  });
 }
 
 function removeTag(e){
@@ -580,6 +584,9 @@ $(function(){ //Initialization:
   tagsTemplate = Handlebars.compile($("#tags-template").html());
   filtersTemplate = Handlebars.compile($("#filters-template").html());
   highlightsTemplate =  Handlebars.compile($("#highlights-template").html());
+  var hash= window.location.hash.replace("#","");
+  $("body").addClass(hash); //tags: integrated
+
   loadChangesData();
   updateFilters();
   updateTags();

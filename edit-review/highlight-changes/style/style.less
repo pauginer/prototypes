@@ -347,10 +347,6 @@ h1 {
 //Hide extra filters initially
 .filter-panel .group.compact ~ .filter.compact {display:none;}
 
-.filter .check:checked ~ .options {
-  display:flex;
-}
-
 .options.active .visibility-panel, .visibility-panel.active{
   display: flex;
 }
@@ -541,6 +537,7 @@ h1 {
   }
 
   .highlight-group {
+    body.integrated & {display:none;}
     position: relative;
   }
 
@@ -722,4 +719,53 @@ background-color: #EFBCBC;
   color: #555A5F;
   color: #7D8389;
   background: #fbfbfb;
+}
+
+.filter-header {
+  display:none;
+  flex-direction: row;
+  align-items: center;
+  padding:10px;
+  background-color: #F8F9FA;
+  border-bottom: 1px solid #C8CCD1;
+  body.integrated & {
+    display:flex;
+  }
+  .title {
+    font-size: 18px;
+    color: #54595D;
+  }
+  .highlighter {
+    cursor: pointer;
+    border: 1px solid #A2A9B1;
+    background-color: white;
+    border-radius: 2px;
+    padding: 8px 16px;
+    margin-left: 8px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 5px;
+    .icon {
+      width: 18px;
+      height: 18px;
+      background: center center url(../images/marker.svg) no-repeat;
+      background-size: contain;
+      margin-right: 8px;
+    }
+
+    .highlighting & {
+      background-color: #2A4B8D;
+      color: white;
+      border-color: #2A4B8D;
+      .icon{ background-image: url(../images/marker-white.svg)}
+    }
+  }
+}
+
+body.integrated.highlighting .filter .options {display: flex !important;}
+body.integrated:not(.highlighting) .change {
+  background-color: white !important;
 }

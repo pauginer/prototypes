@@ -16,6 +16,11 @@
     <script src="script/app.js"></script>
     <link rel="stylesheet" href="style/style.css" media="screen" charset="utf-8">
     <script id="filters-template" type="text/x-handlebars-template">
+      <div class="filter-header">
+        <div class="title">Filters</div>
+        <div class="highlighter">
+          <div class="icon"></div> Highlight results</div>
+      </div>
       {{#each groups}}
       <div  class="group {{#if compact}}compact{{/if}}" data-id="{{group}}">
         <div class="title">{{group}} {{clarification}}</div>
@@ -29,6 +34,20 @@
           <div class="name">{{{name}}}</div>
           <div class="description">{{description}}</div>
         </label>
+        <div class="options" title="Highlight color"> <div class="icon"></div>
+          <div class="visibility-panel">
+            <div class="label-highlight"> Highlight color</div>
+            <div class="option-highlight {{#if color}} active{{/if}}">
+              <div class="option-filter {{#unless color}}active{{/unless}}">
+              </div>
+              <div name = "blue" class="highlight blue {{#is color 'blue'}} active {{/is}}"></div>
+              <div name = "green" class="highlight green {{#is color 'green'}} active {{/is}}"></div>
+              <div name = "yellow" class="highlight yellow {{#is color 'yellow'}} active {{/is}}"></div>
+              <div name = "orange" class="highlight orange {{#is color 'orange'}} active {{/is}}"></div>
+              <div name = "red" class="highlight red {{#is color 'red'}} active {{/is}}"></div>
+            </div>
+          </div>
+        </div>
       </div>
       {{/each}}
       {{#if compact}}
@@ -112,7 +131,7 @@
         </div>
         <div class="searchbar">
           <div class="search-icon"></div>
-          <input class="search" placeholder="Browse or start typing to filter recent changes"></input>
+          <input class="search" placeholder="Filter recent changes (browse or start typing)"></input>
         </div>
         <div class= "filter-panel hidden">Filter panel</div>
       </section>
