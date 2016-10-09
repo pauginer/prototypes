@@ -48,6 +48,12 @@ function updateFilterData(id, selected){
   filter.selected = selected;
 }
 
+function updateFilterColor(id, color){
+  var filter = getFilterDataById(id);
+  filter.color = color;
+}
+
+
 function findInGroup(group, query, expanded){
   var result = [];
 
@@ -332,6 +338,7 @@ function removeTag(e){
   var tag = $(e.target).parent(".tag");
   var filterId = $(tag).data("id");
   updateFilterData(filterId, false);
+  updateFilterColor(filterId, false);
   updateFilters();
   updateTags();
 
