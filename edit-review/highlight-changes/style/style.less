@@ -358,6 +358,7 @@ h1 {
   width: 20px;
   height: 20px;
   background: center center url(../images/marker.svg) no-repeat;
+  opacity: 0.8;
 
   margin-right: 10px;
   background-size: 20px;
@@ -754,13 +755,17 @@ background-color: #EFBCBC;
       background: center center url(../images/marker.svg) no-repeat;
       background-size: contain;
       margin-right: 8px;
+      opacity: 0.8;
     }
 
     .highlighting & {
       background-color: #2A4B8D;
       color: white;
       border-color: #2A4B8D;
-      .icon{ background-image: url(../images/marker-white.svg)}
+      .icon{
+        background-image: url(../images/marker-white.svg);
+        opacity: 1;
+      }
     }
   }
 }

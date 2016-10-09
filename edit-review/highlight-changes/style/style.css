@@ -316,6 +316,7 @@ h1 {
   width: 20px;
   height: 20px;
   background: center center url(../images/marker.svg) no-repeat;
+  opacity: 0.8;
   margin-right: 10px;
   background-size: 20px;
   background-repeat: no-repeat;
@@ -678,6 +679,7 @@ body.integrated .filter-header {
   background: center center url(../images/marker.svg) no-repeat;
   background-size: contain;
   margin-right: 8px;
+  opacity: 0.8;
 }
 .highlighting .filter-header .highlighter {
   background-color: #2A4B8D;
@@ -686,6 +688,7 @@ body.integrated .filter-header {
 }
 .highlighting .filter-header .highlighter .icon {
   background-image: url(../images/marker-white.svg);
+  opacity: 1;
 }
 body.integrated.highlighting .filter .options {
   display: flex !important;
