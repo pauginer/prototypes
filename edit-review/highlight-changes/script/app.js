@@ -31,6 +31,18 @@ function getSelectedFilters(data){
     return result;
 }
 
+function getSelectedFiltersAndHighlights(data){
+  var result = [];
+    $.each(data.groups, function(i,group){
+      $.each(group.filters, function(j,filter){
+        if(filter.selected || filter.color){
+          result.push(filter);
+        }
+      });
+    });
+    return result;
+}
+
 function updateFilterData(id, selected){
   var filter = getFilterDataById(id);
   filter.selected = selected;
@@ -387,7 +399,9 @@ function highlightActiveGroups(){
 
 function updateTags(){
   window.setTimeout(function(){
-    var data = {tags: getSelectedFilters(filtersData)};
+    //var data = {tags: getSelectedFilters(filtersData)};
+    var data = {tags: getSelectedFiltersAndHighlights(filtersData)};
+
     var html = tagsTemplate(data);
     $(".tags").html(html);
     //Bindings:

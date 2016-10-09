@@ -202,10 +202,10 @@ h1 {
   }
 }
  .tag.useless {
-  color: #9AA0A7;
-  background-color: white;
+  color: #72777D;
+  background-color: #EAECF0;
   border-color: #C8CCD1;
-  .remove {opacity:0.7;}
+  .remove {opacity:0.4;}
 }
 
 .panel {
@@ -773,4 +773,7 @@ background-color: #EFBCBC;
 body.integrated.highlighting .filter .options {display: flex !important;}
 body.integrated:not(.highlighting) .change {
   background-color: white !important;
+}
+body.integrated:not(.highlighting) .tag[data-color].useless {
+  display: none;
 }
