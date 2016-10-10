@@ -763,3 +763,63 @@ body.highlighting .change.orange.red,
 body:not(.integrated) .changes.highlights .change.orange.red {
   list-style-image: url('../images/bullet-orange-red.png');
 }
+body.highlighting .change.blue.green.yellow,
+body:not(.integrated) .changes.highlights .change.blue.green.yellow {
+  list-style-image: url('../images/bullet-blue-green-yellow.png');
+}
+body.highlighting .change.blue.green.orange,
+body:not(.integrated) .changes.highlights .change.blue.green.orange {
+  list-style-image: url('../images/bullet-blue-green-orange.png');
+}
+body.highlighting .change.blue.green.red,
+body:not(.integrated) .changes.highlights .change.blue.green.red {
+  list-style-image: url('../images/bullet-blue-green-red.png');
+}
+body.highlighting .change.blue.yellow.orange,
+body:not(.integrated) .changes.highlights .change.blue.yellow.orange {
+  list-style-image: url('../images/bullet-blue-yellow-orange.png');
+}
+body.highlighting .change.blue.yellow.red,
+body:not(.integrated) .changes.highlights .change.blue.yellow.red {
+  list-style-image: url('../images/bullet-blue-yellow-red.png');
+}
+body.highlighting .change.green.yellow.orange,
+body:not(.integrated) .changes.highlights .change.green.yellow.orange {
+  list-style-image: url('../images/bullet-green-yellow-orange.png');
+}
+body.highlighting .change.green.yellow.red,
+body:not(.integrated) .changes.highlights .change.green.yellow.red {
+  list-style-image: url('../images/bullet-green-yellow-red.png');
+}
+body.highlighting .change.green.orange.red,
+body:not(.integrated) .changes.highlights .change.green.orange.red {
+  list-style-image: url('../images/bullet-green-orange-red.png');
+}
+body.highlighting .change.yellow.orange.red,
+body:not(.integrated) .changes.highlights .change.yellow.orange.red {
+  list-style-image: url('../images/bullet-yellow-orange-red.png');
+}
+body.highlighting .change.blue.green.yellow.orange,
+body:not(.integrated) .changes.highlights .change.blue.green.yellow.orange {
+  list-style-image: url('../images/bullet-blue-green-yellow-orange.png');
+}
+body.highlighting .change.blue.green.yellow.red,
+body:not(.integrated) .changes.highlights .change.blue.green.yellow.red {
+  list-style-image: url('../images/bullet-blue-green-yellow-red.png');
+}
+body.highlighting .change.blue.green.orange.red,
+body:not(.integrated) .changes.highlights .change.blue.green.orange.red {
+  list-style-image: url('../images/bullet-blue-green-orange-red.png');
+}
+body.highlighting .change.blue.yellow.orange.red,
+body:not(.integrated) .changes.highlights .change.blue.yellow.orange.red {
+  list-style-image: url('../images/bullet-blue-yellow-orange-red.png');
+}
+body.highlighting .change.green.yellow.orange.red,
+body:not(.integrated) .changes.highlights .change.green.yellow.orange.red {
+  list-style-image: url('../images/bullet-green-yellow-orange-red.png');
+}
+body.highlighting .change.blue.green.yellow.orange.red,
+body:not(.integrated) .changes.highlights .change.blue.green.yellow.orange.red {
+  list-style-image: url('../images/bullet-blue-green-yellow-orange-red.png');
+}
