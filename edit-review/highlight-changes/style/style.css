@@ -699,21 +699,27 @@ body.integrated:not(.highlighting) .change {
 body.integrated:not(.highlighting) .tag[data-color].useless {
   display: none;
 }
-body.highlighting .change {
+body.highlighting .change,
+body:not(.integrated) .changes.highlights .change {
   list-style-image: url('../images/bullet.png');
 }
-body.highlighting .change.blue {
+body.highlighting .change.blue,
+body:not(.integrated) .changes.highlights .change.blue {
   list-style-image: url('../images/bullet-blue.png');
 }
-body.highlighting .change.green {
+body.highlighting .change.green,
+body:not(.integrated) .changes.highlights .change.green {
   list-style-image: url('../images/bullet-green.png');
 }
-body.highlighting .change.yellow {
+body.highlighting .change.yellow,
+body:not(.integrated) .changes.highlights .change.yellow {
   list-style-image: url('../images/bullet-yellow.png');
 }
-body.highlighting .change.orange {
+body.highlighting .change.orange,
+body:not(.integrated) .changes.highlights .change.orange {
   list-style-image: url('../images/bullet-orange.png');
 }
-body.highlighting .change.red {
+body.highlighting .change.red,
+body:not(.integrated) .changes.highlights .change.red {
   list-style-image: url('../images/bullet-red.png');
 }
