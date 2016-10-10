@@ -723,3 +723,43 @@ body.highlighting .change.red,
 body:not(.integrated) .changes.highlights .change.red {
   list-style-image: url('../images/bullet-red.png');
 }
+body.highlighting .change.blue.green,
+body:not(.integrated) .changes.highlights .change.blue.green {
+  list-style-image: url('../images/bullet-blue-green.png');
+}
+body.highlighting .change.blue.yellow,
+body:not(.integrated) .changes.highlights .change.blue.yellow {
+  list-style-image: url('../images/bullet-blue-yellow.png');
+}
+body.highlighting .change.blue.orange,
+body:not(.integrated) .changes.highlights .change.blue.orange {
+  list-style-image: url('../images/bullet-blue-orange.png');
+}
+body.highlighting .change.blue.red,
+body:not(.integrated) .changes.highlights .change.blue.red {
+  list-style-image: url('../images/bullet-blue-red.png');
+}
+body.highlighting .change.green.yellow,
+body:not(.integrated) .changes.highlights .change.green.yellow {
+  list-style-image: url('../images/bullet-green-yellow.png');
+}
+body.highlighting .change.green.orange,
+body:not(.integrated) .changes.highlights .change.green.orange {
+  list-style-image: url('../images/bullet-green-orange.png');
+}
+body.highlighting .change.green.red,
+body:not(.integrated) .changes.highlights .change.green.red {
+  list-style-image: url('../images/bullet-green-red.png');
+}
+body.highlighting .change.yellow.orange,
+body:not(.integrated) .changes.highlights .change.yellow.orange {
+  list-style-image: url('../images/bullet-yellow-orange.png');
+}
+body.highlighting .change.yellow.red,
+body:not(.integrated) .changes.highlights .change.yellow.red {
+  list-style-image: url('../images/bullet-yellow-red.png');
+}
+body.highlighting .change.orange.red,
+body:not(.integrated) .changes.highlights .change.orange.red {
+  list-style-image: url('../images/bullet-orange-red.png');
+}
