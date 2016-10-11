@@ -364,7 +364,7 @@ function selectTag(e){
       //tag.removeClass("active");
       updateFilters();
   }
-
+  return false;
 }
 
 function highlightActiveGroups(){
@@ -626,7 +626,7 @@ $(function(){ //Initialization:
   });
   $(".search-icon").click(function(){$(".search").focus();});
 
-  $(".highlight-results").click(function(){
+  /*$(".highlight-results").click(function(){
     var panel = $(".highlight-panel");
     var isHidden = panel.hasClass("hidden");
     if(isHidden){
@@ -644,7 +644,7 @@ $(function(){ //Initialization:
     if($(this).scrollTop()>0){
       $(this).removeClass("compact");
     }
-  });
+  });*/
 
   $("body").click(function(e){
     if ($(e.target).parents(".filters").length == 0){
@@ -656,4 +656,17 @@ $(function(){ //Initialization:
       closeHighlightPanel();
     }
   });
+
+  $(".tagbox").click(function(e){
+    var isClosed = $(".filter-panel").hasClass("hidden");
+    if(isClosed){
+      filtersVisible(true);
+      $(".search").focus();
+
+    }else{
+      filtersVisible(false);
+      $(".tags .tag.active").removeClass("active");
+    }
+  });
+
 });
