@@ -316,7 +316,7 @@ h1 {
   width: 20px;
   height: 20px;
   background: center center url(../images/marker.svg) no-repeat;
-  opacity: 0.8;
+  opacity: 0.9;
   margin-right: 10px;
   background-size: 20px;
   background-repeat: no-repeat;
@@ -483,10 +483,8 @@ h1 {
   height: 22px;
 }
 .actions .highlight-group {
-  position: relative;
-}
-body.integrated .actions .highlight-group {
   display: none;
+  position: relative;
 }
 .actions .highlight-panel {
   border: 1px solid #A2A9B1;
@@ -645,15 +643,12 @@ body.integrated .actions .highlight-group {
   background: #fbfbfb;
 }
 .filter-header {
-  display: none;
+  display: flex;
   flex-direction: row;
   align-items: center;
   padding: 10px;
   background-color: #F8F9FA;
   border-bottom: 1px solid #C8CCD1;
-}
-body.integrated .filter-header {
-  display: flex;
 }
 .filter-header .title {
   font-size: 18px;
@@ -690,136 +685,105 @@ body.integrated .filter-header {
   background-image: url(../images/marker-white.svg);
   opacity: 1;
 }
-body.integrated.highlighting .filter .options {
+body.highlighting .filter .options {
   display: flex !important;
 }
-body.integrated:not(.highlighting) .change {
+body:not(.highlighting) .change {
   background-color: white !important;
 }
-body.integrated:not(.highlighting) .tag[data-color].useless {
+body:not(.highlighting) .tag[data-color].useless {
   display: none;
 }
-body.highlighting .change,
-body:not(.integrated) .changes.highlights .change {
+body.highlighting .change {
   list-style-image: url('../images/bullet.png');
 }
-body.highlighting .change.blue,
-body:not(.integrated) .changes.highlights .change.blue {
+body.highlighting .change.blue {
   list-style-image: url('../images/bullet-blue.png');
 }
-body.highlighting .change.green,
-body:not(.integrated) .changes.highlights .change.green {
+body.highlighting .change.green {
   list-style-image: url('../images/bullet-green.png');
 }
-body.highlighting .change.yellow,
-body:not(.integrated) .changes.highlights .change.yellow {
+body.highlighting .change.yellow {
   list-style-image: url('../images/bullet-yellow.png');
 }
-body.highlighting .change.orange,
-body:not(.integrated) .changes.highlights .change.orange {
+body.highlighting .change.orange {
   list-style-image: url('../images/bullet-orange.png');
 }
-body.highlighting .change.red,
-body:not(.integrated) .changes.highlights .change.red {
+body.highlighting .change.red {
   list-style-image: url('../images/bullet-red.png');
 }
-body.highlighting .change.blue.green,
-body:not(.integrated) .changes.highlights .change.blue.green {
+body.highlighting .change.blue.green {
   list-style-image: url('../images/bullet-blue-green.png');
 }
-body.highlighting .change.blue.yellow,
-body:not(.integrated) .changes.highlights .change.blue.yellow {
+body.highlighting .change.blue.yellow {
   list-style-image: url('../images/bullet-blue-yellow.png');
 }
-body.highlighting .change.blue.orange,
-body:not(.integrated) .changes.highlights .change.blue.orange {
+body.highlighting .change.blue.orange {
   list-style-image: url('../images/bullet-blue-orange.png');
 }
-body.highlighting .change.blue.red,
-body:not(.integrated) .changes.highlights .change.blue.red {
+body.highlighting .change.blue.red {
   list-style-image: url('../images/bullet-blue-red.png');
 }
-body.highlighting .change.green.yellow,
-body:not(.integrated) .changes.highlights .change.green.yellow {
+body.highlighting .change.green.yellow {
   list-style-image: url('../images/bullet-green-yellow.png');
 }
-body.highlighting .change.green.orange,
-body:not(.integrated) .changes.highlights .change.green.orange {
+body.highlighting .change.green.orange {
   list-style-image: url('../images/bullet-green-orange.png');
 }
-body.highlighting .change.green.red,
-body:not(.integrated) .changes.highlights .change.green.red {
+body.highlighting .change.green.red {
   list-style-image: url('../images/bullet-green-red.png');
 }
-body.highlighting .change.yellow.orange,
-body:not(.integrated) .changes.highlights .change.yellow.orange {
+body.highlighting .change.yellow.orange {
   list-style-image: url('../images/bullet-yellow-orange.png');
 }
-body.highlighting .change.yellow.red,
-body:not(.integrated) .changes.highlights .change.yellow.red {
+body.highlighting .change.yellow.red {
   list-style-image: url('../images/bullet-yellow-red.png');
 }
-body.highlighting .change.orange.red,
-body:not(.integrated) .changes.highlights .change.orange.red {
+body.highlighting .change.orange.red {
   list-style-image: url('../images/bullet-orange-red.png');
 }
-body.highlighting .change.blue.green.yellow,
-body:not(.integrated) .changes.highlights .change.blue.green.yellow {
+body.highlighting .change.blue.green.yellow {
   list-style-image: url('../images/bullet-blue-green-yellow.png');
 }
-body.highlighting .change.blue.green.orange,
-body:not(.integrated) .changes.highlights .change.blue.green.orange {
+body.highlighting .change.blue.green.orange {
   list-style-image: url('../images/bullet-blue-green-orange.png');
 }
-body.highlighting .change.blue.green.red,
-body:not(.integrated) .changes.highlights .change.blue.green.red {
+body.highlighting .change.blue.green.red {
   list-style-image: url('../images/bullet-blue-green-red.png');
 }
-body.highlighting .change.blue.yellow.orange,
-body:not(.integrated) .changes.highlights .change.blue.yellow.orange {
+body.highlighting .change.blue.yellow.orange {
   list-style-image: url('../images/bullet-blue-yellow-orange.png');
 }
-body.highlighting .change.blue.yellow.red,
-body:not(.integrated) .changes.highlights .change.blue.yellow.red {
+body.highlighting .change.blue.yellow.red {
   list-style-image: url('../images/bullet-blue-yellow-red.png');
 }
-body.highlighting .change.green.yellow.orange,
-body:not(.integrated) .changes.highlights .change.green.yellow.orange {
+body.highlighting .change.green.yellow.orange {
   list-style-image: url('../images/bullet-green-yellow-orange.png');
 }
-body.highlighting .change.green.yellow.red,
-body:not(.integrated) .changes.highlights .change.green.yellow.red {
+body.highlighting .change.green.yellow.red {
   list-style-image: url('../images/bullet-green-yellow-red.png');
 }
-body.highlighting .change.green.orange.red,
-body:not(.integrated) .changes.highlights .change.green.orange.red {
+body.highlighting .change.green.orange.red {
   list-style-image: url('../images/bullet-green-orange-red.png');
 }
-body.highlighting .change.yellow.orange.red,
-body:not(.integrated) .changes.highlights .change.yellow.orange.red {
+body.highlighting .change.yellow.orange.red {
   list-style-image: url('../images/bullet-yellow-orange-red.png');
 }
-body.highlighting .change.blue.green.yellow.orange,
-body:not(.integrated) .changes.highlights .change.blue.green.yellow.orange {
+body.highlighting .change.blue.green.yellow.orange {
   list-style-image: url('../images/bullet-blue-green-yellow-orange.png');
 }
-body.highlighting .change.blue.green.yellow.red,
-body:not(.integrated) .changes.highlights .change.blue.green.yellow.red {
+body.highlighting .change.blue.green.yellow.red {
   list-style-image: url('../images/bullet-blue-green-yellow-red.png');
 }
-body.highlighting .change.blue.green.orange.red,
-body:not(.integrated) .changes.highlights .change.blue.green.orange.red {
+body.highlighting .change.blue.green.orange.red {
   list-style-image: url('../images/bullet-blue-green-orange-red.png');
 }
-body.highlighting .change.blue.yellow.orange.red,
-body:not(.integrated) .changes.highlights .change.blue.yellow.orange.red {
+body.highlighting .change.blue.yellow.orange.red {
   list-style-image: url('../images/bullet-blue-yellow-orange-red.png');
 }
-body.highlighting .change.green.yellow.orange.red,
-body:not(.integrated) .changes.highlights .change.green.yellow.orange.red {
+body.highlighting .change.green.yellow.orange.red {
   list-style-image: url('../images/bullet-green-yellow-orange-red.png');
 }
-body.highlighting .change.blue.green.yellow.orange.red,
-body:not(.integrated) .changes.highlights .change.blue.green.yellow.orange.red {
+body.highlighting .change.blue.green.yellow.orange.red {
   list-style-image: url('../images/bullet-blue-green-yellow-orange-red.png');
 }

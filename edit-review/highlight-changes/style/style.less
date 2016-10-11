@@ -358,7 +358,7 @@ h1 {
   width: 20px;
   height: 20px;
   background: center center url(../images/marker.svg) no-repeat;
-  opacity: 0.8;
+  opacity: 0.9;
 
   margin-right: 10px;
   background-size: 20px;
@@ -538,7 +538,7 @@ h1 {
   }
 
   .highlight-group {
-    body.integrated & {display:none;}
+    display:none;
     position: relative;
   }
 
@@ -723,15 +723,14 @@ background-color: #EFBCBC;
 }
 
 .filter-header {
-  display:none;
+  display:flex;
   flex-direction: row;
   align-items: center;
   padding:10px;
   background-color: #F8F9FA;
   border-bottom: 1px solid #C8CCD1;
-  body.integrated & {
-    display:flex;
-  }
+
+
   .title {
     font-size: 18px;
     color: #54595D;
@@ -770,15 +769,15 @@ background-color: #EFBCBC;
   }
 }
 
-body.integrated.highlighting .filter .options {display: flex !important;}
-body.integrated:not(.highlighting) .change {
+body.highlighting .filter .options {display: flex !important;}
+body:not(.highlighting) .change {
   background-color: white !important;
 }
-body.integrated:not(.highlighting) .tag[data-color].useless {
+body:not(.highlighting) .tag[data-color].useless {
   display: none;
 }
 
-body.highlighting, body:not(.integrated) .changes.highlights {
+body.highlighting {
   .change {
       list-style-image: url('../images/bullet.png');
   }

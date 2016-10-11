@@ -414,7 +414,7 @@ function updateTags(){
     //Bindings:
     $(".remove").click(removeTag);
     $(".tag").click(selectTag);
-    updateHighlightMenu();
+    //updateHighlightMenu();
     highlightActiveGroups();
     updateChanges();
 
