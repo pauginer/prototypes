@@ -21,7 +21,7 @@ filtersData = { groups: [
     {id:"registered", selected: false, name: "Registered", description: "Logged-in users."},
     {id:"unregistered", selected: false, name: "Unregistered", description: "Anonymous editor."}
   ]},
-  {group: "User experience level", clarification: "(for registered users)", filters:[
+  {group: "User experience level", filters:[
     {id:"newcomer", selected: false, name: "Newcomer", description: "Very new editors: fewer than 10 edits and 4 days of activity."},
     {id:"experienced", selected: false, name: "Experienced", description: "More days of activity and edits than “Newcomers” but fewer than “More experienced.”"},
     {id:"most-experienced", selected: false, name: "More experienced", description: "More than 30 days of activity and 500 edits."}

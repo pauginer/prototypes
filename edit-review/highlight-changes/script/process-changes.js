@@ -52,8 +52,8 @@ $(".change:not(.unregistered)").addClass("registered");
 //Mark edits from those users without a talk page as newcomers
 $("a.new[title^='User']").parent(".change").addClass("newcomer");
 
-probablyAddClass($(".change.registered:not(.newcomer)"), "experienced", 50);
-$(".change.registered:not(.newcomer, .experienced)").addClass("most-experienced");
+probablyAddClass($(".change:not(.newcomer)"), "experienced", 50);
+$(".change:not(.newcomer, .experienced)").addClass("most-experienced");
 
 //Mark bots and the rest as human
 $(".change .botedit").parent(".change").addClass("bot");
