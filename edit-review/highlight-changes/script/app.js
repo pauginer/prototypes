@@ -567,7 +567,8 @@ function updateTooltips(){
       theme: 'tooltipster-light',
       trigger: 'click',
       contentCloning: true,
-      maxWidth: 400
+      maxWidth: 400,
+      interactive: true
       });
 
 
@@ -675,7 +676,7 @@ $(function(){ //Initialization:
   });*/
 
   $("body").click(function(e){
-    if ($(e.target).parents(".filters").length == 0){
+    if ($(e.target).parents(".filters").length == 0 && $(e.target).closest(".tooltipster-content").length == 0){
       filtersVisible(false);
       $(".tags .tag.active").removeClass("active");
     }
