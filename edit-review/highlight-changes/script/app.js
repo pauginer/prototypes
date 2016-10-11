@@ -407,10 +407,20 @@ function highlightActiveGroups(){
 function updateTags(){
   window.setTimeout(function(){
     //var data = {tags: getSelectedFilters(filtersData)};
-    var data = {tags: getSelectedFiltersAndHighlights(filtersData)};
+    var activeTags = getSelectedFiltersAndHighlights(filtersData);
+    var data = {tags: activeTags};
+    var emptyTags = activeTags.length == 0;
+    if(emptyTags){
+      $(".tagbox").addClass("empty");
+    }else{
+      $(".tagbox").removeClass("empty");
+    }
+
 
     var html = tagsTemplate(data);
     $(".tags").html(html);
+
+
     //Bindings:
     $(".remove").click(removeTag);
     $(".tag").click(selectTag);
@@ -597,6 +607,24 @@ function updateFilterHighlights(){
 });
 }
 
+function clearAllTags(){
+    var data = filtersData;
+    $.each(data.groups, function(i,group){
+      $.each(group.filters, function(j,filter){
+        filter.selected = false;
+        filter.color = false;
+      });
+    });
+    updateFilters();
+    updateTags();
+}
+
+function restoreTags(){
+  updateFilterData("human",true);
+  updateFilterData("content-edit",true);
+  updateFilterData("new-page",true);
+  updateTags();
+}
 
 var filerHighlights = true;
 var meetsFilters = meetsFiltersOrOptionalHighlight;
@@ -668,5 +696,7 @@ $(function(){ //Initialization:
       $(".tags .tag.active").removeClass("active");
     }
   });
+  $(".clear-tags").click(function(e){clearAllTags();return false;});
+  $(".restore-tags").click(function(e){restoreTags();return false;});
 
 });

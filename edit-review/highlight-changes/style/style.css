@@ -116,10 +116,49 @@ h1 {
   background-color: transparent;
 }
 .tagbox {
+  display: flex;
+  flex-direction: row;
   background: #F8F9FA;
   border: 1px solid #A2A9B1;
   border-bottom: none;
   padding: 10px 5px;
+}
+.tagbox .clear-tags {
+  cursor: pointer;
+  display: flex;
+  flex: none;
+  width: 24px;
+  height: 24px;
+  background: url(../images/trash.svg) no-repeat;
+  background-size: contain;
+  margin: 5px;
+  margin-left: auto;
+}
+.tagbox .restore-tags {
+  cursor: pointer;
+  align-items: center;
+  display: none;
+  margin: 5px;
+  margin-left: auto;
+  font-weight: bold;
+  color: #54595D;
+  /*border: 1px solid #54595D;
+    padding: 5px;
+    border-radius: 2px;*/
+}
+.tagbox .restore-tags .icon {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  background: url(../images/restore.svg) no-repeat;
+  background-size: contain;
+  margin-right: 4px;
+}
+.tagbox.empty .clear-tags {
+  display: none;
+}
+.tagbox.empty .restore-tags {
+  display: flex;
 }
 .tags {
   display: flex;
