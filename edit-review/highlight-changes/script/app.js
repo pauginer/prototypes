@@ -490,10 +490,13 @@ function areOnlyCompleteHighlights(){
 }
 
 function filtersVisible(show){
+  var panel = $(".filter-panel");
   if(show){
-    $(".filter-panel").removeClass("hidden");
+    panel.removeClass("hidden");
   }else{
-    $(".filter-panel").addClass("hidden");
+    panel.scrollTop(0);
+    panel.addClass("hidden");
+
   }
 }
 
