@@ -434,7 +434,7 @@ function updateTags(){
         var tag = $(".tag[data-id='" + pair[0] + "']");
         tag.addClass("useless");
 
-        var title = tag.data("description") + " Has no effect in the current results since it is already included in \""+ $(".tag[data-id='" + pair[1] + "'] .name").text() +"\". Consider highlighting it with color instead.";
+        var title = tag.data("description") + " Has no effect currently because it is included already in \""+ $(".tag[data-id='" + pair[1] + "'] .name").text() +"\". Consider highlighting with a color to distinguish.";
         tag.attr("title", title);
       }
     });
