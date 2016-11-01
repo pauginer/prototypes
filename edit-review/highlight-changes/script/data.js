@@ -6,41 +6,41 @@ filterSubsets = [ ["very-good", "good"], ["damaging", "maybe-damaging"], ["very-
 filterComplete = [["unpatrolled", "patrolled"], ["minor","regular"], ["registered", "unregistered"], ["own","others"], ["newcomer","experienced", "most-experienced"],["bot", "human"]];
 
 filtersData = { groups: [
-  {group: "Contribution quality", clarification: "(use higher prediction accuracy for fewer false positives)", info:"quality", filters:[
+  {group: "Contribution quality predictions", clarification: "", info:"quality", filters:[
       {id:"very-good", selected: false, name: "<i>Very likely</i> good", description: "Highly accurate at finding almost all problem-free edits."},
-      {id:"very-damaging", selected: false, name: "<i>Very likely</i> have problems", description: "Highly accurate at finding the top 30% of flawed or damaging edits."},
+      {id:"maybe-damaging", selected: false, name: "<i>May</i> have problems", description: "Finds most flawed or damaging edits but with lower accuracy."},
       {id:"damaging", selected: false, name: "<i>Likely</i> have problems", description: "Finds half of flawed or damaging edits with medium accuracy."},
-      {id:"maybe-damaging", selected: false, name: "<i>May</i> have problems", description: "Finds most flawed or damaging edits but with lower accuracy."}
+      {id:"very-damaging", selected: false, name: "<i>Very likely</i> have problems", description: "Highly accurate at finding the most obvious 30% of flawed or damaging edits."}
   ]},
-  {group: "User intent", clarification: "(use higher prediction accuracy for fewer false positives)", info:"intent",filters:[
+  {group: "User intent predictions", clarification: "", info:"intent",filters:[
     {id:"good-faith", selected: false, name: "<i>Very likely</i> good faith", description: "Highly accurate at finding almost all good-faith edits."},
-    {id:"very-bad-faith", selected: false, name: "<i>Likely</i> bad faith", description: "Highly accurate at finding the top 20% of bad-faith edits."},
-    {id:"bad-faith", selected: false, name: "<i>May be</i> bad faith", description: "Finds most bad-faith edits but with a lower accuracy."}
+    {id:"bad-faith", selected: false, name: "<i>May be</i> bad faith", description: "Finds most bad-faith edits but with a lower accuracy."},
+    {id:"very-bad-faith", selected: false, name: "<i>Likely</i> bad faith", description: "Highly accurate at finding the most obvious 20% of bad-faith edits."}
   ]},
   {group: "User registration", filters:[
-    {id:"registered", selected: false, name: "Registered", description: "Logged-in users."},
-    {id:"unregistered", selected: false, name: "Unregistered", description: "Anonymous editor."}
+    {id:"registered", selected: false, name: "Registered", description: "Logged-in editors."},
+    {id:"unregistered", selected: false, name: "Unregistered", description: "Editors who aren't logged in."}
   ]},
-  {group: "User experience level", filters:[
+  {group: "Experience level", filters:[
     {id:"newcomer", selected: false, name: "Newcomer", description: "Very new editors: fewer than 10 edits and 4 days of activity."},
     {id:"experienced", selected: false, name: "Experienced", description: "More days of activity and edits than “Newcomers” but fewer than “More experienced.”"},
     {id:"most-experienced", selected: false, name: "More experienced", description: "More than 30 days of activity and 500 edits."}
   ]},
   {group: "Edit authorship", filters:[
-    {id:"own", selected: false, name: "Your edits", description: "Edits by you."},
+    {id:"own", selected: false, name: "Your own edits", description: "Edits by you."},
     {id:"others", selected: false, name: "Edits by others", description: "Edits created by other users (not you)."}
   ]},
   {group: "Automated contributions", filters:[
     {id:"bot", selected: false, name: "Bot", description: "Edits made by automated tools."},
-    {id:"human", selected: true, name: "Human (not bot)", description: "Edits made by a human editor."}
+    {id:"human", selected: true, name: "Human (not bot)", description: "Edits made by human editors."}
   ]},
-  {group: "Review", filters:[
-    {id:"unpatrolled", selected: false, name: "Pending review", description: "Edits not reviewed yet."},
-    {id:"patrolled", selected: false, name: "Completed review", description: "Edits already reviewed."}
+  {group: "Review status", filters:[
+    {id:"unpatrolled", selected: false, name: "Pending review", description: "Edits that haven't been checked."},
+    {id:"patrolled", selected: false, name: "Reviewed", description: "Edits a reviewer has checked."}
   ]},
-  {group: "Change importance", filters:[
-    {id:"minor", selected: false, name: "Minor edit", description: "Edits the author labeled as minor."},
-    {id:"regular", selected: false, name: "Non minor edits", description: "Edits not labeled as minor."}
+  {group: "Significance", filters:[
+    {id:"minor", selected: false, name: "Minor edits", description: "Edits the author labeled as minor."},
+    {id:"regular", selected: false, name: "Non-minor edits", description: "Edits not labeled as minor."}
   ]},
   {group: "Effect of change", filters:[
     {id:"content-edit", selected: true, name: "Content edits", description: "Edits modifying the content of a page."},
