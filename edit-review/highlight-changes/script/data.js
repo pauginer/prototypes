@@ -15,7 +15,7 @@ filtersData = { groups: [
   {group: "User intent predictions", clarification: "", info:"intent",filters:[
     {id:"good-faith", selected: false, name: "<i>Very likely</i> good faith", description: "Highly accurate at finding almost all good-faith edits."},
     {id:"bad-faith", selected: false, name: "<i>May be</i> bad faith", description: "Finds most bad-faith edits but with a lower accuracy."},
-    {id:"very-bad-faith", selected: false, name: "<i>Likely</i> bad faith", description: "Highly accurate at finding the most obvious 20% of bad-faith edits."}
+    {id:"very-bad-faith", selected: false, name: "<i>Likely</i> bad faith", description: "With medium accuracy, finds the most obvious 25% of bad-faith edits."}
   ]},
   {group: "User registration", filters:[
     {id:"registered", selected: false, name: "Registered", description: "Logged-in editors."},
