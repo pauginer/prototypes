@@ -619,49 +619,97 @@ h1 {
   display: none !important;
 }
 .change.blue {
-  background-color: #BCCDEF;
+  background-color: #c2d1f0;
 }
 .change.green {
-  background-color: #ABE5D9;
+  background-color: #b3e7dc;
 }
 .change.yellow {
-  background-color: #FFEFBC;
+  background-color: #fff0c2;
 }
 .change.orange {
-  background-color: #FFCFB7;
+  background-color: #ffd3bd;
 }
 .change.red {
-  background-color: #EFBCBC;
+  background-color: #f5c2c2;
 }
 .change.blue.green {
-  background-color: #73B4D1;
-}
-.change.blue.yellow {
-  background-color: #BCBEAD;
-}
-.change.blue.orange {
-  background-color: #BC979F;
-}
-.change.blue.red {
-  background-color: #AC73AD;
+  background-color: #8cc5d5;
 }
 .change.green.yellow {
-  background-color: #ABD87B;
-}
-.change.green.orange {
-  background-color: #ABB973;
-}
-.change.green.red {
-  background-color: #9A967B;
+  background-color: #bfdeaf;
 }
 .change.yellow.orange {
-  background-color: #FFC873;
-}
-.change.yellow.red {
-  background-color: #EFB08A;
+  background-color: #ffce95;
 }
 .change.orange.red {
-  background-color: #EF9887;
+  background-color: #f7a895;
+}
+.change.blue.yellow {
+  background-color: #ccccbf;
+}
+.change.green.orange {
+  background-color: #bfc7aa;
+}
+.change.yellow.red {
+  background-color: #f7bf99;
+}
+.change.blue.orange {
+  background-color: #ccb4bb;
+}
+.change.green.red {
+  background-color: #b7b8af;
+}
+.change.blue.red {
+  background-color: #c4a6bf;
+}
+.change.blue.green.yellow {
+  background-color: #94bda8;
+}
+.change.green.yellow.orange {
+  background-color: #c4be80;
+}
+.change.green.orange.red {
+  background-color: #bc9a80;
+}
+.change.yellow.orange.red {
+  background-color: #f7a16c;
+}
+.change.blue.green.orange {
+  background-color: #94a7a4;
+}
+.change.green.yellow.red {
+  background-color: #bcb184;
+}
+.change.blue.green.red {
+  background-color: #8c99a8;
+}
+.change.blue.yellow.orange {
+  background-color: #d0ad90;
+}
+.change.blue.yellow.red {
+  background-color: #c8a094;
+}
+.change.blue.orange.red {
+  background-color: #c88a90;
+}
+.change.blue.green.yellow.orange {
+  background-color: #b5ae8b;
+}
+.change.blue.green.yellow.red {
+  background-color: #aea18f;
+}
+.change.blue.green.orange.red {
+  background-color: #ae8d8b;
+}
+.change.blue.yellow.orange.red {
+  background-color: #d2917f;
+}
+.change.green.yellow.orange.red {
+  background-color: #c89f73;
+}
+.change.blue.green.yellow.orange.red {
+  background-color: #b28874;
 }
 .changes-empty .message {
   display: flex;
