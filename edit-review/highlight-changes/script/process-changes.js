@@ -89,7 +89,9 @@ $(".change[class^='mw-changeslist-ns100-']").addClass("portal talk");
 $(".change .newpage").parent(".change").addClass("new-page");
 $(".change.category").addClass("categorization");
 $(".change .wikibase-edit").parent(".change").addClass("wikidata-edit");
-$(".change:not(.new-page):not(.categorization):not(.wikidata-edit)").addClass("content-edit");
+//probablyAddClass($(".change:not(.new-page):not(.categorization):not(.wikidata-edit)"), "logged", 5);
+$(".change[class*='-log'").addClass("logged");
+$(".change:not(.new-page):not(.categorization):not(.wikidata-edit):not(.logged)").addClass("content-edit");
 
 //CHANGE SIZE
 //Mark minor edits and keep the rest as regular

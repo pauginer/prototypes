@@ -46,7 +46,8 @@ filtersData = { groups: [
     {id:"content-edit", selected: true, name: "Page edits", description: "Edits to the content of pages."},
     {id:"new-page", selected: true, name: "New pages", description: "Edits that create pages."},
     {id:"categorization", selected: false, name: "Category changes", description: "Records of pages being added or removed from categories."},
-    {id:"wikidata-edit", selected: false, name: "Wikidata edits", description: "Edits that originate in Wikidata."}
+    {id:"wikidata-edit", selected: false, name: "Wikidata edits", description: "Edits that originate in Wikidata."},
+    {id:"logged", selected: true, name: "Logged actions", description: "Account creations, page deletions and moves, administrative actions, uploads..."},
   ]},
   {group: "Content type", compact: true, url:'https://en.wikipedia.org/wiki/Wikipedia:Namespace', filters:[
     {id:"article", selected: false, name: "Article", description: "Edits to the main content."},
