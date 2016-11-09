@@ -42,11 +42,11 @@ filtersData = { groups: [
     {id:"minor", selected: false, name: "Minor edits", description: "Edits the author labeled as minor."},
     {id:"regular", selected: false, name: "Non-minor edits", description: "Edits not labeled as minor."}
   ]},
-  {group: "Effect of change", filters:[
-    {id:"content-edit", selected: true, name: "Content edits", description: "Edits modifying the content of a page."},
-    {id:"new-page", selected: true, name: "New page creation", description: "Edits creating new pages."},
-    {id:"categorization", selected: false, name: "Page categorization", description: "Pages added or removed from categories."},
-    {id:"wikidata-edit", selected: false, name: "Wikidata edits", description: "Edits modifying Wikidata properties."}
+  {group: "Type of change", filters:[
+    {id:"content-edit", selected: true, name: "Page edits", description: "Edits to the content of pages."},
+    {id:"new-page", selected: true, name: "New pages", description: "Edits that create pages."},
+    {id:"categorization", selected: false, name: "Category changes", description: "Records of pages being added or removed from categories."},
+    {id:"wikidata-edit", selected: false, name: "Wikidata edits", description: "Edits that originate in Wikidata."}
   ]},
   {group: "Content type", compact: true, url:'https://en.wikipedia.org/wiki/Wikipedia:Namespace', filters:[
     {id:"article", selected: false, name: "Article", description: "Edits to the main content."},
