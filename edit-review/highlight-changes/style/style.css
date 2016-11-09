@@ -117,11 +117,30 @@ h1 {
 }
 .tagbox {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   background: #F8F9FA;
   border: 1px solid #A2A9B1;
   border-bottom: none;
   padding: 10px 5px;
+}
+.tagbox .tagbox-label {
+  font-weight: bold;
+  flex-direction: row;
+  color: #54595D;
+  padding: 0 5px 5px 5px;
+}
+.tagbox .tagbox-contents {
+  display: flex;
+  flex-direction: row;
+}
+.tagbox .empty-filters {
+  display: none;
+  align-self: center;
+  color: #72777D;
+  padding: 5px;
+}
+.tagbox.empty .empty-filters {
+  display: flex;
 }
 .tagbox .clear-tags {
   cursor: pointer;
