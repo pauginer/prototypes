@@ -627,6 +627,7 @@ function restoreTags(){
   updateFilterData("human",true);
   updateFilterData("content-edit",true);
   updateFilterData("new-page",true);
+  updateFilterData("logged",true);
   updateTags();
 }
 
