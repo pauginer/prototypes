@@ -37,7 +37,7 @@ probablyAddClass($(".change:not(.maybe-damaging)"), "very-good", 50);
 
 //Mark 1/2 as good-faith, and 1/3 of the damaging edits as bad-faith leaving the rest undefined.
 probablyAddClass($(".change"), "good-faith", 40);
-probablyAddClass($(".change:not(.good-faith).damaging"), "bad-faith", 95);
+probablyAddClass($(".change:not(.good-faith).maybe-damaging"), "bad-faith", 80);
 probablyAddClass($(".change.bad-faith"), "very-bad-faith", 50);
 
 //USER TYPES
