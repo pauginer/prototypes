@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+	<title>index</title>
+	<style>
+		html {
+			height:100%;
+		}
+		body {
+			background-color:#FFFFFF;
+			margin:0;
+			height:100%;
+		}
+	</style>
+	<!-- copy these lines to your document head: -->
+
+	<meta name="viewport" content="user-scalable=yes, width=1024" />
+	
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script>
+	var prevquery ="";
+	function searchOnType(){
+		var hypeDocument =  HYPE.documents['index'];
+		var query = $("#searchbar iframe").contents().find("body input").val();
+		if (query.length == 1 && prevquery.length == 0){
+			hypeDocument.continueTimelineNamed('search');
+		}else if (query.length == 0 && prevquery.length != 0){
+			hypeDocument.continueTimelineNamed('search', hypeDocument.kDirectionReverse, false)
+		}
+		prevquery = query;
+	}
+	</script>
+
+	<!-- end copy -->
+  </head>
+  <body>
+	<!-- copy these lines to your document: -->
+
+	<div id="index_hype_container" style="margin:auto;position:relative;width:1024px;height:768px;overflow:hidden;" aria-live="polite">
+		<script type="text/javascript" charset="utf-8" src="index.hyperesources/index_hype_generated_script.js?64393"></script>
+	</div>
+
+	<!-- end copy -->
+	
+
+
+	<!-- text content for search engines: -->
+
+	<div style="display:none">
+
+		<div></div>
+		<div></div>
+
+	</div>
+
+	<!-- end text content: -->
+
+  </body>
+</html>
