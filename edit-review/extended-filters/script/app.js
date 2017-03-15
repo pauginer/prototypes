@@ -496,7 +496,7 @@ function filtersVisible(show){
   }else{
     panel.scrollTop(0);
     panel.addClass("hidden");
-
+    removePrefixes();
   }
 }
 
@@ -632,6 +632,27 @@ function restoreTags(){
   updateTags();
 }
 
+function removePrefixes() {
+  var search = $(".search");
+  var q = search.val();
+  if (q.startsWith("@")||q.startsWith("#")||q.startsWith(":")){
+    search.val("");
+  }
+}
+
+function showEditTagPanel(){
+  var prefix= "#";
+  var search = $(".search");
+  var q = search.val();
+  if(!q.startsWith(prefix)){
+    search.val(prefix);
+  }
+  filtersVisible(true);
+  search.focus();
+
+
+}
+
 var filerHighlights = true;
 var meetsFilters = meetsFiltersOrOptionalHighlight;
 
@@ -660,26 +681,6 @@ $(function(){ //Initialization:
   });
   $(".search-icon").click(function(){$(".search").focus();});
 
-  /*$(".highlight-results").click(function(){
-    var panel = $(".highlight-panel");
-    var isHidden = panel.hasClass("hidden");
-    if(isHidden){
-        panel.removeClass("hidden");
-        if ($('body').scrollTop() < 200){
-          $('body,html').animate({scrollTop: 220 }, 200);
-        }
-    }else{
-      closeHighlightPanel();
-    }
-
-  });
-
-  $(".highlight-panel").scroll(function(e){
-    if($(this).scrollTop()>0){
-      $(this).removeClass("compact");
-    }
-  });*/
-
   $("body").click(function(e){
     if ($(e.target).parents(".filters").length == 0 && $(e.target).closest(".tooltipster-content").length == 0){
       filtersVisible(false);
@@ -704,5 +705,7 @@ $(function(){ //Initialization:
   });
   $(".clear-tags").click(function(e){clearAllTags();return false;});
   $(".restore-tags").click(function(e){restoreTags();return false;});
+
+  $(".actions .add-tag").click(function(e){showEditTagPanel(); return false;});
 
 });
