@@ -340,7 +340,7 @@ function updateFilters(){
     $(this).parent(".filter").toggleClass("active");
     var isQuery = $(".search").val().length >0;
     if(isQuery){
-        clearQuery();
+        clearQuery(prefix);
         updateFilters();
     }
 
@@ -543,6 +543,7 @@ function filtersVisible(show){
   if(show){
     showPanelForPrefix();
     panel.removeClass("hidden");
+    updateFilters();
   }else{
     $(".filter-panel, .edittag-panel").scrollTop(0);
     panel.addClass("hidden");
@@ -550,8 +551,12 @@ function filtersVisible(show){
   }
 }
 
-function clearQuery(){
-  $(".search").val("");
+function clearQuery(value){
+  var v = "";
+  if(!!value){
+    v = value;
+  }
+  $(".search").val(v);
   $(".filter").removeClass("suggested");
 }
 
@@ -720,7 +725,7 @@ function showEditTagPanel(){
     search.val(prefix);
   }
   filtersVisible(true);
-  updateFilters();
+  //
   search.focus();
 }
 
