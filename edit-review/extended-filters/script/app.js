@@ -296,6 +296,22 @@ function closeHighlightPanel(){
   $(".visibility-panel").removeClass("active");
 }
 
+function filtersByPrefix(data, prefix){
+  var result = data;
+  if(prefix =="#"){
+    //var g =data.groups; ////
+    var g = [];
+    $.each(data.groups, function(i,group){
+      if(group.group == "Edit tags"){
+        g.push(group);
+      }
+    });
+    result = {groups:g};
+  }
+  return result;
+
+};
+
 function updateFilters(){
   var data = filtersData;
   var query = $(".search").val().trim();
@@ -306,6 +322,10 @@ function updateFilters(){
     if(data.groups.length == 0){
       data = find(query, prefix, true); //extended search
     }
+  }
+
+  if(!!prefix){
+    data = filtersByPrefix(data, prefix);
   }
   var html = filtersTemplate(data);
 
@@ -700,6 +720,7 @@ function showEditTagPanel(){
     search.val(prefix);
   }
   filtersVisible(true);
+  updateFilters();
   search.focus();
 }
 

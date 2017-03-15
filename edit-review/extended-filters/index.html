@@ -91,7 +91,7 @@
           <div class="icon"></div> Highlight results</div>
       </div>
       {{#each groups}}
-      <div  class="group {{#if compact}}compact{{/if}}" data-id="{{group}}">
+      <div  class="hidden group {{#if compact}}compact{{/if}}" data-id="{{group}}">
         <div class="title">{{group}} {{clarification}}</div>
         {{#if info}} <span class="whatsthis" data-tooltip-content="#whats-{{info}}">
          What's this? </span> {{/if}}
@@ -119,12 +119,6 @@
         </div>
       </div>
       {{/each}}
-      {{#if compact}}
-      <div class="searchable">
-        <div class="message"> More available as you search</div>
-        <a href="{{url}}" target="_blank" class="view-more"></a>
-      </div>
-      {{/if}}
       {{/each}}
       {{#unless groups}}<div class='no-results'>No filters found</div>{{/unless}}
     </script>
