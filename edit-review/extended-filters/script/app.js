@@ -3,6 +3,7 @@
 var tagsTemplate =null;
 var filtersTemplate = null;
 var highlightsTemplate = null;
+var edittagTemplate = null;
 
 //API
 
@@ -308,6 +309,9 @@ function updateFilters(){
 
   $(".filter-panel").html(html);
   $(".tag").removeClass("active");
+
+    html = edittagTemplate(data);
+    $(".edittag-panel").html(html);
   //Bindings:
   $(".check").change(function() {
     updateFilterData(this.id, this.checked);
@@ -342,7 +346,7 @@ function removeTag(e){
   updateFilters();
   updateTags();
 
-  if(!$(".filter-panel").hasClass("hidden")){
+  if(!$(".all-panels").hasClass("hidden")){
     filtersVisible(true);
       $(".search").focus();
   }
@@ -489,12 +493,36 @@ function areOnlyCompleteHighlights(){
   return result;
 }
 
+function showPanelForPrefix(){
+  var panel = $(".all-panels");
+  var search = $(".search");
+  var q = search.val();
+  if(q.startsWith("#")){
+    panel.addClass("edittag");
+  } else {
+      panel.removeClass("edittag");
+  }
+
+  if(q.startsWith("@")){
+    panel.addClass("username");
+  } else {
+      panel.removeClass("username");
+  }
+
+  if(q.startsWith(":")){
+    panel.addClass("namespace");
+  } else {
+      panel.removeClass("namespace");
+  }
+}
+
 function filtersVisible(show){
-  var panel = $(".filter-panel");
+  var panel = $(".all-panels");
   if(show){
+    showPanelForPrefix();
     panel.removeClass("hidden");
   }else{
-    panel.scrollTop(0);
+    $(".filter-panel").scrollTop(0);
     panel.addClass("hidden");
     removePrefixes();
   }
@@ -529,7 +557,7 @@ function searchWhenTyping(e){
     $(".search").blur();
     filtersVisible(false);
   }
-
+  showPanelForPrefix();
   updateFilters();
   if(code !=13 && query){   //Highlight first result
     $(".filter-panel .filter:first" ).addClass("suggested");
@@ -660,6 +688,7 @@ $(function(){ //Initialization:
   tagsTemplate = Handlebars.compile($("#tags-template").html());
   filtersTemplate = Handlebars.compile($("#filters-template").html());
   highlightsTemplate =  Handlebars.compile($("#highlights-template").html());
+  edittagTemplate = Handlebars.compile($("#edittag-template").html());
   var hash= window.location.hash.replace("#","");
   $("body").addClass(hash); //tags: integrated
 
@@ -670,7 +699,7 @@ $(function(){ //Initialization:
   $(".search").keyup(searchWhenTyping);
   //$(".search").keydown(clearWhenTyping);
   $(".search").focus(function(){
-    if($(".filter-panel").hasClass("hidden") && $('body').scrollTop() < 200){
+    if($(".all-panels").hasClass("hidden") && $('body').scrollTop() < 200){
       $('body,html').animate({scrollTop: 220 }, 200);
     }
     filtersVisible(true);
@@ -693,7 +722,7 @@ $(function(){ //Initialization:
   });
 
   $(".tagbox").click(function(e){
-    var isClosed = $(".filter-panel").hasClass("hidden");
+    var isClosed = $(".all-panels").hasClass("hidden");
     if(isClosed){
       filtersVisible(true);
       $(".search").focus();

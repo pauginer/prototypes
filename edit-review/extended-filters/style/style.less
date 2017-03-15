@@ -269,7 +269,15 @@ h1 {
   background: white;
 }
 
-.filter-panel {
+.all-panels {
+  &.edittag{
+      .filter-panel { display:none;}
+      .edittag-panel { display:block;}
+  }
+  .edittag-panel { display:none;}
+}
+
+.filter-panel, .edittag-panel {
     .panel;
     //min-height: 200px;
     z-index: 100;
@@ -459,7 +467,7 @@ h1 {
   border-radius: 100%;
 }
 
-.filter-panel .visibility-panel {
+.all-panels .visibility-panel {
   .panel;
   position:absolute;
   background: white;

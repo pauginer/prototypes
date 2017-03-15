@@ -245,7 +245,17 @@ h1 {
   box-shadow: 0 2px 0 1px rgba(0, 0, 0, 0.1);
   background: white;
 }
-.filter-panel {
+.all-panels.edittag .filter-panel {
+  display: none;
+}
+.all-panels.edittag .edittag-panel {
+  display: block;
+}
+.all-panels .edittag-panel {
+  display: none;
+}
+.filter-panel,
+.edittag-panel {
   border: 1px solid #A2A9B1;
   box-shadow: 0 2px 0 1px rgba(0, 0, 0, 0.1);
   z-index: 100;
@@ -259,22 +269,26 @@ h1 {
   margin-top: -1px;
   box-sizing: border-box;
 }
-.filter-panel .group {
+.filter-panel .group,
+.edittag-panel .group {
   background: #EAECF0;
   padding: 8px 10px;
   color: #555A5F;
   display: flex;
 }
-.filter-panel .group.active .title {
+.filter-panel .group.active .title,
+.edittag-panel .group.active .title {
   font-weight: bold;
   color: #333;
 }
-.filter-panel .whatsthis {
+.filter-panel .whatsthis,
+.edittag-panel .whatsthis {
   cursor: pointer;
   color: #3366CC;
   margin: 0 10px;
 }
-.filter-panel .filter {
+.filter-panel .filter,
+.edittag-panel .filter {
   display: flex;
   padding: 0 5px;
   cursor: pointer;
@@ -282,49 +296,63 @@ h1 {
   align-items: center;
 }
 .filter-panel .filter.active,
-.filter-panel .filter.active:hover {
+.edittag-panel .filter.active,
+.filter-panel .filter.active:hover,
+.edittag-panel .filter.active:hover {
   background-color: white;
 }
-.filter-panel .filter.inactive {
+.filter-panel .filter.inactive,
+.edittag-panel .filter.inactive {
   background-color: #F8F9FA;
 }
 .filter-panel .filter.inactive .details .name,
-.filter-panel .filter.inactive .details .description {
+.edittag-panel .filter.inactive .details .name,
+.filter-panel .filter.inactive .details .description,
+.edittag-panel .filter.inactive .details .description {
   color: #54595D;
 }
-.filter-panel .filter:hover {
+.filter-panel .filter:hover,
+.edittag-panel .filter:hover {
   background-color: #fbfbfb;
 }
-.filter-panel .filter + .filter {
+.filter-panel .filter + .filter,
+.edittag-panel .filter + .filter {
   border-top: 1px solid #EAECF0;
 }
-.filter-panel .filter.suggested {
+.filter-panel .filter.suggested,
+.edittag-panel .filter.suggested {
   background-color: #EAF3FF;
 }
-.filter-panel .filter .check {
+.filter-panel .filter .check,
+.edittag-panel .filter .check {
   margin-right: 12px;
   font-size: 200%;
 }
-.filter-panel .filter .details {
+.filter-panel .filter .details,
+.edittag-panel .filter .details {
   display: flex;
   flex-direction: column;
   cursor: pointer;
   flex: auto;
   padding: 10px 0;
 }
-.filter-panel .filter .details .name {
+.filter-panel .filter .details .name,
+.edittag-panel .filter .details .name {
   color: #222;
   font-size: 16px;
   font-weight: bold;
 }
-.filter-panel .filter .details .name i {
+.filter-panel .filter .details .name i,
+.edittag-panel .filter .details .name i {
   font-weight: normal;
   font-style: normal;
 }
-.filter-panel .filter .details .description {
+.filter-panel .filter .details .description,
+.edittag-panel .filter .details .description {
   color: #464A4F;
 }
-.filter-panel .filter .options {
+.filter-panel .filter .options,
+.edittag-panel .filter .options {
   display: none;
   position: relative;
   width: 40px;
@@ -336,7 +364,8 @@ h1 {
   padding: 5px;
   margin-right: 10px;
 }
-.filter-panel .searchable {
+.filter-panel .searchable,
+.edittag-panel .searchable {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -345,11 +374,13 @@ h1 {
   border-top: 2px solid #EAECF0;
   background: #fbfbfb;
 }
-.filter-panel .searchable .message {
+.filter-panel .searchable .message,
+.edittag-panel .searchable .message {
   flex: auto;
   text-align: center;
 }
-.filter-panel .searchable .view-more {
+.filter-panel .searchable .view-more,
+.edittag-panel .searchable .view-more {
   display: flex;
   flex: none;
   background: url(../images/external.svg) no-repeat;
@@ -358,7 +389,8 @@ h1 {
   height: 24px;
   opacity: 0.5;
 }
-.filter-panel .searchable .view-more:hover {
+.filter-panel .searchable .view-more:hover,
+.edittag-panel .searchable .view-more:hover {
   opacity: 0.75;
 }
 .filter-panel .group.compact ~ .filter.compact {
@@ -414,7 +446,7 @@ h1 {
   background: #CC3333;
   border-radius: 100%;
 }
-.filter-panel .visibility-panel {
+.all-panels .visibility-panel {
   border: 1px solid #A2A9B1;
   box-shadow: 0 2px 0 1px rgba(0, 0, 0, 0.1);
   position: absolute;
