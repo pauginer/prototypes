@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>add-user</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Extended-options" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="add-user" fill="#222222">
+            <path d="M15.8,15.2 C15.08,14.96 15.08,14.32 15,13.6 L15,13.52 C16.12,12.56 17,10.96 17,9.2 C17,5.44 15.4,4 13,4 C11.32,4 9,4.96 9,9.2 C9,10.88 9.88,12.48 11,13.52 L11,13.6 C11,14.32 10.92,14.96 10.2,15.2 C10.2,15.2 7.88,16.08 7,16.4 C5.96,16.72 5,17.2 5,18.4 L5,19.2 L21,19.2 L21,18.4 C21,17.4399992 20.36,16.8 19,16.4 C18.04,16.08 15.8,15.2 15.8,15.2 Z" id="Page-1"></path>
+            <polygon id="Page-1-Copy" points="1 12.0377357 1 12.962264 4.03773599 12.962264 4.03773599 16 4.96226434 16 4.96226434 12.962264 8 12.9622643 8 12.037736 4.96226434 12.0377357 4.96226401 9 4.03773566 9 4.03773599 12.0377357"></polygon>
+        </g>
+    </g>
+</svg>
