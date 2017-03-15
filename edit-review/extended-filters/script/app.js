@@ -78,7 +78,7 @@ function findInGroup(group, query, expanded){
   return result;
 }
 
-function find(query,extended){
+function find(query, prefix, extended){
   var data = filtersData;
   var result = {groups:[]};
   var groups = data.groups;
@@ -299,10 +299,12 @@ function closeHighlightPanel(){
 function updateFilters(){
   var data = filtersData;
   var query = $(".search").val().trim();
+  var prefix = getPrefix(query);
+  query = removePrefix(query);
   if(query.length > 0) {
-    data = find(query);
+    data = find(query, prefix, false);
     if(data.groups.length == 0){
-      data = find(query, true); //extended search
+      data = find(query, prefix, true); //extended search
     }
   }
   var html = filtersTemplate(data);
@@ -522,7 +524,7 @@ function filtersVisible(show){
     showPanelForPrefix();
     panel.removeClass("hidden");
   }else{
-    $(".filter-panel").scrollTop(0);
+    $(".filter-panel, .edittag-panel").scrollTop(0);
     panel.addClass("hidden");
     removePrefixes();
   }
@@ -660,10 +662,32 @@ function restoreTags(){
   updateTags();
 }
 
+function getPrefix(q){
+  var result = null;
+  if (hasPrefix(q)){
+    result = q[0];
+  }
+  return result;
+}
+
+function hasPrefix(q){
+  var result = false;
+  result = q.startsWith("@")||q.startsWith("#")||q.startsWith(":");
+  return result;
+}
+
+function removePrefix(q){
+  var result = q;
+  if (hasPrefix(q)){
+    result = q.substr(1);
+  }
+  return result;
+}
+
 function removePrefixes() {
   var search = $(".search");
   var q = search.val();
-  if (q.startsWith("@")||q.startsWith("#")||q.startsWith(":")){
+  if (hasPrefix(q)){
     search.val("");
   }
 }
@@ -677,8 +701,6 @@ function showEditTagPanel(){
   }
   filtersVisible(true);
   search.focus();
-
-
 }
 
 var filerHighlights = true;

@@ -62,10 +62,10 @@ filtersData = { groups: [
     {id:"portal", selected: false, compact: true, name: "Portal", description: "Edits to the Portal namespace."}
   ]},
   {group: "Edit tags", url:'https://en.wikipedia.org/wiki/Special:Tags', compact: true, filters:[
-    {id:"mw-tag-mobile_edit", selected: false, name: "Mobile edit", description: "For edits made from a mobile device."},
-    {id:"mw-tag-mobile_web_edit", selected: false, name: "Mobile web edit", description: "Edit made from mobile web site."},
-    {id:"mw-tag-visualeditor", selected: false, name: "Visual Edit", description: "Edit made using the visual editor."},
-    {id:"mw-tag-mobile_app_edit", selected: false, name: "Mobile app edit", description: "Edits made from mobile apps."},
+    {id:"mw-tag-mobile_edit", selected: false, compact: true, name: "Mobile edit", description: "For edits made from a mobile device."},
+    {id:"mw-tag-mobile_web_edit", selected: false, compact: true, name: "Mobile web edit", description: "Edit made from mobile web site."},
+    {id:"mw-tag-visualeditor", selected: false, compact: true, name: "Visual Edit", description: "Edit made using the visual editor."},
+    {id:"mw-tag-mobile_app_edit", selected: false, compact: true, name: "Mobile app edit", description: "Edits made from mobile apps."},
     {id:"mw-tag-section-blanking", selected: false, compact: true, name: "Section blanking", description: "This edit blanked an entire section."},
     {id:"mw-tag-vandalism", selected: false, compact: true, name: "Possible BLP issue or vandalism", description: "This edit might not adhere to the biographies of living persons policy."},
     {id:"mw-tag-repeating-characters", selected: false, compact: true, name: "Repeating characters", description: "This edit contains a highly repetitive character sequence, like \"!!!!!!!\" or \"hahahahahahaha\"."},
