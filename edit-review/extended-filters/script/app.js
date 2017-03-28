@@ -314,11 +314,31 @@ function filtersByPrefix(data, prefix){
 
 };
 
+function favLink(name,val) {
+  var data = linksData;
+  //TODO find link and set fav property
+  //TODO set the global fav property
+}
+
 function updateLinks(){
   var data = linksData;
   var html = linksTemplate(data);
   $(".quicklinks-panel").html(html);
+  //Bindings:
+  $(".quicklinks-panel .star").click(function(e){
+    var star = $(this);
+    var item = star.closest(".link");
+    var name = item.attr("name");
 
+    if(star.hasClass("active")){
+        star.removeClass("active");
+        favLink(name,false);
+    }else {
+      star.addClass("active");
+      favLink(name,true);
+    }
+
+  });
 }
 
 function updateFilters(){
@@ -726,8 +746,8 @@ function removePrefixes() {
   }
 }
 function showLinksPanel(e){
-  updateLinks();
   if ($(e.target).hasClass("quicklinks")){
+        updateLinks();
         $(".quicklinks").toggleClass("active");
   }
   return false;
