@@ -92,3 +92,20 @@ filtersData = { groups: [
     {id:"cat-technology", selected: false, compact: true, name: "Technology", description: "Wikipedia category."}
   ]}
 ]};
+
+linksData = { links: [
+{name: "Recent changes for", url:"#", group: true},
+{name: "Featured articles", url:"#", fav:false},
+{name: "Good articles", url:"#", fav:false},
+{name: "Living people", url:"#", fav:false},
+{name: "Vital articles", url:"#", fav:false},
+{name: "Utilities", url:"#", group: true},
+{name: "RC patrol", url:"#", fav:false},
+{name: "New pages", url:"#", fav:false},
+{name: "New editor's contribs", url:"#", fav:false},
+{name: "IP's contribs", url:"#", fav:false},
+{name: "Mobile contribs", url:"#", fav:false},
+{name: "Cleanup", url:"#", fav:false},
+{name: "Vandalism", url:"#", fav:false},
+
+]};

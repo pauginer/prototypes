@@ -84,6 +84,24 @@
         {{/each}}
       {{/each}}
     </script>
+    <script id="links-template" type="text/x-handlebars-template">
+      {{#if favs}}
+        <div class="group">Favourites</div>
+        {{#each links}}
+          {{#if fav}}
+          <div class="link"> <a href="{{url}}">{{name}}</a> <div class="active star"></div> </div>
+          {{/if}}
+        {{/each}}
+      {{else}}
+        {{#each links}}
+          {{#if group}}
+              <div class="group">{{name}}</div>
+          {{else}}
+          <div class="link"> <a href="{{url}}">{{name}}</a> <div class="star {{#if fav}} active{{/if}}"></div> </div>
+          {{/if}}
+        {{/each}}
+      {{/if}}
+    </script>
     <script id="edittag-template" type="text/x-handlebars-template">
       <div class="filter-header">
         <div class="title">Edit tags</div>
@@ -132,6 +150,15 @@
           <section class="header-search"></section>
       </section>
       <section class="prelude">
+        <h1>Recent changes</h1>
+        <div class="mw-specialpage-summary">
+          <p>This is a list of recent changes to Wikipedia.</p>
+          <div class="quicklinks"> Quick links <div class="more"></div>
+            <div class="quicklinks-panel"></div>
+          </div>
+        </div>
+      </section>
+      <section class="prelude hidden">
         <h1>Recent changes</h1>
         <div class="mw-specialpage-summary">
         <p>This is a list of recent changes to Wikipedia.

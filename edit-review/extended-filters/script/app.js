@@ -5,6 +5,8 @@ var filtersTemplate = null;
 var highlightsTemplate = null;
 var edittagTemplate = null;
 
+var linksTemplate = null;
+
 //API
 
 function getFilterDataById (id){
@@ -311,6 +313,13 @@ function filtersByPrefix(data, prefix){
   return result;
 
 };
+
+function updateLinks(){
+  var data = linksData;
+  var html = linksTemplate(data);
+  $(".quicklinks-panel").html(html);
+
+}
 
 function updateFilters(){
   var data = filtersData;
@@ -716,6 +725,13 @@ function removePrefixes() {
     search.val("");
   }
 }
+function showLinksPanel(e){
+  updateLinks();
+  if ($(e.target).hasClass("quicklinks")){
+        $(".quicklinks").toggleClass("active");
+  }
+  return false;
+}
 
 function showEditTagPanel(){
   var prefix= "#";
@@ -737,6 +753,7 @@ $(function(){ //Initialization:
   filtersTemplate = Handlebars.compile($("#filters-template").html());
   highlightsTemplate =  Handlebars.compile($("#highlights-template").html());
   edittagTemplate = Handlebars.compile($("#edittag-template").html());
+  linksTemplate = Handlebars.compile($("#links-template").html());
   var hash= window.location.hash.replace("#","");
   $("body").addClass(hash); //tags: integrated
 
@@ -767,6 +784,10 @@ $(function(){ //Initialization:
     if ($(e.target).closest(".highlight-group").length == 0){
       closeHighlightPanel();
     }
+    //if ($(e.target).parents(".quicklinks").length == 0){
+        $(".quicklinks").removeClass("active");
+    //}
+
   });
 
   $(".tagbox").click(function(e){
@@ -784,5 +805,7 @@ $(function(){ //Initialization:
   $(".restore-tags").click(function(e){restoreTags();return false;});
 
   $(".actions .add-tag").click(function(e){showEditTagPanel(); return false;});
+
+  $(".quicklinks").click(showLinksPanel);
 
 });
