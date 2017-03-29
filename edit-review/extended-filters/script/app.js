@@ -6,6 +6,7 @@ var highlightsTemplate = null;
 var edittagTemplate = null;
 var namespacesTemplate = null;
 var usersTemplate =null;
+var categoryTemplate = null;
 
 var linksTemplate = null;
 
@@ -326,6 +327,14 @@ function filtersByPrefix(data, prefix){
       }
     });
     result = {groups:g};
+  } else if(prefix == "/") { //category
+    var g = [];
+    $.each(data.groups, function(i,group){
+      if(group.group == "Content categories"){
+        g.push(group);
+      }
+    });
+    result = {groups:g};
   }
   return result;
 
@@ -404,6 +413,9 @@ function updateFilters(){
 
     html = usersTemplate(data);
     $(".users-panel").html(html);
+
+    html = categoryTemplate(data);
+    $(".category-panel").html(html);
 
   //Bindings:
   $(".check").change(function() {
@@ -607,6 +619,12 @@ function showPanelForPrefix(){
   } else {
       panel.removeClass("namespaces");
   }
+
+  if(q.startsWith("/")){
+    panel.addClass("category");
+  } else {
+      panel.removeClass("category");
+  }
 }
 
 function filtersVisible(show){
@@ -616,7 +634,7 @@ function filtersVisible(show){
     panel.removeClass("hidden");
     updateFilters();
   }else{
-    $(".filter-panel, .edittag-panel, .namespaces-panel, .users-panel").scrollTop(0);
+    $(".filter-panel, .edittag-panel, .namespaces-panel, .users-panel, .category-panel").scrollTop(0);
     panel.addClass("hidden");
     removePrefixes();
   }
@@ -768,7 +786,7 @@ function getPrefix(q){
 
 function hasPrefix(q){
   var result = false;
-  result = q.startsWith("@")||q.startsWith("#")||q.startsWith(":");
+  result = q.startsWith("@")||q.startsWith("#")||q.startsWith(":")||q.startsWith("/");
   return result;
 }
 
@@ -830,6 +848,18 @@ function showUsersPanel(){
   search.focus();
 }
 
+function showCategoryPanel(){
+  var prefix= "/";
+  var search = $(".search");
+  var q = search.val();
+  if(!q.startsWith(prefix)){
+    search.val(prefix);
+  }
+  filtersVisible(true);
+  search.focus();
+}
+
+
 var filerHighlights = true;
 var meetsFilters = meetsFiltersOrOptionalHighlight;
 
@@ -840,6 +870,8 @@ $(function(){ //Initialization:
   edittagTemplate = Handlebars.compile($("#edittag-template").html());
   namespacesTemplate = Handlebars.compile($("#namespaces-template").html());
   usersTemplate = Handlebars.compile($("#users-template").html());
+  categoryTemplate = Handlebars.compile($("#category-template").html());
+
   linksTemplate = Handlebars.compile($("#links-template").html());
   var hash= window.location.hash.replace("#","");
   $("body").addClass(hash); //tags: integrated
@@ -894,7 +926,7 @@ $(function(){ //Initialization:
   $(".actions .add-tag").click(function(e){showEditTagPanel(); return false;});
   $(".actions .add-namespace").click(function(e){showNamespacesPanel(); return false;});
   $(".actions .add-user").click(function(e){showUsersPanel(); return false;});
-
+  $(".actions .add-category").click(function(e){showCategoryPanel(); return false;});
 
   $(".quicklinks").click(showLinksPanel);
 

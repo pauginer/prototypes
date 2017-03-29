@@ -373,13 +373,18 @@ h1 {
     .filter-panel { display:none;}
     .users-panel { display:block;}
   }
+  &.category {
+    .filter-panel { display:none;}
+    .category-panel { display:block;}
+  }
 
   .edittag-panel { display:none;}
   .namespaces-panel {display: none;}
   .users-panel {display: none;}
+  .category-panel { display:none;}
 }
 
-.filter-panel, .edittag-panel, .namespaces-panel, .users-panel {
+.filter-panel, .edittag-panel, .namespaces-panel, .users-panel, .category-panel {
     .panel;
     //min-height: 200px;
     z-index: 100;
@@ -660,7 +665,7 @@ h1 {
   //justify-content: flex-end;
 
 
-  .add-user, .add-tag, .add-namespace, .pagination, .dates, .filter-highlights, .highlight-results{
+  .add-user, .add-tag, .add-namespace, .add-category, .pagination, .dates, .filter-highlights, .highlight-results{
     .dropdown
   }
   .add-user {
