@@ -57,7 +57,7 @@
       {{#each tags}}
       <div class="tag{{#unless selected}} useless{{/unless}}" data-id="{{id}}" {{#if color}}data-color= "{{color}}"{{/if}} data-description="{{description}}" title="{{description}}">
         {{#if color}}<div class="color {{color}}"></div>{{/if}}
-        <div class="name">{{{name}}}</div>
+        <div class="name">{{prefix}}{{{name}}}</div>
         <div class="remove"></div></div>
       {{/each}}
     </script>

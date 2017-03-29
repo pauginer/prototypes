@@ -49,7 +49,7 @@ filtersData = { groups: [
     {id:"wikidata-edit", selected: false, name: "Wikidata edits", description: "Edits that originate in Wikidata."},
     {id:"logged", selected: true, name: "Logged actions", description: "Account creations, page deletions and moves, administrative actions, uploads..."},
   ]},
-  {group: "Content type", compact: true, url:'https://en.wikipedia.org/wiki/Wikipedia:Namespace', filters:[
+  {group: "Content type", compact: true, prefix:":", url:'https://en.wikipedia.org/wiki/Wikipedia:Namespace', filters:[
     {id:"article", selected: false, compact: true, name: "Article", description: "Edits to the main content."},
     {id:"talk", selected: false, compact: true, name: "Talk", description: "Edits to talk pages."},
     {id:"user", selected: false, compact: true, name: "User", description: "Edits to user pages."},
@@ -69,7 +69,7 @@ filtersData = { groups: [
     {id:"portal", selected: false, compact: true, name: "Portal", description: "Edits to the Portal namespace."},
     {id:"portal-talk", selected: false, compact: true, name: "Portal talk", description: "Edits to the Portal talk namespace."}
   ]},
-  {group: "Edit tags", url:'https://en.wikipedia.org/wiki/Special:Tags', compact: true, filters:[
+  {group: "Edit tags", url:'https://en.wikipedia.org/wiki/Special:Tags', compact: true,prefix:"#", filters:[
     {id:"mw-tag-mobile_edit", selected: false, compact: true, name: "Mobile edit", description: "For edits made from a mobile device."},
     {id:"mw-tag-mobile_web_edit", selected: false, compact: true, name: "Mobile web edit", description: "Edit made from mobile web site."},
     {id:"mw-tag-visualeditor", selected: false, compact: true, name: "Visual Edit", description: "Edit made using the visual editor."},
@@ -87,7 +87,7 @@ filtersData = { groups: [
     {id:"mw-tag-extraneous_markup", selected: false, compact: true, name: "Extraneous markup", description: "Edits with extraneous markup added with the Edit toolbar."},
     {id:"mw-tag-Possible_self_promotion_in_userspace", selected: false, compact: true, name: "Possible self promotion in userspace", description: "User added typical promotional text to their user or user talk page."}
   ]},
-  {group: "Content categories", url:"https://en.wikipedia.org/wiki/Portal:Contents/Categories", compact: true, filters:[
+  {group: "Content categories", url:"https://en.wikipedia.org/wiki/Portal:Contents/Categories", compact: true, prefix:"/", filters:[
     {id:"cat-culture", selected: false, compact: true, name: "Culture", description: "Wikipedia category."},
     {id:"cat-geography", selected: false, compact: true, name: "Geography", description: "Wikipedia category."},
     {id:"cat-health", selected: false, compact: true, name: "Health", description: "Wikipedia category."},
@@ -99,7 +99,7 @@ filtersData = { groups: [
     {id:"cat-society", selected: false, compact: true, name: "Society", description: "Wikipedia category."},
     {id:"cat-technology", selected: false, compact: true, name: "Technology", description: "Wikipedia category."}
   ]},
-  {group: "Users", compact: true, filters:[
+  {group: "Users", compact: true, prefix:"@", filters:[
     {id:"user-cronopio", selected: false, compact: true, name: "Cronopio", description: "Wikipedia user."}
   ]}
 ]};

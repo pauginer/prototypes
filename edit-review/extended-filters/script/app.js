@@ -40,8 +40,10 @@ function getSelectedFilters(data){
 function getSelectedFiltersAndHighlights(data){
   var result = [];
     $.each(data.groups, function(i,group){
+      var groupPrefix = group.prefix;
       $.each(group.filters, function(j,filter){
         if(filter.selected || filter.color){
+          if (!!groupPrefix){filter.prefix = groupPrefix;}
           result.push(filter);
         }
       });
@@ -303,41 +305,16 @@ function closeHighlightPanel(){
 
 function filtersByPrefix(data, prefix){
   var result = data;
-  if(prefix =="#"){ //edittag
+  if(!!prefix){ //edittag
     var g = [];
     $.each(data.groups, function(i,group){
-      if(group.group == "Edit tags"){
-        g.push(group);
-      }
-    });
-    result = {groups:g};
-  } else if (prefix == ":"){ //namespaces
-    var g = [];
-    $.each(data.groups, function(i,group){
-      if(group.group == "Content type"){
-        g.push(group);
-      }
-    });
-    result = {groups:g};
-  } else if(prefix == "@") { //users
-    var g = [];
-    $.each(data.groups, function(i,group){
-      if(group.group == "Users"){
-        g.push(group);
-      }
-    });
-    result = {groups:g};
-  } else if(prefix == "/") { //category
-    var g = [];
-    $.each(data.groups, function(i,group){
-      if(group.group == "Content categories"){
+      if(group.prefix == prefix){
         g.push(group);
       }
     });
     result = {groups:g};
   }
   return result;
-
 };
 
 function favLink(name,val) {
