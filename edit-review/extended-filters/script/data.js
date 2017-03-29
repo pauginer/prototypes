@@ -53,13 +53,21 @@ filtersData = { groups: [
     {id:"article", selected: false, compact: true, name: "Article", description: "Edits to the main content."},
     {id:"talk", selected: false, compact: true, name: "Talk", description: "Edits to talk pages."},
     {id:"user", selected: false, compact: true, name: "User", description: "Edits to user pages."},
+    {id:"user-talk", selected: false, compact: true, name: "User talk", description: "Edits to user talk pages."},
     {id:"wikipedia", selected: false, compact: true, name: "Wikipedia", description: "Edits to the Wikipedia namespace."},
+    {id:"wikipedia-talk", selected: false, compact: true, name: "Wikipedia talk", description: "Edits to the Wikipedia talk namespace."},
     {id:"file", selected: false, compact: true, name: "File", description: "Edits to the File namespace."},
+    {id:"file-talk", selected: false, compact: true, name: "File talk", description: "Edits to the File talk namespace."},
     {id:"mediawiki", selected: false, compact: true, name: "Mediawiki", description: "Edits to the Mediawiki namespace."},
+    {id:"mediawiki-talk", selected: false, compact: true, name: "Mediawiki talk", description: "Edits to the Mediawiki talk namespace."},
     {id:"template", selected: false, compact: true, name: "Template", description: "Edits to the Template namespace."},
+    {id:"template-talk", selected: false, compact: true, name: "Template talk", description: "Edits to the Template talk namespace."},
     {id:"help", selected: false, compact: true, name: "Help", description: "Edits to the Help namespace."},
+    {id:"help-talk", selected: false, compact: true, name: "Help talk", description: "Edits to the Help talk namespace."},
     {id:"category", selected: false, compact: true, name: "Category", description: "Edits to the Category namespace."},
-    {id:"portal", selected: false, compact: true, name: "Portal", description: "Edits to the Portal namespace."}
+    {id:"category-talk", selected: false, compact: true, name: "Category talk", description: "Edits to the Category talk namespace."},
+    {id:"portal", selected: false, compact: true, name: "Portal", description: "Edits to the Portal namespace."},
+    {id:"portal-talk", selected: false, compact: true, name: "Portal talk", description: "Edits to the Portal talk namespace."}
   ]},
   {group: "Edit tags", url:'https://en.wikipedia.org/wiki/Special:Tags', compact: true, filters:[
     {id:"mw-tag-mobile_edit", selected: false, compact: true, name: "Mobile edit", description: "For edits made from a mobile device."},

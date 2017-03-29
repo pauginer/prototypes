@@ -603,6 +603,12 @@ h1 {
 .category-panel .searchable .view-more:hover {
   opacity: 0.75;
 }
+.namespaces-panel .filter[data-id$="talk"] {
+  border-bottom: 8px solid #EAECF0;
+}
+.namespaces-panel .filter:last-of-type {
+  border-bottom: 1px solid #EAECF0;
+}
 .filter-panel .group.compact,
 .filter-panel .group.compact ~ .filter.compact {
   display: none;

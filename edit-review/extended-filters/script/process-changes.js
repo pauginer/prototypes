@@ -68,21 +68,21 @@ $(".change").addClass("others");
 $(".change[class^='mw-changeslist-ns0-']").addClass("article");
 $(".change[class^='mw-changeslist-ns1-']").addClass("talk");
 $(".change[class^='mw-changeslist-ns2-']").addClass("user");
-$(".change[class^='mw-changeslist-ns3-']").addClass("user talk");
+$(".change[class^='mw-changeslist-ns3-']").addClass("user-talk");
 $(".change[class^='mw-changeslist-ns4-']").addClass("wikipedia");
-$(".change[class^='mw-changeslist-ns5-']").addClass("wikipedia talk");
+$(".change[class^='mw-changeslist-ns5-']").addClass("wikipedia-talk");
 $(".change[class^='mw-changeslist-ns6-']").addClass("file");
-$(".change[class^='mw-changeslist-ns7-']").addClass("file talk");
+$(".change[class^='mw-changeslist-ns7-']").addClass("file-talk");
 $(".change[class^='mw-changeslist-ns8-']").addClass("mediawiki");
-$(".change[class^='mw-changeslist-ns9-']").addClass("mediawiki talk");
+$(".change[class^='mw-changeslist-ns9-']").addClass("mediawiki-talk");
 $(".change[class^='mw-changeslist-ns10-']").addClass("template");
-$(".change[class^='mw-changeslist-ns11-']").addClass("template talk");
+$(".change[class^='mw-changeslist-ns11-']").addClass("template-talk");
 $(".change[class^='mw-changeslist-ns12-']").addClass("help");
-$(".change[class^='mw-changeslist-ns13-']").addClass("help talk");
+$(".change[class^='mw-changeslist-ns13-']").addClass("help-talk");
 $(".change[class^='mw-changeslist-ns14-']").addClass("category");
-$(".change[class^='mw-changeslist-ns14-']").addClass("category talk");
+$(".change[class^='mw-changeslist-ns14-']").addClass("category-talk");
 $(".change[class^='mw-changeslist-ns100-']").addClass("portal");
-$(".change[class^='mw-changeslist-ns100-']").addClass("portal talk");
+$(".change[class^='mw-changeslist-ns100-']").addClass("portal-talk");
 
 
 //SUBJECT OF CHANGE
