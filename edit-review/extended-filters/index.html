@@ -89,9 +89,10 @@
         <div class="group">Favourites</div>
         {{#each links}}
           {{#if fav}}
-          <div class="link"> <a href="{{url}}">{{name}}</a> <div class="active star"></div> </div>
+          <div class="link" name="{{name}}"> <a href="{{url}}">{{name}}</a> <div class="star {{#if fav}} active{{/if}}"></div> </div>
           {{/if}}
         {{/each}}
+        <div class="view-all">View all</div>
       {{else}}
         {{#each links}}
           {{#if group}}
@@ -100,6 +101,7 @@
           <div class="link" name="{{name}}"> <a href="{{url}}">{{name}}</a> <div class="star {{#if fav}} active{{/if}}"></div> </div>
           {{/if}}
         {{/each}}
+        <div class="edit-links">Edit links</div>
       {{/if}}
     </script>
     <script id="edittag-template" type="text/x-handlebars-template">

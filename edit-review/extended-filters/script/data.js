@@ -107,5 +107,7 @@ linksData = { links: [
 {name: "Mobile contribs", url:"#", fav:false},
 {name: "Cleanup", url:"#", fav:false},
 {name: "Vandalism", url:"#", fav:false},
-
+{name: "Deletion", url:"#", fav:false},
+{name: "RfC", url:"#", fav:false},
+{name: "Backlogs", url:"#", fav:false}
 ]};

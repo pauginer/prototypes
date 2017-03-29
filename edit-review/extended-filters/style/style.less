@@ -142,6 +142,7 @@ a.new, #p-personal a.new {
       &:hover{
         background-color: #EAF3FF;
       }
+      a {color: #3366CC;}
       .star {
         width: 18px;
         height: 18px;
@@ -151,6 +152,18 @@ a.new, #p-personal a.new {
         &.active{
           background-image: url(../images/star-filled.svg);
         }
+      }
+    }
+    .view-all, .edit-links {
+      display: flex;
+      flex-direction: row;
+      cursor: pointer;
+      padding:8px 8px 8px 16px;
+      color: #3366CC;
+      justify-content: center;
+      border-top: 1px solid #C8CCD1;
+      &:hover{
+        background-color: #EAF3FF;
       }
     }
   }

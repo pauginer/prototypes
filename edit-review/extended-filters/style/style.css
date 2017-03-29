@@ -152,6 +152,9 @@ a.new,
 .prelude .quicklinks-panel .link:hover {
   background-color: #EAF3FF;
 }
+.prelude .quicklinks-panel .link a {
+  color: #3366CC;
+}
 .prelude .quicklinks-panel .link .star {
   width: 18px;
   height: 18px;
@@ -161,6 +164,20 @@ a.new,
 }
 .prelude .quicklinks-panel .link .star.active {
   background-image: url(../images/star-filled.svg);
+}
+.prelude .quicklinks-panel .view-all,
+.prelude .quicklinks-panel .edit-links {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  padding: 8px 8px 8px 16px;
+  color: #3366CC;
+  justify-content: center;
+  border-top: 1px solid #C8CCD1;
+}
+.prelude .quicklinks-panel .view-all:hover,
+.prelude .quicklinks-panel .edit-links:hover {
+  background-color: #EAF3FF;
 }
 .quicklinks.active .quicklinks-panel {
   display: flex;

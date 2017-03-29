@@ -316,12 +316,27 @@ function filtersByPrefix(data, prefix){
 
 function favLink(name,val) {
   var data = linksData;
-  //TODO find link and set fav property
-  //TODO set the global fav property
+  var anyFav = false;
+  $.each(data.links, function(i,link){
+    var isGroup = !!link.group;
+    var linkName = link.name;
+    if(!isGroup && (linkName == name)){
+      link.fav = val;
+    }
+    anyFav = anyFav || !!link.fav;
+  });
+  if(anyFav){
+    data.favs = true;
+  }else{
+    data.favs = false;
+  }
 }
 
-function updateLinks(){
+function updateLinks(expanded){
   var data = linksData;
+  if(!!expanded){
+    data = {links: data.links, favs: false};
+  }
   var html = linksTemplate(data);
   $(".quicklinks-panel").html(html);
   //Bindings:
@@ -337,7 +352,10 @@ function updateLinks(){
       star.addClass("active");
       favLink(name,true);
     }
+  });
 
+  $(".quicklinks-panel .view-all").click(function(e){
+    updateLinks(true);
   });
 }
 
