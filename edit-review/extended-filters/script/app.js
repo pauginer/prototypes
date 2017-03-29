@@ -5,6 +5,7 @@ var filtersTemplate = null;
 var highlightsTemplate = null;
 var edittagTemplate = null;
 var namespacesTemplate = null;
+var usersTemplate =null;
 
 var linksTemplate = null;
 
@@ -309,10 +310,18 @@ function filtersByPrefix(data, prefix){
       }
     });
     result = {groups:g};
-  } else if (prefix == ":"){
+  } else if (prefix == ":"){ //namespaces
     var g = [];
     $.each(data.groups, function(i,group){
       if(group.group == "Content type"){
+        g.push(group);
+      }
+    });
+    result = {groups:g};
+  } else if(prefix == "@") { //users
+    var g = [];
+    $.each(data.groups, function(i,group){
+      if(group.group == "Users"){
         g.push(group);
       }
     });
@@ -392,6 +401,10 @@ function updateFilters(){
 
     html = namespacesTemplate(data);
     $(".namespaces-panel").html(html);
+
+    html = usersTemplate(data);
+    $(".users-panel").html(html);
+
   //Bindings:
   $(".check").change(function() {
     updateFilterData(this.id, this.checked);
@@ -584,9 +597,9 @@ function showPanelForPrefix(){
   }
 
   if(q.startsWith("@")){
-    panel.addClass("username");
+    panel.addClass("users");
   } else {
-      panel.removeClass("username");
+      panel.removeClass("users");
   }
 
   if(q.startsWith(":")){
@@ -603,7 +616,7 @@ function filtersVisible(show){
     panel.removeClass("hidden");
     updateFilters();
   }else{
-    $(".filter-panel, .edittag-panel, .namespaces-panel").scrollTop(0);
+    $(".filter-panel, .edittag-panel, .namespaces-panel, .users-panel").scrollTop(0);
     panel.addClass("hidden");
     removePrefixes();
   }
@@ -806,6 +819,17 @@ function showNamespacesPanel(){
   search.focus();
 }
 
+function showUsersPanel(){
+  var prefix= "@";
+  var search = $(".search");
+  var q = search.val();
+  if(!q.startsWith(prefix)){
+    search.val(prefix);
+  }
+  filtersVisible(true);
+  search.focus();
+}
+
 var filerHighlights = true;
 var meetsFilters = meetsFiltersOrOptionalHighlight;
 
@@ -815,6 +839,7 @@ $(function(){ //Initialization:
   highlightsTemplate =  Handlebars.compile($("#highlights-template").html());
   edittagTemplate = Handlebars.compile($("#edittag-template").html());
   namespacesTemplate = Handlebars.compile($("#namespaces-template").html());
+  usersTemplate = Handlebars.compile($("#users-template").html());
   linksTemplate = Handlebars.compile($("#links-template").html());
   var hash= window.location.hash.replace("#","");
   $("body").addClass(hash); //tags: integrated
@@ -868,6 +893,7 @@ $(function(){ //Initialization:
 
   $(".actions .add-tag").click(function(e){showEditTagPanel(); return false;});
   $(".actions .add-namespace").click(function(e){showNamespacesPanel(); return false;});
+  $(".actions .add-user").click(function(e){showUsersPanel(); return false;});
 
 
   $(".quicklinks").click(showLinksPanel);

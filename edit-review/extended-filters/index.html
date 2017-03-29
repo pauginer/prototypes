@@ -180,6 +180,44 @@
       {{/each}}
       {{#unless groups}}<div class='no-results'>No filters found</div>{{/unless}}
     </script>
+    <script id="users-template" type="text/x-handlebars-template">
+      <div class="filter-header">
+        <div class="title">Users</div>
+        <div class="highlighter" title="Highlight results">
+          <div class="icon"></div> Highlight results</div>
+      </div>
+      {{#each groups}}
+      <div  class="hidden group {{#if compact}}compact{{/if}}" data-id="{{group}}">
+        <div class="title">{{group}} {{clarification}}</div>
+        {{#if info}} <span class="whatsthis" data-tooltip-content="#whats-{{info}}">
+         What's this? </span> {{/if}}
+      </div>
+      {{#each filters}}
+      <div  class="filter{{#if selected}} active{{/if}}{{#unless selected}}{{#if compact}} compact{{/if}}{{/unless}}" data-id="{{id}}" data-color="{{color}}">
+        <input class="check" type="checkbox" id="{{id}}" {{#if selected}}checked="checked"{{/if}}></input>
+        <label class="details" for="{{id}}">
+          <div class="name">{{{name}}}</div>
+          <div class="description">{{description}}</div>
+        </label>
+        <div class="options" title="Highlight color"> <div class="icon"></div>
+          <div class="visibility-panel">
+            <div class="label-highlight"> Highlight color</div>
+            <div class="option-highlight {{#if color}} active{{/if}}">
+              <div class="option-filter {{#unless color}}active{{/unless}}">
+              </div>
+              <div name = "blue" class="highlight blue {{#is color 'blue'}} active {{/is}}"></div>
+              <div name = "green" class="highlight green {{#is color 'green'}} active {{/is}}"></div>
+              <div name = "yellow" class="highlight yellow {{#is color 'yellow'}} active {{/is}}"></div>
+              <div name = "orange" class="highlight orange {{#is color 'orange'}} active {{/is}}"></div>
+              <div name = "red" class="highlight red {{#is color 'red'}} active {{/is}}"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+      {{/each}}
+      {{#unless groups}}<div class='no-results'>No filters found</div>{{/unless}}
+    </script>
   </head>
   <body>
     <section class="sidebar"></section>
@@ -241,6 +279,7 @@
           <div class= "filter-panel">Filter panel</div>
           <div class= "edittag-panel">Edit tag panel</div>
           <div class= "namespaces-panel">Namespaces panel</div>
+          <div class= "users-panel">Users panel</div>
         </div>
       </section>
       <section class="actions">

@@ -90,6 +90,9 @@ filtersData = { groups: [
     {id:"cat-religion", selected: false, compact: true, name: "Religion", description: "Wikipedia category."},
     {id:"cat-society", selected: false, compact: true, name: "Society", description: "Wikipedia category."},
     {id:"cat-technology", selected: false, compact: true, name: "Technology", description: "Wikipedia category."}
+  ]},
+  {group: "Users", compact: true, filters:[
+    {id:"user-cronopio", selected: false, compact: true, name: "Cronopio", description: "Wikipedia user."}
   ]}
 ]};
 
