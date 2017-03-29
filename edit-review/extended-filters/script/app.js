@@ -4,6 +4,7 @@ var tagsTemplate =null;
 var filtersTemplate = null;
 var highlightsTemplate = null;
 var edittagTemplate = null;
+var namespacesTemplate = null;
 
 var linksTemplate = null;
 
@@ -300,11 +301,18 @@ function closeHighlightPanel(){
 
 function filtersByPrefix(data, prefix){
   var result = data;
-  if(prefix =="#"){
-    //var g =data.groups; ////
+  if(prefix =="#"){ //edittag
     var g = [];
     $.each(data.groups, function(i,group){
       if(group.group == "Edit tags"){
+        g.push(group);
+      }
+    });
+    result = {groups:g};
+  } else if (prefix == ":"){
+    var g = [];
+    $.each(data.groups, function(i,group){
+      if(group.group == "Content type"){
         g.push(group);
       }
     });
@@ -381,6 +389,9 @@ function updateFilters(){
 
     html = edittagTemplate(data);
     $(".edittag-panel").html(html);
+
+    html = namespacesTemplate(data);
+    $(".namespaces-panel").html(html);
   //Bindings:
   $(".check").change(function() {
     updateFilterData(this.id, this.checked);
@@ -579,9 +590,9 @@ function showPanelForPrefix(){
   }
 
   if(q.startsWith(":")){
-    panel.addClass("namespace");
+    panel.addClass("namespaces");
   } else {
-      panel.removeClass("namespace");
+      panel.removeClass("namespaces");
   }
 }
 
@@ -592,7 +603,7 @@ function filtersVisible(show){
     panel.removeClass("hidden");
     updateFilters();
   }else{
-    $(".filter-panel, .edittag-panel").scrollTop(0);
+    $(".filter-panel, .edittag-panel, .namespaces-panel").scrollTop(0);
     panel.addClass("hidden");
     removePrefixes();
   }
@@ -783,6 +794,18 @@ function showEditTagPanel(){
   search.focus();
 }
 
+
+function showNamespacesPanel(){
+  var prefix= ":";
+  var search = $(".search");
+  var q = search.val();
+  if(!q.startsWith(prefix)){
+    search.val(prefix);
+  }
+  filtersVisible(true);
+  search.focus();
+}
+
 var filerHighlights = true;
 var meetsFilters = meetsFiltersOrOptionalHighlight;
 
@@ -791,6 +814,7 @@ $(function(){ //Initialization:
   filtersTemplate = Handlebars.compile($("#filters-template").html());
   highlightsTemplate =  Handlebars.compile($("#highlights-template").html());
   edittagTemplate = Handlebars.compile($("#edittag-template").html());
+  namespacesTemplate = Handlebars.compile($("#namespaces-template").html());
   linksTemplate = Handlebars.compile($("#links-template").html());
   var hash= window.location.hash.replace("#","");
   $("body").addClass(hash); //tags: integrated
@@ -843,6 +867,8 @@ $(function(){ //Initialization:
   $(".restore-tags").click(function(e){restoreTags();return false;});
 
   $(".actions .add-tag").click(function(e){showEditTagPanel(); return false;});
+  $(".actions .add-namespace").click(function(e){showNamespacesPanel(); return false;});
+
 
   $(".quicklinks").click(showLinksPanel);
 

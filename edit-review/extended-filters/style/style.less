@@ -365,10 +365,15 @@ h1 {
       .filter-panel { display:none;}
       .edittag-panel { display:block;}
   }
+  &.namespaces {
+    .filter-panel { display:none;}
+    .namespaces-panel { display:block;}
+  }
   .edittag-panel { display:none;}
+  .namespaces-panel {display: none;}
 }
 
-.filter-panel, .edittag-panel {
+.filter-panel, .edittag-panel, .namespaces-panel {
     .panel;
     //min-height: 200px;
     z-index: 100;
