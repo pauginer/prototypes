@@ -836,6 +836,47 @@ function showCategoryPanel(){
   search.focus();
 }
 
+function loadPaginationPanel(){
+  $(".pagination").click(function(e){
+    $(".quicklinks, .dates").removeClass("active");
+    if($(e.target).hasClass("pagination")){
+      $(this).toggleClass("active");
+    }
+    return false;
+  });
+  $(".page-selector option").click(function(e){
+    $(".page-selector option").removeClass("active");
+    $(this).addClass("active");
+    console.debug($(this).attr("value"));
+    return false;
+  });
+
+  $(".sort-selector option").click(function(e){
+    $(".sort-selector option").removeClass("active");
+    $(this).addClass("active");
+    console.debug($(this).attr("value"));
+  });
+
+  $(".liveupdate-selector").click(function(e){
+    $(this).toggleClass("active");
+  });
+
+}
+
+function clearPanels(e){
+  if ($(e.target).parents(".filters").length == 0 && $(e.target).closest(".tooltipster-content").length == 0){
+    filtersVisible(false);
+    $(".tags .tag.active").removeClass("active");
+  }
+
+  if ($(e.target).closest(".highlight-group").length == 0){
+    closeHighlightPanel();
+  }
+
+  $(".quicklinks, .pagination").removeClass("active");
+
+
+}
 
 var filerHighlights = true;
 var meetsFilters = meetsFiltersOrOptionalHighlight;
@@ -871,20 +912,7 @@ $(function(){ //Initialization:
   });
   $(".search-icon").click(function(){$(".search").focus();});
 
-  $("body").click(function(e){
-    if ($(e.target).parents(".filters").length == 0 && $(e.target).closest(".tooltipster-content").length == 0){
-      filtersVisible(false);
-      $(".tags .tag.active").removeClass("active");
-    }
-
-    if ($(e.target).closest(".highlight-group").length == 0){
-      closeHighlightPanel();
-    }
-    //if ($(e.target).parents(".quicklinks").length == 0){
-        $(".quicklinks").removeClass("active");
-    //}
-
-  });
+  $("body").click(clearPanels);
 
   $(".tagbox").click(function(e){
     var isClosed = $(".all-panels").hasClass("hidden");
@@ -906,5 +934,7 @@ $(function(){ //Initialization:
   $(".actions .add-category").click(function(e){showCategoryPanel(); return false;});
 
   $(".quicklinks").click(showLinksPanel);
+  loadPaginationPanel();
+
 
 });

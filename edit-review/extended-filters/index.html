@@ -330,7 +330,29 @@
           <div class="highlight-results"><div class="icon"></div>Highlight results <div class="more"></div></div>
           <div class= "highlight-panel hidden compact">Highlight panel</div>
         </div>
-        <div class="pagination">Last 500 changes <div class="more"></div></div>
+        <div class="pagination">Last 100 changes
+          <div class="more"></div>
+          <div class="pagination-panel">
+            <label>Changes to show</label>
+            <div class="page-selector">
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option class="active" value="100" >100</option>
+                <option value="250">250</option>
+                <option value="500">500</option>
+            </div>
+            <label>Sorting</label>
+            <div class="sort-selector">
+                <option value="newest" class="active" >Newest first</option>
+                <option value="oldest">Oldest first</option>
+            </div>
+            <div class="liveupdate-selector">
+                  <div>Show live updates</div>
+                  <div class="description">New changes will beshown in real time.</div>
+            </div>
+
+          </div>
+        </div>
         <div class="dates"> <div class="icon"></div>7 days<div class="more"></div></div>
       </section>
       <section class="changes">

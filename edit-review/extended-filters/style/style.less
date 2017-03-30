@@ -190,6 +190,98 @@ h1 {
     position:relative;
 }
 
+.button-group {
+  display:flex;
+  flex-direction: row;
+  margin: 8px 16px;
+  option {
+    cursor: pointer;
+    border: 1px solid #A2A9B1;
+    border-right:none;
+    padding: 8px 16px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-self: flex-start;
+    &:first-of-type {
+      border-radius: 2px 0 0 2px;
+    }
+    &:last-of-type {
+      border-radius: 0 2px 2px 0;
+      border: 1px solid #A2A9B1;
+    }
+
+    &:checked, &.active {
+      background-color: #2A4B8D;
+      color: white;
+      border-color: #2A4B8D
+    }
+  }
+}
+
+.pagination-panel {
+  .panel;
+  cursor: auto;
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  right:-1px;
+  padding-top:8px;
+  label {
+    color: #54595D;
+    display:flex;
+    margin: 8px 16px;
+    margin-bottom:4px;
+  }
+  .page-selector {
+    .button-group;
+  }
+  .sort-selector {
+    display: flex;
+    flex-direction: column;
+    margin: 8px 16px;
+    option {
+      display: flex;
+      cursor: pointer;
+      min-height:22px;
+      margin-bottom: 8px;
+      padding-left:30px;
+      background: left center url(../images/radio.svg) no-repeat;
+      background-size: 22px;
+      align-items: center;
+
+      &:checked, &.active {
+        background-image: url(../images/radio-active.svg);
+      }
+    }
+  }
+
+  .liveupdate-selector {
+    display:flex;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 16px;
+    padding-left: 80px;
+    border-top: 1px solid #C8CCD1;
+    background: 16px center url(../images/toggle.svg) no-repeat;
+    &:hover {background-color:#F8F9FA;}
+    &:checked, &.active {
+      background-image: url(../images/toggle-active.svg);
+    }
+    .description {
+      font-size: 14px;
+      font-weight: normal;
+      color: #54595D;
+    }
+  }
+
+
+}
+
+
+
 .searchbar{
     display: flex;
     flex-wrap: wrap;
@@ -706,7 +798,10 @@ h1 {
   }
   .pagination {
     margin-left:auto;
+    position: relative;
+    &.active .pagination-panel {display: flex;}
   }
+
   .filter-highlights {
     padding: 4px 12px;
     &.active {

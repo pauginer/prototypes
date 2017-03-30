@@ -197,6 +197,122 @@ h1 {
   padding: 0;
   position: relative;
 }
+.button-group {
+  display: flex;
+  flex-direction: row;
+  margin: 8px 16px;
+}
+.button-group option {
+  cursor: pointer;
+  border: 1px solid #A2A9B1;
+  border-right: none;
+  padding: 8px 16px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: flex-start;
+}
+.button-group option:first-of-type {
+  border-radius: 2px 0 0 2px;
+}
+.button-group option:last-of-type {
+  border-radius: 0 2px 2px 0;
+  border: 1px solid #A2A9B1;
+}
+.button-group option:checked,
+.button-group option.active {
+  background-color: #2A4B8D;
+  color: white;
+  border-color: #2A4B8D;
+}
+.pagination-panel {
+  border: 1px solid #A2A9B1;
+  box-shadow: 0 2px 0 1px rgba(0, 0, 0, 0.1);
+  background: white;
+  cursor: auto;
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  right: -1px;
+  padding-top: 8px;
+}
+.pagination-panel label {
+  color: #54595D;
+  display: flex;
+  margin: 8px 16px;
+  margin-bottom: 4px;
+}
+.pagination-panel .page-selector {
+  display: flex;
+  flex-direction: row;
+  margin: 8px 16px;
+}
+.pagination-panel .page-selector option {
+  cursor: pointer;
+  border: 1px solid #A2A9B1;
+  border-right: none;
+  padding: 8px 16px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: flex-start;
+}
+.pagination-panel .page-selector option:first-of-type {
+  border-radius: 2px 0 0 2px;
+}
+.pagination-panel .page-selector option:last-of-type {
+  border-radius: 0 2px 2px 0;
+  border: 1px solid #A2A9B1;
+}
+.pagination-panel .page-selector option:checked,
+.pagination-panel .page-selector option.active {
+  background-color: #2A4B8D;
+  color: white;
+  border-color: #2A4B8D;
+}
+.pagination-panel .sort-selector {
+  display: flex;
+  flex-direction: column;
+  margin: 8px 16px;
+}
+.pagination-panel .sort-selector option {
+  display: flex;
+  cursor: pointer;
+  min-height: 22px;
+  margin-bottom: 8px;
+  padding-left: 30px;
+  background: left center url(../images/radio.svg) no-repeat;
+  background-size: 22px;
+  align-items: center;
+}
+.pagination-panel .sort-selector option:checked,
+.pagination-panel .sort-selector option.active {
+  background-image: url(../images/radio-active.svg);
+}
+.pagination-panel .liveupdate-selector {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 16px;
+  padding-left: 80px;
+  border-top: 1px solid #C8CCD1;
+  background: 16px center url(../images/toggle.svg) no-repeat;
+}
+.pagination-panel .liveupdate-selector:hover {
+  background-color: #F8F9FA;
+}
+.pagination-panel .liveupdate-selector:checked,
+.pagination-panel .liveupdate-selector.active {
+  background-image: url(../images/toggle-active.svg);
+}
+.pagination-panel .liveupdate-selector .description {
+  font-size: 14px;
+  font-weight: normal;
+  color: #54595D;
+}
 .searchbar {
   display: flex;
   flex-wrap: wrap;
@@ -802,6 +918,10 @@ h1 {
 }
 .actions .pagination {
   margin-left: auto;
+  position: relative;
+}
+.actions .pagination.active .pagination-panel {
+  display: flex;
 }
 .actions .filter-highlights {
   padding: 4px 12px;
