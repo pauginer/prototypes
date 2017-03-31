@@ -1004,23 +1004,23 @@ h1 {
 .actions .add-user .icon {
   background-image: url(../images/add-user.svg);
   background-size: contain;
-  width: 24px;
-  height: 24px;
-  margin-right: 4px;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
 }
 .actions .add-tag .icon {
   background-image: url(../images/add-tag.svg);
   background-size: contain;
-  width: 24px;
-  height: 24px;
-  margin-right: 4px;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
 }
 .actions .add-namespace .icon {
   background-image: url(../images/add-namespace.svg);
   background-size: contain;
-  width: 24px;
-  height: 24px;
-  margin-right: 2px;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
 }
 .actions .pagination {
   margin-left: auto;
