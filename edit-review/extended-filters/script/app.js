@@ -863,10 +863,13 @@ function loadPaginationPanel(){
 
 }
 
+var startPicker = null;
+var endPicker = null;
+
 function loadDatesPanel(){
   $(".dates").click(function(e){
     $(".quicklinks, .pagination").removeClass("active");
-    if($(e.target).hasClass("dates")){
+    if($(e.target).hasClass("dates") || $(e.target).hasClass("icon")){
       $(this).toggleClass("active");
     }
     return false;
@@ -882,13 +885,13 @@ function loadDatesPanel(){
     $(".hour-selector option, .day-selector option, .custom-period").removeClass("active");
     $(".day-selector option[value='7']").addClass("active");
     $(".custom-period input").val("");
-    console.debug($(this).attr("value"));
+    $("#date-to").attr("placeholder","To");
   });
 
   //Date picker:
-  var startDate,
-      endDate,
-      updateStartDate = function() {
+  var startDate;
+  var endDate;
+  var updateStartDate = function() {
           startPicker.setStartRange(startDate);
           endPicker.setStartRange(startDate);
           endPicker.setMinDate(startDate);
@@ -897,13 +900,15 @@ function loadDatesPanel(){
           if(!endDate){
             endDate= new Date();
             updateEndDate();
+            $("#date-to").attr("placeholder","today");
           }
-      },
-      updateEndDate = function() {
+      };
+    var updateEndDate = function() {
           startPicker.setEndRange(endDate);
           startPicker.setMaxDate(endDate);
           endPicker.setEndRange(endDate);
-      },
+      };
+
       startPicker = new Pikaday({
           field: document.getElementById('date-from'),
           format: 'll',
@@ -913,7 +918,8 @@ function loadDatesPanel(){
               startDate = this.getDate();
               updateStartDate();
           }
-      }),
+      });
+
       endPicker = new Pikaday({
           field: document.getElementById('date-to'),
           format: 'll',
@@ -924,9 +930,10 @@ function loadDatesPanel(){
               endDate = this.getDate();
               updateEndDate();
           }
-      }),
-      _startDate = startPicker.getDate(),
-      _endDate = endPicker.getDate();
+      });
+
+      var _startDate = startPicker.getDate();
+      var _endDate = endPicker.getDate();
 
       if (_startDate) {
           startDate = _startDate;
@@ -951,8 +958,10 @@ function clearPanels(e){
     closeHighlightPanel();
   }
 
-  $(".quicklinks, .pagination, .dates").removeClass("active");
-
+  $(".quicklinks, .pagination").removeClass("active");
+  if($(e.target).closest(".dates,.pika-single").length == 0){
+    $(".dates").removeClass("active");
+  }
 
 }
 

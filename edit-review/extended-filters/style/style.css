@@ -389,19 +389,35 @@ h1 {
   display: flex;
   padding: 0 16px;
   margin-bottom: 16px;
+  align-items: center;
 }
 .dates-panel .custom-period .close {
   display: none;
   cursor: pointer;
-  margin: 8px;
+  margin: 12px 8px 8px 8px;
   margin-left: auto;
   width: 12px;
   height: 12px;
   background: url(../images/close.svg) no-repeat;
   background-size: contain;
 }
+.dates-panel .custom-period input {
+  font-size: 14px;
+  max-width: 100px;
+  padding: 4px;
+}
+.dates-panel .custom-period input::-webkit-input-placeholder {
+  color: #72777D;
+}
+.dates-panel .custom-period input:-moz-placeholder {
+  color: #72777D;
+}
+.dates-panel .custom-period .separator {
+  margin: 0 8px;
+  color: #222;
+}
 .pika-single {
-  margin-left: -100px;
+  margin-left: -150px;
 }
 .searchbar {
   display: flex;

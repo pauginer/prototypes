@@ -322,12 +322,13 @@ h1 {
       display: flex;
       padding: 0 16px;
       margin-bottom:16px;
+      align-items: center;
     }
 
     .close {
       display: none;
       cursor: pointer;
-      margin: 8px;
+      margin: 12px 8px 8px 8px;
       margin-left: auto;
       width: 12px;
       height: 12px;
@@ -335,10 +336,26 @@ h1 {
       background-size: contain;
     }
 
+    input {
+      font-size: 14px;
+      max-width: 100px;
+      padding: 4px;
+      &::-webkit-input-placeholder {
+            color:    #72777D;
+      }
+      &:-moz-placeholder {
+         color:    #72777D;
+      }
+    }
+    .separator {
+      margin: 0 8px;
+      color: #222;
+    }
+
   }
 }
 .pika-single {
-    margin-left: -100px;
+    margin-left: -150px;
 }
 
 
