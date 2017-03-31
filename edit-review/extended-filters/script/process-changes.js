@@ -98,6 +98,16 @@ $(".change:not(.new-page):not(.categorization):not(.wikidata-edit):not(.logged)"
 $(".change .minoredit").parent(".change").addClass("minor");
 $(".change:not(.minor)").addClass("regular");
 
+//RECENCY
+probablyAddClass($(".change"), "latest", 10);
+$(".change:not(.latest)").addClass("older");
+
+//WATCHLIST
+probablyAddClass($(".change"), "watchlist", 10);
+probablyAddClass($(".change.watchlist"), "watchlist-active", 30);
+$(".change:not(.watchlist)").addClass("not-watchlist");
+
+
 //CATEGORIES
 //Assigning some random categories to articles
 probablyAddClass($(".change.article"), "cat-culture", 10);
@@ -110,7 +120,6 @@ probablyAddClass($(".change.article"), "cat-philosophy", 10);
 probablyAddClass($(".change.article"), "cat-religion", 10);
 probablyAddClass($(".change.article"), "cat-society", 10);
 probablyAddClass($(".change.article"), "cat-technology", 10);
-
 
 //Replace links:
 $(".change a[href^='/']:not([href^='//'])").each(function(i,a){

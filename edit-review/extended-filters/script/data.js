@@ -49,6 +49,15 @@ filtersData = { groups: [
     {id:"wikidata-edit", selected: false, name: "Wikidata edits", description: "Edits that originate in Wikidata."},
     {id:"logged", selected: true, name: "Logged actions", description: "Account creations, page deletions and moves, administrative actions, uploads..."},
   ]},
+  {group: "Recency in page", filters:[
+    {id:"latest", selected: false, name: "Latest revisions", description: "Edits that are the most recent change to a page."},
+    {id:"older", selected: false, name: "Older revisions", description: "Edits that are not the most recent change to a page."}
+  ]},
+  {group: "Watchlisted content", filters:[
+    {id:"watchlist", selected: false, name: "In watchlist", description: "Edits on pages in your watchlist."},
+    {id:"watchlist-active", selected: false, name: "New activity in watchlist", description: "Edits for pages in your watchlist with new activity (not visited yet)."},
+    {id:"not-watchlist", selected: false, name: "Not in watchlist", description: "Edits for pages not in your watchlist."}
+  ]},
   {group: "Content type", compact: true, prefix:":", url:'https://en.wikipedia.org/wiki/Wikipedia:Namespace', filters:[
     {id:"article", selected: false, compact: true, name: "Article", description: "Edits to the main content."},
     {id:"talk", selected: false, compact: true, name: "Talk", description: "Edits to talk pages."},
