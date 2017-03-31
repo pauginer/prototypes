@@ -280,6 +280,66 @@ h1 {
 
 }
 
+.dates-panel {
+  .panel;
+  cursor: auto;
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  right:-1px;
+  padding-top:8px;
+  label {
+    color: #54595D;
+    display:flex;
+    margin: 8px 16px;
+    margin-bottom:4px;
+  }
+
+  .day-selector, .hour-selector {
+    .button-group;
+  }
+
+  .custom-period {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #C8CCD1;
+    margin-top: 8px;
+    background-color: #F8F9FA;
+
+    &.active {
+      background-color: white;
+      box-shadow: 4px 0 0 0 #36c inset;
+      .close {display: flex;}
+    }
+
+    .title {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .contents {
+      display: flex;
+      padding: 0 16px;
+      margin-bottom:16px;
+    }
+
+    .close {
+      display: none;
+      cursor: pointer;
+      margin: 8px;
+      margin-left: auto;
+      width: 12px;
+      height: 12px;
+      background: url(../images/close.svg) no-repeat;
+      background-size: contain;
+    }
+
+  }
+}
+.pika-single {
+    margin-left: -100px;
+}
 
 
 .searchbar{
@@ -800,6 +860,11 @@ h1 {
     margin-left:auto;
     position: relative;
     &.active .pagination-panel {display: flex;}
+  }
+
+  .dates {
+    position:relative;
+    &.active .dates-panel {display: flex;}
   }
 
   .filter-highlights {

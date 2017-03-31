@@ -7,13 +7,16 @@
      <link rel="stylesheet" type="text/css" href="lib/tooltipster/css/tooltipster.bundle.min.css" />
      <link rel="stylesheet" type="text/css" href="lib/tooltipster/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-borderless.min.css" />
      <link rel="stylesheet" type="text/css" href="lib/tooltipster/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-light.min.css" />
+     <link rel="stylesheet" type="text/css" href="lib/pikaday/css/pikaday.css" />
      <script type="text/javascript" src="lib/tooltipster/js/tooltipster.bundle.min.js"></script>
     <script src="lib/handlebars.js"></script>
     <script src="lib/helpers.js"></script>
     <script src="lib/moment.js"></script>
+    <script src="lib/pikaday/pikaday.js"></script>
     <script src="script/data.js"></script>
     <script src="script/process-changes.js"></script>
     <script src="script/app.js"></script>
+
     <link rel="stylesheet" href="style/style.css" media="screen" charset="utf-8">
     <script id="filters-template" type="text/x-handlebars-template">
       <div class="filter-header">
@@ -353,7 +356,34 @@
 
           </div>
         </div>
-        <div class="dates"> <div class="icon"></div>7 days<div class="more"></div></div>
+        <div class="dates"> <div class="icon"></div>7 days<div class="more"></div>
+          <div class="dates-panel">
+            <label>Recent hours</label>
+            <div class="hour-selector">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="6" >6</option>
+                <option value="12">12</option>
+            </div>
+            <label>Recent days</label>
+            <div class="day-selector">
+                <option value="1">1</option>
+                <option value="3">3</option>
+                <option class="active" value="7"> 7</option>
+                <option value="14">14</option>
+                <option value="30">30</option>
+            </div>
+            <div class="custom-period">
+              <div class="title">
+                  <label>Custom period</label>
+                  <div class="close"></div>
+              </div>
+              <div class="contents">
+                  <input id="date-from" class="from" placeholder="From"></input> <span>-</span> <input id="date-to" class="to" placeholder="today"></input>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
       <section class="changes">
       </section>
@@ -378,5 +408,6 @@
         <p><a class="more" target="_blank" href="https://meta.wikimedia.org/wiki/Objective_Revision_Evaluation_Service">Learn more</a></p>
       </span>
     </div>
+    <!--<script src="script/date-range.js"></script>-->
   </body>
 </html>

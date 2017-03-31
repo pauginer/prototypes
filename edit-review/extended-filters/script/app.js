@@ -863,6 +863,84 @@ function loadPaginationPanel(){
 
 }
 
+function loadDatesPanel(){
+  $(".dates").click(function(e){
+    $(".quicklinks, .pagination").removeClass("active");
+    if($(e.target).hasClass("dates")){
+      $(this).toggleClass("active");
+    }
+    return false;
+  });
+  $(".hour-selector option, .day-selector option").click(function(e){
+    $(".hour-selector option, .day-selector option, .custom-period").removeClass("active");
+    $(this).addClass("active");
+    console.debug($(this).attr("value"));
+    return false;
+  });
+
+  $(".dates-panel .close").click(function(e){
+    $(".hour-selector option, .day-selector option, .custom-period").removeClass("active");
+    $(".day-selector option[value='7']").addClass("active");
+    $(".custom-period input").val("");
+    console.debug($(this).attr("value"));
+  });
+
+  //Date picker:
+  var startDate,
+      endDate,
+      updateStartDate = function() {
+          startPicker.setStartRange(startDate);
+          endPicker.setStartRange(startDate);
+          endPicker.setMinDate(startDate);
+          $(".hour-selector option, .day-selector option").removeClass("active");
+          $(".custom-period").addClass("active");
+          if(!endDate){
+            endDate= new Date();
+            updateEndDate();
+          }
+      },
+      updateEndDate = function() {
+          startPicker.setEndRange(endDate);
+          startPicker.setMaxDate(endDate);
+          endPicker.setEndRange(endDate);
+      },
+      startPicker = new Pikaday({
+          field: document.getElementById('date-from'),
+          format: 'll',
+          minDate: new Date(1983, 04, 03),
+          maxDate: new Date(),
+          onSelect: function() {
+              startDate = this.getDate();
+              updateStartDate();
+          }
+      }),
+      endPicker = new Pikaday({
+          field: document.getElementById('date-to'),
+          format: 'll',
+          position: 'bottom left',
+          minDate: new Date(1983, 04, 03),
+          maxDate: new Date(),
+          onSelect: function() {
+              endDate = this.getDate();
+              updateEndDate();
+          }
+      }),
+      _startDate = startPicker.getDate(),
+      _endDate = endPicker.getDate();
+
+      if (_startDate) {
+          startDate = _startDate;
+          updateStartDate();
+      }
+
+      if (_endDate) {
+          endDate = _endDate;
+          updateEndDate();
+      }
+
+
+}
+
 function clearPanels(e){
   if ($(e.target).parents(".filters").length == 0 && $(e.target).closest(".tooltipster-content").length == 0){
     filtersVisible(false);
@@ -873,7 +951,7 @@ function clearPanels(e){
     closeHighlightPanel();
   }
 
-  $(".quicklinks, .pagination").removeClass("active");
+  $(".quicklinks, .pagination, .dates").removeClass("active");
 
 
 }
@@ -935,6 +1013,6 @@ $(function(){ //Initialization:
 
   $(".quicklinks").click(showLinksPanel);
   loadPaginationPanel();
-
+  loadDatesPanel();
 
 });
