@@ -113,6 +113,19 @@ function find(query, prefix, extended){
   return result;
 }
 
+function applyFiltersFromLink(name){
+  var data = linksData;
+    $.each(data.links, function(i,link){
+      if(link.name == name){
+        $.each(link.filters, function(j,filter){
+          updateFilterData(filter.id, filter.selected);
+          updateFilterColor(filter.id, filter.color);
+        });
+      }
+    });
+    updateTags();
+}
+
 function showOptions(e){
   var isActive = $(this).hasClass("active");
   $(".filter .options").removeClass("active");
@@ -373,11 +386,20 @@ function updateLinks(expanded){
       star.addClass("active");
       favLink(name,true);
     }
+    return false;
   });
 
   $(".quicklinks-panel .view-all").click(function(e){
     updateLinks(true);
   });
+
+  $(".quicklinks-panel .link.filtering").click(function(e){
+    var name = $(this).attr("name");
+    applyFiltersFromLink(name);
+    $(".quicklinks").removeClass("active");
+  });
+
+
 }
 
 function updateFilters(){

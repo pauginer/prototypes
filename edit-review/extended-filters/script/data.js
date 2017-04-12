@@ -122,7 +122,7 @@ linksData = { links: [
 {name: "Utilities", url:"#", group: true},
 {name: "RC patrol", url:"#", fav:false},
 {name: "New pages", url:"#", fav:false},
-{name: "New editor's contribs", url:"#", fav:false},
+{name: "New editor's contribs", url:"#", fav:false, filters:[{id:"newcomer", selected: true}]},
 {name: "IP's contribs", url:"#", fav:false},
 {name: "Mobile contribs", url:"#", fav:false},
 {name: "Cleanup", url:"#", fav:false},
