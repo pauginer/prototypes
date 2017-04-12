@@ -8,6 +8,8 @@ var namespacesTemplate = null;
 var usersTemplate =null;
 var categoryTemplate = null;
 
+var pageSize = 100;
+
 var linksTemplate = null;
 
 //API
@@ -255,11 +257,15 @@ function updateChanges(){
     $(".changes .change").removeClass("orange");
     $(".changes .change").removeClass("red");
 
+    var numResults = 0;
     $.each($(".changes .change"),function(i,change){
 
       //Check filters
       var matches = meetsFilters($(change).attr("class").split(' '));
-      if (!matches){
+      var fitsInPage = numResults < pageSize;
+      if(matches && fitsInPage){
+        numResults +=1;
+      } else {
         $(change).addClass("hidden");
       }
 
@@ -865,7 +871,7 @@ function showCategoryPanel(){
 function loadPaginationPanel(){
   $(".pagination").click(function(e){
     $(".quicklinks, .dates").removeClass("active");
-    if($(e.target).hasClass("pagination")){
+    if($(e.target).closest(".pagination-panel").length == 0){
       $(this).toggleClass("active");
     }
     return false;
@@ -873,7 +879,10 @@ function loadPaginationPanel(){
   $(".page-selector option").click(function(e){
     $(".page-selector option").removeClass("active");
     $(this).addClass("active");
-    console.debug($(this).attr("value"));
+    var size = $(this).attr("value");
+    pageSize = size;
+    $(".pagination .number").text(size);
+    updateChanges();
     return false;
   });
 
@@ -895,7 +904,7 @@ var endPicker = null;
 function loadDatesPanel(){
   $(".dates").click(function(e){
     $(".quicklinks, .pagination").removeClass("active");
-    if($(e.target).hasClass("dates") || $(e.target).hasClass("icon")){
+    if($(e.target).closest(".dates-panel").length == 0){
       $(this).toggleClass("active");
     }
     return false;
