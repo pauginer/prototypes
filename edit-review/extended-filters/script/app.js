@@ -61,6 +61,18 @@ function updateFilterColor(id, color){
   filter.color = color;
 }
 
+function getGroupForFilter(id){
+  var result = null;
+  var data = filtersData;
+    $.each(data.groups, function(i,group){
+      $.each(group.filters, function(j,filter){
+        if(id == filter.id){
+          result = group;
+        }
+      });
+    });
+    return result;
+}
 
 function findInGroup(group, query, expanded){
   var result = [];
@@ -439,8 +451,22 @@ function removeTag(e){
 function selectTag(e){
   var tag = $(e.target).hasClass("tag")?$(e.target):$(e.target).parent(".tag");
   var filterId = tag.data("id");
-  $(".search").focus();
-  clearQuery();
+  var group = getGroupForFilter(filterId);
+  var prefix = group.prefix;
+
+  if (prefix == "#"){
+      showEditTagPanel();
+  } else if(prefix == ":"){
+      showNamespacesPanel();
+  } else if(prefix == "@"){
+      showUsersPanel();
+  } else if(prefix == "/"){
+      showCategoryPanel();
+  } else{
+    $(".search").focus();
+    clearQuery();
+  }
+
   if(!tag.hasClass("active")){
     updateFilters();
     tag.addClass("active");
