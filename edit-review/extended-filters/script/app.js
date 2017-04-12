@@ -115,15 +115,27 @@ function find(query, prefix, extended){
 
 function applyFiltersFromLink(name){
   var data = linksData;
+    clearAllTags();
+    updateTags();
     $.each(data.links, function(i,link){
       if(link.name == name){
+        //console.debug(link);
         $.each(link.filters, function(j,filter){
-          updateFilterData(filter.id, filter.selected);
-          updateFilterColor(filter.id, filter.color);
+          var f = getFilterDataById(filter.id);
+          f.selected = filter.selected;
+          f.color = filter.color;
         });
       }
     });
     updateTags();
+}
+
+function storeFiltersAsLink(linkName){
+  var data = linksData;
+  var activeFilters = getSelectedFiltersAndHighlights(filtersData);
+  var activeFiltersClone = JSON.parse(JSON.stringify(activeFilters));
+  var link = {name: linkName, url:"#", personal:true, fav:true, filters: activeFiltersClone};
+  data.links.unshift(link);
 }
 
 function showOptions(e){
