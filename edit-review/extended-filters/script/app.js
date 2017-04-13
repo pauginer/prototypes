@@ -134,8 +134,9 @@ function storeFiltersAsLink(linkName){
   var data = linksData;
   var activeFilters = getSelectedFiltersAndHighlights(filtersData);
   var activeFiltersClone = JSON.parse(JSON.stringify(activeFilters));
-  var link = {name: linkName, url:"#", personal:true, fav:true, filters: activeFiltersClone};
+  var link = {name: linkName, url:"#", personal:true, fav:false, filters: activeFiltersClone};
   data.links.unshift(link);
+  updateLinkSelections();
 }
 
 function showOptions(e){
@@ -360,28 +361,37 @@ function filtersByPrefix(data, prefix){
   return result;
 };
 
-function favLink(name,val) {
+function updateLinkSelections(){
   var data = linksData;
   var anyFav = false;
+  var anyPersonal = false;
+  $.each(data.links, function(i,link){
+    anyFav = anyFav || (!!link.fav && !link.personal);
+    anyPersonal = anyPersonal || (!!link.personal)
+  });
+
+  data.fav = !!anyFav;
+  data.personal = !!anyPersonal;
+  data.expanded = !(anyFav||anyPersonal);
+
+}
+
+function favLink(name,val) {
+  var data = linksData;
   $.each(data.links, function(i,link){
     var isGroup = !!link.group;
     var linkName = link.name;
     if(!isGroup && (linkName == name)){
       link.fav = val;
     }
-    anyFav = anyFav || !!link.fav;
   });
-  if(anyFav){
-    data.favs = true;
-  }else{
-    data.favs = false;
-  }
+  updateLinkSelections()
 }
 
 function updateLinks(expanded){
   var data = linksData;
   if(!!expanded){
-    data = {links: data.links, favs: false};
+    data = {links: data.links, expanded: true, favs: !!data.favs, personal: !!data.personal};
   }
   var html = linksTemplate(data);
   $(".quicklinks-panel").html(html);
@@ -1034,6 +1044,12 @@ function clearPanels(e){
 
 }
 
+function saveTags(e){
+  var name = "Example";
+  storeFiltersAsLink(name);
+  return false;
+}
+
 var filerHighlights = true;
 var meetsFilters = meetsFiltersOrOptionalHighlight;
 
@@ -1081,6 +1097,8 @@ $(function(){ //Initialization:
       $(".tags .tag.active").removeClass("active");
     }
   });
+  $(".save-tags").click(saveTags);
+
   $(".clear-tags").click(function(e){clearAllTags();return false;});
   $(".restore-tags").click(function(e){restoreTags();return false;});
 

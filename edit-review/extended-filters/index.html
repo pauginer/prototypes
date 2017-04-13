@@ -88,23 +88,35 @@
       {{/each}}
     </script>
     <script id="links-template" type="text/x-handlebars-template">
-      {{#if favs}}
-        <div class="group">Favourites</div>
-        {{#each links}}
-          {{#if fav}}
-          <div class="link" name="{{name}}"> <a href="{{url}}">{{name}}</a> <div class="star {{#if fav}} active{{/if}}"></div> </div>
-          {{/if}}
-        {{/each}}
-        <div class="view-all">View all</div>
+      {{#if personal}} <div class="group">Created by you</div> {{/if}}
+      {{#each links}}
+        {{#if personal}}
+        <div class="link {{#if filters}}filtering{{/if}}" name="{{name}}"> <div class="star-like active"></div> <a href="{{url}}">{{name}}</a> </div>
+        {{/if}}
+      {{/each}}
+      {{#if expanded}}
+      {{#each links}}
+        {{#if group}}
+            <div class="group">{{name}}</div>
+        {{else}}
+        <div class="link {{#if filters}}filtering{{/if}} {{#if personal}}hidden{{/if}}" name="{{name}}"> <div class="star {{#if fav}} active{{/if}}"></div> <a href="{{url}}">{{name}}</a> </div>
+        {{/if}}
+      {{/each}}
+      <div class="edit-links">Edit links</div>
       {{else}}
-        {{#each links}}
-          {{#if group}}
-              <div class="group">{{name}}</div>
+      {{#if fav}}
+          {{#if personal}}
+            <div class="group">From the community</div>
           {{else}}
-          <div class="link {{#if filters}}filtering{{/if}}" name="{{name}}"> <a href="{{url}}">{{name}}</a> <div class="star {{#if fav}} active{{/if}}"></div> </div>
+            <div class="group">Favourites</div>
           {{/if}}
-        {{/each}}
-        <div class="edit-links">Edit links</div>
+      {{/if}}
+      {{#each links}}
+        {{#if fav}}
+        <div class="link {{#if filters}}filtering{{/if}}" name="{{name}}"> <div class="star {{#if fav}} active{{/if}}"></div> <a href="{{url}}">{{name}}</a>  </div>
+        {{/if}}
+      {{/each}}
+      <div class="view-all">View all</div>
       {{/if}}
     </script>
     <script id="edittag-template" type="text/x-handlebars-template">
@@ -272,19 +284,24 @@
         <h1>Recent changes</h1>
         <div class="mw-specialpage-summary">
           <p>This is a list of recent changes to Wikipedia.</p>
-          <div class="quicklinks"> Quick links <div class="more"></div>
+          <div class="quicklinks"> <div class="icon"></div> Quick links <div class="more"></div>
             <div class="quicklinks-panel"></div>
           </div>
         </div>
       </section>
       <section class="filters">
         <div class="tagbox">
-          <div class="tagbox-label">Active filters</div>
+          <div class="tagbox-header">
+            <div class="tagbox-label">Active filters</div>
+          </div>
           <div class="tagbox-contents">
             <div class="empty-filters">No active filters. All contributions are shown.</div>
             <div class="tags"></div>
-            <div class="clear-tags" title="Clear all filters"></div>
-            <div class="restore-tags" title="Restore default filters"><div class="icon"></div>Restore default filters</div>
+            <div class="tag-actions">
+              <div class="save-tags" title="Add as quick link"></div>
+              <div class="clear-tags" title="Clear all filters"></div>
+              <div class="restore-tags" title="Restore default filters"><div class="icon"></div>Restore default filters</div>
+            </div>
           </div>
         </div>
         <div class="searchbar">
