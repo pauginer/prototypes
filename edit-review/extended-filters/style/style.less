@@ -131,7 +131,7 @@ a.new, #p-personal a.new {
     top: 100%;
     right:0;
     z-index: 100;
-    min-width: 180px;
+    min-width: 200px;
     font-weight: normal;
 
     .group {
@@ -158,12 +158,31 @@ a.new, #p-personal a.new {
         //margin-left:auto;
         margin-right: 4px;
         &:hover {
-          background-image: url(../images/bookmark-outline-invite.svg);  
+          background-image: url(../images/bookmark-outline-invite.svg);
         }
 
         &.active, &.active:hover {
           background-image: url(../images/bookmark-active.svg);
         }
+      }
+    }
+    .explain-favs {
+      display: flex;
+      flex-direction: row;
+      //cursor: pointer;
+      padding:8px;
+      color: #72777D;
+      align-items: center;
+      font-size: 12px;
+      background-color: #F8F9FA;
+      border-bottom: 1px solid #C8CCD1;
+      .icon {
+        flex:none;
+        width: 24px;
+        height: 24px;
+        margin-right: 4px;
+        background: url(../images/bookmark-filled-light.svg) no-repeat;
+        background-size: contain;
       }
     }
     .view-all, .edit-links {
@@ -444,9 +463,12 @@ h1 {
     flex-direction: row;
     margin-left: auto;
   }
+  &.dirty .save-tags {
+    display: flex;
+  }
   .save-tags {
     cursor:pointer;
-    display: flex;
+    display: none;
     flex: none;
     width: 24px;
     height: 24px;

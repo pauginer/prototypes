@@ -140,7 +140,7 @@ a.new,
   top: 100%;
   right: 0;
   z-index: 100;
-  min-width: 180px;
+  min-width: 200px;
   font-weight: normal;
 }
 .prelude .quicklinks-panel .group {
@@ -179,6 +179,24 @@ a.new,
 .prelude .quicklinks-panel .link .star.active:hover,
 .prelude .quicklinks-panel .link .star-like.active:hover {
   background-image: url(../images/bookmark-active.svg);
+}
+.prelude .quicklinks-panel .explain-favs {
+  display: flex;
+  flex-direction: row;
+  padding: 8px;
+  color: #72777D;
+  align-items: center;
+  font-size: 12px;
+  background-color: #F8F9FA;
+  border-bottom: 1px solid #C8CCD1;
+}
+.prelude .quicklinks-panel .explain-favs .icon {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  margin-right: 4px;
+  background: url(../images/bookmark-filled-light.svg) no-repeat;
+  background-size: contain;
 }
 .prelude .quicklinks-panel .view-all,
 .prelude .quicklinks-panel .edit-links {
@@ -502,9 +520,12 @@ h1 {
   flex-direction: row;
   margin-left: auto;
 }
+.tagbox.dirty .save-tags {
+  display: flex;
+}
 .tagbox .save-tags {
   cursor: pointer;
-  display: flex;
+  display: none;
   flex: none;
   width: 24px;
   height: 24px;

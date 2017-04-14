@@ -113,7 +113,7 @@ filtersData = { groups: [
   ]}
 ]};
 
-linksData = { expanded: true, personal: false, links: [
+linksData = { expanded: true, personal: false, fav: false, total:0, links: [
 {name: "Recent changes for", url:"#", group: true},
 {name: "Featured articles", url:"#", fav:false},
 {name: "Good articles", url:"#", fav:false},

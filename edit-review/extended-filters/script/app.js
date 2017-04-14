@@ -56,11 +56,13 @@ function getSelectedFiltersAndHighlights(data){
 function updateFilterData(id, selected){
   var filter = getFilterDataById(id);
   filter.selected = selected;
+  $(".tagbox").addClass("dirty");
 }
 
 function updateFilterColor(id, color){
   var filter = getFilterDataById(id);
   filter.color = color;
+  $(".tagbox").addClass("dirty");
 }
 
 function getGroupForFilter(id){
@@ -119,7 +121,7 @@ function applyFiltersFromLink(name){
     updateTags();
     $.each(data.links, function(i,link){
       if(link.name == name){
-        //console.debug(link);
+
         $.each(link.filters, function(j,filter){
           var f = getFilterDataById(filter.id);
           f.selected = filter.selected;
@@ -128,6 +130,8 @@ function applyFiltersFromLink(name){
       }
     });
     updateTags();
+    $(".tagbox").removeClass("dirty");
+    $(".tagbox-title").text(name);
 }
 
 function storeFiltersAsLink(linkName){
@@ -137,6 +141,7 @@ function storeFiltersAsLink(linkName){
   var link = {name: linkName, url:"#", personal:true, fav:false, filters: activeFiltersClone};
   data.links.unshift(link);
   updateLinkSelections();
+  $(".tagbox").removeClass("dirty");
 }
 
 function showOptions(e){
@@ -365,14 +370,20 @@ function updateLinkSelections(){
   var data = linksData;
   var anyFav = false;
   var anyPersonal = false;
+  var total = 0;
   $.each(data.links, function(i,link){
-    anyFav = anyFav || (!!link.fav && !link.personal);
-    anyPersonal = anyPersonal || (!!link.personal)
+    var isFav = !!link.fav && !link.personal;
+    var isPersonal = !!link.personal;
+    anyFav = anyFav || isFav;
+    anyPersonal = anyPersonal || isPersonal;
+    if(isFav||isPersonal){ total = total+1;}
+
   });
 
   data.fav = !!anyFav;
   data.personal = !!anyPersonal;
   data.expanded = !(anyFav||anyPersonal);
+  data.total = total;
 
 }
 
@@ -386,12 +397,13 @@ function favLink(name,val) {
     }
   });
   updateLinkSelections()
+  updateLinks(val);
 }
 
 function updateLinks(expanded){
   var data = linksData;
   if(!!expanded){
-    data = {links: data.links, expanded: true, favs: !!data.favs, personal: !!data.personal};
+    data = {links: data.links, expanded: true, fav: !!data.fav, personal: !!data.personal, total: data.total};
   }
   var html = linksTemplate(data);
   $(".quicklinks-panel").html(html);
@@ -566,12 +578,24 @@ function highlightActiveGroups(){
     });
 }
 
+function areDefaultTagsOnly(){
+  var result = false;
+  var defaultTags = ["human", "content-edit", "new-page", "logged"];
+  var activeTags = getSelectedFiltersAndHighlights(filtersData);
+  result = (defaultTags.length == activeTags.length) && activeTags.every(function(element, index) {
+    return (element.id == defaultTags[index]) && !!!element.color;
+});
+
+  return result;
+}
+
 function updateTags(){
   window.setTimeout(function(){
     //var data = {tags: getSelectedFilters(filtersData)};
     var activeTags = getSelectedFiltersAndHighlights(filtersData);
     var data = {tags: activeTags};
     var emptyTags = activeTags.length == 0;
+    var defaultOnly = areDefaultTagsOnly();
     if(emptyTags){
       $(".tagbox").addClass("empty");
     }else{
@@ -818,6 +842,7 @@ function clearAllTags(){
     });
     updateFilters();
     updateTags();
+    $(".tagbox").removeClass("dirty");
 }
 
 function restoreTags(){
@@ -827,6 +852,7 @@ function restoreTags(){
   updateFilterData("logged",true);
   updateFilters();
   updateTags();
+  $(".tagbox").removeClass("dirty");
 }
 
 function getPrefix(q){
@@ -859,10 +885,12 @@ function removePrefixes() {
   }
 }
 function showLinksPanel(e){
-  if ($(e.target).hasClass("quicklinks")){
+  if ($(e.target).hasClass("quicklinks")||$(e.target).hasClass("icon")){
         updateLinks();
         $(".quicklinks").toggleClass("active");
   }
+
+
   return false;
 }
 

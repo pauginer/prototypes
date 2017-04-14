@@ -88,6 +88,7 @@
       {{/each}}
     </script>
     <script id="links-template" type="text/x-handlebars-template">
+      {{#unless fav}} {{#unless personal}} <div class="explain-favs"> <div class="icon"></div>Mark your favorite tools to find them quickly later</div>{{/unless}}{{/unless}}
       {{#if personal}} <div class="group">Created by you</div> {{/if}}
       {{#each links}}
         {{#if personal}}
@@ -95,14 +96,13 @@
         {{/if}}
       {{/each}}
       {{#if expanded}}
-      {{#each links}}
-        {{#if group}}
-            <div class="group">{{name}}</div>
-        {{else}}
-        <div class="link {{#if filters}}filtering{{/if}} {{#if personal}}hidden{{/if}}" name="{{name}}"> <div class="star {{#if fav}} active{{/if}}"></div> <a href="{{url}}">{{name}}</a> </div>
-        {{/if}}
-      {{/each}}
-      <div class="edit-links">Edit links</div>
+        {{#each links}}
+          {{#if group}}
+              <div class="group">{{name}}</div>
+          {{else}}
+          <div class="link {{#if filters}}filtering{{/if}} {{#if personal}}hidden{{/if}}" name="{{name}}"> <div class="star {{#if fav}} active{{/if}}"></div> <a href="{{url}}">{{name}}</a> </div>
+          {{/if}}
+        {{/each}}
       {{else}}
       {{#if fav}}
           {{#if personal}}
@@ -292,7 +292,7 @@
       <section class="filters">
         <div class="tagbox">
           <div class="tagbox-header">
-            <div class="tagbox-label">Active filters</div>
+            <div class="tagbox-label">Active filters</div> <div class="tagbox-title"></div>
           </div>
           <div class="tagbox-contents">
             <div class="empty-filters">No active filters. All contributions are shown.</div>
