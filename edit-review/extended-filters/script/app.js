@@ -57,12 +57,14 @@ function updateFilterData(id, selected){
   var filter = getFilterDataById(id);
   filter.selected = selected;
   $(".tagbox").addClass("dirty");
+  $(".tagbox-title").text("");
 }
 
 function updateFilterColor(id, color){
   var filter = getFilterDataById(id);
   filter.color = color;
   $(".tagbox").addClass("dirty");
+  $(".tagbox-title").text("");
 }
 
 function getGroupForFilter(id){
@@ -1075,6 +1077,7 @@ function clearPanels(e){
 function saveTags(e){
   var name = "Example";
   storeFiltersAsLink(name);
+  $(".tagbox-title").text(name);
   return false;
 }
 

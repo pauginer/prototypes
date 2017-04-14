@@ -502,6 +502,18 @@ h1 {
   color: #54595D;
   padding: 0 5px 5px 5px;
 }
+.tagbox.dirty .tagbox-title {
+  color: #00AF89;
+  opacity: 0;
+  top: 5px;
+}
+.tagbox .tagbox-title {
+  transition: opacity 0.2s ease-out, color 0.8s ease-out, top 0.2s ease-out;
+  color: #72777D;
+  opacity: 1;
+  position: relative;
+  top: 0;
+}
 .tagbox .tagbox-contents {
   display: flex;
   flex-direction: row;
