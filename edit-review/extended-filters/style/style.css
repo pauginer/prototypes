@@ -656,6 +656,12 @@ h1 {
   border-right: 5px solid transparent;
   border-top: 5px solid #222;
 }
+.tagbox .save-tags-dialog .save-tag-actions .save-tags-action:disabled {
+  background-color: #C8CCD1;
+  border-color: #C8CCD1;
+  color: white;
+  cursor: default;
+}
 .tagbox .clear-tags {
   cursor: pointer;
   display: flex;

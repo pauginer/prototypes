@@ -1099,6 +1099,19 @@ function hideSaveTagsDialog(e){
   return false;
 }
 
+function activeOnType(e){
+  var content = $(".save-tags-dialog .name").val().trim();
+  var isEmpty = content.length == 0;
+  if(!isEmpty){
+    $(".save-tags-action").attr("disabled",false);
+  } else {
+    $(".save-tags-action").attr("disabled",true);
+  }
+  if(!isEmpty && e.which == 13){
+    saveTags();
+  }
+}
+
 var filerHighlights = true;
 var meetsFilters = meetsFiltersOrOptionalHighlight;
 
@@ -1149,6 +1162,7 @@ $(function(){ //Initialization:
   $(".save-tags").click(showSaveTagsDialog);
   $(".save-tags-action").click(saveTags);
   $(".save-tags-cancel").click(hideSaveTagsDialog);
+  $(".save-tags-dialog .name").keyup(activeOnType);
 
   $(".clear-tags").click(function(e){clearAllTags();return false;});
   $(".restore-tags").click(function(e){restoreTags();return false;});
