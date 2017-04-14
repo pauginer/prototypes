@@ -845,6 +845,7 @@ function clearAllTags(){
     updateFilters();
     updateTags();
     $(".tagbox").removeClass("dirty");
+    $(".tagbox-title").text("");
 }
 
 function restoreTags(){
@@ -1075,9 +1076,26 @@ function clearPanels(e){
 }
 
 function saveTags(e){
-  var name = "Example";
+  var name = $(".save-tags-dialog .name").val();
+  if(!name){name = "Untitled";}
   storeFiltersAsLink(name);
   $(".tagbox-title").text(name);
+  hideSaveTagsDialog();
+  return false;
+}
+
+function showSaveTagsDialog(e){
+  if($(e.target).hasClass("save-tags")){
+    $(".save-tags").toggleClass("active");
+    $(".save-tags-dialog .name").focus();
+  }
+  return false;
+}
+
+function hideSaveTagsDialog(e){
+  $(".save-tags").removeClass("active");
+  $(".save-tags-dialog .name").val("");
+
   return false;
 }
 
@@ -1128,7 +1146,9 @@ $(function(){ //Initialization:
       $(".tags .tag.active").removeClass("active");
     }
   });
-  $(".save-tags").click(saveTags);
+  $(".save-tags").click(showSaveTagsDialog);
+  $(".save-tags-action").click(saveTags);
+  $(".save-tags-cancel").click(hideSaveTagsDialog);
 
   $(".clear-tags").click(function(e){clearAllTags();return false;});
   $(".restore-tags").click(function(e){restoreTags();return false;});

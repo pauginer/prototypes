@@ -481,12 +481,83 @@ h1 {
   .save-tags {
     cursor:pointer;
     display: none;
+    position: relative;
     flex: none;
     width: 24px;
     height: 24px;
     background: center center  url(../images/bookmark-outline.svg) no-repeat;
     background-size: contain;
     margin:4px 0;
+    &.active{
+      background-image: url(../images/bookmark-filled-light.svg)
+    }
+  }
+  .save-tags.active .save-tags-dialog {
+    display: flex;
+  }
+  .save-tags-dialog {
+    .panel;
+    z-index: 100;
+    padding: 8px 16px;;
+    cursor: auto;
+    display:none;
+    flex-direction: column;
+    position: absolute;
+    margin-top: 8px;
+    top: 100%;
+    right:-8px;
+    min-width: 300px;
+    .peak {
+      position:absolute;
+      width: 17px;
+      height: 11px;
+      background-color: red;
+      z-index: 110;
+      top:-11px;
+      right: 10px;
+      background: center center  url(../images/peak.svg) no-repeat;
+    }
+    .title {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      padding-bottom: 12px;
+      .icon {
+        width: 12px;
+        height: 24px;
+        background: center center  url(../images/bookmark-filled.svg) no-repeat;
+        //background-size: cover;
+        margin-right: 4px;
+      }
+    }
+    .name-label {
+      font-weight: bold;
+      padding-bottom: 8px;
+    }
+    .name{
+      font-size: 14px;
+      padding:4px;
+    }
+    .save-tag-actions{
+      display: flex;
+      flex-direction: row;
+      padding: 12px 0 8px 0;
+      .save-tags-cancel {
+        .dropdown;
+        background-color: white;
+        margin: 0 8px 0 0;
+        font-size: 14px;
+      }
+      .save-tags-action {
+        .dropdown;
+        background-color: #36c;
+        color: white;
+        border: 1px solid #36c;;
+        margin: 0 8px 0 0;
+        font-size: 14px;
+      }
+    }
+
   }
   .clear-tags {
     cursor:pointer;
