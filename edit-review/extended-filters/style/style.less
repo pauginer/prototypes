@@ -979,10 +979,11 @@ h1 {
 }
 
 .actions{
-  padding: 10px 20px;
+  padding: 10px 0px;
   flex-direction: row;
   //justify-content: flex-end;
-
+  border-bottom: 1px solid #EAECF0;
+margin: 0 20px;
 
   .add-user, .add-tag, .add-namespace, .add-category, .pagination, .dates, .filter-highlights, .highlight-results{
     .dropdown
@@ -1143,12 +1144,21 @@ h1 {
 }
 
 .pagination-controls {
-  padding: 16px 0 0 0;
+  padding: 12px 0 0 0;
   display: flex;
   justify-content: flex-end;
   margin: 4px 20px 0 20px;
+  transition: all 1s ease;
 
-  border-top: 1px solid #EAECF0;
+  .show-settings {
+    .dropdown;
+    margin-right: 16px;
+    &.active {
+      color: white;
+      background-color: #2A4B8D;
+      border-color: #2A4B8D;
+    }
+  }
 
   .prev, .next {
     .dropdown;

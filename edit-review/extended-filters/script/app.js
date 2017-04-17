@@ -1172,6 +1172,11 @@ $(function(){ //Initialization:
   $(".actions .add-user").click(function(e){showUsersPanel(); return false;});
   $(".actions .add-category").click(function(e){showCategoryPanel(); return false;});
 
+  $(".show-settings").click(function(e){
+    $(".actions").toggleClass("hidden");
+    $(".show-settings").toggleClass("active");
+  });
+
   $(".quicklinks").click(showLinksPanel);
   loadPaginationPanel();
   loadDatesPanel();
