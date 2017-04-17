@@ -470,6 +470,14 @@ function updateFilters(){
     html = categoryTemplate(data);
     $(".category-panel").html(html);
 
+    if($(".all-panels").hasClass("edittag")){
+      if ($(".edittag-panel .filter.active").length >1 ){
+        $(".edittag-panel .filter-footer").addClass("active");
+      }else {
+        $(".edittag-panel .filter-footer").removeClass("active");
+      }
+    }
+
   //Bindings:
   $(".check").change(function() {
     updateFilterData(this.id, this.checked);

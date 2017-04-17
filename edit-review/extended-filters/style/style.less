@@ -1411,6 +1411,11 @@ margin: 0 20px;
   }
 }
 
+.edittag-panel .filter-footer {
+  display: none;
+  &.active{ display: flex;}
+}
+
 .filter-footer {
   display:flex;
   flex-direction: column;
@@ -1419,13 +1424,16 @@ margin: 0 20px;
   padding: 10px;
   .footer-label {
     font-weight: bold;
-    padding-bottom: 10px;
+    color: #54595D;
+  }
+  .footer-description {
     color: #54595D;
   }
 
   .footer-actions {
     display: flex;
     flex-direction: row;
+    padding-top: 10px;
   }
 
 }

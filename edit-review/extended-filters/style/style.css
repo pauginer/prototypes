@@ -1588,6 +1588,12 @@ h1 {
   background-image: url(../images/marker-white.svg);
   opacity: 1;
 }
+.edittag-panel .filter-footer {
+  display: none;
+}
+.edittag-panel .filter-footer.active {
+  display: flex;
+}
 .filter-footer {
   display: flex;
   flex-direction: column;
@@ -1597,12 +1603,15 @@ h1 {
 }
 .filter-footer .footer-label {
   font-weight: bold;
-  padding-bottom: 10px;
+  color: #54595D;
+}
+.filter-footer .footer-description {
   color: #54595D;
 }
 .filter-footer .footer-actions {
   display: flex;
   flex-direction: row;
+  padding-top: 10px;
 }
 body.highlighting .filter .options {
   display: flex !important;
