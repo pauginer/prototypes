@@ -956,7 +956,7 @@ function loadPaginationPanel(){
     $(this).addClass("active");
     var size = $(this).attr("value");
     pageSize = size;
-    $(".pagination .number").text(size);
+    $(".pagination .number, .pagination-controls .size").text(size);
     updateChanges();
     return false;
   });
