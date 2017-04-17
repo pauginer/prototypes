@@ -1590,6 +1590,8 @@ h1 {
 }
 .edittag-panel .filter-footer {
   display: none;
+  border-bottom: 1px solid #C8CCD1;
+  border-top: none;
 }
 .edittag-panel .filter-footer.active {
   display: flex;

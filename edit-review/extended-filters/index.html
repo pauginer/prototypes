@@ -136,6 +136,9 @@
         <div class="highlighter" title="Highlight results">
           <div class="icon"></div> Highlight results</div>
       </div>
+      <div class="filter-footer">
+        <div class="footer-description">Selecting multiple tags will show only contributions meeting all of them</div>
+      </div>
       <div class="filter-list">
       {{#each groups}}
       <div  class="hidden group {{#if compact}}compact{{/if}}" data-id="{{group}}">
@@ -169,9 +172,6 @@
       {{/each}}
       </div>
       {{#unless groups}}<div class='no-results'>No filters found</div>{{/unless}}
-      <div class="filter-footer">
-        <div class="footer-description">Selecting multiple tags will show only contributions meeting all of them</div>
-      </div>
     </script>
     <script id="namespaces-template" type="text/x-handlebars-template">
       <div class="filter-header">
