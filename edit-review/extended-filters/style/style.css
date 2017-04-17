@@ -1539,7 +1539,7 @@ h1 {
 .changes-empty .message .description {
   color: #7D8389;
 }
-.filter-panel .no-results {
+.all-panels .no-results {
   padding: 8px;
   color: #555A5F;
   color: #7D8389;

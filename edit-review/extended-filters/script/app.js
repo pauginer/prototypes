@@ -103,8 +103,8 @@ function findInGroup(group, query, expanded){
   return result;
 }
 
-function find(query, prefix, extended){
-  var data = filtersData;
+function find(data, query, prefix, extended){
+  //var data = filtersData;
   var result = {groups:[]};
   var groups = data.groups;
   $.each(groups, function(i,group){
@@ -442,16 +442,16 @@ function updateFilters(){
   var data = filtersData;
   var query = $(".search").val().trim();
   var prefix = getPrefix(query);
-  query = removePrefix(query);
-  if(query.length > 0) {
-    data = find(query, prefix, false);
-    if(data.groups.length == 0){
-      data = find(query, prefix, true); //extended search
-    }
-  }
-
   if(!!prefix){
     data = filtersByPrefix(data, prefix);
+  }
+
+  query = removePrefix(query);
+  if(query.length > 0) {
+    data = find(data, query, prefix, false);
+    if(data.groups.length == 0){
+      data = find(data, query, prefix, true); //extended search
+    }
   }
   var html = filtersTemplate(data);
 
