@@ -917,8 +917,8 @@ function showEditTagPanel(){
   if(!q.startsWith(prefix)){
     search.val(prefix);
   }
+  scrollToFilters();
   filtersVisible(true);
-  //
   search.focus();
 }
 
@@ -930,6 +930,7 @@ function showNamespacesPanel(){
   if(!q.startsWith(prefix)){
     search.val(prefix);
   }
+  scrollToFilters();
   filtersVisible(true);
   search.focus();
 }
@@ -941,6 +942,7 @@ function showUsersPanel(){
   if(!q.startsWith(prefix)){
     search.val(prefix);
   }
+  scrollToFilters();
   filtersVisible(true);
   search.focus();
 }
@@ -952,6 +954,7 @@ function showCategoryPanel(){
   if(!q.startsWith(prefix)){
     search.val(prefix);
   }
+  scrollToFilters();
   filtersVisible(true);
   search.focus();
 }
@@ -1125,6 +1128,12 @@ function activeOnType(e){
   }
 }
 
+function scrollToFilters(){
+  if($(".all-panels").hasClass("hidden") && $('body').scrollTop() < 200){
+    $('body,html').animate({scrollTop: 220 }, 200);
+  }
+}
+
 var filerHighlights = true;
 var meetsFilters = meetsFiltersOrOptionalHighlight;
 
@@ -1148,9 +1157,7 @@ $(function(){ //Initialization:
   $(".search").keyup(searchWhenTyping);
   //$(".search").keydown(clearWhenTyping);
   $(".search").focus(function(){
-    if($(".all-panels").hasClass("hidden") && $('body').scrollTop() < 200){
-      $('body,html').animate({scrollTop: 220 }, 200);
-    }
+    scrollToFilters();
     filtersVisible(true);
     $(this).parent(".searchbar").addClass("active");
   });
