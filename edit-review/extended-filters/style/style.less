@@ -983,6 +983,40 @@ h1 {
   background-image: url(../images/check-white.svg);
 }
 
+
+
+.add-user, .add-tag, .add-namespace, .add-category, .pagination, .dates, .filter-highlights, .highlight-results{
+  .dropdown
+}
+.add-user {
+  margin-left:0;
+  .icon{   background-image: url(../images/add-user.svg);
+    background-size: contain;
+    width: 16px;
+    height: 16px;
+    margin-right:8px;
+  }
+}
+
+.add-tag {
+  .icon{   background-image: url(../images/add-tag.svg);
+    background-size: contain;
+    width: 16px;
+    height: 16px;
+    margin-right:8px;
+  }
+}
+
+.add-namespace {
+  .icon{   background-image: url(../images/add-namespace.svg);
+    background-size: contain;
+    width: 16px;
+    height: 16px;
+    margin-right:8px;
+  }
+}
+
+
 .actions{
   padding: 10px 0px;
   flex-direction: row;
@@ -990,36 +1024,7 @@ h1 {
   border-bottom: 1px solid #EAECF0;
 margin: 0 20px;
 
-  .add-user, .add-tag, .add-namespace, .add-category, .pagination, .dates, .filter-highlights, .highlight-results{
-    .dropdown
-  }
-  .add-user {
-    margin-left:0;
-    .icon{   background-image: url(../images/add-user.svg);
-      background-size: contain;
-      width: 16px;
-      height: 16px;
-      margin-right:8px;
-    }
-  }
 
-  .add-tag {
-    .icon{   background-image: url(../images/add-tag.svg);
-      background-size: contain;
-      width: 16px;
-      height: 16px;
-      margin-right:8px;
-    }
-  }
-
-  .add-namespace {
-    .icon{   background-image: url(../images/add-namespace.svg);
-      background-size: contain;
-      width: 16px;
-      height: 16px;
-      margin-right:8px;
-    }
-  }
   .pagination {
     margin-left:auto;
     position: relative;
@@ -1404,6 +1409,25 @@ margin: 0 20px;
       }
     }
   }
+}
+
+.filter-footer {
+  display:flex;
+  flex-direction: column;
+  background-color: #F8F9FA;
+  border-top: 1px solid #C8CCD1;
+  padding: 10px;
+  .footer-label {
+    font-weight: bold;
+    padding-bottom: 10px;
+    color: #54595D;
+  }
+
+  .footer-actions {
+    display: flex;
+    flex-direction: row;
+  }
+
 }
 
 body.highlighting .filter .options {display: flex !important;}

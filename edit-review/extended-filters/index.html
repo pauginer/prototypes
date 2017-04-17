@@ -54,9 +54,18 @@
         </div>
       </div>
       {{/each}}
-      {{/each}}
-      </div>
+      {{/each}}  
       {{#unless groups}}<div class='no-results'>No filters found</div>{{/unless}}
+      <div class="filter-footer">
+        <div class="footer-label">More filters</div>
+        <div class="footer-actions">
+          <div class="add-user"><div class="icon"></div>User</div>
+          <div class="add-tag"><div class="icon"></div>Tag</div>
+          <div class="add-namespace"><div class="icon"></div>Namespace</div>
+          <div class="add-category"><div class="icon"></div>Category</div>
+        </div>
+      </div>
+      </div>
     </script>
     <script id="tags-template" type="text/x-handlebars-template">
       {{#each tags}}

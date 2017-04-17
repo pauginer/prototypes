@@ -494,6 +494,11 @@ function updateFilters(){
     //$(this).closest(".filter-panel").toggleClass("highlighting");
     $("body").toggleClass("highlighting");
   });
+
+  $(".footer-actions .add-tag").click(function(e){showEditTagPanel(); return false;});
+  $(".footer-actions .add-namespace").click(function(e){showNamespacesPanel(); return false;});
+  $(".footer-actions .add-user").click(function(e){showUsersPanel(); return false;});
+  $(".footer-actions .add-category").click(function(e){showCategoryPanel(); return false;});
 }
 
 function removeTag(e){
