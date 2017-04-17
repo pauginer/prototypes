@@ -205,13 +205,13 @@ function selectFilter(e){
 
 
 function scrollToFilter(){
-  var scrollPos= $('.filter-panel').scrollTop();
+  var scrollPos= $('.filter-list').scrollTop();
   var targetPos = $(".suggested").offset().top;
-  var dialogOffset = $(".filter-panel").offset().top;
-  var panelHeight = $('.filter-panel').height();
+  var dialogOffset = $(".filter-list").offset().top;
+  var panelHeight = $('.filter-list').height();
   var pos = scrollPos + targetPos - dialogOffset;
   if (pos<scrollPos || pos - scrollPos > panelHeight){ //out of viewport:
-    $('.filter-panel').animate({scrollTop: pos }, 500);
+    $('.filter-list').animate({scrollTop: pos }, 500);
   }
 }
 
