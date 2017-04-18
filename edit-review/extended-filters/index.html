@@ -71,7 +71,7 @@
       {{#each tags}}
       <div class="tag{{#unless selected}} useless{{/unless}}" data-id="{{id}}" {{#if color}}data-color= "{{color}}"{{/if}} data-description="{{description}}" title="{{description}}">
         {{#if color}}<div class="color {{color}}"></div>{{/if}}
-        <div class="name">{{prefix}}{{{name}}}</div>
+        <div class="name">{{prefix}}{{#if inverted}}<b>not</b> {{/if}}{{{name}}}</div>
         <div class="remove"></div></div>
       {{/each}}
     </script>
@@ -193,6 +193,7 @@
           <div class="name">{{{name}}}</div>
           <div class="description hidden">{{description}}</div>
         </label>
+        <div class="invert-option {{#if inverted}}active{{/if}}"><div class="icon"></div><span class="label-inactive">Invert</span><span class="label-active">Inverted</span></div>
         <div class="options" title="Highlight color"> <div class="icon"></div>
           <div class="visibility-panel">
             <div class="label-highlight"> Highlight color</div>

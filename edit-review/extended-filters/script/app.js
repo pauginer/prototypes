@@ -438,6 +438,24 @@ function updateLinks(expanded){
 
 }
 
+function invertNamespace(){
+    var invertOption = $(this).closest(".invert-option");
+    var filter = $(this).closest(".filter");
+    var id = filter.data("id");
+    var f = getFilterDataById (id);
+    if (!!f.inverted){
+      f.inverted = false;
+      invertOption.removeClass("active");
+    }else{
+      f.inverted = true;
+      invertOption.addClass("active");
+    }
+
+    updateTags();
+
+
+}
+
 function updateFilters(){
   var data = filtersData;
   var query = $(".search").val().trim();
@@ -493,6 +511,7 @@ function updateFilters(){
 
   });
 
+  $(".filter .invert-option").click(invertNamespace);
   $(".options").click(showOptions);
   $(".visibility-panel .highlight").click(selectHighlight);
   $(".visibility-panel .option-filter").click(selectFilter);

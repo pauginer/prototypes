@@ -800,6 +800,60 @@ h1 {
 .all-panels .category-panel {
   display: none;
 }
+.namespaces-panel .invert-option {
+  cursor: pointer;
+  border: 1px solid #A2A9B1;
+  border-radius: 2px;
+  padding: 8px 16px;
+  margin-left: 8px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: flex-start;
+  margin-right: 10px;
+  padding: 7px 16px;
+  align-self: center;
+  display: none;
+}
+.namespaces-panel .invert-option .more {
+  content: "";
+  display: flex;
+  align-self: center;
+  margin-left: 8px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #222;
+}
+.namespaces-panel .invert-option .label-active {
+  display: none;
+}
+.namespaces-panel .invert-option .icon {
+  width: 16px;
+  height: 16px;
+  background: url(../images/contrast.svg) no-repeat;
+  background-size: contain;
+  margin-right: 8px;
+}
+.namespaces-panel .invert-option.active {
+  background-color: #2A4B8D;
+  border-color: #2A4B8D;
+  color: white;
+}
+.namespaces-panel .invert-option.active .label-active {
+  display: flex;
+}
+.namespaces-panel .invert-option.active .label-inactive {
+  display: none;
+}
+.namespaces-panel .invert-option.active .icon {
+  background-image: url(../images/contrast-white.svg);
+}
+.namespaces-panel .filter.active .invert-option {
+  display: flex;
+}
 .filter-list {
   max-height: 70vh;
   overflow-y: auto;

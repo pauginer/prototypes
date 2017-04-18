@@ -694,6 +694,39 @@ h1 {
   .category-panel { display:none;}
 }
 
+.namespaces-panel {
+  .invert-option {
+    .dropdown;
+    margin-right: 10px;
+    padding: 7px 16px;
+    //font-size: 14px;
+    align-self: center;
+    display:none;
+    .label-active {display: none;}
+    .icon {
+      width: 16px;
+      height: 16px;
+      background: url(../images/contrast.svg) no-repeat;
+      background-size: contain;
+      margin-right: 8px;
+    }
+    &.active {
+      background-color: #2A4B8D;
+      border-color: #2A4B8D;
+      color: white;
+        .label-active {display: flex;}
+        .label-inactive {display: none;}
+        .icon {
+          background-image: url(../images/contrast-white.svg);
+        }
+    }
+  }
+  .filter.active .invert-option {
+    display: flex;
+  }
+
+}
+
 .filter-list {
   max-height: 70vh;
   overflow-y: auto;
