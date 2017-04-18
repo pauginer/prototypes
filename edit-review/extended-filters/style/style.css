@@ -858,6 +858,12 @@ h1 {
   max-height: 70vh;
   overflow-y: auto;
 }
+.users-panel .filter-list .filter:not(.recent) {
+  display: none;
+}
+.users-panel .filter-list.searching .filter {
+  display: flex;
+}
 .filter-panel,
 .edittag-panel,
 .namespaces-panel,

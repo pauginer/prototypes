@@ -109,7 +109,11 @@ filtersData = { groups: [
     {id:"cat-technology", selected: false, compact: true, name: "Technology", description: "Wikipedia category."}
   ]},
   {group: "Users", compact: true, prefix:"@", filters:[
-    {id:"user-cronopio", selected: false, compact: true, name: "Cronopio", description: "Wikipedia user."}
+    {id:"user-cronopio", selected: false, compact: true, recent: true, name: "Cronopio", description: "Wikipedia user."},
+    {id:"user-espe", selected: false, compact: true, recent: true, name: "Esperanza", description: "Wikipedia user."},
+    {id:"user-carl", selected: false, compact: true, recent: true, name: "Carl Sgn", description: "Wikipedia user."},
+    {id:"user-fama", selected: false, compact: true, name: "Fama", description: "Wikipedia user."},
+    {id:"user-jules", selected: false, compact: true, name: "Jules 1223", description: "Wikipedia user."}
   ]}
 ]};
 

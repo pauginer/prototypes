@@ -105,7 +105,7 @@ function findInGroup(group, query, expanded){
 
 function find(data, query, prefix, extended){
   //var data = filtersData;
-  var result = {groups:[]};
+  var result = {groups:[], searching: true};
   var groups = data.groups;
   $.each(groups, function(i,group){
     var filters = findInGroup(group, query, !!extended);
