@@ -110,10 +110,13 @@ filtersData = { groups: [
   ]},
   {group: "Users", compact: true, prefix:"@", filters:[
     {id:"user-cronopio", selected: false, compact: true, recent: true, name: "Cronopio", description: "Wikipedia user."},
-    {id:"user-espe", selected: false, compact: true, recent: true, name: "Esperanza", description: "Wikipedia user."},
-    {id:"user-carl", selected: false, compact: true, recent: true, name: "Carl Sgn", description: "Wikipedia user."},
-    {id:"user-fama", selected: false, compact: true, name: "Fama", description: "Wikipedia user."},
-    {id:"user-jules", selected: false, compact: true, name: "Jules 1223", description: "Wikipedia user."}
+    {id:"user-David_Biddulph", selected: false, compact: true, recent: true, name: "David Biddulph", description: "Wikipedia user."},
+    {id:"user-Ss112", selected: false, compact: true, recent: true, name: "Ss112", description: "Wikipedia user."},
+    {id:"user-John_of_Reading", selected: false, compact: true, recent: true, name: "John of Reading", description: "Wikipedia user."},
+    {id:"user-Hayman30", selected: false, compact: true, name: "Hayman30", description: "Wikipedia user."},  {id:"user-Arulmani_95", selected: false, compact: true, name: "Arulmani 95", description: "Wikipedia user."},  {id:"user-Gatoclass", selected: false, compact: true, name: "Gatoclass", description: "Wikipedia user."},
+    {id:"user-William_Avery", selected: false, compact: true, name: "William Avery", description: "Wikipedia user."},
+    {id:"user-Dimadick", selected: false, compact: true, name: "Dimadick", description: "Wikipedia user."},
+    {id:"user-Penny_Richards", selected: false, compact: true, name: "Penny Richards", description: "Wikipedia user."}
   ]}
 ]};
 

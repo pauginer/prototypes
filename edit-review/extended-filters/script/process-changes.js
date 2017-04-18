@@ -129,5 +129,11 @@ $(".change a[href^='/']:not([href^='//'])").each(function(i,a){
   $(a).attr("target", "__blank");
 });
 
+//Add usernames
+$(".change .mw-userlink bdi").each(function(i,elt){
+  var username= $(elt).text().split(' ').join('_');
+  var ch = $(elt).closest(".change");
+  ch.addClass("user-"+username)
+});
 
 }
