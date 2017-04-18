@@ -450,10 +450,7 @@ function invertNamespace(){
       f.inverted = true;
       invertOption.addClass("active");
     }
-
     updateTags();
-
-
 }
 
 function updateFilters(){
