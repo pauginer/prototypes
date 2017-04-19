@@ -104,7 +104,7 @@ a.new, #p-personal a.new {
 }
 
 .prelude{
-  padding: 10px 20px;
+  padding: 0px 20px;
   flex-direction: column;
   .mw-specialpage-summary{
     display:flex;
@@ -113,10 +113,11 @@ a.new, #p-personal a.new {
   .quicklinks {
     .dropdown;
     margin-left:auto;
-    margin-top:auto;
-    margin-bottom: auto;
+    margin-top:10px;
+    margin-bottom: 10px;
     align-self: center;
     position: relative;
+    flex:none;
     .icon {
       width: 20px;
       height: 20px;
@@ -1663,4 +1664,20 @@ body.highlighting {
   .change.blue.green.yellow.orange.red {
     list-style-image: url('../images/bullet-blue-green-yellow-orange-red.png');
   }
+}
+
+
+.watchlist-specific {display:none}
+body.watchlist {
+  .watchlist-specific {display: flex;}
+  .rc-specific {display:none;}
+}
+
+.watchlist-description {
+  flex-direction: column;
+  margin-right: 10px;
+  margin-bottom: 15px;
+}
+.mw-watchlist-reset-submit {
+  max-width: 200px;
 }

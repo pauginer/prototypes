@@ -1174,7 +1174,7 @@ $(function(){ //Initialization:
 
   linksTemplate = Handlebars.compile($("#links-template").html());
   var hash= window.location.hash.replace("#","");
-  $("body").addClass(hash); //tags: integrated
+  $("body").addClass(hash); //tags: watchlist
 
   loadChangesData();
   updateFilters();

@@ -305,9 +305,19 @@
           <section class="header-search"></section>
       </section>
       <section class="prelude">
-        <h1>Recent changes</h1>
+        <h1 class="rc-specific">Recent changes</h1>
+        <h1 class="watchlist-specific">Watchlist</h1>
+        <div id="contentSub" class="watchlist-specific">For Cronopio<span class="mw-watchlist-toollinks">(<a href="#" title="Special:Watchlist">View relevant changes</a> | <a href="#" title="Special:EditWatchlist">View and edit watchlist</a> | <a href="#" title="Special:EditWatchlist/raw">Edit raw watchlist</a> | <a href="#" title="Special:EditWatchlist/clear">Clear the watchlist</a>)</span>
+        </div>
         <div class="mw-specialpage-summary">
-          <p>This is a list of recent changes to Wikipedia.</p>
+          <p class="rc-specific">This is a list of recent changes to Wikipedia.</p>
+          <div class="watchlist-description watchlist-specific">
+            <p>327 pages on your watchlist, not separately counting talk pages. Pages that have been changed since you last visited them are shown in <strong>bold</strong>.</p>
+            <form method="post" action="#">
+            <input name="mw-watchlist-reset-submit" type="button" value="Mark all pages visited">
+            </form>
+          </div>
+
           <div class="quicklinks"> <div class="icon"></div> Quick links <div class="more"></div>
             <div class="quicklinks-panel"></div>
           </div>
