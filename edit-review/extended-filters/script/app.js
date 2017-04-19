@@ -1150,6 +1150,16 @@ function scrollToFilters(){
   }
 }
 
+function showNewChanges(){
+  $(".new-changes").append("<div class='old-changes-separator'>Old changes</div>");
+  $(".new-changes").removeClass("hidden");
+  $(".new-changes-indicator").removeClass("active");
+}
+
+function showNewChangesIndicator(){
+  $(".new-changes-indicator").addClass("active");
+}
+
 var filerHighlights = true;
 var meetsFilters = meetsFiltersOrOptionalHighlight;
 
@@ -1213,8 +1223,12 @@ $(function(){ //Initialization:
     $(".show-settings").toggleClass("active");
   });
 
+  $(".new-changes-indicator .view-changes").click(showNewChanges);
+
   $(".quicklinks").click(showLinksPanel);
   loadPaginationPanel();
   loadDatesPanel();
+
+  setTimeout(showNewChangesIndicator,5000);
 
 });

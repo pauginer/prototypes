@@ -136,4 +136,8 @@ $(".change .mw-userlink bdi").each(function(i,elt){
   ch.addClass("user-"+username)
 });
 
+$(".mw-changeslist:first-child() .change:nth-of-type(-n+10)").addClass("new-change");
+$(".mw-changeslist:first-child() .special").prepend($("<div class='new-changes hidden'></div>"));
+$(".new-changes").append($(".new-change"));
+
 }
