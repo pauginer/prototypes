@@ -103,7 +103,7 @@
       {{#if personal}} <div class="group">Created by you</div> {{/if}}
       {{#each links}}
         {{#if personal}}
-        <div class="link {{#if filters}}filtering{{/if}}" name="{{name}}"> <div class="star-like active"></div> <a href="{{url}}">{{name}}</a> </div>
+        <div class="link {{#if filters}}filtering{{/if}}{{#if default}} default{{/if}}" name="{{name}}"> <div class="star-like active"></div> <a href="{{url}}">{{name}}</a> <div class="details-menu"></div> </div>
         {{/if}}
       {{/each}}
       {{#if expanded}}
@@ -320,6 +320,16 @@
 
           <div class="quicklinks"> <div class="icon"></div> Quick links <div class="more"></div>
             <div class="quicklinks-panel"></div>
+            <div class="quicklink-detail-panel">
+              <div class="title"><div class="icon"></div><div class="name">Filter</div></div>
+              <div class="quicklink-options">
+                <div class="quicklink-option rename"><div class="icon"></div>Rename</div>
+                <div class="quicklink-option default"><div class="icon"></div>Set as default</div>
+                <div class="quicklink-option remove-default"><div class="icon"></div>Unset as default</div>
+                <div class="quicklink-option delete"><div class="icon"></div>Remove</div>
+              </div>
+              <div class="back"><div class="icon"></div>Back to the list</div>
+            </div>
           </div>
         </div>
       </section>

@@ -166,6 +166,13 @@ a.new,
 .prelude .quicklinks-panel .link a {
   color: #3366CC;
 }
+.prelude .quicklinks-panel .link .details-menu {
+  width: 20px;
+  height: 20px;
+  background: center center url(../images/elipses.svg) no-repeat;
+  background-size: contain;
+  margin-left: auto;
+}
 .prelude .quicklinks-panel .link .star,
 .prelude .quicklinks-panel .link .star-like {
   width: 20px;
@@ -183,6 +190,10 @@ a.new,
 .prelude .quicklinks-panel .link .star.active:hover,
 .prelude .quicklinks-panel .link .star-like.active:hover {
   background-image: url(../images/bookmark-active.svg);
+}
+.prelude .quicklinks-panel .link.default .star-like,
+.prelude .quicklinks-panel .link.default:hover .star-like {
+  background-image: url(../images/pin-blue.svg);
 }
 .prelude .quicklinks-panel .explain-favs {
   display: flex;
@@ -217,6 +228,93 @@ a.new,
   background-color: #EAF3FF;
 }
 .quicklinks.active .quicklinks-panel {
+  display: flex;
+}
+.quicklink-detail-panel {
+  border: 1px solid #A2A9B1;
+  box-shadow: 0 2px 0 1px rgba(0, 0, 0, 0.1);
+  background: white;
+  cursor: default;
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 100;
+  min-width: 200px;
+  font-weight: normal;
+}
+.quicklink-detail-panel .title {
+  display: flex;
+  flex-direction: row;
+  padding: 8px;
+  color: #72777D;
+  align-items: center;
+  background-color: #F8F9FA;
+  border-bottom: 1px solid #C8CCD1;
+}
+.quicklink-detail-panel .title .icon {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  margin-right: 4px;
+  background: url(../images/bookmark-filled-light.svg) no-repeat;
+  background-size: contain;
+}
+.quicklink-detail-panel.default .title .icon {
+  background-image: url(../images/pin-light.svg);
+}
+.quicklink-detail-panel .quicklink-option {
+  display: flex;
+  flex-direction: row;
+  padding: 8px;
+  align-items: center;
+  cursor: pointer;
+}
+.quicklink-detail-panel .quicklink-option:hover {
+  background-color: #F8F9FA;
+}
+.quicklink-detail-panel .quicklink-option .icon {
+  margin-right: 8px;
+}
+.quicklink-detail-panel .quicklink-option.rename .icon {
+  background-image: url(../images/pencil.svg);
+}
+.quicklink-detail-panel .quicklink-option.default .icon,
+.quicklink-detail-panel .quicklink-option.remove-default .icon {
+  background-image: url(../images/pin.svg);
+}
+.quicklink-detail-panel .quicklink-option.remove-default {
+  display: none;
+}
+.quicklink-detail-panel .quicklink-option.delete .icon {
+  background-image: url(../images/trash-dark.svg);
+}
+.quicklink-detail-panel.default .quicklink-option.default {
+  display: none;
+}
+.quicklink-detail-panel.default .quicklink-option.remove-default {
+  display: flex;
+}
+.quicklink-detail-panel .back {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px;
+  cursor: pointer;
+  border-top: 1px solid #C8CCD1;
+}
+.quicklink-detail-panel .back:hover {
+  background-color: #F8F9FA;
+}
+.quicklink-detail-panel .back .icon {
+  background-image: url(../images/prev.svg);
+  margin-right: 8px;
+}
+.quicklinks.active.detail .quicklinks-panel {
+  display: none;
+}
+.quicklinks.active.detail .quicklink-detail-panel {
   display: flex;
 }
 h1 {

@@ -153,6 +153,13 @@ a.new, #p-personal a.new {
         background-color: #EAF3FF;
       }
       a {color: #3366CC;}
+      .details-menu {
+        width: 20px;
+        height: 20px;
+        background: center center url(../images/elipses.svg) no-repeat;
+        background-size:contain;
+        margin-left: auto;
+      }
       .star, .star-like {
         width: 20px;
         height: 20px;
@@ -168,6 +175,9 @@ a.new, #p-personal a.new {
           background-image: url(../images/bookmark-active.svg);
         }
       }
+        &.default .star-like, &.default:hover .star-like {
+          background-image: url(../images/pin-blue.svg);
+        }
     }
     .explain-favs {
       display: flex;
@@ -205,6 +215,89 @@ a.new, #p-personal a.new {
 
 .quicklinks.active .quicklinks-panel{
   display:flex;
+}
+.quicklink-detail-panel{
+  .panel;
+  cursor: default;
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  right:0;
+  z-index: 100;
+  min-width: 200px;
+  font-weight: normal;
+  .title {
+    display: flex;
+    flex-direction: row;
+    //cursor: pointer;
+    padding:8px;
+    color: #72777D;
+    align-items: center;
+    background-color: #F8F9FA;
+    border-bottom: 1px solid #C8CCD1;
+    .icon {
+      flex:none;
+      width: 24px;
+      height: 24px;
+      margin-right: 4px;
+      background: url(../images/bookmark-filled-light.svg) no-repeat;
+      background-size: contain;
+    }
+  }
+  &.default .title .icon {
+    background-image: url(../images/pin-light.svg);
+  }
+  .quicklink-option {
+    display:flex;
+    flex-direction: row;
+    padding: 8px;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover{
+      background-color:#F8F9FA;
+    }
+    .icon {
+      margin-right:8px;
+    }
+    &.rename .icon {
+      background-image: url(../images/pencil.svg);
+    }
+    &.default .icon, &.remove-default .icon {
+      background-image: url(../images/pin.svg);
+    }
+    &.remove-default {
+      display:none;
+    }
+
+    &.delete .icon {
+      background-image: url(../images/trash-dark.svg);
+    }
+  }
+  &.default .quicklink-option.default {display:none;}
+  &.default .quicklink-option.remove-default {display:flex;}
+  .back {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding:8px;
+    //color: #36c;
+    cursor:pointer;
+    border-top: 1px solid #C8CCD1;
+    &:hover{
+      background-color:#F8F9FA;
+    }
+    & .icon {
+      background-image: url(../images/prev.svg);
+      margin-right:8px;
+    }
+  }
+}
+
+.quicklinks.active.detail {
+  .quicklinks-panel {display: none;}
+  .quicklink-detail-panel{display:flex;}
 }
 
 h1 {
