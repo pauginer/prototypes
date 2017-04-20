@@ -1610,12 +1610,12 @@ h1 {
   visibility: hidden;
   position: relative;
   top: 5px;
-  z-index: -1;
 }
 .new-changes-indicator.active {
   visibility: visible;
 }
 .new-changes-indicator .line {
+  z-index: -1;
   transition: all 0.3s ease;
   width: 0%;
   opacity: 0;
