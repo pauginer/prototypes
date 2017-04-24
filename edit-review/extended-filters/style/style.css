@@ -646,7 +646,7 @@ h1 {
   flex: none;
   width: 24px;
   height: 24px;
-  background: center center url(../images/bookmark-outline.svg) no-repeat;
+  background: center center url(../images/bookmark-filled-light.svg) no-repeat;
   background-size: contain;
   margin: 4px 0;
 }
