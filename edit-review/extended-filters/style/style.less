@@ -1165,8 +1165,17 @@ h1 {
   flex-direction: row;
   //justify-content: flex-end;
   border-bottom: 1px solid #EAECF0;
-margin: 0 20px;
-
+  margin: 0 20px;
+  transition: max-height 0.3s ease, opacity 0.2s ease;
+  max-height:100px;
+  &.hidden {
+    display:flex !important;
+    max-height:0;
+    overflow: hidden;
+    visibility: collapse;
+    padding:0;
+    opacity:0;
+  }
 
   .pagination {
     margin-left:auto;

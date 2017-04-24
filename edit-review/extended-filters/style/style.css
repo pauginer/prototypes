@@ -1379,6 +1379,16 @@ h1 {
   flex-direction: row;
   border-bottom: 1px solid #EAECF0;
   margin: 0 20px;
+  transition: max-height 0.3s ease, opacity 0.2s ease;
+  max-height: 100px;
+}
+.actions.hidden {
+  display: flex !important;
+  max-height: 0;
+  overflow: hidden;
+  visibility: collapse;
+  padding: 0;
+  opacity: 0;
 }
 .actions .pagination {
   margin-left: auto;
