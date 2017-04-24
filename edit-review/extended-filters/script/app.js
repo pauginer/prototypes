@@ -114,7 +114,7 @@ function find(data, query, prefix, extended){
       var hasPrefix =!!prefix;
       var isCompact = !!group.compact;
       if(!(!hasPrefix && isCompact)){
-        result.groups.push(g);        
+        result.groups.push(g);
       }
 
     }
@@ -791,6 +791,7 @@ function filtersVisible(show){
   if(show){
     showPanelForPrefix();
     panel.removeClass("hidden");
+    $(".actions .pagination, .actions .dates, .quicklinks").removeClass("active");
     updateFilters();
   }else{
     $(".filter-panel, .edittag-panel, .namespaces-panel, .users-panel, .category-panel").scrollTop(0);
@@ -977,7 +978,8 @@ function showLinksPanel(e){
         updateLinks();
         $(".quicklinks").toggleClass("active");
   }
-
+  $(".actions .pagination, .actions .dates").removeClass("active");
+  filtersVisible(false);
 
   return false;
 }

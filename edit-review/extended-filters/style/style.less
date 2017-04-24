@@ -175,8 +175,14 @@ a.new, #p-personal a.new {
           background-image: url(../images/bookmark-active.svg);
         }
       }
+      .star-like{
+        visibility: hidden; width: 0px;
+        //display:none;
+      }
         &.default .star-like, &.default:hover .star-like {
           background-image: url(../images/pin-blue.svg);
+          visibility: visible; width: 20px;
+          //display: flex;
         }
     }
     .explain-favs {

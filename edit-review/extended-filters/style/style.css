@@ -191,9 +191,15 @@ a.new,
 .prelude .quicklinks-panel .link .star-like.active:hover {
   background-image: url(../images/bookmark-active.svg);
 }
+.prelude .quicklinks-panel .link .star-like {
+  visibility: hidden;
+  width: 0px;
+}
 .prelude .quicklinks-panel .link.default .star-like,
 .prelude .quicklinks-panel .link.default:hover .star-like {
   background-image: url(../images/pin-blue.svg);
+  visibility: visible;
+  width: 20px;
 }
 .prelude .quicklinks-panel .explain-favs {
   display: flex;
