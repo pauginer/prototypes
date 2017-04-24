@@ -111,7 +111,12 @@ function find(data, query, prefix, extended){
     var filters = findInGroup(group, query, !!extended);
     if (filters.length > 0){
       var g = {group: group.group, filters: filters};
-      result.groups.push(g);
+      var hasPrefix =!!prefix;
+      var isCompact = !!group.compact;
+      if(!(!hasPrefix && isCompact)){
+        result.groups.push(g);        
+      }
+
     }
   });
   return result;
