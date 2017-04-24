@@ -372,6 +372,7 @@ h1 {
   top: 100%;
   right: -1px;
   padding-top: 8px;
+  z-index: 100;
 }
 .pagination-panel label {
   color: #54595D;
@@ -459,6 +460,7 @@ h1 {
   top: 100%;
   right: -1px;
   padding-top: 8px;
+  z-index: 100;
 }
 .dates-panel label {
   color: #54595D;
@@ -1518,7 +1520,8 @@ h1 {
   flex-direction: row;
   align-items: center;
   align-self: flex-start;
-  margin-right: 16px;
+  margin-right: auto;
+  margin-left: 0;
 }
 .pagination-controls .show-settings .more {
   content: "";
