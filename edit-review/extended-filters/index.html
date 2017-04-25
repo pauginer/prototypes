@@ -252,6 +252,7 @@
       </div>
       {{/each}}
       {{/each}}
+      {{#unless searching}}<div class="filter-footer">Search for any editor by typing their username in the search bar</div> {{/unless}}
       </div>
       {{#unless groups}}<div class='no-results'>No filters found</div>{{/unless}}
     </script>
@@ -261,7 +262,8 @@
         <div class="highlighter" title="Highlight results">
           <div class="icon"></div> Highlight results</div>
       </div>
-      <div class="filter-list">
+      <div class="filter-list {{#if searching}}searching{{/if}}">
+      {{#unless searching}}<div class="group">Recent categories</div>{{/unless}}
       {{#each groups}}
       <div  class="hidden group {{#if compact}}compact{{/if}}" data-id="{{group}}">
         <div class="title">{{group}} {{clarification}}</div>
@@ -292,6 +294,7 @@
       </div>
       {{/each}}
       {{/each}}
+      {{#unless searching}}<div class="filter-footer">Search for any category by typing its name in the search bar</div> {{/unless}}
       </div>
       {{#unless groups}}<div class='no-results'>No filters found</div>{{/unless}}
     </script>

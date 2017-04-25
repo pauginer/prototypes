@@ -1830,6 +1830,12 @@ h1 {
   background-image: url(../images/marker-white.svg);
   opacity: 1;
 }
+.users-panel .filter-footer,
+.category-panel .filter-footer {
+  padding: 16px;
+  color: #54595D;
+  text-align: center;
+}
 .edittag-panel .filter-footer {
   display: none;
   border-bottom: 1px solid #C8CCD1;
