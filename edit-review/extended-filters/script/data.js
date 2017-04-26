@@ -42,16 +42,16 @@ filtersData = { groups: [
     {id:"minor", selected: false, name: "Minor edits", description: "Edits the author labeled as minor."},
     {id:"regular", selected: false, name: "Non-minor edits", description: "Edits not labeled as minor."}
   ]},
+  {group: "Recency in page", filters:[
+    {id:"latest", selected: false, name: "Last revision", description: "The most recent change to a page."},
+    {id:"older", selected: false, name: "Earlier revisions", description: "Edits that came before the last revision."}
+  ]},
   {group: "Type of change", filters:[
     {id:"content-edit", selected: true, name: "Page edits", description: "Edits to the content of pages."},
     {id:"new-page", selected: true, name: "New pages", description: "Edits that create pages."},
     {id:"categorization", selected: false, name: "Category changes", description: "Records of pages being added or removed from categories."},
     {id:"wikidata-edit", selected: false, name: "Wikidata edits", description: "Edits that originate in Wikidata."},
     {id:"logged", selected: true, name: "Logged actions", description: "Account creations, page deletions and moves, administrative actions, uploads..."},
-  ]},
-  {group: "Recency in page", filters:[
-    {id:"latest", selected: false, name: "Latest revisions", description: "Edits that are the most recent change to a page."},
-    {id:"older", selected: false, name: "Older revisions", description: "Edits that are not the most recent change to a page."}
   ]},
   {group: "Watchlisted content", filters:[
     {id:"watchlist", selected: false, name: "In watchlist", description: "Edits on pages in your watchlist."},
