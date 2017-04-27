@@ -918,13 +918,13 @@ h1 {
 .namespaces-panel .filter-header .highlighter {
   margin-left: 8px;
 }
-.namespaces-panel .filter-list.inverted .filter {
+.namespaces-panel .filter-list.inverted .filter:not(.active) {
   background-color: white;
 }
-.namespaces-panel .filter-list.inverted .filter .name {
+.namespaces-panel .filter-list.inverted .filter:not(.active) .name {
   color: #222;
 }
-.namespaces-panel .filter-list.inverted .filter .options .icon {
+.namespaces-panel .filter-list.inverted .filter:not(.active) .options .icon {
   opacity: 1;
 }
 .namespaces-panel .filter-list.inverted .filter.active {
