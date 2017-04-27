@@ -998,6 +998,7 @@ function showLinksPanel(e){
   if ($(e.target).hasClass("quicklinks")||$(e.target).hasClass("icon")){
         updateLinks();
         $(".quicklinks").toggleClass("active");
+        $(".quicklinks-panel").scrollTop(0);
   }
   $(".actions .pagination, .actions .dates").removeClass("active");
   filtersVisible(false);

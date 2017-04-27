@@ -136,5 +136,14 @@ linksData = { expanded: true, personal: false, fav: false, total:0, links: [
 {name: "Vandalism", url:"#", fav:false},
 {name: "Deletion", url:"#", fav:false},
 {name: "RfC", url:"#", fav:false},
-{name: "Backlogs", url:"#", fav:false}
+{name: "Backlogs", url:"#", fav:false},
+{name: "About us", url:"#", group: true},
+{name: "Introduction/FAQ/Policy", url:"#", fav:false},
+{name: "Stats", url:"#", fav:false},
+{name: "News", url:"#", fav:false},
+{name: "Milestones", url:"#", fav:false},
+{name: "Village pump", url:"#", fav:false},
+{name: "Mailing lists", url:"#", fav:false},
+{name: "Chat", url:"#", fav:false},
+{name: "Wikipedia Signpost", url:"#", fav:false}
 ]};

@@ -136,8 +136,11 @@ a.new, #p-personal a.new {
     z-index: 100;
     min-width: 200px;
     font-weight: normal;
+    max-height: 70vh;
+    overflow-y: auto;
 
     .group {
+      flex: none;
       font-weight: bold;
       padding: 8px 16px;
       color: #54595D;
@@ -145,6 +148,7 @@ a.new, #p-personal a.new {
     }
     .link {
       display: flex;
+      flex: none;
       flex-direction: row;
       align-items: center;
       cursor: pointer;
@@ -188,6 +192,7 @@ a.new, #p-personal a.new {
     .explain-favs {
       display: flex;
       flex-direction: row;
+      flex:none;
       //cursor: pointer;
       padding:8px;
       color: #72777D;
