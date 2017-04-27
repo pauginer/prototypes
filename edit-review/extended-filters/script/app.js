@@ -535,7 +535,7 @@ function updateFilters(){
     }
   }
 
-  data.invertNamespaces = invertNamespaces;
+  data.invertNamespaces = !!invertNamespaces;
 
   var html = filtersTemplate(data);
 
@@ -565,7 +565,7 @@ function updateFilters(){
   //Bindings:
   $(".check").change(function() {
     updateFilterData(this.id, this.checked);
-    if(invertNamespace){
+    if(!!invertNamespaces){
       getFilterDataById(this.id).inverted = true;
     }
     $(this).parent(".filter").toggleClass("active");
