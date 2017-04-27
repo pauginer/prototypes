@@ -145,5 +145,5 @@ linksData = { expanded: true, personal: false, fav: false, total:0, links: [
 {name: "Village pump", url:"#", fav:false},
 {name: "Mailing lists", url:"#", fav:false},
 {name: "Chat", url:"#", fav:false},
-{name: "Wikipedia Signpost", url:"#", fav:false}
+{name: "Wikipedia Signpost", url:"https://en.wikipedia.org/wiki/Wikipedia:Wikipedia_Signpost", fav:false}
 ]};
