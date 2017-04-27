@@ -1003,10 +1003,12 @@ h1 {
   max-height: 70vh;
   overflow-y: auto;
 }
-.users-panel .filter-list .filter:not(.recent) {
+.users-panel .filter-list .filter:not(.recent),
+.category-panel .filter-list .filter:not(.recent) {
   display: none;
 }
-.users-panel .filter-list.searching .filter {
+.users-panel .filter-list.searching .filter,
+.category-panel .filter-list.searching .filter {
   display: flex;
 }
 .filter-panel,

@@ -97,11 +97,11 @@ filtersData = { groups: [
     {id:"mw-tag-Possible_self_promotion_in_userspace", selected: false, compact: true, name: "Possible self promotion in userspace", description: "User added typical promotional text to their user or user talk page."}
   ]},
   {group: "Content categories", url:"https://en.wikipedia.org/wiki/Portal:Contents/Categories", compact: true, prefix:"/", filters:[
-    {id:"cat-culture", selected: false, compact: true, name: "Culture", description: "Wikipedia category."},
-    {id:"cat-geography", selected: false, compact: true, name: "Geography", description: "Wikipedia category."},
-    {id:"cat-health", selected: false, compact: true, name: "Health", description: "Wikipedia category."},
-    {id:"cat-history", selected: false, compact: true, name: "History", description: "Wikipedia category."},
-    {id:"cat-science", selected: false, compact: true, name: "Science", description: "Wikipedia category."},
+    {id:"cat-culture", selected: false, recent:true, compact: true, name: "Culture", description: "Wikipedia category."},
+    {id:"cat-geography", selected: false, recent:true, compact: true, name: "Geography", description: "Wikipedia category."},
+    {id:"cat-health", selected: false, recent:true, compact: true, name: "Health", description: "Wikipedia category."},
+    {id:"cat-history", selected: false, recent:true, compact: true, name: "History", description: "Wikipedia category."},
+    {id:"cat-science", selected: false, recent:true, compact: true, name: "Science", description: "Wikipedia category."},
     {id:"cat-people", selected: false, compact: true, name: "People", description: "Wikipedia category."},
     {id:"cat-philosophy", selected: false, compact: true, name: "Philosophy", description: "Wikipedia category."},
     {id:"cat-religion", selected: false, compact: true, name: "Religion", description: "Wikipedia category."},
