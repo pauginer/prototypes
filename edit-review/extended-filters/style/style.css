@@ -910,6 +910,35 @@ h1 {
 .all-panels .category-panel {
   display: none;
 }
+.namespaces-panel .inverted-indicator {
+  display: none;
+  color: #54595D;
+  padding: 0 16px;
+}
+.namespaces-panel .filter-header .highlighter {
+  margin-left: 8px;
+}
+.namespaces-panel .filter-list.inverted .filter {
+  background-color: white;
+}
+.namespaces-panel .filter-list.inverted .filter .name {
+  color: #222;
+}
+.namespaces-panel .filter-list.inverted .filter .options .icon {
+  opacity: 1;
+}
+.namespaces-panel .filter-list.inverted .filter.active {
+  background-color: #F8F9FA;
+}
+.namespaces-panel .filter-list.inverted .filter.active .name {
+  color: #54595D;
+}
+.namespaces-panel .filter-list.inverted .filter.active .inverted-indicator {
+  display: flex;
+}
+.namespaces-panel .filter-list.inverted .filter.active .options .icon {
+  opacity: 0.6;
+}
 .namespaces-panel .invert-option {
   cursor: pointer;
   border: 1px solid #A2A9B1;
@@ -922,9 +951,10 @@ h1 {
   align-items: center;
   align-self: flex-start;
   margin-right: 10px;
-  padding: 7px 16px;
+  margin-left: auto;
+  padding: 9px 16px;
   align-self: center;
-  display: none;
+  background-color: white;
 }
 .namespaces-panel .invert-option .more {
   content: "";

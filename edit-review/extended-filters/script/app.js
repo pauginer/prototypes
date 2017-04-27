@@ -394,7 +394,7 @@ function closeHighlightPanel(){
 
 function filtersByPrefix(data, prefix){
   var result = data;
-  if(!!prefix){ //edittag
+  if(!!prefix){
     var g = [];
     $.each(data.groups, function(i,group){
       if(group.prefix == prefix){
@@ -489,18 +489,33 @@ function updateLinks(expanded){
 
 }
 
+var invertNamespaces = false;
 function invertNamespace(){
     var invertOption = $(this).closest(".invert-option");
-    var filter = $(this).closest(".filter");
-    var id = filter.data("id");
-    var f = getFilterDataById (id);
-    if (!!f.inverted){
-      f.inverted = false;
+    var isInverted = invertOption.hasClass("active");
+    var filters = $(".namespaces-panel .filter.active");
+    var filterList = $(".namespaces-panel .filter-list");
+
+    if (!!invertNamespaces){
       invertOption.removeClass("active");
+      filterList.removeClass("inverted");
     }else{
-      f.inverted = true;
       invertOption.addClass("active");
+      filterList.addClass("inverted");
     }
+
+    $.each(filters, function(i,filter){
+      var id = $(filter).data("id");
+      var f = getFilterDataById (id);
+      if (!!invertNamespaces){
+        f.inverted = false;
+      }else{
+        f.inverted = true;
+      }
+    });
+
+
+    invertNamespaces = !invertNamespaces;
     updateTags();
 }
 
@@ -519,6 +534,9 @@ function updateFilters(){
       data = find(data, query, prefix, true); //extended search
     }
   }
+
+  data.invertNamespaces = invertNamespaces;
+
   var html = filtersTemplate(data);
 
   $(".filter-panel").html(html);
@@ -547,6 +565,9 @@ function updateFilters(){
   //Bindings:
   $(".check").change(function() {
     updateFilterData(this.id, this.checked);
+    if(invertNamespace){
+      getFilterDataById(this.id).inverted = true;
+    }
     $(this).parent(".filter").toggleClass("active");
     var isQuery = $(".search").val().length >0;
     if(isQuery){
@@ -559,7 +580,7 @@ function updateFilters(){
 
   });
 
-  $(".filter .invert-option").click(invertNamespace);
+  $(".namespaces-panel .invert-option").click(invertNamespace);
   $(".options").click(showOptions);
   $(".visibility-panel .highlight").click(selectHighlight);
   $(".visibility-panel .option-filter").click(selectFilter);

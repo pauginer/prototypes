@@ -176,10 +176,11 @@
     <script id="namespaces-template" type="text/x-handlebars-template">
       <div class="filter-header">
         <div class="title">Namespaces</div>
+        <div class="invert-option {{#if invertNamespaces}}active{{/if}}"><div class="icon"></div><span class="label-inactive">Exclude selected</span><span class="label-active">Excluding selected</span></div>
         <div class="highlighter" title="Highlight results">
           <div class="icon"></div> Highlight results</div>
       </div>
-      <div class="filter-list">
+      <div class="filter-list{{#if invertNamespaces}} inverted{{/if}}">
       {{#each groups}}
       <div  class="hidden group {{#if compact}}compact{{/if}}" data-id="{{group}}">
         <div class="title">{{group}} {{clarification}}</div>
@@ -193,7 +194,7 @@
           <div class="name">{{{name}}}</div>
           <div class="description hidden">{{description}}</div>
         </label>
-        <div class="invert-option {{#if inverted}}active{{/if}}"><div class="icon"></div><span class="label-inactive">Exclude</span><span class="label-active">Excluded</span></div>
+        <div class="inverted-indicator">Excluded</div>
         <div class="options" title="Highlight color"> <div class="icon"></div>
           <div class="visibility-panel">
             <div class="label-highlight"> Highlight color</div>

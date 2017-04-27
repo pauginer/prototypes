@@ -799,13 +799,35 @@ h1 {
 }
 
 .namespaces-panel {
+  .inverted-indicator {
+    display:none;
+    color: #54595D;
+    padding: 0 16px;
+  }
+  .filter-header .highlighter{margin-left:8px;}
+  .filter-list.inverted {
+    .filter {
+      background-color: white;
+      .name {color: #222;}
+      .options .icon {opacity:1;}
+    }
+    .filter.active {
+      background-color: #F8F9FA;
+      .name {color: #54595D;}
+      .inverted-indicator{ display: flex;}
+      .options .icon {opacity:0.6;}
+    }
+  }
+
   .invert-option {
     .dropdown;
     margin-right: 10px;
-    padding: 7px 16px;
+    margin-left: auto;
+    padding: 9px 16px;
     //font-size: 14px;
     align-self: center;
-    display:none;
+    //display:none;
+    background-color: white;
     .label-active {display: none;}
     .icon {
       width: 16px;
