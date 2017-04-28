@@ -467,10 +467,16 @@ function updateLinks(expanded){
     updateLinks(true);
   });
 
-  $(".quicklinks-panel .link.filtering").click(function(e){
+  $(".quicklinks-panel .link").click(function(e){
     var name = $(this).attr("name");
-    applyFiltersFromLink(name);
-    $(".quicklinks").removeClass("active");
+    if($(this).hasClass("filtering")){
+      applyFiltersFromLink(name);
+      $(".quicklinks").removeClass("active");
+    } else {
+      var url = $(this).find("a").attr("href");
+      window.open(url,'_blank');
+    }
+
   });
 
   $(".quicklinks-panel .details-menu").click(function(e){

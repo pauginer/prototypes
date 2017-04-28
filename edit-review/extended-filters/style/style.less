@@ -156,6 +156,19 @@ a.new, #p-personal a.new {
       &:hover{
         background-color: #EAF3FF;
       }
+      &:not(.filtering):hover{
+        .external-icon{
+          display:flex;
+          flex:none;
+          width: 15px;
+          height: 15px;
+          opacity: 0.3;
+          background: center center url(../images/external.svg) no-repeat;
+          background-size:contain;
+          margin-left: auto;
+          margin-right: 2px;
+        }
+      }
       a {color: #3366CC;}
       .details-menu {
         width: 20px;

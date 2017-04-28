@@ -167,6 +167,17 @@ a.new,
 .prelude .quicklinks-panel .link:hover {
   background-color: #EAF3FF;
 }
+.prelude .quicklinks-panel .link:not(.filtering):hover .external-icon {
+  display: flex;
+  flex: none;
+  width: 15px;
+  height: 15px;
+  opacity: 0.3;
+  background: center center url(../images/external.svg) no-repeat;
+  background-size: contain;
+  margin-left: auto;
+  margin-right: 2px;
+}
 .prelude .quicklinks-panel .link a {
   color: #3366CC;
 }

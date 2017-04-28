@@ -111,7 +111,7 @@
           {{#if group}}
               <div class="group">{{name}}</div>
           {{else}}
-          <div class="link {{#if filters}}filtering{{/if}} {{#if personal}}hidden{{/if}}" name="{{name}}"> <div class="star {{#if fav}} active{{/if}}"></div> <a href="{{url}}">{{name}}</a> </div>
+          <div class="link {{#if filters}}filtering{{/if}} {{#if personal}}hidden{{/if}}" name="{{name}}"> <div class="star {{#if fav}} active{{/if}}"></div> <a href="{{url}}">{{name}}</a> <div class="external-icon"></div></div>
           {{/if}}
         {{/each}}
       {{else}}
