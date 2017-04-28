@@ -1234,10 +1234,27 @@ function showNewChanges(){
   $(".new-changes").append("<div class='old-changes-separator'>Old changes</div>");
   $(".new-changes").removeClass("hidden");
   $(".new-changes-indicator").removeClass("active");
+  $(".old-changes-separator").click(function(){$(this).addClass("hidden");});
+}
+
+function playLiveChanges(){
+  var play = $(".play-live");
+  var live = play.hasClass("active");
+  var wasHidden= $(".new-changes").hasClass("hidden");
+  if(!live && wasHidden){
+    $(".new-changes").removeClass("hidden");
+    $(".new-changes-indicator").removeClass("active");
+    $(".new-changes").addTemporaryClass("active",1000);
+  }
+  play.toggleClass("active");
 }
 
 function showNewChangesIndicator(){
-  $(".new-changes-indicator").addClass("active");
+  var play = $(".play-live");
+  var live = play.hasClass("active");
+  if(!live){
+      $(".new-changes-indicator").addClass("active");
+  }
 }
 
 var filerHighlights = true;
@@ -1304,6 +1321,7 @@ $(function(){ //Initialization:
   });
 
   $(".new-changes-indicator .view-changes").click(showNewChanges);
+  $(".play-live").click(playLiveChanges);
 
   $(".quicklinks").click(showLinksPanel);
   $(".quicklink-detail-panel .back").click(function(e){
@@ -1337,3 +1355,21 @@ $(function(){ //Initialization:
   setTimeout(showNewChangesIndicator,5000);
 
 });
+
+(function($){
+
+    $.fn.extend({
+
+        addTemporaryClass: function(className, duration) {
+            var elements = this;
+            setTimeout(function() {
+                elements.removeClass(className);
+            }, duration);
+
+            return this.each(function() {
+                $(this).addClass(className);
+            });
+        }
+    });
+
+})(jQuery);

@@ -1344,6 +1344,25 @@ h1 {
   justify-content: flex-end;
   margin: 4px 20px 0 20px;
 
+  .play-live {
+    .dropdown;
+    margin-right: 16px;
+    &.active {
+      color: white;
+      background-color: #2A4B8D;
+      border-color: #2A4B8D;
+      .icon {
+        background-image: url(../images/play-white.svg);
+      }
+    }
+    .icon {
+      width: 18px;
+      height: 18px;
+      background: center center url(../images/play.svg) no-repeat;
+      background-size: contain;
+      margin-right: 8px;
+    }
+  }
   .show-settings {
     .dropdown;
     margin-right: auto;
@@ -1403,6 +1422,19 @@ h1 {
 
 }
 
+.new-changes{
+  opacity:1;
+  transition: all 1s ease;
+  max-height:1000px;
+  &.active {
+    filter:sepia(100%);
+  }
+  &.hidden {
+    opacity:0;
+    display:flex !important;
+    max-height: 0;
+  }
+}
 
 
 .new-changes-indicator {
@@ -1451,6 +1483,12 @@ h1 {
   padding: 4px;
   color:#36c;
   margin-left: -16px;
+  cursor:pointer;
+  &:hover{
+    color: #72777D;
+    border-color: #72777D;
+    //background-color: #EAF3FF;
+  }
 }
 
 .changes {
