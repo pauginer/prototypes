@@ -22,9 +22,9 @@ filtersData = { groups: [
     {id:"unregistered", selected: false, name: "Unregistered", description: "Editors who aren't logged in."}
   ]},
   {group: "Experience level", filters:[
-    {id:"newcomer", selected: false, name: "Newcomer", description: "Very new editors: fewer than 10 edits and 4 days of activity."},
-    {id:"experienced", selected: false, name: "Experienced", description: "More days of activity and edits than “Newcomers” but fewer than “More experienced.”"},
-    {id:"most-experienced", selected: false, name: "More experienced", description: "More than 30 days of activity and 500 edits."}
+    {id:"newcomer", selected: false, name: "Newcomers", description: "Fewer than 10 edits and 4 days of activity."},
+    {id:"experienced", selected: false, name: "Learners", description: "More days of activity and edits than “Newcomers” but fewer than “Experienced users.”"},
+    {id:"most-experienced", selected: false, name: "Experienced users", description: "More than 30 days of activity and 500 edits."}
   ]},
   {group: "Edit authorship", filters:[
     {id:"own", selected: false, name: "Your own edits", description: "Edits by you."},
