@@ -1260,6 +1260,12 @@ function showNewChangesIndicator(){
   var live = play.hasClass("active");
   if(!live){
       $(".new-changes-indicator").addClass("active");
+      $(".pagination-controls .prev").removeClass("disabled");
+      $(".pagination-controls .prev").click(function(e){
+        $(".new-changes-indicator").removeClass("active");
+        $(".pagination-controls .prev").addClass("disabled");
+        $(".new-changes").removeClass("hidden");
+      });
   }
 }
 
