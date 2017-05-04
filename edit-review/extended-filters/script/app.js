@@ -1199,6 +1199,7 @@ function saveTags(e){
   storeFiltersAsLink(name);
   $(".tagbox-title").text(name);
   hideSaveTagsDialog();
+  $(".quicklinks").addTemporaryClass("updated",500)
   return false;
 }
 
@@ -1231,8 +1232,8 @@ function activeOnType(e){
 }
 
 function scrollToFilters(){
-  if($(".all-panels").hasClass("hidden") && $('body').scrollTop() < 200){
-    $('body,html').animate({scrollTop: 220 }, 200);
+  if($(".all-panels").hasClass("hidden") && $('body').scrollTop() < 140){
+    $('body,html').animate({scrollTop: 150 }, 200);
   }
 }
 

@@ -115,6 +115,8 @@ a.new,
   align-self: flex-end;
   position: relative;
   flex: none;
+  transition: all 0.5s ease;
+  transition-delay: 0.25s;
 }
 .prelude .quicklinks .more {
   content: "";
@@ -126,6 +128,10 @@ a.new,
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   border-top: 5px solid #222;
+}
+.prelude .quicklinks.updated {
+  background-color: #EAF3FF;
+  border-color: #3366cc;
 }
 .prelude .quicklinks .icon {
   width: 20px;
