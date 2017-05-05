@@ -118,14 +118,28 @@ a.new, #p-personal a.new {
     align-self: flex-end;
     position: relative;
     flex:none;
-    transition: all 0.5s ease;
-    transition-delay: 0.25s;
-    &.updated {background-color: #EAF3FF; border-color: #3366cc;}
+    transition: all 0.3s ease;
+    //transition-delay: 0.25s;
+    &.updated {
+      background-color: #EAF3FF; border-color: #3366cc; color: #36c;
+      .icon {
+        background-image: url(../images/bookmark-active.svg);
+        background-position-y:-2px;
+      }
+      .more{
+        border-top-color: #36c;
+      }
+    }
     .icon {
+      transition: all 0.2s ease;
+      //transition-delay: 0.25s;
       width: 20px;
       height: 20px;
       background: url(../images/bookmark-filled.svg) no-repeat;
       background-size: contain;
+    }
+    .more {
+      transition: all 0.25s ease;
     }
   }
   .quicklinks-panel {

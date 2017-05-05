@@ -115,8 +115,7 @@ a.new,
   align-self: flex-end;
   position: relative;
   flex: none;
-  transition: all 0.5s ease;
-  transition-delay: 0.25s;
+  transition: all 0.3s ease;
 }
 .prelude .quicklinks .more {
   content: "";
@@ -132,12 +131,24 @@ a.new,
 .prelude .quicklinks.updated {
   background-color: #EAF3FF;
   border-color: #3366cc;
+  color: #36c;
+}
+.prelude .quicklinks.updated .icon {
+  background-image: url(../images/bookmark-active.svg);
+  background-position-y: -2px;
+}
+.prelude .quicklinks.updated .more {
+  border-top-color: #36c;
 }
 .prelude .quicklinks .icon {
+  transition: all 0.2s ease;
   width: 20px;
   height: 20px;
   background: url(../images/bookmark-filled.svg) no-repeat;
   background-size: contain;
+}
+.prelude .quicklinks .more {
+  transition: all 0.25s ease;
 }
 .prelude .quicklinks-panel {
   border: 1px solid #A2A9B1;

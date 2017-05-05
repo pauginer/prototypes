@@ -1199,7 +1199,7 @@ function saveTags(e){
   storeFiltersAsLink(name);
   $(".tagbox-title").text(name);
   hideSaveTagsDialog();
-  $(".quicklinks").addTemporaryClass("updated",500)
+  $(".quicklinks").addTemporaryClass("updated",350)
   return false;
 }
 
