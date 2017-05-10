@@ -582,7 +582,7 @@ function updateFilters(){
     }
 
     updateTags();
-    $(".search").focus();
+    //$(".search").focus();
 
   });
 
