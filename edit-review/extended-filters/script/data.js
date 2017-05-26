@@ -9,26 +9,26 @@ filtersData = { groups: [
   {group: "Contribution quality predictions", clarification: "", info:"quality", filters:[
       {id:"very-good", selected: false, name: "<i>Very likely</i> good", description: "Highly accurate at finding almost all problem-free edits."},
       {id:"maybe-damaging", selected: false, name: "<i>May</i> have problems", description: "Finds most flawed or damaging edits but with lower accuracy."},
-      {id:"damaging", selected: false, name: "<i>Likely</i> have problems", description: "Finds half of flawed or damaging edits with medium accuracy."},
-      {id:"very-damaging", selected: false, name: "<i>Very likely</i> have problems", description: "Highly accurate at finding the most obvious 30% of flawed or damaging edits."}
+      {id:"damaging", selected: false, name: "<i>Likely</i> have problems", description: "With medium accuracy, finds more problem edits than the “Very Likely” filter but fewer than “May.”"},
+      {id:"very-damaging", selected: false, name: "<i>Very likely</i> have problems", description: "Highly accurate at finding the most obvious flawed or damaging edits."}
   ]},
   {group: "User intent predictions", clarification: "", info:"intent",filters:[
     {id:"good-faith", selected: false, name: "<i>Very likely</i> good faith", description: "Highly accurate at finding almost all good-faith edits."},
     {id:"bad-faith", selected: false, name: "<i>May be</i> bad faith", description: "Finds most bad-faith edits but with a lower accuracy."},
-    {id:"very-bad-faith", selected: false, name: "<i>Likely</i> bad faith", description: "With medium accuracy, finds the most obvious 25% of bad-faith edits."}
+    {id:"very-bad-faith", selected: false, name: "<i>Very likely</i> bad faith", description: "Highly accurate at finding the most obvious bad faith edits."}
   ]},
   {group: "User registration", filters:[
     {id:"registered", selected: false, name: "Registered", description: "Logged-in editors."},
     {id:"unregistered", selected: false, name: "Unregistered", description: "Editors who aren't logged in."}
   ]},
-  {group: "Experience level", filters:[
+  {group: "Experience level (for registered users only)", filters:[
     {id:"newcomer", selected: false, name: "Newcomers", description: "Fewer than 10 edits and 4 days of activity."},
-    {id:"experienced", selected: false, name: "Learners", description: "More days of activity and edits than “Newcomers” but fewer than “Experienced users.”"},
+    {id:"experienced", selected: false, name: "Learners", description: "More experience than “Newcomers” but less than “Experienced users”."},
     {id:"most-experienced", selected: false, name: "Experienced users", description: "More than 30 days of activity and 500 edits."}
   ]},
-  {group: "Edit authorship", filters:[
-    {id:"own", selected: false, name: "Your own edits", description: "Edits by you."},
-    {id:"others", selected: false, name: "Edits by others", description: "Edits created by other users (not you)."}
+  {group: "Contribution authorship", filters:[
+    {id:"own", selected: false, name: "Changes by you", description: "Your own contributions."},
+    {id:"others", selected: false, name: "Changes by others", description: "All changes except your own."}
   ]},
   {group: "Automated contributions", filters:[
     {id:"bot", selected: false, name: "Bot", description: "Edits made by automated tools."},
@@ -42,21 +42,21 @@ filtersData = { groups: [
     {id:"minor", selected: false, name: "Minor edits", description: "Edits the author labeled as minor."},
     {id:"regular", selected: false, name: "Non-minor edits", description: "Edits not labeled as minor."}
   ]},
-  {group: "Recency in page", filters:[
+  {group: "Last revision", filters:[
     {id:"latest", selected: false, name: "Last revision", description: "The most recent change to a page."},
-    {id:"older", selected: false, name: "Earlier revisions", description: "Edits that came before the last revision."}
+    {id:"older", selected: false, name: "Earlier revisions", description: "All changes that are not the most recent change to a page."}
   ]},
   {group: "Type of change", filters:[
-    {id:"content-edit", selected: true, name: "Page edits", description: "Edits to the content of pages."},
-    {id:"new-page", selected: true, name: "New pages", description: "Edits that create pages."},
+    {id:"content-edit", selected: true, name: "Page edits", description: "Edits to wiki content, discussions, category descriptions..."},
+    {id:"new-page", selected: true, name: "Page creations", description: "Edits that make new pages."},
     {id:"categorization", selected: false, name: "Category changes", description: "Records of pages being added or removed from categories."},
     {id:"wikidata-edit", selected: false, name: "Wikidata edits", description: "Edits that originate in Wikidata."},
-    {id:"logged", selected: true, name: "Logged actions", description: "Account creations, page deletions and moves, administrative actions, uploads..."},
+    {id:"logged", selected: true, name: "Logged actions", description: "Administrative actions, account creations, page deletions, uploads..."},
   ]},
-  {group: "Watchlisted content", filters:[
-    {id:"watchlist", selected: false, name: "In watchlist", description: "Edits on pages in your watchlist."},
-    {id:"watchlist-active", selected: false, name: "New activity in watchlist", description: "Edits for pages in your watchlist with new activity (not visited yet)."},
-    {id:"not-watchlist", selected: false, name: "Not in watchlist", description: "Edits for pages not in your watchlist."}
+  {group: "Watchlisted pages", filters:[
+    {id:"watchlist", selected: false, name: "On watchlist", description: "Changes to pages on your Watchlist."},
+    {id:"watchlist-active", selected: false, name: "New Watchlist changes", description: "Changes to Watchlisted pages you haven't visited since the changes occurred."},
+    {id:"not-watchlist", selected: false, name: "Not on watchlist", description: "Everything except changes to your Watchlisted pages."}
   ]},
   {group: "Content type", compact: true, prefix:":", url:'https://en.wikipedia.org/wiki/Wikipedia:Namespace', filters:[
     {id:"article", selected: false, compact: true, name: "Article", description: "Edits to the main content."},

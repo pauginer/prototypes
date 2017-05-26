@@ -1178,7 +1178,6 @@ h1 {
 .namespaces-panel .filter .details .name i,
 .users-panel .filter .details .name i,
 .category-panel .filter .details .name i {
-  font-weight: normal;
   font-style: normal;
 }
 .filter-panel .filter .details .description,
