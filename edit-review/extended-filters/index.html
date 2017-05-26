@@ -26,6 +26,7 @@
       </div>
       <div class="filter-list">
       {{#each groups}}
+      {{#unless compact}}
       <div  class="group {{#if compact}}compact{{/if}}" data-id="{{group}}">
         <div class="title">{{group}} {{clarification}}</div>
         {{#if info}} <span class="whatsthis" data-tooltip-content="#whats-{{info}}">
@@ -54,6 +55,7 @@
         </div>
       </div>
       {{/each}}
+      {{/unless}}
       {{/each}}
       {{#unless groups}}<div class='no-results'>No filters found</div>{{/unless}}
       <div class="filter-footer">
