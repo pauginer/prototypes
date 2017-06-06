@@ -1243,7 +1243,7 @@ function scrollToFilters(){
 }
 
 function showNewChanges(){
-  $(".new-changes").append("<div class='old-changes-separator'>Old changes</div>");
+  $(".new-changes").append("<div class='old-changes-separator'>Previously viewed</div>");
   $(".new-changes").removeClass("hidden");
   $(".new-changes-indicator").removeClass("active");
   $(".old-changes-separator").click(function(){$(this).addClass("hidden");});
