@@ -354,13 +354,33 @@ a.new,
 .quicklinks.active.detail .quicklink-detail-panel {
   display: flex;
 }
+.other-tools-action {
+  display: flex;
+  flex-direction: row;
+  color: #36c;
+  font-weight: bold;
+  align-items: center;
+  padding: 8px 0;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+.other-tools-action .icon {
+  width: 20px;
+  height: 20px;
+  background: url(../images/dots-blue.svg) no-repeat;
+  background-size: contain;
+  margin-right: 4px;
+}
 .collapsible-container {
   margin-bottom: 12px;
   margin-right: 16px;
   padding: 8px;
   border: 1px solid #C8CCD1;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+}
+.collapsible-container.collapsed {
+  display: none;
 }
 .collapsible-container .mw-recentchanges-toplinks {
   max-height: none;
@@ -369,6 +389,33 @@ a.new,
   max-height: 2.5em;
   overflow-y: hidden;
   max-width: 500px;
+}
+.collapsible-container .container-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-bottom: 8px;
+}
+.collapsible-container .container-title .icon {
+  width: 14px;
+  height: 14px;
+  background: url(../images/dots.svg) no-repeat;
+  background-size: contain;
+  margin-right: 4px;
+  opacity: 0.5;
+}
+.collapsible-container .container-title .name {
+  color: #54595D;
+}
+.collapsible-container .container-title .close {
+  width: 12px;
+  height: 12px;
+  background: url(../images/close.svg) no-repeat;
+  background-size: contain;
+  margin-right: 4px;
+  opacity: 0.5;
+  margin-left: auto;
+  cursor: pointer;
 }
 .collapsible-container .expand-label {
   display: none;

@@ -1370,6 +1370,8 @@ $(function(){ //Initialization:
   $(".search-actions .add-more").click(function(){$(this).toggleClass("active")});
 
   $(".expand-action").click(function(){$(".collapsible-container").toggleClass("collapsed")});
+  $(".other-tools-action, .collapsible-container .close").click(function(){$(".collapsible-container").toggleClass("collapsed");$(".other-tools-action").toggleClass("hidden");});
+
 
   loadPaginationPanel();
   loadDatesPanel();
