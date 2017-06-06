@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="47px" height="27px" viewBox="0 0 47 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <path d="M13.0609024,0 C5.8475652,0 0,5.84855922 0,13.0666667 L0,13.0666667 C0,20.2831874 5.85755207,26.1333333 13.0609024,26.1333333 L33.9390976,26.1333333 C41.1524348,26.1333333 47,20.2847741 47,13.0666667 L47,13.0666667 C47,5.85014594 41.1424479,0 33.9390976,0 L13.0609024,0 Z" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="47" height="26.1333333" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <circle id="path-3" cx="13.5" cy="12.5" r="7.5"></circle>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-1" y="-1" width="17" height="17">
+            <rect x="5" y="4" width="17" height="17" fill="white"></rect>
+            <use xlink:href="#path-3" fill="black"></use>
+        </mask>
+    </defs>
+    <g id="Extended-options---Presentation" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="toggle">
+            <use id="Mediawiki.Neutral.Hover-copy-28" stroke="#72777D" mask="url(#mask-2)" stroke-width="2" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <g id="Oval-45-Copy-13">
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-3"></use>
+                <use stroke="#72777D" mask="url(#mask-4)" stroke-width="2" xlink:href="#path-3"></use>
+            </g>
+        </g>
+    </g>
+</svg>

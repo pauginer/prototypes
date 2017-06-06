@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs></defs>
+    <g id="Extended-options" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="RC-namespace-auto" transform="translate(-641.000000, -549.000000)" fill="#222222">
+            <g id="Group-15-Copy-6" transform="translate(201.000000, 354.000000)">
+                <g id="Group-7-Copy-2" transform="translate(430.000000, 187.000000)">
+                    <g id="Group-19">
+                        <g id="Page-1" transform="translate(10.000000, 8.000000)">
+                            <path d="M7,0 C3.15,0 0,3.15 0,7 C0,10.85 3.15,14 7,14 C10.85,14 14,10.85 14,7 C14,3.15 10.85,0 7,0 Z M1.75,7 C1.75,4.025 4.025,1.75 7,1.75 L7,12.25 C4.025,12.25 1.75,9.975 1.75,7 L1.75,7 Z" id="contrast"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

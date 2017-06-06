@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Recent Changes</title>
+    <script src="lib/jquery.js"></script>
+     <link rel="stylesheet" type="text/css" href="lib/tooltipster/css/tooltipster.bundle.min.css" />
+     <link rel="stylesheet" type="text/css" href="lib/tooltipster/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-borderless.min.css" />
+     <link rel="stylesheet" type="text/css" href="lib/tooltipster/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-light.min.css" />
+     <link rel="stylesheet" type="text/css" href="lib/pikaday/css/pikaday.css" />
+     <script type="text/javascript" src="lib/tooltipster/js/tooltipster.bundle.min.js"></script>
+    <script src="lib/handlebars.js"></script>
+    <script src="lib/helpers.js"></script>
+    <script src="lib/moment.js"></script>
+    <script src="lib/pikaday/pikaday.js"></script>
+    <script src="script/data.js"></script>
+    <script src="script/process-changes.js"></script>
+    <script src="script/app.js"></script>
+
+    <link rel="stylesheet" href="style/style.css" media="screen" charset="utf-8">
+    <script id="filters-template" type="text/x-handlebars-template">
+      <div class="filter-header">
+        <div class="title">Filters</div>
+        <div class="highlighter" title="Highlight results">
+          <div class="icon"></div> Highlight results</div>
+      </div>
+      <div class="filter-list">
+      {{#each groups}}
+      {{#unless compact}}
+      <div  class="group {{#if compact}}compact{{/if}}" data-id="{{group}}">
+        <div class="title">{{group}} {{clarification}}</div>
+        {{#if info}} <span class="whatsthis" data-tooltip-content="#whats-{{info}}">
+         What's this? </span> {{/if}}
+      </div>
+      {{#each filters}}
+      <div  class="filter{{#if selected}} active{{/if}}{{#unless selected}}{{#if compact}} compact{{/if}}{{/unless}}" data-id="{{id}}" data-color="{{color}}">
+        <input class="check" type="checkbox" id="{{id}}" {{#if selected}}checked="checked"{{/if}}></input>
+        <label class="details" for="{{id}}">
+          <div class="name">{{{name}}}</div>
+          <div class="description">{{description}}</div>
+        </label>
+        <div class="options" title="Highlight color"> <div class="icon"></div>
+          <div class="visibility-panel">
+            <div class="label-highlight"> Highlight color</div>
+            <div class="option-highlight {{#if color}} active{{/if}}">
+              <div class="option-filter {{#unless color}}active{{/unless}}">
+              </div>
+              <div name = "blue" class="highlight blue {{#is color 'blue'}} active {{/is}}"></div>
+              <div name = "green" class="highlight green {{#is color 'green'}} active {{/is}}"></div>
+              <div name = "yellow" class="highlight yellow {{#is color 'yellow'}} active {{/is}}"></div>
+              <div name = "orange" class="highlight orange {{#is color 'orange'}} active {{/is}}"></div>
+              <div name = "red" class="highlight red {{#is color 'red'}} active {{/is}}"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+      {{/unless}}
+      {{/each}}
+      {{#unless groups}}<div class='no-results'>No filters found</div>{{/unless}}
+      <div class="filter-footer">
+        <div class="footer-label">Advanced filters</div>
+        <div class="footer-actions">
+          <div class="add-user" title="Filter edits from a specific user (or start your search with @)"><div class="icon"></div>Users</div>
+          <div class="add-tag" title="Filter edits with a specific tag (or start your search with #)"><div class="icon"></div>Tagged edits</div>
+          <div class="add-namespace" title="Filter edits from a namespace (or start your search with :)"><div class="icon"></div>Namespaces</div>
+          <div class="add-category" title="Filter edits from a content category (or start your search with /)"><div class="icon"></div>Categories</div>
+        </div>
+      </div>
+      </div>
+    </script>
+    <script id="tags-template" type="text/x-handlebars-template">
+      {{#each tags}}
+      <div class="tag{{#unless selected}} useless{{/unless}}" data-id="{{id}}" {{#if color}}data-color= "{{color}}"{{/if}} data-description="{{description}}" title="{{description}}">
+        {{#if color}}<div class="color {{color}}"></div>{{/if}}
+        <div class="name">{{prefix}}{{#if inverted}}<b>not</b> {{/if}}{{{name}}}</div>
+        <div class="remove"></div></div>
+      {{/each}}
+    </script>
+    <script id="highlights-template" type="text/x-handlebars-template">
+      {{#each groups}}
+        <div class="highlight-section" data-id="{{group}}">{{group}}</div>
+        {{#each filters}}
+        <div class="highlight-criteria filter" data-id="{{id}}" title="{{description}}">
+          <div class="description">
+            <div class="color-indicator option-filter {{color}}"></div> <div class="label">{{{name}}}</div>
+          </div>
+          <div class="visibility-panel">
+            <div class="option-highlight {{#if color}} active{{/if}}">
+              <div class="option-filter {{#unless color}}active{{/unless}}">
+              </div>
+              <div name = "blue" class="highlight blue {{#is color 'blue'}} active {{/is}}"></div>
+              <div name = "green" class="highlight green {{#is color 'green'}} active {{/is}}"></div>
+              <div name = "yellow" class="highlight yellow {{#is color 'yellow'}} active {{/is}}"></div>
+              <div name = "orange" class="highlight orange {{#is color 'orange'}} active {{/is}}"></div>
+              <div name = "red" class="highlight red {{#is color 'red'}} active {{/is}}"></div>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      {{/each}}
+    </script>
+    <script id="links-template" type="text/x-handlebars-template">
+      {{#unless fav}} {{#unless personal}} <div class="explain-favs"> <div class="icon"></div>Mark your favorite tools to find them quickly later</div>{{/unless}}{{/unless}}
+      {{#if personal}} <div class="group">Created by you</div> {{/if}}
+      {{#each links}}
+        {{#if personal}}
+        <div class="link {{#if filters}}filtering{{/if}}{{#if default}} default{{/if}}" name="{{name}}"> <div class="star-like active"></div> <a href="{{url}}">{{name}}</a> <div class="details-menu"></div> </div>
+        {{/if}}
+      {{/each}}
+      {{#if expanded}}
+        {{#each links}}
+          {{#if group}}
+              <div class="group">{{name}}</div>
+          {{else}}
+          <div class="link {{#if filters}}filtering{{/if}} {{#if personal}}hidden{{/if}}" name="{{name}}"> <div class="star {{#if fav}} active{{/if}}"></div> <a href="{{url}}">{{name}}</a> <div class="external-icon"></div></div>
+          {{/if}}
+        {{/each}}
+      {{else}}
+      {{#if fav}}
+          {{#if personal}}
+            <div class="group">From the community</div>
+          {{else}}
+            <div class="group">Favourites</div>
+          {{/if}}
+      {{/if}}
+      {{#each links}}
+        {{#if fav}}
+        <div class="link {{#if filters}}filtering{{/if}}" name="{{name}}"> <div class="star {{#if fav}} active{{/if}}"></div> <a href="{{url}}">{{name}}</a>  </div>
+        {{/if}}
+      {{/each}}
+      <div class="view-all">View all</div>
+      {{/if}}
+    </script>
+    <script id="edittag-template" type="text/x-handlebars-template">
+      <div class="filter-header">
+        <div class="title">Tagged edits</div>
+        <div class="highlighter" title="Highlight results">
+          <div class="icon"></div> Highlight results</div>
+      </div>
+      <div class="filter-footer">
+        <div class="footer-description">Selecting multiple tags will show only contributions meeting all of them</div>
+      </div>
+      <div class="filter-list">
+      {{#each groups}}
+      <div  class="hidden group {{#if compact}}compact{{/if}}" data-id="{{group}}">
+        <div class="title">{{group}} {{clarification}}</div>
+        {{#if info}} <span class="whatsthis" data-tooltip-content="#whats-{{info}}">
+         What's this? </span> {{/if}}
+      </div>
+      {{#each filters}}
+      <div  class="filter{{#if selected}} active{{/if}}{{#unless selected}}{{#if compact}} compact{{/if}}{{/unless}}" data-id="{{id}}" data-color="{{color}}">
+        <input class="check" type="checkbox" id="{{id}}" {{#if selected}}checked="checked"{{/if}}></input>
+        <label class="details" for="{{id}}">
+          <div class="name">{{{name}}}</div>
+          <div class="description">{{description}}</div>
+        </label>
+        <div class="options" title="Highlight color"> <div class="icon"></div>
+          <div class="visibility-panel">
+            <div class="label-highlight"> Highlight color</div>
+            <div class="option-highlight {{#if color}} active{{/if}}">
+              <div class="option-filter {{#unless color}}active{{/unless}}">
+              </div>
+              <div name = "blue" class="highlight blue {{#is color 'blue'}} active {{/is}}"></div>
+              <div name = "green" class="highlight green {{#is color 'green'}} active {{/is}}"></div>
+              <div name = "yellow" class="highlight yellow {{#is color 'yellow'}} active {{/is}}"></div>
+              <div name = "orange" class="highlight orange {{#is color 'orange'}} active {{/is}}"></div>
+              <div name = "red" class="highlight red {{#is color 'red'}} active {{/is}}"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+      {{/each}}
+      </div>
+      {{#unless groups}}<div class='no-results'>No filters found</div>{{/unless}}
+    </script>
+    <script id="namespaces-template" type="text/x-handlebars-template">
+      <div class="filter-header">
+        <div class="title">Namespaces</div>
+        <div class="invert-option {{#if invertNamespaces}}active{{/if}}"><div class="icon"></div><span class="label-inactive">Exclude selected</span><span class="label-active">Excluding selected</span></div>
+        <div class="highlighter" title="Highlight results">
+          <div class="icon"></div> Highlight results</div>
+      </div>
+      <div class="filter-list{{#if invertNamespaces}} inverted{{/if}}">
+      {{#each groups}}
+      <div  class="hidden group {{#if compact}}compact{{/if}}" data-id="{{group}}">
+        <div class="title">{{group}} {{clarification}}</div>
+        {{#if info}} <span class="whatsthis" data-tooltip-content="#whats-{{info}}">
+         What's this? </span> {{/if}}
+      </div>
+      {{#each filters}}
+      <div  class="filter{{#if selected}} active{{/if}}{{#unless selected}}{{#if compact}} compact{{/if}}{{/unless}}" data-id="{{id}}" data-color="{{color}}">
+        <input class="check" type="checkbox" id="{{id}}" {{#if selected}}checked="checked"{{/if}}></input>
+        <label class="details" for="{{id}}">
+          <div class="name">{{{name}}}</div>
+          <div class="description hidden">{{description}}</div>
+        </label>
+        <div class="inverted-indicator">Excluded</div>
+        <div class="options" title="Highlight color"> <div class="icon"></div>
+          <div class="visibility-panel">
+            <div class="label-highlight"> Highlight color</div>
+            <div class="option-highlight {{#if color}} active{{/if}}">
+              <div class="option-filter {{#unless color}}active{{/unless}}">
+              </div>
+              <div name = "blue" class="highlight blue {{#is color 'blue'}} active {{/is}}"></div>
+              <div name = "green" class="highlight green {{#is color 'green'}} active {{/is}}"></div>
+              <div name = "yellow" class="highlight yellow {{#is color 'yellow'}} active {{/is}}"></div>
+              <div name = "orange" class="highlight orange {{#is color 'orange'}} active {{/is}}"></div>
+              <div name = "red" class="highlight red {{#is color 'red'}} active {{/is}}"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+      {{/each}}
+      </div>
+      {{#unless groups}}<div class='no-results'>No filters found</div>{{/unless}}
+    </script>
+    <script id="users-template" type="text/x-handlebars-template">
+      <div class="filter-header">
+        <div class="title">Users</div>
+        <div class="highlighter" title="Highlight results">
+          <div class="icon"></div> Highlight results</div>
+      </div>
+      <div class="filter-list {{#if searching}}searching{{/if}}">
+      {{#unless searching}}  <div  class="group">Recent interactions</div>{{/unless}}
+      {{#each groups}}
+      <div  class="hidden group {{#if compact}}compact{{/if}}" data-id="{{group}}">
+        <div class="title">{{group}} {{clarification}}</div>
+        {{#if info}} <span class="whatsthis" data-tooltip-content="#whats-{{info}}">
+         What's this? </span> {{/if}}
+      </div>
+      {{#each filters}}
+      <div  class="filter{{#if selected}} active{{/if}}{{#unless selected}}{{#if compact}} compact{{/if}}{{/unless}}{{#if recent}} recent{{/if}}" data-id="{{id}}" data-color="{{color}}">
+        <input class="check" type="checkbox" id="{{id}}" {{#if selected}}checked="checked"{{/if}}></input>
+        <label class="details" for="{{id}}">
+          <div class="name">{{{name}}}</div>
+          <div class="hidden description">{{description}}</div>
+        </label>
+        <div class="options" title="Highlight color"> <div class="icon"></div>
+          <div class="visibility-panel">
+            <div class="label-highlight"> Highlight color</div>
+            <div class="option-highlight {{#if color}} active{{/if}}">
+              <div class="option-filter {{#unless color}}active{{/unless}}">
+              </div>
+              <div name = "blue" class="highlight blue {{#is color 'blue'}} active {{/is}}"></div>
+              <div name = "green" class="highlight green {{#is color 'green'}} active {{/is}}"></div>
+              <div name = "yellow" class="highlight yellow {{#is color 'yellow'}} active {{/is}}"></div>
+              <div name = "orange" class="highlight orange {{#is color 'orange'}} active {{/is}}"></div>
+              <div name = "red" class="highlight red {{#is color 'red'}} active {{/is}}"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+      {{/each}}
+      {{#unless searching}}<div class="filter-footer">Search for any editor by typing their username in the search bar</div> {{/unless}}
+      </div>
+      {{#unless groups}}<div class='no-results'>No filters found</div>{{/unless}}
+    </script>
+    <script id="category-template" type="text/x-handlebars-template">
+      <div class="filter-header">
+        <div class="title">Categories</div>
+        <div class="highlighter" title="Highlight results">
+          <div class="icon"></div> Highlight results</div>
+      </div>
+      <div class="filter-list {{#if searching}}searching{{/if}}">
+      {{#unless searching}}<div class="group">Recent categories</div>{{/unless}}
+      {{#each groups}}
+      <div  class="hidden group {{#if compact}}compact{{/if}}" data-id="{{group}}">
+        <div class="title">{{group}} {{clarification}}</div>
+        {{#if info}} <span class="whatsthis" data-tooltip-content="#whats-{{info}}">
+         What's this? </span> {{/if}}
+      </div>
+      {{#each filters}}
+      <div  class="filter{{#if selected}} active{{/if}}{{#if recent}} recent{{/if}}{{#unless selected}}{{#if compact}} compact{{/if}}{{/unless}}" data-id="{{id}}" data-color="{{color}}">
+        <input class="check" type="checkbox" id="{{id}}" {{#if selected}}checked="checked"{{/if}}></input>
+        <label class="details" for="{{id}}">
+          <div class="name">{{{name}}}</div>
+          <div class="hidden description">{{description}}</div>
+        </label>
+        <div class="options" title="Highlight color"> <div class="icon"></div>
+          <div class="visibility-panel">
+            <div class="label-highlight"> Highlight color</div>
+            <div class="option-highlight {{#if color}} active{{/if}}">
+              <div class="option-filter {{#unless color}}active{{/unless}}">
+              </div>
+              <div name = "blue" class="highlight blue {{#is color 'blue'}} active {{/is}}"></div>
+              <div name = "green" class="highlight green {{#is color 'green'}} active {{/is}}"></div>
+              <div name = "yellow" class="highlight yellow {{#is color 'yellow'}} active {{/is}}"></div>
+              <div name = "orange" class="highlight orange {{#is color 'orange'}} active {{/is}}"></div>
+              <div name = "red" class="highlight red {{#is color 'red'}} active {{/is}}"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+      {{/each}}
+      {{#unless searching}}<div class="filter-footer">Search for any category by typing its name in the search bar</div> {{/unless}}
+      </div>
+      {{#unless groups}}<div class='no-results'>No filters found</div>{{/unless}}
+    </script>
+  </head>
+  <body>
+    <section class="sidebar"></section>
+    <section class="main-page">
+      <section class="personal"></section>
+      <section class="header">
+          <section class="header-tab"></section>
+          <section class="header-search"></section>
+      </section>
+      <section class="prelude">
+        <h1 class="rc-specific">Recent changes</h1>
+        <h1 class="watchlist-specific">Watchlist</h1>
+        <div id="contentSub" class="watchlist-specific">For Cronopio<span class="mw-watchlist-toollinks">(<a href="#" title="Special:Watchlist">View relevant changes</a> | <a href="#" title="Special:EditWatchlist">View and edit watchlist</a> | <a href="#" title="Special:EditWatchlist/raw">Edit raw watchlist</a> | <a href="#" title="Special:EditWatchlist/clear">Clear the watchlist</a>)</span>
+        </div>
+        <div class="mw-specialpage-summary">
+          <p class="rc-specific">This is a list of recent changes to Wikipedia.</p>
+          <div class="watchlist-description watchlist-specific">
+            <p>327 pages on your watchlist, not separately counting talk pages. Pages that have been changed since you last visited them are shown in <strong>bold</strong>.</p>
+            <form method="post" action="#">
+            <input name="mw-watchlist-reset-submit" type="button" value="Mark all pages visited">
+            </form>
+          </div>
+
+          <div class="quicklinks"> <div class="icon"></div> Saved filters <div class="more"></div>
+            <div class="quicklinks-panel"></div>
+            <div class="quicklink-detail-panel">
+              <div class="title"><div class="icon"></div><div class="name">Filter</div></div>
+              <div class="quicklink-options">
+                <div class="quicklink-option rename"><div class="icon"></div>Rename</div>
+                <div class="quicklink-option default"><div class="icon"></div>Set as default</div>
+                <div class="quicklink-option remove-default"><div class="icon"></div>Unset as default</div>
+                <div class="quicklink-option delete"><div class="icon"></div>Remove</div>
+              </div>
+              <div class="back"><div class="icon"></div>Back to the list</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="filters">
+        <div class="tagbox">
+          <div class="tagbox-header">
+            <div class="tagbox-label">Active filters</div> <div class="tagbox-title"></div>
+          </div>
+          <div class="tagbox-contents">
+            <div class="empty-filters">No active filters. All contributions are shown.</div>
+            <div class="tags"></div>
+            <div class="tag-actions">
+              <div class="save-tags" title="Save filters as a quick link">
+                <div class="save-tags-dialog">
+                  <div class="peak"></div>
+                  <div class="title"> <div class="icon"></div> Save filters as a quick link</div>
+                  <div class="name-label">Name</div>
+                  <input class="name" placeholder="Describe the purpose of the filters"></input>
+                  <div class="save-tag-actions">
+                      <button class="save-tags-cancel">Cancel</button>
+                      <button disabled="true" class="save-tags-action">Create quick link</button>
+                  </div>
+                </div>
+              </div>
+              <div class="clear-tags" title="Clear all filters"></div>
+              <div class="restore-tags" title="Restore default filters"><div class="icon"></div>Restore default filters</div>
+            </div>
+          </div>
+        </div>
+        <div class="searchbar">
+          <div class="search-icon"></div>
+          <input class="search" placeholder="Filter recent changes (browse or start typing)"></input>
+          <div class="search-actions">
+              <div class="add-user" title="Filter edits from a specific user (or start your search with @)"><div class="icon"></div></div>
+              <div class="add-tag" title="Filter edits with a specific tag (or start your search with #)"><div class="icon"></div></div>
+              <div class="add-more" title="More advanced filters"><div class="icon"></div>
+              <div class="more-filters-menu">
+                <div class="advanced-title">Advanced filters</div>
+                <div class="advanced-filter add-user">
+                  <div class="icon"></div>
+                  <div class="name">Users</div>
+                  <div class="prefix">@</div>
+                </div>
+                <div class="advanced-filter add-tag">
+                  <div class="icon"></div>
+                  <div class="name">Tagged edits</div>
+                  <div class="prefix">#</div>
+                </div>
+                <div class="advanced-filter add-namespace">
+                  <div class="icon"></div>
+                  <div class="name">Namespaces</div>
+                  <div class="prefix">:</div>
+                </div>
+                <div class="advanced-filter add-category">
+                  <div class="icon"></div>
+                  <div class="name">Categories</div>
+                  <div class="prefix">/</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="all-panels hidden">
+          <div class= "filter-panel">Filter panel</div>
+          <div class= "edittag-panel">Edit tag panel</div>
+          <div class= "namespaces-panel">Namespaces panel</div>
+          <div class= "users-panel">Users panel</div>
+          <div class= "category-panel">Users panel</div>
+        </div>
+      </section>
+      <section class="actions">
+        <!-- <div class="add-user" title="Filter edits from a specific user (or start your search with @)"><div class="icon"></div>User</div>
+        <div class="add-tag" title="Filter edits with a specific edit tag (or start your search with #)"><div class="icon"></div>Tag</div>
+        <div class="add-namespace" title="Filter edits from a namespace (or start your search with :)"><div class="icon"></div>Namespace</div>
+        <div class="add-category" title="Filter edits from a content category (or start your search with /)"><div class="icon"></div>Category</div>-->
+
+        <div class="pagination"> <span>Show last <span class="number"> 100 </span> changes</span>
+          <div class="more"></div>
+          <div class="pagination-panel">
+            <label>Changes to show</label>
+            <div class="page-selector">
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option class="active" value="100" >100</option>
+                <option value="250">250</option>
+                <option value="500">500</option>
+            </div>
+            <label>Sorting</label>
+            <div class="sort-selector">
+                <option value="newest" class="active" >Newest first</option>
+                <option value="oldest">Oldest first</option>
+            </div>
+            <div class="liveupdate-selector hidden">
+                  <div>Show live updates</div>
+                  <div class="description">New changes will be shown in real time.</div>
+            </div>
+
+          </div>
+        </div>
+        <div class="dates"> <div class="icon"></div>7 days<div class="more"></div>
+          <div class="dates-panel">
+            <label>Recent hours</label>
+            <div class="hour-selector">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="6" >6</option>
+                <option value="12">12</option>
+            </div>
+            <label>Recent days</label>
+            <div class="day-selector">
+                <option value="1">1</option>
+                <option value="3">3</option>
+                <option class="active" value="7"> 7</option>
+                <option value="14">14</option>
+                <option value="30">30</option>
+            </div>
+            <div class="custom-period">
+              <div class="title">
+                  <label>Custom period</label>
+                  <div class="close"></div>
+              </div>
+              <div class="contents">
+                  <input id="date-from" class="from" placeholder="From"></input> <span class="separator">—</span> <input id="date-to" class="to" placeholder="To"></input>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="play-live" title="New changes will be shown in real time."><div class="icon"></div>Live updates</div>
+        <section class="pagination-controls">
+          <div class="prev disabled"><div class="icon"></div><span>Newer <span class="size">100</span></span></div>
+          <div class="next"><span>Older <span class="size">100</span></span> <div class="icon"></div></div>
+        </section>
+      </section>
+
+      <section class="new-changes-indicator">
+        <div class="line"></div>
+        <div class="view-changes">View newest changes</div>
+      </section>
+      <section class="changes">
+      </section>
+      <section class="changes-empty hidden">
+        <div class="message">
+          <div class="title">No contributions meet the selected criteria </div>
+          <div class="description">Try making the search broader by removing some filters.</div>
+        </div>
+      </section>
+    </section>
+    <div class="tooltip_templates hidden">
+      <span id="whats-quality">
+          <h3>Computer-generated quality prediction</h3>
+          <p>Filter edits based on whether they’re likely to have problems or not. These predictions are made by ORES, a machine learning service trained on a large set of edits previously scored by human editors.</p>
+          <p>Several filters are provided for you to adjust how strict you need results to be. More strict filters will produce fewer but more accurate results, while less strict filters will provide a wider set of results with less precision.</p>
+          <p><a class="more" target="_blank" href="https://meta.wikimedia.org/wiki/Objective_Revision_Evaluation_Service">Learn more</a></p>
+      </span>
+      <span id="whats-intent">
+        <h3>Automatic user intent prediction</h3>
+        <p>Filter edits based whether or not an edit was made in good-faith. These predictions are made by ORES, a machine learning service trained on a large set of edits previously scored by human editors.</p>
+        <p>Several filters are provided for you to adjust how strict you need results to be. More strict filters will produce fewer but more accurate results, while less strict filters will provide a wider set of results with less precision.</p>
+        <p><a class="more" target="_blank" href="https://meta.wikimedia.org/wiki/Objective_Revision_Evaluation_Service">Learn more</a></p>
+      </span>
+    </div>
+    <!--<script src="script/date-range.js"></script>-->
+  </body>
+</html>
