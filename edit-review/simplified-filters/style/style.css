@@ -1703,13 +1703,13 @@ h1 {
   opacity: 1;
 }
 .search-actions .add-more {
-  padding: 8px;
+  padding: 4px;
   position: relative;
   cursor: pointer;
 }
 .search-actions .add-more > .icon {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   background: center center url(../images/elipses.svg) no-repeat;
   background-size: contain;
   opacity: 0.8;
