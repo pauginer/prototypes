@@ -109,7 +109,7 @@ a.new,
   align-items: center;
   margin-left: auto;
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   align-self: flex-end;
   position: relative;
   flex: none;
@@ -353,6 +353,58 @@ a.new,
 }
 .quicklinks.active.detail .quicklink-detail-panel {
   display: flex;
+}
+.collapsible-container {
+  margin-bottom: 12px;
+  margin-right: 16px;
+  padding: 8px;
+  border: 1px solid #C8CCD1;
+  display: flex;
+  flex-direction: row;
+}
+.collapsible-container .mw-recentchanges-toplinks {
+  max-height: none;
+}
+.collapsible-container.collapsed .mw-recentchanges-toplinks {
+  max-height: 2.5em;
+  overflow-y: hidden;
+  max-width: 500px;
+}
+.collapsible-container .expand-label {
+  display: none;
+}
+.collapsible-container .collapse-label {
+  display: flex;
+}
+.collapsible-container.collapsed .expand-label {
+  display: flex;
+}
+.collapsible-container.collapsed .collapse-label {
+  display: none;
+}
+.collapsible-container .expand-action {
+  cursor: pointer;
+  border: 1px solid #A2A9B1;
+  border-radius: 2px;
+  padding: 8px 16px;
+  margin-left: 8px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex: none;
+  align-self: flex-end;
+}
+.collapsible-container .expand-action .more {
+  content: "";
+  display: flex;
+  align-self: center;
+  margin-left: 8px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #222;
 }
 h1 {
   margin: 0;

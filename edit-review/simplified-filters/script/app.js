@@ -1367,7 +1367,9 @@ $(function(){ //Initialization:
     updateLinks();
   });
 
-  $(".search-actions .add-more").click(function(){$(this).toggleClass("active")})
+  $(".search-actions .add-more").click(function(){$(this).toggleClass("active")});
+
+  $(".expand-action").click(function(){$(".collapsible-container").toggleClass("collapsed")});
 
   loadPaginationPanel();
   loadDatesPanel();
