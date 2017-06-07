@@ -514,7 +514,7 @@ h1 {
   flex-direction: column;
   position: absolute;
   top: 100%;
-  right: -1px;
+  left: 0;
   padding-top: 8px;
   z-index: 100;
 }
@@ -602,7 +602,7 @@ h1 {
   flex-direction: column;
   position: absolute;
   top: 100%;
-  right: -1px;
+  left: 0;
   padding-top: 8px;
   z-index: 100;
 }
@@ -1547,7 +1547,7 @@ h1 {
   margin-right: 8px;
 }
 .actions {
-  padding: 10px 0px;
+  padding: 12px 0;
   flex-direction: row;
   margin: 0 12px;
   transition: max-height 0.3s ease, opacity 0.2s ease;
