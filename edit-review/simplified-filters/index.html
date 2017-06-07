@@ -101,19 +101,20 @@
       {{/each}}
     </script>
     <script id="links-template" type="text/x-handlebars-template">
-      {{#unless fav}} {{#unless personal}} <div class="explain-favs"> <div class="icon"></div>Mark your favorite tools to find them quickly later</div>{{/unless}}{{/unless}}
+       {{#unless personal}} <div class="explain-favs">No saved filters by you<div class="icon"></div></div>{{/unless}}
       {{#if personal}} <div class="group">Created by you</div> {{/if}}
       {{#each links}}
         {{#if personal}}
-        <div class="link {{#if filters}}filtering{{/if}}{{#if default}} default{{/if}}" name="{{name}}"> <div class="star-like active"></div> <a href="{{url}}">{{name}}</a> <div class="details-menu"></div> </div>
+        <div class="link {{#if filters}}filtering{{/if}}{{#if default}} default{{/if}}" name="{{name}}"> <a href="{{url}}">{{name}}</a> <div class="star-like active"></div> <div class="details-menu"></div> </div>
         {{/if}}
       {{/each}}
       {{#if expanded}}
+      <div class="group">Suggested activities</div>
         {{#each links}}
           {{#if group}}
               <div class="group">{{name}}</div>
           {{else}}
-          <div class="link {{#if filters}}filtering{{/if}} {{#if personal}}hidden{{/if}}" name="{{name}}"> <div class="star {{#if fav}} active{{/if}}"></div> <a href="{{url}}">{{name}}</a> <div class="external-icon"></div></div>
+          <div class="link {{#if filters}}filtering{{/if}} {{#if personal}}hidden{{/if}}" name="{{name}}">  <a href="{{url}}">{{name}}</a> <div class="external-icon"></div></div>
           {{/if}}
         {{/each}}
       {{else}}
@@ -124,12 +125,7 @@
             <div class="group">Favourites</div>
           {{/if}}
       {{/if}}
-      {{#each links}}
-        {{#if fav}}
-        <div class="link {{#if filters}}filtering{{/if}}" name="{{name}}"> <div class="star {{#if fav}} active{{/if}}"></div> <a href="{{url}}">{{name}}</a>  </div>
-        {{/if}}
-      {{/each}}
-      <div class="view-all">View all</div>
+      <div class="view-all">More suggestions</div>
       {{/if}}
     </script>
     <script id="edittag-template" type="text/x-handlebars-template">
@@ -376,7 +372,7 @@
               <div class="save-tags" title="Save filters as a quick link">
                 <div class="save-tags-dialog">
                   <div class="peak"></div>
-                  <div class="title"> <div class="icon"></div> Save filters as a quick link</div>
+                  <div class="title"> <div class="icon"></div> Add to saved filters</div>
                   <div class="name-label">Name</div>
                   <input class="name" placeholder="Describe the purpose of the filters"></input>
                   <div class="save-tag-actions">

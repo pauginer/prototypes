@@ -176,6 +176,7 @@ a.new,
   flex: none;
   flex-direction: row;
   align-items: center;
+  justify-content: flex-end;
   cursor: pointer;
   padding: 8px 8px 8px 8px;
 }
@@ -195,13 +196,14 @@ a.new,
 }
 .prelude .quicklinks-panel .link a {
   color: #3366CC;
+  margin-right: auto;
+  margin-left: 8px;
 }
 .prelude .quicklinks-panel .link .details-menu {
   width: 20px;
   height: 20px;
   background: center center url(../images/elipses.svg) no-repeat;
   background-size: contain;
-  margin-left: auto;
 }
 .prelude .quicklinks-panel .link .star,
 .prelude .quicklinks-panel .link .star-like {
@@ -227,27 +229,33 @@ a.new,
 }
 .prelude .quicklinks-panel .link.default .star-like,
 .prelude .quicklinks-panel .link.default:hover .star-like {
-  background-image: url(../images/pin-blue.svg);
+  background-image: url(../images/pin.svg);
+  opacity: 0.7;
   visibility: visible;
-  width: 20px;
+  width: 14px;
+  margin-left: auto;
 }
 .prelude .quicklinks-panel .explain-favs {
   display: flex;
   flex-direction: row;
   flex: none;
-  padding: 8px;
+  cursor: pointer;
+  padding: 16px;
   color: #72777D;
   align-items: center;
-  font-size: 12px;
+  font-size: 14px;
   background-color: #F8F9FA;
   border-bottom: 1px solid #C8CCD1;
 }
+.prelude .quicklinks-panel .explain-favs:hover {
+  color: #54595D;
+}
 .prelude .quicklinks-panel .explain-favs .icon {
   flex: none;
-  width: 24px;
-  height: 24px;
-  margin-right: 4px;
-  background: url(../images/bookmark-filled-light.svg) no-repeat;
+  width: 13px;
+  height: 13px;
+  margin-left: auto;
+  background: url(../images/plus.svg) no-repeat;
   background-size: contain;
 }
 .prelude .quicklinks-panel .view-all,
@@ -1841,6 +1849,7 @@ h1 {
   display: flex;
   flex-direction: row;
   font-weight: normal;
+  padding: 8px;
 }
 .more-filters-menu .advanced-filter:hover {
   background-color: #F8F9FA;
@@ -1850,6 +1859,7 @@ h1 {
 }
 .more-filters-menu .advanced-filter .prefix {
   margin-left: auto;
+  margin-right: 4px;
   color: #72777D;
 }
 .new-changes {

@@ -168,6 +168,7 @@ a.new, #p-personal a.new {
       flex: none;
       flex-direction: row;
       align-items: center;
+      justify-content: flex-end;
       cursor: pointer;
       padding:8px 8px 8px 8px;
       &:hover{
@@ -186,13 +187,13 @@ a.new, #p-personal a.new {
           margin-right: 2px;
         }
       }
-      a {color: #3366CC;}
+      a {color: #3366CC; margin-right: auto; margin-left:8px}
       .details-menu {
         width: 20px;
         height: 20px;
         background: center center url(../images/elipses.svg) no-repeat;
         background-size:contain;
-        margin-left: auto;
+        //margin-left: auto;
       }
       .star, .star-like {
         width: 20px;
@@ -214,8 +215,10 @@ a.new, #p-personal a.new {
         //display:none;
       }
         &.default .star-like, &.default:hover .star-like {
-          background-image: url(../images/pin-blue.svg);
-          visibility: visible; width: 20px;
+          background-image: url(../images/pin.svg);
+          opacity: 0.7;
+          visibility: visible; width: 14px;
+          margin-left: auto;
           //display: flex;
         }
     }
@@ -223,19 +226,22 @@ a.new, #p-personal a.new {
       display: flex;
       flex-direction: row;
       flex:none;
-      //cursor: pointer;
-      padding:8px;
+      cursor: pointer;
+      padding:16px;
       color: #72777D;
+      //font-weight: bold;
       align-items: center;
-      font-size: 12px;
+      font-size: 14px;
       background-color: #F8F9FA;
       border-bottom: 1px solid #C8CCD1;
+      &:hover{color:#54595D;}
       .icon {
         flex:none;
-        width: 24px;
-        height: 24px;
-        margin-right: 4px;
-        background: url(../images/bookmark-filled-light.svg) no-repeat;
+        width: 13px;
+        height: 13px;
+        //margin-right: 4px;
+        margin-left: auto;
+        background: url(../images/plus.svg) no-repeat;
         background-size: contain;
       }
     }
@@ -628,6 +634,7 @@ h1 {
     .search-icon {
       width: 16px;
       height: 16px;
+      //background: center center url(../images/hamburger.svg) no-repeat;
       background: center center url(../images/plus.svg) no-repeat;
       background-size:contain;
       margin:0 2px;
@@ -1561,9 +1568,10 @@ h1 {
     display: flex;
     flex-direction: row;
     font-weight: normal;
+    padding: 8px;
     &:hover {background-color: #F8F9FA}
     .icon {opacity:1;}
-    .prefix{margin-left:auto; color: #72777D;}
+    .prefix{margin-left:auto; margin-right:4px; color: #72777D;}
   }
 }
 

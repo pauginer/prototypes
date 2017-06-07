@@ -467,10 +467,19 @@ function updateLinks(expanded){
     updateLinks(true);
   });
 
+  $(".quicklinks-panel .explain-favs").click(function(e){
+    filtersVisible(true);
+    $(".search").focus();
+    return false;
+
+  });
+
   $(".quicklinks-panel .link").click(function(e){
     var name = $(this).attr("name");
     if($(this).hasClass("filtering")){
       applyFiltersFromLink(name);
+      $(".tagbox").addClass("dirty");
+      $(".tagbox-title").text("");
       $(".quicklinks").removeClass("active");
     } else {
       var url = $(this).find("a").attr("href");

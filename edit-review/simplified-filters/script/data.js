@@ -165,3 +165,7 @@ linksData = { expanded: true, personal: false, fav: false, total:0, links: [
 {name: "Chat", url:"https://en.wikipedia.org/wiki/Wikipedia:IRC", fav:false},
 {name: "Wikipedia Signpost", url:"https://en.wikipedia.org/wiki/Wikipedia:Wikipedia_Signpost", fav:false}
 ]};
+
+linksData = { expanded: false, personal: false, fav: false, total:0, links: [{name: "New editor's contribs", url:"#", fav:false, filters:[{id:"newcomer", selected: true}]},
+{name: "IP's contribs", url:"#", fav:false, filters:[{id:"unregistered", selected: true},{id:"content-edit", selected: true},{id:"new-page", selected: true},{id:"logged", selected: true}]},
+{name: "Mobile contribs", url:"#", fav:false, filters: [{id:"mw-tag-mobile_edit", selected:true},{id:"content-edit", selected: true},{id:"new-page", selected: true},{id:"logged", selected: true}]}]}
