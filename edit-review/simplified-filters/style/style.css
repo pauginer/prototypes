@@ -373,6 +373,7 @@ a.new,
   cursor: pointer;
 }
 .other-tools-action .icon {
+  display: none;
   width: 20px;
   height: 20px;
   background: url(../images/dots-blue.svg) no-repeat;
@@ -405,6 +406,7 @@ a.new,
   padding-bottom: 8px;
 }
 .collapsible-container .container-title .icon {
+  display: none;
   width: 14px;
   height: 14px;
   background: url(../images/dots.svg) no-repeat;
