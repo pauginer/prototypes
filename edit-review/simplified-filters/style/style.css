@@ -718,10 +718,13 @@ h1 {
   border-color: #3366cc;
   box-shadow: 0 0 0 1px #3366cc inset;
 }
+.searchbar.active .search-icon {
+  background-image: url(../images/search.svg);
+}
 .searchbar .search-icon {
   width: 16px;
   height: 16px;
-  background: center center url(../images/plus.svg) no-repeat;
+  background: center center url(../images/hamburger.svg) no-repeat;
   background-size: contain;
   margin: 0 2px;
   cursor: pointer;
