@@ -1815,6 +1815,21 @@ h1 {
   background-color: #F8F9FA;
   border-bottom: 1px solid #C8CCD1;
 
+  .back {
+      background:center center url(../images/prev.svg) no-repeat;
+      background-size: 16px;
+      width: 20px;
+      height: 20px;
+      margin-right: 4px;
+      cursor: pointer;
+      opacity: 0.8;
+      border-radius: 2px;
+      &:hover {
+        background-color: #EAECF0;
+        opacity: 1;
+      }
+
+  }
 
   .title {
     font-size: 18px;
@@ -1884,7 +1899,8 @@ h1 {
   .footer-actions {
     display: flex;
     flex-direction: row;
-    padding-top: 10px;
+    padding: 10px;
+    padding-bottom: 4px;
   }
 
 }

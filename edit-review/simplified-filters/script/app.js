@@ -606,6 +606,13 @@ function updateFilters(){
     $("body").toggleClass("highlighting");
   });
 
+  $(".filter-header .back").click(function(){
+    $(".search").val("").focus();
+    filtersVisible(true);
+    return false;
+  });
+
+
   $(".footer-actions .add-tag").click(function(e){showEditTagPanel(); return false;});
   $(".footer-actions .add-namespace").click(function(e){showNamespacesPanel(); return false;});
   $(".footer-actions .add-user").click(function(e){showUsersPanel(); return false;});
