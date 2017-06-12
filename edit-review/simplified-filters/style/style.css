@@ -2141,7 +2141,7 @@ h1 {
 .filter-footer .footer-actions {
   display: flex;
   flex-direction: row;
-  padding: 10px;
+  padding-top: 10px;
   padding-bottom: 4px;
 }
 body.highlighting .filter .options {
