@@ -373,12 +373,12 @@ a.new,
   cursor: pointer;
 }
 .other-tools-action .icon {
-  display: none;
-  width: 20px;
-  height: 20px;
-  background: url(../images/dots-blue.svg) no-repeat;
+  align-self: center;
+  width: 14px;
+  height: 14px;
+  background: url(../images/down-blue.svg) no-repeat;
   background-size: contain;
-  margin-right: 4px;
+  margin-left: 4px;
 }
 .collapsible-container {
   margin-bottom: 12px;
@@ -401,9 +401,11 @@ a.new,
 }
 .collapsible-container .container-title {
   display: flex;
+  font-weight: bold;
   flex-direction: row;
   align-items: center;
   padding-bottom: 8px;
+  cursor: pointer;
 }
 .collapsible-container .container-title .icon {
   display: none;
@@ -418,12 +420,12 @@ a.new,
   color: #54595D;
 }
 .collapsible-container .container-title .close {
-  width: 12px;
-  height: 12px;
-  background: url(../images/close.svg) no-repeat;
+  width: 16px;
+  height: 16px;
+  background: url(../images/up.svg) no-repeat;
   background-size: contain;
   margin-right: 4px;
-  opacity: 0.5;
+  opacity: 0.8;
   margin-left: auto;
   cursor: pointer;
 }

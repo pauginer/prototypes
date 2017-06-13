@@ -357,12 +357,13 @@ a.new, #p-personal a.new {
   margin-bottom: 8px;
   cursor: pointer;
   .icon {
-    display: none;
-    width: 20px;
-    height: 20px;
-    background: url(../images/dots-blue.svg) no-repeat;
+    //display: none;
+    align-self: center;
+    width: 14px;
+    height: 14px;
+    background: url(../images/down-blue.svg) no-repeat;
     background-size: contain;
-    margin-right: 4px;
+    margin-left: 4px;
   }
 }
 
@@ -389,9 +390,11 @@ a.new, #p-personal a.new {
 
   .container-title {
     display: flex;
+    font-weight: bold;
     flex-direction: row;
     align-items: center;
     padding-bottom: 8px;
+    cursor: pointer;
     .icon {
       display: none;
       width: 14px;
@@ -403,12 +406,12 @@ a.new, #p-personal a.new {
     }
     .name {color: #54595D}
     .close {
-      width: 12px;
-      height: 12px;
-      background: url(../images/close.svg) no-repeat;
+      width: 16px;
+      height: 16px;
+      background: url(../images/up.svg) no-repeat;
       background-size: contain;
       margin-right: 4px;
-      opacity: 0.5;
+      opacity: 0.8;
       margin-left: auto;
       cursor: pointer;
     }
