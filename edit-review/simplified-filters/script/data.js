@@ -1,6 +1,6 @@
 
 //Filter tuples where the first is a subset of the second
-filterSubsets = [ ["very-good", "good"], ["damaging", "maybe-damaging"], ["very-damaging", "damaging"], ["very-damaging", "maybe-damaging"], ["very-good-faith","good-faith"], ["very-bad-faith","bad-faith"]];
+filterSubsets = [ ["very-good", "good"], ["damaging", "maybe-damaging"], ["very-damaging", "damaging"], ["very-damaging", "maybe-damaging"], ["very-good-faith","good-faith"], ["very-bad-faith","bad-faith"], ["watchlist-active","watchlist"]];
 
 //Filter sets where they represent the full search space
 filterComplete = [["unpatrolled", "patrolled"], ["minor","regular"], ["registered", "unregistered"], ["own","others"], ["newcomer","experienced", "most-experienced"],["bot", "human"]];
@@ -168,4 +168,9 @@ linksData = { expanded: true, personal: false, fav: false, total:0, links: [
 
 linksData = { expanded: false, personal: false, fav: false, total:0, links: [{name: "New editor's contribs", url:"#", fav:false, filters:[{id:"newcomer", selected: true}]},
 {name: "IP's contribs", url:"#", fav:false, filters:[{id:"unregistered", selected: true},{id:"content-edit", selected: true},{id:"new-page", selected: true},{id:"logged", selected: true}]},
-{name: "Mobile contribs", url:"#", fav:false, filters: [{id:"mw-tag-mobile_edit", selected:true},{id:"content-edit", selected: true},{id:"new-page", selected: true},{id:"logged", selected: true}]}]}
+{name: "Mobile contribs", url:"#", fav:false, filters: [{id:"mw-tag-mobile_edit", selected:true},{id:"content-edit", selected: true},{id:"new-page", selected: true},{id:"logged", selected: true}]}]};
+
+watchlistSpecificFilters = [
+  {id:"watchlist-active", selected: false, name: "With new activity", description: "Edits for pages in your watchlist with new activity (not visited yet)."},
+  {id:"not-active", selected: false, name: "Without new activity", description: "Edits for pages in your watchlist you already visited."}
+]

@@ -106,6 +106,7 @@ $(".change:not(.latest)").addClass("older");
 probablyAddClass($(".change"), "watchlist", 40);
 probablyAddClass($(".change.article.watchlist"), "watchlist-active", 40);
 $(".change:not(.watchlist)").addClass("not-watchlist");
+$(".change:not(.watchlist-active)").addClass("not-active");
 
 
 //CATEGORIES

@@ -1290,6 +1290,11 @@ function showNewChangesIndicator(){
       });
   }
 }
+function prepareWatchlistData(){
+  var g = getGroupForFilter("watchlist");
+  g.group = "Watchlist activity"
+  g.filters= watchlistSpecificFilters;
+}
 
 var filerHighlights = true;
 var meetsFilters = meetsFiltersOrOptionalHighlight;
@@ -1306,6 +1311,10 @@ $(function(){ //Initialization:
   linksTemplate = Handlebars.compile($("#links-template").html());
   var hash= window.location.hash.replace("#","");
   $("body").addClass(hash); //tags: watchlist
+
+  if($("body").hasClass("watchlist")){
+    prepareWatchlistData();
+  }
 
   loadChangesData();
   updateFilters();
