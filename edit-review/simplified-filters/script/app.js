@@ -1388,6 +1388,10 @@ $(function(){ //Initialization:
   $(".expand-action").click(function(){$(".collapsible-container").toggleClass("collapsed")});
   $(".other-tools-action, .collapsible-container .container-title").click(function(){$(".collapsible-container").toggleClass("collapsed");$(".other-tools-action").toggleClass("hidden");});
 
+  $(".mark-all-visited").click(function(){
+    $(".change.watchlist-active").removeClass("watchlist-active");
+    $(this).addClass("disabled");
+  });
 
   loadPaginationPanel();
   loadDatesPanel();

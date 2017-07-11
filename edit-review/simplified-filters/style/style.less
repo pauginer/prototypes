@@ -2035,6 +2035,26 @@ body.highlighting {
   }
 }
 
+.mark-all-visited {
+  display: flex;
+  .dropdown;
+  align-self: flex-start;
+  margin-left:0;
+  .icon {
+    width: 20px;
+    height: 20px;
+    background: center center url(../images/two-checks.svg) no-repeat;
+    background-size: contain;
+    margin-right: 4px;
+  }
+  &.disabled {
+    background-color: #C8CCD1;
+    border-color: #C8CCD1;
+    color: white;
+    cursor: default;
+    .icon {background-image: url(../images/two-checks-white.svg)}
+  }
+}
 
 .watchlist-specific {display:none}
 body.watchlist {
