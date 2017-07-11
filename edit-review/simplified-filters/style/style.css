@@ -2257,6 +2257,9 @@ body.watchlist .watchlist-specific {
 body.watchlist .rc-specific {
   display: none;
 }
+body.watchlist .change.watchlist-active .mw-changeslist-title {
+  font-weight: bold;
+}
 .watchlist-description {
   flex-direction: column;
   margin-right: 10px;

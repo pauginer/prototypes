@@ -103,8 +103,8 @@ probablyAddClass($(".change"), "latest", 10);
 $(".change:not(.latest)").addClass("older");
 
 //WATCHLIST
-probablyAddClass($(".change"), "watchlist", 10);
-probablyAddClass($(".change.watchlist"), "watchlist-active", 30);
+probablyAddClass($(".change"), "watchlist", 40);
+probablyAddClass($(".change.article.watchlist"), "watchlist-active", 40);
 $(".change:not(.watchlist)").addClass("not-watchlist");
 
 
