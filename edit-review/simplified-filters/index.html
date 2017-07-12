@@ -109,7 +109,7 @@
         {{/if}}
       {{/each}}
       {{#if expanded}}
-      <div class="group">Suggested activities</div>
+      <div class="group">Suggested combinations</div>
         {{#each links}}
           {{#if group}}
               <div class="group">{{name}}</div>
@@ -125,7 +125,7 @@
             <div class="group">Favourites</div>
           {{/if}}
       {{/if}}
-      <div class="view-all">More suggestions</div>
+      <div class="view-all">Try suggested combinations</div>
       {{/if}}
     </script>
     <script id="edittag-template" type="text/x-handlebars-template">
@@ -343,7 +343,7 @@
             </div>
           </div>
           <div class="watchlist-description watchlist-specific">
-            <p>327 pages on your watchlist, not separately counting talk pages. Pages that have been changed since you last visited them are shown in <strong>bold</strong>.</p>
+            <p>327 pages on your watchlist, not separately counting talk pages. Pages that have been changed since you last visited them are shown in <strong>bold</strong> with a filled marker.</p>
             <div class="mark-all-visited"><div class="icon"></div>Mark all pages visited</div>
             <form method="post" action="#" class="hidden">
             <input name="mw-watchlist-reset-submit" type="button" value="Mark all pages visited">
@@ -382,7 +382,7 @@
                   <input class="name" placeholder="Describe the purpose of the filters"></input>
                   <div class="save-tag-actions">
                       <button class="save-tags-cancel">Cancel</button>
-                      <button disabled="true" class="save-tags-action">Create quick link</button>
+                      <button disabled="true" class="save-tags-action">Create filter</button>
                   </div>
                 </div>
               </div>
