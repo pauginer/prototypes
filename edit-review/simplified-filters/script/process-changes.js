@@ -141,4 +141,12 @@ $(".mw-changeslist:first-child() .change:nth-of-type(-n+10)").addClass("new-chan
 $(".mw-changeslist:first-child() .special").prepend($("<div class='new-changes hidden'></div>"));
 $(".new-changes").append($(".new-change"));
 
+//Actions:
+$(".change.watchlist-active .mw-changeslist-title").click(function(){
+  var change = $(this).closest(".change");
+  change.removeClass("watchlist-active");
+  change.addClass("not-active");
+
+});
+
 }
