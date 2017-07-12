@@ -2300,6 +2300,15 @@ body.watchlist .rc-specific {
 body.watchlist .change.watchlist-active .mw-changeslist-title {
   font-weight: bold;
 }
+body:not(.highlighting) .change {
+  list-style-image: url('../images/default-dot.png');
+}
+body.watchlist:not(.highlighting) .change.watchlist-active {
+  list-style-image: url('../images/default-dot.png');
+}
+body.watchlist:not(.highlighting) .change.not-active {
+  list-style-image: url('../images/default-dot-empty.png');
+}
 .watchlist-description {
   flex-direction: column;
   margin-right: 10px;
