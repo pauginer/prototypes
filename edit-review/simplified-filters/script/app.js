@@ -1398,6 +1398,7 @@ $(function(){ //Initialization:
   $(".other-tools-action, .collapsible-container .container-title").click(function(){$(".collapsible-container").toggleClass("collapsed");$(".other-tools-action").toggleClass("hidden");});
 
   $(".mark-all-visited").click(function(){
+    $(".change.watchlist-active").addClass("not-active");
     $(".change.watchlist-active").removeClass("watchlist-active");
     $(this).addClass("disabled");
   });
