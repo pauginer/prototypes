@@ -22,7 +22,7 @@
       .navigation
         .prev(:class='{disabled: data.selection == 0}', @click='prev()')
         .next(@click='next()')
-    .translation Translation text
+    .translation(v-html='data.mt[data.targetLang][data.selection]')
     .actions
       button.apply Apply
       button.primary.edit Edit translation

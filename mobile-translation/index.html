@@ -33,7 +33,7 @@
             </div>
           </div>
         </div>
-        <button @click="back">Back</button>
+        <!--button(@click='back') Back-->
       </div>
     </template>
     <template id="tutorial-template">
@@ -81,7 +81,7 @@
               <div @click="next()" class="next"></div>
             </div>
           </div>
-          <div class="translation">Translation text</div>
+          <div v-html="data.mt[data.targetLang][data.selection]" class="translation"></div>
           <div class="actions">
             <button class="apply">Apply</button>
             <button class="primary edit">Edit translation</button>
