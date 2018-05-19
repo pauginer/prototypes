@@ -64,13 +64,13 @@
         </div>
         <div class="document">
           <div class="paragraph">
-            <div :class="{highlight: data.selection == 0}" class="sentence"><b>Plants in space</b> are <a href="#">plants</a> grown in <a href="#">outer space</a>.</div>
-            <div :class="{highlight: data.selection == 1}" class="sentence">In the late 20th and 21st century, plants were often taken into space in low Earth orbit to be grown in a weightless but pressurized controlled environment, sometimes called space gardens.</div>
-            <div :class="{highlight: data.selection == 2}" class="sentence"> In the context of human spaceflight, they can be consumed as food and/or provide a refreshing atmosphere.</div>
-            <div :class="{highlight: data.selection == 3}" class="sentence">Plants can metabolize carbon dioxide in the air to produce valuable oxygen, and can help control cabin humidity.</div>
-            <div :class="{highlight: data.selection == 4}" class="sentence">Growing plants in space may provide a psychological benefit to human spaceflight crews.</div>
-            <div :class="{highlight: data.selection == 5}" class="sentence">Usually the planets were part of studies or technical development to further develop space gardens or conduct science experiments.</div>
-            <div :class="{highlight: data.selection == 6}" class="sentence">To date plants taken into space have had mostly scientific interest, with only limited contributions to the functionality of the spacecraft, however the <a href="#">Apollo Moon</a> tree project was more or less forestry inspired mission and the trees part of a country's bicentennial celebration.</div>
+            <div :class="{highlight: data.selection == 0}" v-html="data.content[0]" class="sentence"></div>
+            <div :class="{highlight: data.selection == 1}" v-html="data.content[1]" class="sentence"> </div>
+            <div :class="{highlight: data.selection == 2}" v-html="data.content[2]" class="sentence"> </div>
+            <div :class="{highlight: data.selection == 3}" v-html="data.content[3]" class="sentence"> </div>
+            <div :class="{highlight: data.selection == 4}" v-html="data.content[4]" class="sentence"> </div>
+            <div :class="{highlight: data.selection == 5}" v-html="data.content[5]" class="sentence"></div>
+            <div :class="{highlight: data.selection == 6}" v-html="data.content[6]" class="sentence"> </div>
           </div>
         </div>
         <div class="proposal-card">

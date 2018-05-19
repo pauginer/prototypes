@@ -8,6 +8,7 @@ var data = {
   selection: 0,
   maxSelection: 7,
   targetLang: "es",
+  content:['<b>Plants in space</b> are <a href="#">plants</a> grown in <a href="#">outer space</a>.','In the late 20th and 21st century, plants were often taken into space in low Earth orbit to be grown in a weightless but pressurized controlled environment, sometimes called space gardens.','In the context of human spaceflight, they can be consumed as food and/or provide a refreshing atmosphere.', 'Plants can metabolize carbon dioxide in the air to produce valuable oxygen, and can help control cabin humidity.', 'Growing plants in space may provide a psychological benefit to human spaceflight crews.','Usually the planets were part of studies or technical development to further develop space gardens or conduct science experiments.', 'To date plants taken into space have had mostly scientific interest, with only limited contributions to the functionality of the spacecraft, however the <a href="#">Apollo Moon</a> tree project was more or less forestry inspired mission and the trees part of a country’s bicentennial celebration'],
   mt: {es:["<b>Las plantas en el espacio</b> son <a href='#'>plantas</a> cultivadas en el <a href='#'>espacio exterior</a>.",
   "A fines del siglo XX y en el siglo XXI, las plantas a menudo se llevaban al espacio en órbita baja de la Tierra para cultivarse en un entorno controlado, pero sin presión, a veces llamado jardín espacial.",
   "En el contexto del vuelo espacial humano, se pueden consumir como alimento y / o proporcionar una atmósfera refrescante.",
