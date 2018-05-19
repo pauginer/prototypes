@@ -2,18 +2,22 @@
 .compose-view {
   display: flex;
   flex-direction: column;
+  height:100vh;
   .source-card {
     .card;
-    height:30vh;
+    max-height:30vh;
+    padding: 16px;
   }
   .navigation {
     padding: 16px;
   }
   .translation-card {
+    display: flex;
     .card;
+    flex: auto;
   }
   .translation {
     padding: 16px;
-    height:70vh;
+    flex: auto;
   }
 }
