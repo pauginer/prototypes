@@ -9,12 +9,51 @@
     padding: 16px;
   }
   .navigation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     padding: 16px;
+    .title {
+      font-weight: bold;
+      margin-right: 8px;
+    }
+    .description {
+      font-size: 14px;
+      color: #72777D;
+    }
   }
+  .back {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    background: center center url(../media/back.svg) no-repeat;
+    background-size: contain;
+    margin-right: 8px;
+  }
+  .settings {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    background: center center url(../media/settings.svg) no-repeat;
+    background-size: contain;
+    margin-left: auto;
+    opacity: 0.8;
+  }
+
   .translation-card {
     display: flex;
+    flex-direction: column;
     .card;
     flex: auto;
+  }
+  .toolbar {
+    flex:none;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #C8CCD1;
+  }
+  .publish {
+    margin-left: auto;
   }
   .translation {
     padding: 16px;

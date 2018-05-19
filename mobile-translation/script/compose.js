@@ -11,7 +11,11 @@ data: function(){
   },
   methods: {
    next: function () {
-
+     data.translation[data.selection] = app.$children[0].$refs.translation.innerHTML;
+     goToArticle();
+     var pos = data.selection;
+     if(pos< data.maxSelection)
+      data.selection = pos +1;
    },
    back: function() {
      goToArticle();

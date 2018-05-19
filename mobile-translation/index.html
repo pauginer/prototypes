@@ -97,9 +97,16 @@
           <div v-html="data.content[data.selection]" class="source"></div>
         </div>
         <div class="navigation">
-          <div @click="back" class="back">Back</div>
+          <div @click="back" class="back"></div>
+          <div class="title">Your translation</div>
+          <div class="description">Initially from Apertium</div>
+          <div class="settings"></div>
         </div>
         <div class="translation-card">
+          <div class="toolbar">
+            <div class="edit-tools"></div>
+            <button @click="next" class="primary publish">Done</button>
+          </div>
           <div ref="translation" contenteditable="contenteditable" v-html="data.translation[data.selection]" class="translation"></div>
         </div>
       </div>

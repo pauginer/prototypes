@@ -25,7 +25,9 @@ data: function(){
    },
    edit: function(){
      var pos = data.selection;
-     data.translation[pos] = data.mt[data.targetLang][pos];
+     if(!data.translation[pos]){
+             data.translation[pos] = data.mt[data.targetLang][pos];
+     }
      goToCompose();
    }
   }

@@ -3,6 +3,12 @@
   .source-card
     .source(v-html='data.content[data.selection]')
   .navigation
-    .back(@click='back') Back
+    .back(@click='back')
+    .title Your translation
+    .description Initially from Apertium
+    .settings
   .translation-card
+    .toolbar
+      .edit-tools
+      button.primary.publish(@click='next') Done
     .translation(ref='translation', contenteditable = true, v-html='data.translation[data.selection]')
