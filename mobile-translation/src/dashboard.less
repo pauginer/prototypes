@@ -1,0 +1,75 @@
+// "main": "main.less"
+.dashboard-view {
+  display: flex;
+  flex-direction: column;
+  .top-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .app-logo {
+    width: 163px;
+    height: 59px;
+    background: center center url(../media/app-logo.svg) no-repeat;
+    background-size: contain;
+  }
+  .personal-toolbar {
+    width: 155px;
+    height: 59px;
+    background: center center url(../media/personal-toolbar.svg) no-repeat;
+    background-size: contain;
+  }
+  .navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .new-translation-button {
+    width: 113px;
+    height: 68px;
+    background: center center url(../media/new-translation-button.svg) no-repeat;
+    background-size: contain;
+  }
+  .view-selector {
+    width: 202px;
+    height: 68px;
+    background: center center url(../media/view-selector.svg) no-repeat;
+    background-size: contain;
+  }
+  .suggestion-list {
+    .card;
+    margin: 12px;
+  }
+  .suggestion-header {
+    padding: 24px 16px;
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid #EAECF0;
+  }
+  .suggestion {
+    display: flex;
+    flex-direction: row;
+    padding: 16px;
+    border-bottom: 1px solid #EAECF0;
+    cursor: pointer;
+    &:hover{
+      background-color: #EAF3FF;
+    }
+    .thumbnail {
+      width: 84px;
+      height: 84px;
+      background-size: contain;
+      margin-right: 16px;
+      border-radius: 2px;
+    }
+    .details {
+      display: flex;
+      flex-direction: column;
+    }
+    .description {
+      color: #72777D;
+      font-size: 13px;
+      margin-top: 8px;
+    }
+  }
+}

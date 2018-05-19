@@ -1,0 +1,17 @@
+//- Dashboard
+.dashboard-view
+  .top-bar
+    .app-logo
+    .personal-toolbar
+  .navigation
+    .new-translation-button
+    .view-selector
+  .suggestion-list
+    .suggestion-header Suggested pages
+    .suggestion(v-for="s in data.suggestions", @click='next')
+      img.thumbnail(:src="'media/' + s.img")
+      .details
+        .title {{s.title}}
+        .description {{s.description}}
+  
+  button(@click='back') Back

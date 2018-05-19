@@ -1,0 +1,31 @@
+//output:../index.html
+// {}
+<!DOCTYPE html>
+html
+  head
+    meta(charset="utf-8")
+    meta(name="format-detection", content="telephone=no")
+    meta(name="msapplication-tap-highlight", content="no")
+    meta(name="viewport", content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width") 
+    link(rel="stylesheet", type="text/css", href="style/style.css")
+    template#welcome-template
+      include welcome.jade
+    template#dashboard-template
+        include dashboard.jade
+    template#tutorial-template
+        include tutorial.jade
+    template#article-template
+        include article.jade 
+  body
+    .app
+    script(type="text/javascript", src="lib/vue.js")
+    script(type="text/javascript", src="lib/vue-i18n.js")
+    script(type="text/javascript", src="lib/moment.js")
+    script(type="text/javascript", src="script/data.js")
+    script(type="text/javascript", src="script/messages.js")
+    script(type="text/javascript", src="script/welcome.js")
+    script(type="text/javascript", src="script/dashboard.js")
+    script(type="text/javascript", src="script/tutorial.js")
+    script(type="text/javascript", src="script/article.js")
+    script(type="text/javascript", src="script/app.js")
+  

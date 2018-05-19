@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="113px" height="68px" viewBox="0 0 113 68" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>new-translation-button</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="new-translation-button" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-2" transform="translate(12.000000, 16.000000)">
+            <path d="M0,1.99970728 C0,0.895299444 0.895303115,0 2.00484068,0 L86.9951593,0 C88.1024023,0 89,0.889892578 89,1.99970728 L89,34.0002927 C89,35.1047006 88.1046969,36 86.9951593,36 L2.00484068,36 C0.897597748,36 0,35.1101074 0,34.0002927 L0,1.99970728 Z" id="Rectangle-5" fill="#3366CC"></path>
+            <g id="Group" transform="translate(16.000000, 8.000000)" fill="#FFFFFF">
+                <path d="M6.23000584,2 L6.28604787,9.24187585 L0,9.24187585 L0,10.8141662 L6.28604787,10.8141662 L6.28604787,16.4277097 C6.28604787,17.3243822 6.95855225,18 7.8583382,18 L7.8583382,10.8141662 L14.1443861,10.8141662 L14.1443861,9.24187585 L7.8583382,9.24187585 L7.80229617,3.57229033 C7.80229617,2.67561782 7.12979179,2 6.23000584,2 Z" id="Shape-Copy-5"></path>
+                <text id="8:16:8:16-copy" font-family="Lato-Bold, Lato" font-size="16" font-weight="bold">
+                    <tspan x="22.5" y="16">New</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

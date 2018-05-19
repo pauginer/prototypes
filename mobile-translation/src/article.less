@@ -1,0 +1,116 @@
+// "main": "main.less"
+.article-view {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  min-height: 100vh;
+  .article-header {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid #C8CCD1;
+    background-color: #EAECF0;
+    .navigation {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+    .back {
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+      background: center center url(../media/back.svg) no-repeat;
+      background-size: contain;
+      margin-right: 8px;
+    }
+    .title {
+      font-weight: bold;
+    }
+    .actions {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+    .more {
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+      background: center center url(../media/ellipsis.svg) no-repeat;
+      background-size: contain;
+      margin-right: 8px;
+    }
+  }
+
+  .document {
+    background-color: white;
+    padding: 16px;
+  }
+  .sentence {
+    line-height: 1.5em;
+    display: inline;
+    color: #54595D;
+    &.highlight {
+      color: #222;
+      background-color: #FEF6E7;
+      border-radius: 2px;
+      box-shadow: 0 0 0 4px #FEF6E7;
+    }
+    &.translated {
+      color: #222;
+    }
+  }
+  .proposal-card {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 0;
+    padding: 16px;
+    right:0;
+    left:0;
+    background-color: white;
+    box-shadow: 0 -1px 2px 0 rgba(0,0,0,0.24);
+
+    .header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: bold;
+      color: #54595D;
+      margin-bottom: 16px;
+    }
+    .navigation {
+      display: flex;
+    }
+    .next {
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+      background: center center url(../media/next.svg) no-repeat;
+      background-size: contain;
+    }
+    .prev {
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+      background: center center url(../media/prev.svg) no-repeat;
+      background-size: contain;
+      margin-right: 12px;
+      &.disabled {
+        cursor: default;
+        opacity: 0.33;
+      }
+    }
+    .actions {
+      display: flex;
+      flex-direction: row;
+      margin-top: 20px;
+      margin-left: auto;
+    }
+    .apply {
+      margin-right: 8px;
+    }
+  }
+}

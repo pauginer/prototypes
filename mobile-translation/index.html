@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="msapplication-tap-highlight" content="no"/>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"/>
+    <link rel="stylesheet" type="text/css" href="style/style.css"/>
+    <template id="welcome-template">
+      <div class="welcome-view">
+        <section>Welcome!
+          <p>{{ $t("welcome.welcome") }}</p>
+          <button @click="start">Start</button>
+        </section>
+      </div>
+    </template>
+    <template id="dashboard-template">
+      <div class="dashboard-view">
+        <div class="top-bar">
+          <div class="app-logo"></div>
+          <div class="personal-toolbar"></div>
+        </div>
+        <div class="navigation">
+          <div class="new-translation-button"></div>
+          <div class="view-selector"></div>
+        </div>
+        <div class="suggestion-list">
+          <div class="suggestion-header">Suggested pages</div>
+          <div v-for="s in data.suggestions" @click="next" class="suggestion"><img :src="'media/' + s.img" class="thumbnail"/>
+            <div class="details">
+              <div class="title">{{s.title}}</div>
+              <div class="description">{{s.description}}</div>
+            </div>
+          </div>
+        </div>
+        <button @click="back">Back</button>
+      </div>
+    </template>
+    <template id="tutorial-template">
+      <div class="tutorial-view">
+        <div class="tutorial">
+          <h1>Ready to translate?</h1>
+          <ol>
+            <li>Select a sentence and translate it.</li>
+            <li>You can use automatic translation to get started quickly, but make sure to review it. </li>
+            <li>You can review each paragraphs to do further adjustments when you complete it.</li>
+            <li>Publish to create a new article when the translation is ready.</li>
+          </ol>
+          <button @click="next" class="primary">Start translating</button>
+        </div>
+      </div>
+    </template>
+    <template id="article-template">
+      <div class="article-view">
+        <div class="article-header">
+          <div class="navigation">
+            <div @click="back" class="back"></div>
+            <div class="title">Plants in space</div>
+          </div>
+          <div class="actions">
+            <div class="more"></div>
+            <button class="publish">Publish</button>
+          </div>
+        </div>
+        <div class="document">
+          <div class="paragraph">
+            <div :class="{highlight: data.selection == 0}" class="sentence"><b>Plants in space</b> are <a href="#">plants</a> grown in <a href="#">outer space</a>.</div>
+            <div :class="{highlight: data.selection == 1}" class="sentence">In the late 20th and 21st century, plants were often taken into space in low Earth orbit to be grown in a weightless but pressurized controlled environment, sometimes called space gardens.</div>
+            <div :class="{highlight: data.selection == 2}" class="sentence"> In the context of human spaceflight, they can be consumed as food and/or provide a refreshing atmosphere.</div>
+            <div :class="{highlight: data.selection == 3}" class="sentence">Plants can metabolize carbon dioxide in the air to produce valuable oxygen, and can help control cabin humidity.</div>
+            <div :class="{highlight: data.selection == 4}" class="sentence">Growing plants in space may provide a psychological benefit to human spaceflight crews.</div>
+            <div :class="{highlight: data.selection == 5}" class="sentence">Usually the planets were part of studies or technical development to further develop space gardens or conduct science experiments.</div>
+            <div :class="{highlight: data.selection == 6}" class="sentence">To date plants taken into space have had mostly scientific interest, with only limited contributions to the functionality of the spacecraft, however the <a href="#">Apollo Moon</a> tree project was more or less forestry inspired mission and the trees part of a country's bicentennial celebration.</div>
+          </div>
+        </div>
+        <div class="proposal-card">
+          <div class="header">
+            <div class="title">Proposed translation</div>
+            <div class="navigation">
+              <div :class="{disabled: data.selection == 0}" @click="prev()" class="prev"></div>
+              <div @click="next()" class="next"></div>
+            </div>
+          </div>
+          <div class="translation">Translation text</div>
+          <div class="actions">
+            <button class="apply">Apply</button>
+            <button class="primary edit">Edit translation</button>
+          </div>
+        </div>
+      </div>
+    </template>
+  </head>
+  <body>
+    <div class="app"></div>
+    <script type="text/javascript" src="lib/vue.js"></script>
+    <script type="text/javascript" src="lib/vue-i18n.js"></script>
+    <script type="text/javascript" src="lib/moment.js"></script>
+    <script type="text/javascript" src="script/data.js"></script>
+    <script type="text/javascript" src="script/messages.js"></script>
+    <script type="text/javascript" src="script/welcome.js"></script>
+    <script type="text/javascript" src="script/dashboard.js"></script>
+    <script type="text/javascript" src="script/tutorial.js"></script>
+    <script type="text/javascript" src="script/article.js"></script>
+    <script type="text/javascript" src="script/app.js"></script>
+  </body>
+</html>

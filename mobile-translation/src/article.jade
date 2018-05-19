@@ -1,0 +1,28 @@
+//- Article
+.article-view
+  .article-header
+    .navigation
+      .back(@click='back')
+      .title Plants in space
+    .actions
+      .more
+      button.publish Publish
+  .document
+    .paragraph
+      .sentence(:class='{highlight: data.selection == 0}') <b>Plants in space</b> are <a href="#">plants</a> grown in <a href="#">outer space</a>.
+      .sentence(:class='{highlight: data.selection == 1}') In the late 20th and 21st century, plants were often taken into space in low Earth orbit to be grown in a weightless but pressurized controlled environment, sometimes called space gardens.
+      .sentence(:class='{highlight: data.selection == 2}')  In the context of human spaceflight, they can be consumed as food and/or provide a refreshing atmosphere.
+      .sentence(:class='{highlight: data.selection == 3}') Plants can metabolize carbon dioxide in the air to produce valuable oxygen, and can help control cabin humidity.
+      .sentence(:class='{highlight: data.selection == 4}') Growing plants in space may provide a psychological benefit to human spaceflight crews.
+      .sentence(:class='{highlight: data.selection == 5}') Usually the planets were part of studies or technical development to further develop space gardens or conduct science experiments.
+      .sentence(:class='{highlight: data.selection == 6}') To date plants taken into space have had mostly scientific interest, with only limited contributions to the functionality of the spacecraft, however the <a href="#">Apollo Moon</a> tree project was more or less forestry inspired mission and the trees part of a country's bicentennial celebration.
+  .proposal-card
+    .header
+      .title Proposed translation
+      .navigation
+        .prev(:class='{disabled: data.selection == 0}', @click='prev()')
+        .next(@click='next()')
+    .translation Translation text
+    .actions
+      button.apply Apply
+      button.primary.edit Edit translation
