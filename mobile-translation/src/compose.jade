@@ -10,5 +10,10 @@
   .translation-card
     .toolbar
       .edit-tools
+        .bold
+        .italics
+        .links
+        .mic
+        .fullscreen
       button.primary.publish(@click='next') Done
     .translation(ref='translation', contenteditable = true, v-html='data.translation[data.selection]')

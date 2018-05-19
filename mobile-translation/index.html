@@ -104,7 +104,13 @@
         </div>
         <div class="translation-card">
           <div class="toolbar">
-            <div class="edit-tools"></div>
+            <div class="edit-tools">
+              <div class="bold"></div>
+              <div class="italics"></div>
+              <div class="links"></div>
+              <div class="mic"></div>
+              <div class="fullscreen"></div>
+            </div>
             <button @click="next" class="primary publish">Done</button>
           </div>
           <div ref="translation" contenteditable="contenteditable" v-html="data.translation[data.selection]" class="translation"></div>
