@@ -100,7 +100,7 @@
           <div @click="back" class="back">Back</div>
         </div>
         <div class="translation-card">
-          <div contenteditable="contenteditable" autofocus="autofocus" v-html="data.translation[data.selection]" class="translation"></div>
+          <div ref="translation" contenteditable="contenteditable" v-html="data.translation[data.selection]" class="translation"></div>
         </div>
       </div>
     </template>

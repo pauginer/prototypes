@@ -5,4 +5,4 @@
   .navigation
     .back(@click='back') Back
   .translation-card
-    .translation(contenteditable = true, autofocus = true, v-html='data.translation[data.selection]')
+    .translation(ref='translation', contenteditable = true, v-html='data.translation[data.selection]')
