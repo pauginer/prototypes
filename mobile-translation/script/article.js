@@ -22,6 +22,11 @@ data: function(){
      var pos = data.selection;
      data.translation[pos] = data.mt[data.targetLang][pos];
      this.next();
+   },
+   edit: function(){
+     var pos = data.selection;
+     data.translation[pos] = data.mt[data.targetLang][pos];
+     goToCompose();
    }
   }
 }

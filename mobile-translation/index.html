@@ -86,8 +86,21 @@
           <div v-if="!data.translation[data.selection]" v-html="data.mt[data.targetLang][data.selection]" class="translation"></div>
           <div class="actions">
             <button @click="apply" v-if="!data.translation[data.selection]" class="apply">Apply</button>
-            <button class="primary edit">Edit translation</button>
+            <button @click="edit" class="primary edit">Edit translation</button>
           </div>
+        </div>
+      </div>
+    </template>
+    <template id="compose-template">
+      <div class="compose-view">
+        <div class="source-card">
+          <div v-html="data.content[data.selection]" class="source"></div>
+        </div>
+        <div class="navigation">
+          <div @click="back" class="back">Back</div>
+        </div>
+        <div class="translation-card">
+          <div contenteditable="contenteditable" autofocus="autofocus" v-html="data.translation[data.selection]" class="translation"></div>
         </div>
       </div>
     </template>
@@ -103,6 +116,7 @@
     <script type="text/javascript" src="script/dashboard.js"></script>
     <script type="text/javascript" src="script/tutorial.js"></script>
     <script type="text/javascript" src="script/article.js"></script>
+    <script type="text/javascript" src="script/compose.js"></script>
     <script type="text/javascript" src="script/app.js"></script>
   </body>
 </html>

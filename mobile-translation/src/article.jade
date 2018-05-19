@@ -27,4 +27,4 @@
     .translation(v-if='!data.translation[data.selection]', v-html='data.mt[data.targetLang][data.selection]')
     .actions
       button.apply(@click='apply', v-if='!data.translation[data.selection]') Apply
-      button.primary.edit Edit translation
+      button.primary.edit(@click='edit') Edit translation

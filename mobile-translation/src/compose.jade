@@ -1,0 +1,8 @@
+//- Compose
+.compose-view
+  .source-card
+    .source(v-html='data.content[data.selection]')
+  .navigation
+    .back(@click='back') Back
+  .translation-card
+    .translation(contenteditable = true, autofocus = true, v-html='data.translation[data.selection]')

@@ -5,7 +5,8 @@ const routes = {
   'welcome': Welcome,
   'dashboard': Dashboard,
   'tutorial': Tutorial,
-  'article': Article
+  'article': Article,
+  'compose': Compose
 };
 
 function goToWelcome(){
@@ -26,6 +27,11 @@ function goToTutorial(){
 function goToArticle(){
   app.previousRoute = app.currentRoute;
   app.currentRoute = "article";
+}
+
+function goToCompose(){
+  app.previousRoute = app.currentRoute;
+  app.currentRoute = "compose";
 }
 
 function goBack() {
