@@ -25,5 +25,6 @@ var data = {
   "Usualmente los planetas eran parte de estudios o desarrollo técnico para desarrollar jardines espaciales o realizar experimentos científicos.",
   "Hasta la fecha, las plantas llevadas al espacio han tenido mayor interés científico, con contribuciones limitadas a la funcionalidad de la nave espacial, sin embargo, el proyecto del árbol Luna Apolo fue una misión más o menos inspirada en la silvicultura y los árboles parte de la celebración del bicentenario de un país."
     ]
-  }
+  },
+  translation: {}
 };

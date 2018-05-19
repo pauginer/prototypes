@@ -17,6 +17,11 @@ data: function(){
     },
    back: function() {
      goToDashboard();
+   },
+   apply: function(){
+     var pos = data.selection;
+     data.translation[pos] = data.mt[data.targetLang][pos];
+     this.next();
    }
   }
 }

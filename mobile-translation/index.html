@@ -64,26 +64,28 @@
         </div>
         <div class="document">
           <div class="paragraph">
-            <div :class="{highlight: data.selection == 0}" v-html="data.content[0]" class="sentence"></div>
-            <div :class="{highlight: data.selection == 1}" v-html="data.content[1]" class="sentence"> </div>
-            <div :class="{highlight: data.selection == 2}" v-html="data.content[2]" class="sentence"> </div>
-            <div :class="{highlight: data.selection == 3}" v-html="data.content[3]" class="sentence"> </div>
-            <div :class="{highlight: data.selection == 4}" v-html="data.content[4]" class="sentence"> </div>
-            <div :class="{highlight: data.selection == 5}" v-html="data.content[5]" class="sentence"></div>
-            <div :class="{highlight: data.selection == 6}" v-html="data.content[6]" class="sentence"> </div>
+            <div :class="{highlight: data.selection == 0, translated: data.translation[0]}" v-html="data.content[0]" class="sentence"></div>
+            <div :class="{highlight: data.selection == 1, translated: data.translation[1]}" v-html="data.content[1]" class="sentence"> </div>
+            <div :class="{highlight: data.selection == 2, translated: data.translation[2]}" v-html="data.content[2]" class="sentence"> </div>
+            <div :class="{highlight: data.selection == 3, translated: data.translation[3]}" v-html="data.content[3]" class="sentence"> </div>
+            <div :class="{highlight: data.selection == 4, translated: data.translation[4]}" v-html="data.content[4]" class="sentence"> </div>
+            <div :class="{highlight: data.selection == 5, translated: data.translation[5]}" v-html="data.content[5]" class="sentence"></div>
+            <div :class="{highlight: data.selection == 6, translated: data.translation[6]}" v-html="data.content[6]" class="sentence"> </div>
           </div>
         </div>
         <div class="proposal-card">
           <div class="header">
-            <div class="title">Proposed translation</div>
+            <div v-if="data.translation[data.selection]" class="title">Current translation</div>
+            <div v-if="!data.translation[data.selection]" class="title">Proposed translation</div>
             <div class="navigation">
               <div :class="{disabled: data.selection == 0}" @click="prev()" class="prev"></div>
               <div @click="next()" class="next"></div>
             </div>
           </div>
-          <div v-html="data.mt[data.targetLang][data.selection]" class="translation"></div>
+          <div v-if="data.translation[data.selection]" v-html="data.translation[data.selection]" class="translation"></div>
+          <div v-if="!data.translation[data.selection]" v-html="data.mt[data.targetLang][data.selection]" class="translation"></div>
           <div class="actions">
-            <button class="apply">Apply</button>
+            <button @click="apply" v-if="!data.translation[data.selection]" class="apply">Apply</button>
             <button class="primary edit">Edit translation</button>
           </div>
         </div>
