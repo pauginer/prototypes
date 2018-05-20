@@ -9,13 +9,13 @@
       button.publish Publish
   .document
     .paragraph
-      .sentence(:class='{highlight: data.selection == 0, translated: data.translation[0]}', v-html='data.content[0]')
-      .sentence(:class='{highlight: data.selection == 1, translated: data.translation[1]}', v-html='data.content[1]') 
-      .sentence(:class='{highlight: data.selection == 2, translated: data.translation[2]}', v-html='data.content[2]') 
-      .sentence(:class='{highlight: data.selection == 3, translated: data.translation[3]}', v-html='data.content[3]') 
-      .sentence(:class='{highlight: data.selection == 4, translated: data.translation[4]}', v-html='data.content[4]') 
-      .sentence(:class='{highlight: data.selection == 5, translated: data.translation[5]}', v-html='data.content[5]')
-      .sentence(:class='{highlight: data.selection == 6, translated: data.translation[6]}', v-html='data.content[6]') 
+      .sentence(:class='{highlight: data.selection == 0, translated: data.translation[0]}', v-html='data.translation[0]?data.translation[0]:data.content[0]')
+      .sentence(:class='{highlight: data.selection == 1, translated: data.translation[1]}', v-html='data.translation[1]?data.translation[1]:data.content[1]') 
+      .sentence(:class='{highlight: data.selection == 2, translated: data.translation[2]}', v-html='data.translation[2]?data.translation[2]:data.content[2]') 
+      .sentence(:class='{highlight: data.selection == 3, translated: data.translation[3]}', v-html='data.translation[3]?data.translation[3]:data.content[3]') 
+      .sentence(:class='{highlight: data.selection == 4, translated: data.translation[4]}', v-html='data.translation[4]?data.translation[4]:data.content[4]') 
+      .sentence(:class='{highlight: data.selection == 5, translated: data.translation[5]}', v-html='data.translation[5]?data.translation[5]:data.content[5]')
+      .sentence(:class='{highlight: data.selection == 6, translated: data.translation[6]}', v-html='data.translation[6]?data.translation[6]:data.content[6]') 
   .proposal-card
     .header
       .title(v-if='data.translation[data.selection]') Current translation
