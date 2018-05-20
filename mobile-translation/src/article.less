@@ -57,15 +57,15 @@
     line-height: 1.5em;
     display: inline;
     color: #54595D;
-    &.highlight {
-      color: #222;
-      background-color: #FEF6E7;
-      border-radius: 2px;
-      box-shadow: 0 0 0 4px #FEF6E7;
-    }
     &.translated {
       color: #222;
     }
+  }
+  .highlight {
+    color: #222;
+    background-color: #FEF6E7;
+    border-radius: 2px;
+    box-shadow: 0 0 0 4px #FEF6E7;
   }
   .proposal-card {
     display: flex;
@@ -109,9 +109,22 @@
         opacity: 0.33;
       }
     }
-    .translation {
+    .translation, .proofread {
       line-height: 1.5em;
       min-height: 3em;
+    }
+    .proofread {
+      display: flex;
+      flex-direction: row;
+      .icon {
+        flex: none;
+        width: 42px;
+        height: 42px;
+        opacity: 0.6;
+        background: center center url(../media/proofread.svg) no-repeat;
+        background-size: contain;
+        margin-right: 12px;
+      }
     }
     .actions {
       display: flex;

@@ -63,7 +63,7 @@
           </div>
         </div>
         <div class="document">
-          <div class="paragraph">
+          <div :class="{highlight: data.selection == data.maxSelection}" class="paragraph">
             <div :class="{highlight: data.selection == 0, translated: data.translation[0]}" v-html="data.translation[0]?data.translation[0]:data.content[0]" class="sentence"></div>
             <div :class="{highlight: data.selection == 1, translated: data.translation[1]}" v-html="data.translation[1]?data.translation[1]:data.content[1]" class="sentence"> </div>
             <div :class="{highlight: data.selection == 2, translated: data.translation[2]}" v-html="data.translation[2]?data.translation[2]:data.content[2]" class="sentence"> </div>
@@ -73,7 +73,7 @@
             <div :class="{highlight: data.selection == 6, translated: data.translation[6]}" v-html="data.translation[6]?data.translation[6]:data.content[6]" class="sentence"> </div>
           </div>
         </div>
-        <div class="proposal-card">
+        <div v-if="data.selection &lt; data.maxSelection" class="proposal-card">
           <div class="header">
             <div v-if="data.translation[data.selection]" class="title">Current translation</div>
             <div v-if="!data.translation[data.selection]" class="title">Proposed translation</div>
@@ -87,6 +87,22 @@
           <div class="actions">
             <button @click="apply" v-if="!data.translation[data.selection]" class="apply">Apply</button>
             <button @click="edit" class="primary edit">Edit translation</button>
+          </div>
+        </div>
+        <div v-if="data.selection == data.maxSelection" class="proposal-card">
+          <div class="header">
+            <div class="title">Translated paragraph</div>
+            <div class="navigation">
+              <div :class="{disabled: data.selection == 0}" @click="prev()" class="prev"></div>
+              <div @click="next()" class="next"></div>
+            </div>
+          </div>
+          <div class="proofread">
+            <div class="icon"></div>
+            <div class="description">Proofread the translated paragraph to make sure it reads in a natural way. </div>
+          </div>
+          <div class="actions">
+            <button @click="edit" class="primary edit">Proofread</button>
           </div>
         </div>
       </div>
