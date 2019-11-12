@@ -17,6 +17,60 @@
 	<!-- copy these lines to your document head: -->
 
 	<meta name="viewport" content="user-scalable=yes, width=1024" />
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+//To be included on a header script for Hype
+	
+function updateSceneFromHash(){
+	var hash = window.location.hash;
+	var sceneName=hash.replace('#','');
+	var hypeDocument = HYPE.documents['index'];
+	if(hash.length == 0){
+		sceneName = hypeDocument.sceneNames()[0];
+	}
+	if(sceneName != hypeDocument.currentSceneName() ){
+		hypeDocument.showSceneNamed(sceneName, hypeDocument.kSceneTransitionInstant);
+	}
+}
+
+
+//Updates the scene when the hash changes (Does not update on initial hash value)
+$(window).bind( 'hashchange', function(e) { 
+	updateSceneFromHash();
+  			
+});
+
+
+//Updates the scene based on the initial value of the hash (hack to make sure HYPE variable is available).
+$(window).load(function (){
+    var i = setInterval(function (){
+        if ($('#index_hype_container').length){
+            clearInterval(i);
+   			updateSceneFromHash();
+    	}
+    }, 100);
+});
+
+
+//History support:
+// Back button triggers scene changes.
+jQuery(document).ready(function($) {
+	if (window.history && window.history.pushState) {
+		$(window).on('popstate', function() {
+			updateSceneFromHash();
+		});
+	}
+});
+
+//Function to indicate which transitions get into the history stack
+function updateState(){ //Should be called AFTER jumping to the scene.
+	var hypeDocument = HYPE.documents['index']
+	var sceneName = hypeDocument.currentSceneName();
+	window.history.pushState('forward', null, '#'+sceneName);
+}
+
+</script>	
+	
 
 	<!-- end copy -->
   </head>
@@ -24,7 +78,7 @@
 	<!-- copy these lines to your document: -->
 
 	<div id="index_hype_container" style="margin:auto;position:relative;width:1024px;height:960px;overflow:hidden;">
-		<script type="text/javascript" charset="utf-8" src="index.hyperesources/index_hype_generated_script.js?50194"></script>
+		<script type="text/javascript" charset="utf-8" src="index.hyperesources/index_hype_generated_script.js?69454"></script>
 	</div>
 
 	<!-- end copy -->
