@@ -18,10 +18,18 @@
 
 	<meta name="viewport" content="user-scalable=yes, width=375" />
 	
-	
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//rawgit.com/jonahvsweb/touchpoint-js/master/dist/touchpoint-es5.min.js"></script>
 <script>
-//To be included on a header script for Hype
+
+function initTouchpoint() { //check https://github.com/jonahvsweb/touchpoint-js
+    TouchPoint.color = '#555';
+    TouchPoint.scale = 2;
+    TouchPoint.size = 20;
+    TouchPoint.opacity = 0.3;
+    TouchPoint.init();
+  }
+
 	
 function updateSceneFromHash(){
 	var hash = window.location.hash;
@@ -62,6 +70,9 @@ jQuery(document).ready(function($) {
 			updateSceneFromHash();
 		});
 	}
+	
+	initTouchpoint();
+	
 });
 
 //Function to indicate which transitions get into the history stack
@@ -79,7 +90,7 @@ function updateState(){ //Should be called AFTER jumping to the scene.
 	<!-- copy these lines to your document: -->
 
 	<div id="index_hype_container" style="margin:auto;position:relative;width:375px;height:100%;overflow:hidden;">
-		<script type="text/javascript" charset="utf-8" src="index.hyperesources/index_hype_generated_script.js?93285"></script>
+		<script type="text/javascript" charset="utf-8" src="index.hyperesources/index_hype_generated_script.js?97484"></script>
 	</div>
 
 	<!-- end copy -->
