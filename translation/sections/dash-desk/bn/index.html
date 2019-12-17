@@ -16,10 +16,21 @@
 	</style>
 	<!-- copy these lines to your document head: -->
 
-	<meta name="viewport" content="user-scalable=yes, width=1024" />
-	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<meta name="viewport" content="user-scalable=yes, width=375" />
+	
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//pauginer.github.io/prototypes/lib/tp.js"></script> 
 <script>
-//To be included on a header script for Hype
+
+function initTouchpoint() { //check https://github.com/jonahvsweb/touchpoint-js
+	TouchPoint.clickTap = ('ontouchstart' in window ? 'touchend' : 'click');
+    TouchPoint.color = '#555';
+    TouchPoint.scale = 1;
+    TouchPoint.size = 32;
+    TouchPoint.opacity = 0.4;
+    TouchPoint.init();
+  }
+
 	
 function updateSceneFromHash(){
 	var hash = window.location.hash;
@@ -60,6 +71,9 @@ jQuery(document).ready(function($) {
 			updateSceneFromHash();
 		});
 	}
+	
+	initTouchpoint();
+	
 });
 
 //Function to indicate which transitions get into the history stack
@@ -69,16 +83,15 @@ function updateState(){ //Should be called AFTER jumping to the scene.
 	window.history.pushState('forward', null, '#'+sceneName);
 }
 
-</script>	
-	
+</script>
 
 	<!-- end copy -->
   </head>
   <body>
 	<!-- copy these lines to your document: -->
 
-	<div id="index_hype_container" style="margin:auto;position:relative;width:1024px;height:960px;overflow:hidden;">
-		<script type="text/javascript" charset="utf-8" src="index.hyperesources/index_hype_generated_script.js?62828"></script>
+	<div id="index_hype_container" style="margin:auto;position:relative;width:375px;height:100%;overflow:hidden;">
+		<script type="text/javascript" charset="utf-8" src="index.hyperesources/index_hype_generated_script.js?94250"></script>
 	</div>
 
 	<!-- end copy -->
@@ -90,7 +103,7 @@ function updateState(){ //Should be called AFTER jumping to the scene.
 	<div style="display:none" aria-hidden=true>
 
 		<div></div>
-		<div>ইউকুলি সাধারণত হাওয়াইয়ের সংগীতের সাথে যুক্ত যেখানে নামটি প্রায় "জাম্পিং ফ্লোয়া" হিসাবে অনুবাদ করে, সম্ভবত প্লেয়ারের আঙ্গুলের চলাফেরার কারণে। কিংবদন্তি এটিকে কিংবদন্তি এডওয়ার্ড উইলিয়াম পুরভিস, কিং কালাকৌয়েরঅন্যতম আধিকারিক, তাঁর ছোট আকার, চূড়ান্তভাবে এবং দক্ষতার কারণে দক্ষতার কারণে ডাকনাম দিয়েছিলেন। ১৯০ in সালে প্রকাশিত সমস্ত জাতির বাদ্যযন্ত্রের বাদ্যযন্ত্র সংগ্রহের ক্রসবি ব্রাউন কালেক্টের আর্টস ক্যাটালগের মেট্রোপলিটন যাদুঘরের মুদ্রণে (একটি স্ট্রিংড যন্ত্রের অর্থে) ইউকুলি শব্দের প্রথম দিকের উপস্থিতি। ক্যাটালগটিতে হাওয়াইয়ের দুটি ইউকুলি বর্ণনা করা হয়েছে: একটি যা আধুনিক সোপ্রানো ইউকুলির মতো আকারের এবং অন্যটি টেনোরের মতো।
+		<div>ইউকুলি সাধারণত হাওয়াইয়ের সংগীতের সাথে যুক্ত যেখানে নামটি প্রায় "জাম্পিং ফ্লোয়া" হিসাবে অনুবাদ করে, সম্ভবত প্লেয়ারের আঙ্গুলের চলাফেরার কারণে।
 </div>
 
 	</div>
