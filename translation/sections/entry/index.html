@@ -18,9 +18,21 @@
 
 	<meta name="viewport" content="user-scalable=yes, width=375" />
 	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="//pauginer.github.io/prototypes/lib/tp.js"></script>
 	<!--<script src="//pauginer.github.io/prototypes/lib/stateful.js"></script>--> 
 	
 <script>
+
+function initTouchpoint() { //check https://github.com/jonahvsweb/touchpoint-js
+	TouchPoint.clickTap = ('ontouchstart' in window ? 'touchend' : 'click');
+    TouchPoint.color = '#555';
+    TouchPoint.scale = 1;
+    TouchPoint.size = 32;
+    TouchPoint.opacity = 0.4;
+    TouchPoint.init();
+  }
+
+
 function updateSceneFromHash(){
 	var hash = window.location.hash;
 	var sceneName=hash.replace('#','');
@@ -59,6 +71,7 @@ jQuery(document).ready(function($) {
 			updateSceneFromHash();
 		});
 	}
+	initTouchpoint();
 });
 
 //Function to indicate which transitions get into the history stack
@@ -77,7 +90,7 @@ function updateState(){ //Should be called AFTER jumping to the scene.
 	<!-- copy these lines to your document: -->
 
 	<div id="index_hype_container" style="margin:auto;position:relative;width:375px;height:800px;overflow:hidden;">
-		<script type="text/javascript" charset="utf-8" src="index.hyperesources/index_hype_generated_script.js?92133"></script>
+		<script type="text/javascript" charset="utf-8" src="index.hyperesources/index_hype_generated_script.js?94212"></script>
 	</div>
 
 	<!-- end copy -->
